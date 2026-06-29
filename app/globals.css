@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Editorial paper palette — snipKI: near-white with a faint mint cast */
+  --paper: #fbfcfb;
+  --paper-2: #eef6f0;
+  --ink: #18201d;
+  --ink-soft: #45504b;
+  --ink-faint: #8a938d;
+  --rule: #d8e3dc;
+  --rule-soft: #e8efea;
+
+  /* snipKI brand green (used sparingly) */
+  --brand: #7ed9b1;
+  --brand-deep: #2f9b73;
+
+  /* Modality accents (muted, print-like) */
+  --c-text: #1f5fd6;
+  --c-image: #c2316f;
+  --c-video: #d2691e;
+  --c-audio: #0e857a;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-text: var(--c-text);
+  --color-image: var(--c-image);
+  --color-video: var(--c-video);
+  --color-audio: var(--c-audio);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "kern", "liga";
+}
+
+::selection {
+  background: var(--brand);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, "SF Mono", monospace;
+}
+
+/* Fine top rule used across editorial sections */
+.hairline {
+  border-color: var(--rule);
+}
+
+/* Subtle paper grain via layered gradients (no image asset). */
+.grain {
+  background-image:
+    radial-gradient(transparent 0, rgba(0, 0, 0, 0.012) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.008) 3px
+    );
+}
+
+/* Floating dots (first-screen parallax field) */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+/* Card-wall marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-track {
+  width: max-content;
+  animation: marquee 80s linear infinite;
+}
+.marquee-track.rev {
+  animation-name: marquee-rev;
+  animation-duration: 95s;
+}
+.marquee-pause:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
