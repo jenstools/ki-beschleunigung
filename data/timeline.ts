@@ -3660,13 +3660,66 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Limited Preview — zunächst nur ~20 von der US-Regierung genehmigte Partner; allgemeine Verfügbarkeit in den kommenden Wochen geplant.",
     "verificationNote": "Angekündigt am 26.06.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Sol/Terra/Luna, Preise, „max\"/„ultra\"-Reasoning, ~20 regierungsgenehmigte Partner) über die OpenAI-System-Card sowie mehrere Berichte (MacRumors, Axios, VentureBeat, MarkTechPost) bestätigt. Cache-Breakpoints (30 Min. TTL) laut OpenAI-Ankündigung."
+  },
+  {
+    "id": "text-claude-sonnet-5-2026-06-30",
+    "date": "2026-06-30",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Sonnet 5",
+    "org": "Anthropic",
+    "license": "closed",
+    "capability": "Bisher agentischstes Sonnet-Modell: plant eigenständig, nutzt Werkzeuge wie Browser und Terminals und arbeitet autonom auf einem Niveau, das vor wenigen Monaten noch größere, teurere Modelle erforderte. Einführungspreis 2/10 USD pro Mio. Tokens (regulär 3/15, bis 31.08.2026) und neues Standardmodell für Free- und Pro-Nutzer.",
+    "whyItMattered": "Erreicht annähernd die Leistung von Opus 4.8 zu deutlich niedrigerem Preis — die Grenze zwischen mittlerer Sonnet- und Spitzen-Opus-Klasse verschwimmt weiter. Agentische Fähigkeiten (Coding, Tool-Use, Reasoning) werden damit für breite, kostensensible Einsätze praktikabel.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.anthropic.com/news/claude-sonnet-5"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 30.06.2026 direkt auf der Anthropic-Ankündigungsseite (Primärquelle) bestätigt."
+  },
+  {
+    "id": "text-seed-2-1-pro-2026-06-24",
+    "date": "2026-06-24",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Seed 2.1 Pro",
+    "org": "ByteDance (Volcano Engine / Doubao)",
+    "license": "closed",
+    "capability": "Für „Coding und Agent\" ausgelegtes Flaggschiff-Modell mit Fortschritten bei Engineering-Lieferung, Agent-Aufgaben über lange Ketten und multimodalem Verständnis. Verfügbar über Volcano Engine / Volcano Ark; Preis ca. 6 Yuan (~$0,85) pro Mio. Input- und 30 Yuan (~$4,15) pro Mio. Output-Tokens.",
+    "whyItMattered": "ByteDance positioniert Seed 2.1 Pro als auf mehreren Coding-, Agent- und Multimodal-Benchmarks mit Claude Opus 4.6 konkurrenzfähig — bei rund 80 % niedrigeren Gesamtkosten. Drückt den Preis für agentische Frontier-Coding-Leistung weiter nach unten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://datanorth.ai/news/bytedance-releases-seed-2-1-pro-and-seed-2-1-turbo",
+      "https://dataconomy.com/2026/06/24/bytedance-launches-doubao-2-1-pro-language-model/"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 24.06.2026 auf der Volcano-Engine-FORCE-Konferenz; Datum über mehrere unabhängige Berichte bestätigt. Eine englischsprachige offizielle Primärquelle (Volcano Engine) konnte ich nicht direkt abrufen."
+  },
+  {
+    "id": "text-seed-2-1-turbo-2026-06-24",
+    "date": "2026-06-24",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Seed 2.1 Turbo",
+    "org": "ByteDance (Volcano Engine / Doubao)",
+    "license": "closed",
+    "capability": "Schnellere, günstigere Variante von Seed 2.1 Pro für hochfrequente Enterprise-Workloads — etwa halber Preis bei auf Durchsatz optimierter Latenz.",
+    "whyItMattered": "Bringt die Seed-2.1-Generation (Coding, Agent, multimodales Verständnis) in den Hochvolumen-Produktivbetrieb und senkt die Kosten pro Aufgabe für Agenten-Pipelines im großen Maßstab.",
+    "firstOfKind": "",
+    "sources": [
+      "https://datanorth.ai/news/bytedance-releases-seed-2-1-pro-and-seed-2-1-turbo",
+      "https://dataconomy.com/2026/06/24/bytedance-launches-doubao-2-1-pro-language-model/"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 24.06.2026 auf der Volcano-Engine-FORCE-Konferenz; Datum über mehrere unabhängige Berichte bestätigt. Eine englischsprachige offizielle Primärquelle (Volcano Engine) konnte ich nicht direkt abrufen."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "27. Juni 2026",
+  lastVerified: "30. Juni 2026",
   windowStart: "2022-08",
   windowEnd: "2026-06",
-  total: 206,
+  total: 209,
   placeholder: false,
 };

@@ -17,7 +17,7 @@ import { MidCTA } from "@/components/MidCTA";
 export default function Page() {
   const buckets = cadenceByQuarter(entries);
   const windowLabel = "Ende 2022 — 2026";
-  const today = "2026-06-14";
+  const today = "2026-06-30";
 
   return (
     <main className="relative">
