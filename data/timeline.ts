@@ -3011,10 +3011,12 @@ export const entries: Entry[] = [
     "firstOfKind": "Erstes Modell der Gemini-Omni-Familie, das generative Medien mit Gemins Weltwissen vereint und Video aus jeder Eingabemodalität per Konversation erzeugt und editiert.",
     "sources": [
       "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/",
-      "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/"
+      "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/"
     ],
     "disputed": false,
-    "verificationNote": "Bestätigt über den offiziellen Google-Blog (blog.google) und die I/O-2026-Keynote von Sundar Pichai, beide mit Datum 19.05.2026; Gemini Omni Flash war ab dem Ankündigungstag in Gemini-App, Google Flow und YouTube Shorts verfügbar.",
+    "note": "Öffentliche Preview (gemini-omni-flash-preview) mit Preis $0,10 pro Sekunde Video am 30.06.2026 gestartet.",
+    "verificationNote": "Bestätigt über den offiziellen Google-Blog (blog.google) und die I/O-2026-Keynote von Sundar Pichai, beide mit Datum 19.05.2026; Gemini Omni Flash war ab dem Ankündigungstag in Gemini-App, Google Flow und YouTube Shorts verfügbar. Öffentliche Preview mit Preisangabe ($0,10/Sek.) laut Google-Blog am 30.06.2026.",
     "id": "video-gemini-omni-flash-2026-05-19"
   },
   {
@@ -3713,6 +3715,23 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Veröffentlichung am 24.06.2026 auf der Volcano-Engine-FORCE-Konferenz; Datum über mehrere unabhängige Berichte bestätigt. Eine englischsprachige offizielle Primärquelle (Volcano Engine) konnte ich nicht direkt abrufen."
+  },
+  {
+    "id": "image-nano-banana-2-lite-2026-06-30",
+    "date": "2026-06-30",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+    "org": "Google DeepMind",
+    "license": "closed",
+    "capability": "Schnellste und günstigste Variante der Nano-Banana-2-Reihe für Bilderzeugung und -bearbeitung: rund 4 Sekunden Latenz, $0,034 pro 1.000 Bilder. Verfügbar in Google AI Studio, der Gemini-API, der Gemini Enterprise Agent Platform und über Consumer-Flächen (Suche, Gemini-App, Google Photos, NotebookLM, Stitch, Google Flow, Google Ads).",
+    "whyItMattered": "Drückt hochwertige Text-zu-Bild-Generierung auf Bruchteile eines Cents pro Bild bei ~4 Sekunden Latenz und macht sie damit für Massen- und Echtzeit-Anwendungen quer durch Googles Produktpalette praktikabel.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 30.06.2026 direkt im offiziellen Google-Blog (blog.google) bestätigt; Modell-ID gemini-3.1-flash-lite-image."
   }
 ];
 
@@ -3720,6 +3739,6 @@ export const dataMeta = {
   lastVerified: "30. Juni 2026",
   windowStart: "2022-08",
   windowEnd: "2026-06",
-  total: 209,
+  total: 210,
   placeholder: false,
 };
