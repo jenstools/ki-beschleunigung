@@ -3732,13 +3732,31 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Datum 30.06.2026 direkt im offiziellen Google-Blog (blog.google) bestätigt; Modell-ID gemini-3.1-flash-lite-image."
+  },
+  {
+    "id": "text-longcat-2-0-2026-06-29",
+    "date": "2026-06-29",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "LongCat-2.0",
+    "org": "Meituan",
+    "license": "open",
+    "capability": "Quelloffenes 1,6-Billionen-Parameter-MoE-Modell (aktiviert ~48B Parameter pro Token, 33–56B je nach Komplexität) mit nativem 1-Mio.-Token-Kontext, veröffentlicht unter MIT-Lizenz auf GitHub und Hugging Face. Auf agentisches Coding ausgelegt: SWE-bench Pro 59,5, Terminal-Bench 70,8.",
+    "whyItMattered": "Bringt ein Open-Weights-Modell nahe an die Frontier-Coding-Leistung geschlossener Spitzenmodelle (SWE-bench Pro 59,5 vs. 58,6 bei GPT-5.5) — und ist laut Meituan das erste Billionen-Parameter-Modell, das vollständig auf einem inländischen chinesischen Chip-Cluster (~50.000 Karten) trainiert und betrieben wurde.",
+    "firstOfKind": "Erstes Billionen-Parameter-Modell, das komplett auf inländischen chinesischen KI-Chips trainiert und ausgeführt wird.",
+    "sources": [
+      "https://www.longcatai.org/models/longcat-2",
+      "https://venturebeat.com/technology/meituan-open-sources-longcat-2-0-the-1-6t-near-frontier-agentic-coding-model-thats-been-leading-openrouter-trained-entirely-on-chinese-chips"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 29.06.2026 auf GitHub, Hugging Face und longcatai.org; einzelne Quellen nennen den 30.06. für die Open-Weights. MIT-Lizenz. Benchmarks laut Meituan/longcatai.org."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "30. Juni 2026",
+  lastVerified: "3. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-06",
-  total: 210,
+  total: 211,
   placeholder: false,
 };
