@@ -3750,13 +3750,31 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Veröffentlichung am 29.06.2026 auf GitHub, Hugging Face und longcatai.org; einzelne Quellen nennen den 30.06. für die Open-Weights. MIT-Lizenz. Benchmarks laut Meituan/longcatai.org."
+  },
+  {
+    "id": "text-claude-fable-5-redeploy-2026-07-01",
+    "date": "2026-07-01",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Fable 5 (Wiederveröffentlichung)",
+    "org": "Anthropic",
+    "license": "closed",
+    "capability": "Nach 19 Tagen offline wieder global verfügbar: Anthropic bringt Fable 5 am 01.07.2026 auf Claude-Plattform, Claude.ai, Claude Code und Claude Cowork zurück — mit einem neuen Sicherheits-Klassifikator, der die zur Sperre führende Technik (Umgehung der Safeguards zur Schwachstellensuche) in über 99 % der Fälle blockiert.",
+    "whyItMattered": "Erster Fall, in dem ein Frontier-Modell per US-Exportkontrolle vom Netz genommen und später wieder freigegeben wurde: am 12.06.2026 nach einem Amazon-Sicherheitsbericht sofort gesperrt (Fable 5 und Mythos 5), am 30.06. Kontrollen aufgehoben, am 01.07. redeployed. Zeigt, wie unmittelbar Regulierung und Sicherheitsbefunde die Verfügbarkeit von Spitzenmodellen steuern können.",
+    "firstOfKind": "Erstes Frontier-Modell, das durch eine US-Exportkontrolle vorübergehend abgeschaltet und nach Aufhebung wieder in Betrieb genommen wurde.",
+    "sources": [
+      "https://www.anthropic.com/news/redeploying-fable-5",
+      "https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 01.07.2026 über die offizielle Anthropic-Ankündigung „Redeploying Claude Fable 5\" (Primärquelle) bestätigt; Hintergrund (Sperre 12.06., Aufhebung der Kontrollen 30.06.) über Anthropic, CNBC und weitere Berichte."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "3. Juli 2026",
+  lastVerified: "5. Juli 2026",
   windowStart: "2022-08",
-  windowEnd: "2026-06",
-  total: 211,
+  windowEnd: "2026-07",
+  total: 212,
   placeholder: false,
 };
