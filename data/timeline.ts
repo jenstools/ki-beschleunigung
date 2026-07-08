@@ -3768,13 +3768,47 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Datum 01.07.2026 über die offizielle Anthropic-Ankündigung „Redeploying Claude Fable 5\" (Primärquelle) bestätigt; Hintergrund (Sperre 12.06., Aufhebung der Kontrollen 30.06.) über Anthropic, CNBC und weitere Berichte."
+  },
+  {
+    "id": "text-swe-1-7-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "SWE-1.7 (Cognition)",
+    "org": "Cognition",
+    "license": "closed",
+    "capability": "Coding- und Agenten-Modell auf Frontier-Niveau zu deutlich geringeren Kosten, speziell für langlaufende asynchrone Software-Aufgaben optimiert. Ab sofort in Devin (Web, Desktop, CLI) über Cerebras mit 1000 Tokens/Sek. verfügbar. Benchmarks: FrontierCode 1.1 Main 42,3 %, Terminal-Bench 2.1 81,5 %, SWE-Bench Multilingual 77,8 %.",
+    "whyItMattered": "Cognition zeigt mit weiteren großen Zuwächsen aus eigenem Post-Training, dass ein vermeintliches „Post-Training-Ceiling\" nicht existiert — Reinforcement Learning treibt agentische Coding-Fähigkeiten weiter als bislang angenommen, und das bei 1000 TPS im Devin-Agenten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://cognition.com/blog/swe-1-7"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 08.07.2026 direkt im Cognition-Blog (Primärquelle) bestätigt; verfügbar in Devin über Cerebras (1000 TPS). Benchmarks laut Cognition."
+  },
+  {
+    "id": "audio-gpt-live-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "GPT-Live (GPT-Live-1 / mini)",
+    "org": "OpenAI",
+    "license": "closed",
+    "capability": "Neue Generation von Sprachmodellen mit Full-Duplex-Architektur — hört und spricht gleichzeitig, signalisiert Aufmerksamkeit („mhmm\", „yeah\"), erlaubt schnelles Hin und Her und lässt Pausen zu. Treibt ab sofort ChatGPT Voice an; zwei Varianten (GPT-Live-1 und GPT-Live-1 mini), globaler Rollout für ChatGPT-Nutzer, API in Kürze.",
+    "whyItMattered": "Verschiebt Sprach-KI vom turn-basierten Wechsel zum echten, gleichzeitigen Gespräch — Zuhören und Sprechen parallel statt abwechselnd — und macht die Voice-Interaktion mit ChatGPT deutlich natürlicher.",
+    "firstOfKind": "Erste Full-Duplex-Sprachmodellfamilie von OpenAI (gleichzeitiges Hören und Sprechen) für ChatGPT Voice.",
+    "sources": [
+      "https://openai.com/index/introducing-gpt-live/"
+    ],
+    "disputed": false,
+    "verificationNote": "Angekündigt/ausgerollt am 08.07.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Details (Full-Duplex, GPT-Live-1 + mini, globaler ChatGPT-Rollout, API in Kürze) über die OpenAI-Ankündigung und Berichte (Let's Data Science, MarkTechPost) bestätigt."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "5. Juli 2026",
+  lastVerified: "8. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 212,
+  total: 214,
   placeholder: false,
 };
