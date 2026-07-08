@@ -3660,8 +3660,8 @@ export const entries: Entry[] = [
       "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov"
     ],
     "disputed": false,
-    "note": "Limited Preview — zunächst nur ~20 von der US-Regierung genehmigte Partner; allgemeine Verfügbarkeit in den kommenden Wochen geplant.",
-    "verificationNote": "Angekündigt am 26.06.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Sol/Terra/Luna, Preise, „max\"/„ultra\"-Reasoning, ~20 regierungsgenehmigte Partner) über die OpenAI-System-Card sowie mehrere Berichte (MacRumors, Axios, VentureBeat, MarkTechPost) bestätigt. Cache-Breakpoints (30 Min. TTL) laut OpenAI-Ankündigung."
+    "note": "Preview-Zugang wird nun global ausgeweitet; öffentlicher Launch von Sol, Terra und Luna laut OpenAI für Donnerstag, 09.07.2026 angekündigt. Zuvor nur ~20 von der US-Regierung genehmigte Partner im Limited Preview.",
+    "verificationNote": "Angekündigt am 26.06.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Sol/Terra/Luna, Preise, „max\"/„ultra\"-Reasoning, ~20 regierungsgenehmigte Partner) über die OpenAI-System-Card sowie mehrere Berichte (MacRumors, Axios, VentureBeat, MarkTechPost) bestätigt. Cache-Breakpoints (30 Min. TTL) laut OpenAI-Ankündigung. Globale Preview-Ausweitung und öffentlicher Launch am 09.07.2026 laut OpenAI-Ankündigung auf X (Post nicht maschinell abrufbar, HTTP 402)."
   },
   {
     "id": "text-claude-sonnet-5-2026-06-30",
