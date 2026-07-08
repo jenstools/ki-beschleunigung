@@ -3802,6 +3802,40 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Angekündigt/ausgerollt am 08.07.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Details (Full-Duplex, GPT-Live-1 + mini, globaler ChatGPT-Rollout, API in Kürze) über die OpenAI-Ankündigung und Berichte (Let's Data Science, MarkTechPost) bestätigt."
+  },
+  {
+    "id": "image-seedream-5-0-pro-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Seedream 5.0 Pro",
+    "org": "ByteDance",
+    "license": "closed",
+    "capability": "Multimodales Bild-Erzeugungsmodell mit durchgängigen Verbesserungen bei Bild-Text-Ausrichtung, Struktur, Textrendering und Ästhetik. Vier Kern-Neuerungen: komplexe Informations-Visualisierung (verwandelt Daten, Konzepte und dichten Text in professionelle Layouts), interaktives pixelgenaues Editieren mit räumlichem Verständnis (Grounding), intelligente Ebenen-Trennung (zerlegt ein Poster in 10+ Layer — Text, Motive, Hintergründe, Deko) und Multi-Image-Fusion. Nativ mehrsprachig (über 10 Sprachen).",
+    "whyItMattered": "Verschiebt Text-zu-Bild von reiner Generierung zu echtem Design-Verständnis: Layout, editierbare Ebenen und komponierbare Bildteile statt nur eines fertigen Bildes — direkt anschlussfähig an professionelle Design-Workflows.",
+    "firstOfKind": "",
+    "sources": [
+      "https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 08.07.2026 direkt im ByteDance-Seed-Blog (Primärquelle) bestätigt."
+  },
+  {
+    "id": "text-grok-4-5-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Grok 4.5",
+    "org": "xAI",
+    "license": "closed",
+    "capability": "Auf dem 1,5-Billionen-Foundation-Modell „V9\" aufgebautes Reasoning-Modell mit zusätzlichen Cursor-Trainingsdaten, konfigurierbarem Reasoning-Aufwand sowie Fokus auf Geschwindigkeit und Token-Effizienz. Ab dem 08.07.2026 über die xAI-API verfügbar ($2/$6 pro 1M Token); öffentlicher Rollout ab 09.07.2026.",
+    "whyItMattered": "xAI positioniert Grok 4.5 als „Opus-Klasse\" — schneller, token-effizienter und günstiger. Wichtig: Die Leistungsaussagen sind Eigenangaben von xAI/Musk; zum Launch lagen keine unabhängigen oder öffentlichen Benchmarks vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-4-5"
+    ],
+    "disputed": false,
+    "verificationNote": "Ankündigung über die offizielle x.ai-News-Seite (vom Nutzer belegt); Seite maschinell nicht abrufbar (HTTP 403). API-Verfügbarkeit, Preise ($2/$6) und öffentlicher Rollout am 09.07. über mehrere Berichte bestätigt. Leistungsaussagen („Opus-Klasse\") sind Eigenangaben von xAI, keine unabhängigen Benchmarks zum Launch-Zeitpunkt."
   }
 ];
 
@@ -3809,6 +3843,6 @@ export const dataMeta = {
   lastVerified: "8. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 214,
+  total: 216,
   placeholder: false,
 };
