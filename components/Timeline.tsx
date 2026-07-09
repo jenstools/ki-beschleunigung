@@ -131,10 +131,38 @@ export function Timeline({ entries }: { entries: Entry[] }) {
     groups.find((g) => g.key === activeKey)?.year ?? years[0]?.year;
   const activePeriods = groups.filter((g) => g.year === activeYear);
 
-  const jump = (key: string) => {
+  // Scroll to a period group. `hash` is what lands in the URL (the year for a
+  // year jump, the period key otherwise) so the location is shareable.
+  const jump = (key: string, hash: string = key) => {
     const el = refs.current.get(key);
     if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    if (typeof history !== "undefined") history.replaceState(null, "", `#${hash}`);
   };
+
+  // Deep-linking: on mount, honour a #year / #year-month / #year-Qn hash by
+  // selecting the matching granularity and scrolling to that anchor.
+  const pendingHash = useRef<string | null>(null);
+  useEffect(() => {
+    const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    if (!hash || hash === "timeline") return;
+    if (/^\d{4}-Q[1-4]$/.test(hash)) setGranularity("quarter");
+    else if (/^\d{4}-\d{2}$/.test(hash)) setGranularity("month");
+    pendingHash.current = hash;
+  }, []);
+  useEffect(() => {
+    if (!pendingHash.current) return;
+    const hash = pendingHash.current;
+    const id = requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ block: "start" });
+          pendingHash.current = null;
+        }
+      }),
+    );
+    return () => cancelAnimationFrame(id);
+  }, [groups]);
 
   const renderFilters = () => (
     <div className="flex flex-wrap items-center gap-1.5">
@@ -239,7 +267,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
               value={activeYear ?? ""}
               onChange={(e) => {
                 const y = years.find((x) => x.year === Number(e.target.value));
-                if (y) jump(y.firstKey);
+                if (y) jump(y.firstKey, String(y.year));
               }}
             >
               {years.map((y) => (
@@ -282,7 +310,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                 return (
                   <li key={y.year}>
                     <button
-                      onClick={() => jump(y.firstKey)}
+                      onClick={() => jump(y.firstKey, String(y.year))}
                       className="group flex w-full items-center gap-2 py-1 text-left"
                     >
                       <span
@@ -364,12 +392,21 @@ export function Timeline({ entries }: { entries: Entry[] }) {
             return (
               <div
                 key={g.key}
+                id={g.key}
                 ref={(el) => {
                   if (el) refs.current.set(g.key, el);
                   else refs.current.delete(g.key);
                 }}
                 className="relative scroll-mt-[140px] lg:scroll-mt-[60px]"
               >
+                {/* Year anchor — enables #2026 deep links regardless of granularity */}
+                {groups[gi - 1]?.year !== g.year ? (
+                  <span
+                    id={String(g.year)}
+                    aria-hidden
+                    className="block h-0 scroll-mt-[140px] lg:scroll-mt-[60px]"
+                  />
+                ) : null}
                 {!filtering &&
                   bandsByGroup[gi]?.map((t) => (
                     <ThresholdBand key={t.date} t={t} />
