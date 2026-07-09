@@ -3853,6 +3853,23 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Offizielle Version am 06.07.2026 veröffentlicht — Datum in der Kopfzeile der offiziellen Tencent-Pressemitteilung (tencent.com, „2026.07.06\") bestätigt. Apache-2.0, 295B-MoE / 21B aktiv / 256K-Kontext. Die zuvor am 23.04.2026 erschienene Preview wurde durch diesen offiziellen Eintrag ersetzt."
+  },
+  {
+    "id": "text-muse-spark-1-1-2026-07-09",
+    "date": "2026-07-09",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Spark 1.1",
+    "org": "Meta (Superintelligence Labs)",
+    "license": "closed",
+    "capability": "Agentisch ausgelegtes multimodales Modell: fortgeschrittenes Reasoning, starke Tool- und Computer-Use-Fähigkeiten, Top-Coding und multimodales Verständnis (Text, Bild, Video, Audio) bei 1-Mio.-Token-Kontext mit aktivem Kontext-Management. Verfügbar als öffentliche Preview der neuen Meta Model API für Entwickler (OpenAI-kompatibel) sowie im „Thinking\"-Modus der Meta-AI-App und auf meta.ai.",
+    "whyItMattered": "Meta positioniert Muse Spark 1.1 als „vollständige agentische Grundlage\" — Millionen-Token-Kontext, volle Multimodalität, starkes Reasoning und Coding in einem OpenAI-kompatiblen Paket. Öffnet Metas Superintelligence-Modelle erstmals über eine eigene Entwickler-API.",
+    "firstOfKind": "",
+    "sources": [
+      "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 09.07.2026 direkt in der offiziellen Meta-AI-Blog-Ankündigung (Primärquelle) bestätigt."
   }
 ];
 
@@ -3860,6 +3877,6 @@ export const dataMeta = {
   lastVerified: "9. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 217,
+  total: 218,
   placeholder: false,
 };
