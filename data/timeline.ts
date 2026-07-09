@@ -3836,6 +3836,23 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Ankündigung über die offizielle x.ai-News-Seite (vom Nutzer belegt); Seite maschinell nicht abrufbar (HTTP 403). API-Verfügbarkeit, Preise ($2/$6) und öffentlicher Rollout am 09.07. über mehrere Berichte bestätigt. Leistungsaussagen („Opus-Klasse\") sind Eigenangaben von xAI, keine unabhängigen Benchmarks zum Launch-Zeitpunkt."
+  },
+  {
+    "id": "image-muse-image-2026-07-07",
+    "date": "2026-07-07",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Muse Image",
+    "org": "Meta (Superintelligence Labs)",
+    "license": "closed",
+    "capability": "Erstes Bildgenerierungsmodell aus den Meta Superintelligence Labs. Fortgeschrittenes Prompt-Verständnis (Reasoning), Foto-Blending, verlässliches Textrendering, Bildbearbeitung mit Markup-Werkzeugen und @-Mention-Integration für Instagram-Profile. In Meta AI verfügbar, Rollout auf Facebook, Messenger, Instagram und WhatsApp; kostenlos für alltägliche Nutzung, erweiterte Nutzung über Meta-Abos, für Werbetreibende via Meta Advantage+ Creative angekündigt.",
+    "whyItMattered": "Bringt integrierte, reasoning-gestützte Bilderzeugung und -bearbeitung direkt in Metas Massen-Apps mit Milliarden Nutzern — und ist das erste Bildmodell aus Metas neuem Superintelligence-Labs-Stack.",
+    "firstOfKind": "Erstes Bildgenerierungsmodell der Meta Superintelligence Labs.",
+    "sources": [
+      "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 07.07.2026 direkt in der offiziellen Meta-Newsroom-Ankündigung (Primärquelle) bestätigt. Muse Video wurde am selben Tag angekündigt, ist aber „in Entwicklung\" und noch nicht verfügbar — daher (noch) nicht als Release aufgenommen."
   }
 ];
 
@@ -3843,6 +3860,6 @@ export const dataMeta = {
   lastVerified: "9. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 216,
+  total: 217,
   placeholder: false,
 };
