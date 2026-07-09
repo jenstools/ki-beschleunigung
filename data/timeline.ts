@@ -3644,15 +3644,15 @@ export const entries: Entry[] = [
     "verificationNote": "Veröffentlichung 22.08.2023 über Meta-AI bestätigt."
   },
   {
-    "id": "text-gpt-5-6-2026-06-26",
-    "date": "2026-06-26",
+    "id": "text-gpt-5-6-2026-07-09",
+    "date": "2026-07-09",
     "datePrecision": "day",
     "modality": "text",
     "name": "GPT-5.6 (Sol / Terra / Luna)",
     "org": "OpenAI",
     "license": "closed",
-    "capability": "Neue Modellfamilie im Limited Preview mit drei Stufen: Sol (Flaggschiff, $5/$30 pro 1M Token), Terra (ausgewogen, $2,50/$15) und Luna (schnell und günstig, $1/$6). Neu sind zwei Reasoning-Modi — „max\" (maximale Denkzeit für Sol) und „ultra\" (Subagenten teilen komplexe Aufgaben parallel auf) — sowie explizite Cache-Breakpoints (mind. 30 Min. TTL) und ein verstärkter Safety-Stack.",
-    "whyItMattered": "Sol ist laut OpenAI das bislang stärkste Modell des Hauses mit agentischen Fortschritten in Coding, Biologie und Cybersicherheit; Terra erreicht GPT-5.5-Niveau zum halben Preis. Bemerkenswert ist die Freigabe: zunächst nur rund 20 von der US-Regierung genehmigte Partner — ein staatlich gesteuertes Zugangsmodell für ein allgemeines Frontier-Modell.",
+    "capability": "Öffentlicher Launch der Modellfamilie mit drei Stufen: Sol (Flaggschiff, $5/$30 pro 1M Token), Terra (ausgewogen, $2,50/$15) und Luna (schnell und günstig, $1/$6). Ab 09.07.2026 für ChatGPT-, Codex- und API-Nutzer verfügbar. Neu sind zwei Reasoning-Modi — „max\" (maximale Denkzeit für Sol) und „ultra\" (Subagenten teilen komplexe Aufgaben parallel auf) — sowie explizite Cache-Breakpoints (mind. 30 Min. TTL) und ein verstärkter Safety-Stack.",
+    "whyItMattered": "Sol ist laut OpenAI das bislang stärkste Modell des Hauses mit agentischen Fortschritten in Coding, Biologie und Cybersicherheit; Terra erreicht GPT-5.5-Niveau zum halben Preis. Bemerkenswert ist der Weg dorthin: erst ab 26.06. nur ~20 von der US-Regierung genehmigte Partner im Limited Preview, dann am 09.07. öffentlicher Launch — ein staatlich gesteuerter Zugang, der sich schrittweise öffnete.",
     "firstOfKind": "",
     "sources": [
       "https://openai.com/index/previewing-gpt-5-6-sol/",
@@ -3660,8 +3660,8 @@ export const entries: Entry[] = [
       "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov"
     ],
     "disputed": false,
-    "note": "Preview-Zugang wird nun global ausgeweitet; öffentlicher Launch von Sol, Terra und Luna laut OpenAI für Donnerstag, 09.07.2026 angekündigt. Zuvor nur ~20 von der US-Regierung genehmigte Partner im Limited Preview.",
-    "verificationNote": "Angekündigt am 26.06.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Sol/Terra/Luna, Preise, „max\"/„ultra\"-Reasoning, ~20 regierungsgenehmigte Partner) über die OpenAI-System-Card sowie mehrere Berichte (MacRumors, Axios, VentureBeat, MarkTechPost) bestätigt. Cache-Breakpoints (30 Min. TTL) laut OpenAI-Ankündigung. Globale Preview-Ausweitung und öffentlicher Launch am 09.07.2026 laut OpenAI-Ankündigung auf X (Post nicht maschinell abrufbar, HTTP 402)."
+    "note": "Öffentlicher Launch am 09.07.2026 für ChatGPT, Codex und API. Zuvor ab 26.06.2026 nur im Limited Preview für ~20 von der US-Regierung genehmigte Partner; allgemeine Verfügbarkeit (GA) laut OpenAI in den Wochen danach.",
+    "verificationNote": "Öffentlicher Launch (Sol/Terra/Luna) am 09.07.2026 über mehrere Berichte bestätigt (Preview-Ankündigung 26.06., OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Preise, „max\"/„ultra\"-Reasoning) über OpenAI-System-Card und Berichte (VentureBeat, MacRumors, Axios) bestätigt. Eintrag auf das offizielle Release-Datum 09.07. gesetzt (zuvor als Preview auf den 26.06. datiert)."
   },
   {
     "id": "text-claude-sonnet-5-2026-06-30",
@@ -3840,7 +3840,7 @@ export const entries: Entry[] = [
 ];
 
 export const dataMeta = {
-  lastVerified: "8. Juli 2026",
+  lastVerified: "9. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
   total: 216,
