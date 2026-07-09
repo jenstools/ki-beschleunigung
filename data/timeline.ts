@@ -2877,24 +2877,6 @@ export const entries: Entry[] = [
     "id": "text-gpt-5-5-2026-04-23"
   },
   {
-    "date": "2026-04-23",
-    "datePrecision": "day",
-    "modality": "text",
-    "name": "Hy3 preview (Hunyuan)",
-    "org": "Tencent",
-    "license": "open",
-    "capability": "Fused-Reasoning-MoE-Modell (fast-and-slow-thinking) mit 295B Total-Parametern (21B aktiv) und 256K-Kontextfenster, ausgelegt auf komplexes Reasoning, Instruction Following, In-Context-Learning, Code-Verständnis und agentische Workloads.",
-    "whyItMattered": "Hy3 preview ist Tencents erstes großes Modell nach dem Neuaufbau seiner Pre-Training- und Reinforcement-Learning-Infrastruktur Anfang 2026 und das erste offen verfügbare Hunyuan-3-LLM. Tencent veröffentlichte die Gewichte auf Hugging Face, ModelScope und GitCode und meldet starke agentische und Coding-Fähigkeiten (SWE-Bench-Werte um 74,4).",
-    "firstOfKind": "",
-    "sources": [
-      "https://huggingface.co/tencent/Hy3-preview",
-      "https://www.tencent.com/en-us/articles/2202320.html"
-    ],
-    "disputed": false,
-    "verificationNote": "Datum 23.04.2026 über das offizielle Tencent-Hugging-Face-Repo (tencent/Hy3-preview) bestätigt; Lizenz: Tencent Hy Community License Agreement (Open-Weights mit Bedingungen).",
-    "id": "text-hy3-preview-hunyuan-2026-04-23"
-  },
-  {
     "date": "2026-04-24",
     "datePrecision": "day",
     "modality": "text",
@@ -3853,6 +3835,24 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Datum 07.07.2026 direkt in der offiziellen Meta-Newsroom-Ankündigung (Primärquelle) bestätigt. Muse Video wurde am selben Tag angekündigt, ist aber „in Entwicklung\" und noch nicht verfügbar — daher (noch) nicht als Release aufgenommen."
+  },
+  {
+    "id": "text-hy3-hunyuan-2026-07-06",
+    "date": "2026-07-06",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Hy3 (Hunyuan)",
+    "org": "Tencent (Hunyuan)",
+    "license": "open",
+    "capability": "Offizielle Version des Hunyuan-Hy3: 295B-MoE-Modell mit 21B aktiven Parametern und 256K-Kontext, veröffentlicht unter Apache-2.0-Lizenz. Gegenüber der Preview (23.04.) weitere Fortschritte bei Code-Generierung und Agenten-Fähigkeiten sowie mehr Stabilität; API über Tencent Cloud TokenHub. Erreicht laut Tencent flagship-nahe Intelligenz bei 2–5× kleinerem Parameter-Budget.",
+    "whyItMattered": "Kleines, effizientes Open-Weights-Modell (nur 21B aktiv), das an die Leistung deutlich größerer Flaggschiffe heranreicht — mit permissiver Apache-2.0-Lizenz und Fokus auf Agenten, Coding und Reasoning für den praktischen, kostengünstigen Einsatz.",
+    "firstOfKind": "",
+    "sources": [
+      "https://hy.tencent.com/research/hy3",
+      "https://www.tencent.com/en-us/articles/2202386.html"
+    ],
+    "disputed": false,
+    "verificationNote": "Offizielle Version am 06.07.2026 veröffentlicht — Datum in der Kopfzeile der offiziellen Tencent-Pressemitteilung (tencent.com, „2026.07.06\") bestätigt. Apache-2.0, 295B-MoE / 21B aktiv / 256K-Kontext. Die zuvor am 23.04.2026 erschienene Preview wurde durch diesen offiziellen Eintrag ersetzt."
   }
 ];
 
