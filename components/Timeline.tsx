@@ -15,7 +15,17 @@ export function Timeline({ entries }: { entries: Entry[] }) {
   const [granularity, setGranularity] = useState<Granularity>("month");
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const reduce = useReducedMotion();
+
+  // Copy a shareable deep-link to a period (and reflect it in the URL bar).
+  const copyLink = (key: string) => {
+    const url = `${location.origin}${location.pathname}#${key}`;
+    navigator.clipboard?.writeText(url).catch(() => {});
+    history.replaceState(null, "", `#${key}`);
+    setCopiedKey(key);
+    window.setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1600);
+  };
 
   const toggleMod = (m: Modality) =>
     setMods((s) => {
@@ -413,7 +423,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                   ))}
                 {/* Sticky period header */}
                 <div className="sticky top-[128px] z-30 bg-paper/92 py-5 backdrop-blur lg:top-[52px]">
-                  <div className="flex items-end gap-3 pl-10 pr-5 sm:pr-7">
+                  <div className="group flex items-end gap-3 pl-10 pr-5 sm:pr-7">
                     <motion.span
                       aria-hidden
                       className="absolute left-[16px] top-[28px] h-3 w-3 rounded-full border-2 border-ink bg-paper"
@@ -425,6 +435,23 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                     <h3 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                       {g.label}
                     </h3>
+                    <a
+                      href={`#${g.key}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        copyLink(g.key);
+                      }}
+                      aria-label={`Link zu ${g.label} kopieren`}
+                      title="Link kopieren"
+                      className="pb-1.5 font-mono text-lg leading-none text-ink-faint/60 transition-colors hover:text-brand-deep focus-visible:text-brand-deep focus-visible:opacity-100 sm:text-ink-faint/0 sm:group-hover:text-ink-faint/70"
+                    >
+                      #
+                    </a>
+                    {copiedKey === g.key ? (
+                      <span className="pb-1.5 font-mono text-[10px] uppercase tracking-widest text-brand-deep">
+                        Link kopiert
+                      </span>
+                    ) : null}
                     <span className="pb-1 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
                       {g.entries.length} {g.entries.length === 1 ? "Release" : "Releases"}
                     </span>
