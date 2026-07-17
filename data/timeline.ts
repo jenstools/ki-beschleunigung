@@ -3870,13 +3870,32 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Datum 09.07.2026 direkt in der offiziellen Meta-AI-Blog-Ankündigung (Primärquelle) bestätigt."
+  },
+  {
+    "id": "text-inkling-2026-07-15",
+    "date": "2026-07-15",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Inkling",
+    "org": "Thinking Machines Lab",
+    "license": "open",
+    "capability": "Erstes Modell von Mira Muratis Thinking Machines Lab — ein quelloffenes „Interaktionsmodell“, das Anfragen über verschiedene Medien hinweg verarbeitet und dabei Kosten gegen Leistung ausbalanciert. Frei verfügbar (Open-Weights zum Herunterladen und Anpassen); das Unternehmen monetarisiert nicht Inkling selbst, sondern das separate Fine-Tuning-Werkzeug Tinker.",
+    "whyItMattered": "Erster öffentlicher Release von Thinking Machines Lab — über ein Jahr nach der Gründung durch Ex-OpenAI-CTO Mira Murati. Positioniert als menschenzentriertes, anpassbares Open-Weights-Modell (laut Firma „nicht das stärkste“ verfügbare Modell, aber stark unter vergleichbaren Open-Weights). Ein weiterer prominenter Frontier-Lab-Player tritt damit öffentlich an.",
+    "firstOfKind": "Erstes öffentlich verfügbares Modell von Thinking Machines Lab (Mira Murati).",
+    "sources": [
+      "https://thinkingmachines.ai/",
+      "https://fortune.com/2026/07/15/what-is-mira-murati-thinking-machines-first-ai-model-inkling/",
+      "https://www.bloomberg.com/news/articles/2026-07-15/murati-s-thinking-machines-releases-first-ai-model-for-broad-use"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 15.07.2026 über mehrere Berichte (Bloomberg, Fortune, MarkTechPost) bestätigt; Open-Weights, frei verfügbar, Monetarisierung über das separate Tool Tinker. Offizielle Primärseite thinkingmachines.ai nicht maschinell abgerufen."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "9. Juli 2026",
+  lastVerified: "15. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 218,
+  total: 219,
   placeholder: false,
 };
