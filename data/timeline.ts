@@ -3889,13 +3889,31 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Veröffentlichung am 15.07.2026 über mehrere Berichte (Bloomberg, Fortune, MarkTechPost) bestätigt; Open-Weights, frei verfügbar, Monetarisierung über das separate Tool Tinker. Offizielle Primärseite thinkingmachines.ai nicht maschinell abgerufen."
+  },
+  {
+    "id": "text-kimi-k3-2026-07-16",
+    "date": "2026-07-16",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Kimi K3",
+    "org": "Moonshot AI",
+    "license": "open",
+    "capability": "Neues MoE-Flaggschiff mit rund 2,8 Billionen Parametern, neuer „Kimi Delta Attention“-Architektur und 1-Mio.-Token-Kontext, ausgelegt auf langlaufendes Coding und Agenten-Workloads. Zwei Varianten zum Start: K3 Max (Chat/Agent) und K3 Swarm Max (massiv-paralleles Processing). Verfügbar über Kimi Code und die Kimi-App (ab ¥199-Tarif); herunterladbare Open-Weights laut Moonshot bis 27.07.2026 angekündigt.",
+    "whyItMattered": "Hebt Open-Weights-Modelle auf Frontier-Niveau: laut Moonshot 93,5 % auf GPQA Diamond (stärkstes veröffentlichtes Open-Weight-Ergebnis zum Launch), 91,2 % auf BrowseComp und 88,3 % auf Terminal-Bench 2.1 — agentische Werte, die mit den geschlossenen Spitzenmodellen konkurrieren.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.marktechpost.com/2026/07/16/moonshot-ai-releases-kimi-k3-a-2-8-trillion-parameter-open-moe-model-with-kimi-delta-attention-and-1m-context/",
+      "https://simonwillison.net/2026/Jul/16/kimi-k3/"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar, herunterladbare Open-Weights laut Moonshot bis 27.07.2026. Benchmarks laut Moonshot/Berichten."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "15. Juli 2026",
+  lastVerified: "16. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 219,
+  total: 220,
   placeholder: false,
 };
