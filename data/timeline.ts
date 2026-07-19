@@ -3907,13 +3907,31 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar, herunterladbare Open-Weights laut Moonshot bis 27.07.2026. Benchmarks laut Moonshot/Berichten."
+  },
+  {
+    "id": "text-qwen3-8-max-2026-07-19",
+    "date": "2026-07-19",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen3.8-Max (Preview)",
+    "org": "Alibaba",
+    "license": "closed",
+    "capability": "Alibabas neues Flaggschiff der Qwen-Reihe mit laut Ankündigung rund 2,4 Billionen Parametern (aktive Parameterzahl und MoE-Konfiguration nicht offengelegt). Zunächst als Qwen3.8-Max-Preview über Alibaba Cloud (Token Plan), Qoder und QoderWork aufrufbar; das vollständige Modell und offene Gewichte sind laut Alibaba „in Kürze“ geplant.",
+    "whyItMattered": "Vierter Frontier-Launch in elf Tagen (nach Grok 4.5 und GPT-5.6) und Alibabas bislang größtes Modell. Alibaba positioniert es als „nur hinter Fable 5“ — allerdings eine reine Eigenangabe: zum Start lagen keine veröffentlichten oder unabhängigen Benchmarks vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://officechai.com/ai/alibaba-qwen-3-8/",
+      "https://kie.ai/blog/what-is-qwen3-8-max"
+    ],
+    "disputed": true,
+    "verificationNote": "Ankündigung am 19.07.2026; Qwen3.8-Max-Preview über Alibaba Cloud aufrufbar, vollständiges Modell und Open-Weights noch nicht veröffentlicht. Als unbestätigt markiert: keine offizielle Alibaba-Primärquelle maschinell abrufbar, keine unabhängigen Benchmarks, und „zweitbestes Modell nach Fable 5“ ist eine reine Eigenangabe. Datum über mehrere Berichte (OfficeChai, kie.ai, techsy) berichtet."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "16. Juli 2026",
+  lastVerified: "18. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 220,
+  total: 221,
   placeholder: false,
 };
