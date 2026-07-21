@@ -15,7 +15,17 @@ export function Timeline({ entries }: { entries: Entry[] }) {
   const [granularity, setGranularity] = useState<Granularity>("month");
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const reduce = useReducedMotion();
+
+  // Copy a shareable deep-link to a period (and reflect it in the URL bar).
+  const copyLink = (key: string) => {
+    const url = `${location.origin}${location.pathname}#${key}`;
+    navigator.clipboard?.writeText(url).catch(() => {});
+    history.replaceState(null, "", `#${key}`);
+    setCopiedKey(key);
+    window.setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1600);
+  };
 
   const toggleMod = (m: Modality) =>
     setMods((s) => {
@@ -131,10 +141,38 @@ export function Timeline({ entries }: { entries: Entry[] }) {
     groups.find((g) => g.key === activeKey)?.year ?? years[0]?.year;
   const activePeriods = groups.filter((g) => g.year === activeYear);
 
-  const jump = (key: string) => {
+  // Scroll to a period group. `hash` is what lands in the URL (the year for a
+  // year jump, the period key otherwise) so the location is shareable.
+  const jump = (key: string, hash: string = key) => {
     const el = refs.current.get(key);
     if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    if (typeof history !== "undefined") history.replaceState(null, "", `#${hash}`);
   };
+
+  // Deep-linking: on mount, honour a #year / #year-month / #year-Qn hash by
+  // selecting the matching granularity and scrolling to that anchor.
+  const pendingHash = useRef<string | null>(null);
+  useEffect(() => {
+    const hash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    if (!hash || hash === "timeline") return;
+    if (/^\d{4}-Q[1-4]$/.test(hash)) setGranularity("quarter");
+    else if (/^\d{4}-\d{2}$/.test(hash)) setGranularity("month");
+    pendingHash.current = hash;
+  }, []);
+  useEffect(() => {
+    if (!pendingHash.current) return;
+    const hash = pendingHash.current;
+    const id = requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ block: "start" });
+          pendingHash.current = null;
+        }
+      }),
+    );
+    return () => cancelAnimationFrame(id);
+  }, [groups]);
 
   const renderFilters = () => (
     <div className="flex flex-wrap items-center gap-1.5">
@@ -239,7 +277,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
               value={activeYear ?? ""}
               onChange={(e) => {
                 const y = years.find((x) => x.year === Number(e.target.value));
-                if (y) jump(y.firstKey);
+                if (y) jump(y.firstKey, String(y.year));
               }}
             >
               {years.map((y) => (
@@ -282,7 +320,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                 return (
                   <li key={y.year}>
                     <button
-                      onClick={() => jump(y.firstKey)}
+                      onClick={() => jump(y.firstKey, String(y.year))}
                       className="group flex w-full items-center gap-2 py-1 text-left"
                     >
                       <span
@@ -364,19 +402,28 @@ export function Timeline({ entries }: { entries: Entry[] }) {
             return (
               <div
                 key={g.key}
+                id={g.key}
                 ref={(el) => {
                   if (el) refs.current.set(g.key, el);
                   else refs.current.delete(g.key);
                 }}
                 className="relative scroll-mt-[140px] lg:scroll-mt-[60px]"
               >
+                {/* Year anchor — enables #2026 deep links regardless of granularity */}
+                {groups[gi - 1]?.year !== g.year ? (
+                  <span
+                    id={String(g.year)}
+                    aria-hidden
+                    className="block h-0 scroll-mt-[140px] lg:scroll-mt-[60px]"
+                  />
+                ) : null}
                 {!filtering &&
                   bandsByGroup[gi]?.map((t) => (
                     <ThresholdBand key={t.date} t={t} />
                   ))}
                 {/* Sticky period header */}
                 <div className="sticky top-[128px] z-30 bg-paper/92 py-5 backdrop-blur lg:top-[52px]">
-                  <div className="flex items-end gap-3 pl-10 pr-5 sm:pr-7">
+                  <div className="group flex items-end gap-3 pl-10 pr-5 sm:pr-7">
                     <motion.span
                       aria-hidden
                       className="absolute left-[16px] top-[28px] h-3 w-3 rounded-full border-2 border-ink bg-paper"
@@ -388,6 +435,23 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                     <h3 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                       {g.label}
                     </h3>
+                    <a
+                      href={`#${g.key}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        copyLink(g.key);
+                      }}
+                      aria-label={`Link zu ${g.label} kopieren`}
+                      title="Link kopieren"
+                      className="pb-1.5 font-mono text-lg leading-none text-ink-faint/60 transition-colors hover:text-brand-deep focus-visible:text-brand-deep focus-visible:opacity-100 sm:text-ink-faint/0 sm:group-hover:text-ink-faint/70"
+                    >
+                      #
+                    </a>
+                    {copiedKey === g.key ? (
+                      <span className="pb-1.5 font-mono text-[10px] uppercase tracking-widest text-brand-deep">
+                        Link kopiert
+                      </span>
+                    ) : null}
                     <span className="pb-1 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
                       {g.entries.length} {g.entries.length === 1 ? "Release" : "Releases"}
                     </span>

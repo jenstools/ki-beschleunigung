@@ -2877,24 +2877,6 @@ export const entries: Entry[] = [
     "id": "text-gpt-5-5-2026-04-23"
   },
   {
-    "date": "2026-04-23",
-    "datePrecision": "day",
-    "modality": "text",
-    "name": "Hy3 preview (Hunyuan)",
-    "org": "Tencent",
-    "license": "open",
-    "capability": "Fused-Reasoning-MoE-Modell (fast-and-slow-thinking) mit 295B Total-Parametern (21B aktiv) und 256K-Kontextfenster, ausgelegt auf komplexes Reasoning, Instruction Following, In-Context-Learning, Code-Verständnis und agentische Workloads.",
-    "whyItMattered": "Hy3 preview ist Tencents erstes großes Modell nach dem Neuaufbau seiner Pre-Training- und Reinforcement-Learning-Infrastruktur Anfang 2026 und das erste offen verfügbare Hunyuan-3-LLM. Tencent veröffentlichte die Gewichte auf Hugging Face, ModelScope und GitCode und meldet starke agentische und Coding-Fähigkeiten (SWE-Bench-Werte um 74,4).",
-    "firstOfKind": "",
-    "sources": [
-      "https://huggingface.co/tencent/Hy3-preview",
-      "https://www.tencent.com/en-us/articles/2202320.html"
-    ],
-    "disputed": false,
-    "verificationNote": "Datum 23.04.2026 über das offizielle Tencent-Hugging-Face-Repo (tencent/Hy3-preview) bestätigt; Lizenz: Tencent Hy Community License Agreement (Open-Weights mit Bedingungen).",
-    "id": "text-hy3-preview-hunyuan-2026-04-23"
-  },
-  {
     "date": "2026-04-24",
     "datePrecision": "day",
     "modality": "text",
@@ -3644,15 +3626,15 @@ export const entries: Entry[] = [
     "verificationNote": "Veröffentlichung 22.08.2023 über Meta-AI bestätigt."
   },
   {
-    "id": "text-gpt-5-6-2026-06-26",
-    "date": "2026-06-26",
+    "id": "text-gpt-5-6-2026-07-09",
+    "date": "2026-07-09",
     "datePrecision": "day",
     "modality": "text",
     "name": "GPT-5.6 (Sol / Terra / Luna)",
     "org": "OpenAI",
     "license": "closed",
-    "capability": "Neue Modellfamilie im Limited Preview mit drei Stufen: Sol (Flaggschiff, $5/$30 pro 1M Token), Terra (ausgewogen, $2,50/$15) und Luna (schnell und günstig, $1/$6). Neu sind zwei Reasoning-Modi — „max\" (maximale Denkzeit für Sol) und „ultra\" (Subagenten teilen komplexe Aufgaben parallel auf) — sowie explizite Cache-Breakpoints (mind. 30 Min. TTL) und ein verstärkter Safety-Stack.",
-    "whyItMattered": "Sol ist laut OpenAI das bislang stärkste Modell des Hauses mit agentischen Fortschritten in Coding, Biologie und Cybersicherheit; Terra erreicht GPT-5.5-Niveau zum halben Preis. Bemerkenswert ist die Freigabe: zunächst nur rund 20 von der US-Regierung genehmigte Partner — ein staatlich gesteuertes Zugangsmodell für ein allgemeines Frontier-Modell.",
+    "capability": "Öffentlicher Launch der Modellfamilie mit drei Stufen: Sol (Flaggschiff, $5/$30 pro 1M Token), Terra (ausgewogen, $2,50/$15) und Luna (schnell und günstig, $1/$6). Ab 09.07.2026 für ChatGPT-, Codex- und API-Nutzer verfügbar. Neu sind zwei Reasoning-Modi — „max\" (maximale Denkzeit für Sol) und „ultra\" (Subagenten teilen komplexe Aufgaben parallel auf) — sowie explizite Cache-Breakpoints (mind. 30 Min. TTL) und ein verstärkter Safety-Stack.",
+    "whyItMattered": "Sol ist laut OpenAI das bislang stärkste Modell des Hauses mit agentischen Fortschritten in Coding, Biologie und Cybersicherheit; Terra erreicht GPT-5.5-Niveau zum halben Preis. Bemerkenswert ist der Weg dorthin: erst ab 26.06. nur ~20 von der US-Regierung genehmigte Partner im Limited Preview, dann am 09.07. öffentlicher Launch — ein staatlich gesteuerter Zugang, der sich schrittweise öffnete.",
     "firstOfKind": "",
     "sources": [
       "https://openai.com/index/previewing-gpt-5-6-sol/",
@@ -3660,8 +3642,8 @@ export const entries: Entry[] = [
       "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov"
     ],
     "disputed": false,
-    "note": "Limited Preview — zunächst nur ~20 von der US-Regierung genehmigte Partner; allgemeine Verfügbarkeit in den kommenden Wochen geplant.",
-    "verificationNote": "Angekündigt am 26.06.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Sol/Terra/Luna, Preise, „max\"/„ultra\"-Reasoning, ~20 regierungsgenehmigte Partner) über die OpenAI-System-Card sowie mehrere Berichte (MacRumors, Axios, VentureBeat, MarkTechPost) bestätigt. Cache-Breakpoints (30 Min. TTL) laut OpenAI-Ankündigung."
+    "note": "Öffentlicher Launch am 09.07.2026 für ChatGPT, Codex und API. Zuvor ab 26.06.2026 nur im Limited Preview für ~20 von der US-Regierung genehmigte Partner; allgemeine Verfügbarkeit (GA) laut OpenAI in den Wochen danach.",
+    "verificationNote": "Öffentlicher Launch (Sol/Terra/Luna) am 09.07.2026 über mehrere Berichte bestätigt (Preview-Ankündigung 26.06., OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Specs (Preise, „max\"/„ultra\"-Reasoning) über OpenAI-System-Card und Berichte (VentureBeat, MacRumors, Axios) bestätigt. Eintrag auf das offizielle Release-Datum 09.07. gesetzt (zuvor als Preview auf den 26.06. datiert)."
   },
   {
     "id": "text-claude-sonnet-5-2026-06-30",
@@ -3768,13 +3750,206 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Datum 01.07.2026 über die offizielle Anthropic-Ankündigung „Redeploying Claude Fable 5\" (Primärquelle) bestätigt; Hintergrund (Sperre 12.06., Aufhebung der Kontrollen 30.06.) über Anthropic, CNBC und weitere Berichte."
+  },
+  {
+    "id": "text-swe-1-7-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "SWE-1.7 (Cognition)",
+    "org": "Cognition",
+    "license": "closed",
+    "capability": "Coding- und Agenten-Modell auf Frontier-Niveau zu deutlich geringeren Kosten, speziell für langlaufende asynchrone Software-Aufgaben optimiert. Ab sofort in Devin (Web, Desktop, CLI) über Cerebras mit 1000 Tokens/Sek. verfügbar. Benchmarks: FrontierCode 1.1 Main 42,3 %, Terminal-Bench 2.1 81,5 %, SWE-Bench Multilingual 77,8 %.",
+    "whyItMattered": "Cognition zeigt mit weiteren großen Zuwächsen aus eigenem Post-Training, dass ein vermeintliches „Post-Training-Ceiling\" nicht existiert — Reinforcement Learning treibt agentische Coding-Fähigkeiten weiter als bislang angenommen, und das bei 1000 TPS im Devin-Agenten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://cognition.com/blog/swe-1-7"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 08.07.2026 direkt im Cognition-Blog (Primärquelle) bestätigt; verfügbar in Devin über Cerebras (1000 TPS). Benchmarks laut Cognition."
+  },
+  {
+    "id": "audio-gpt-live-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "GPT-Live (GPT-Live-1 / mini)",
+    "org": "OpenAI",
+    "license": "closed",
+    "capability": "Neue Generation von Sprachmodellen mit Full-Duplex-Architektur — hört und spricht gleichzeitig, signalisiert Aufmerksamkeit („mhmm\", „yeah\"), erlaubt schnelles Hin und Her und lässt Pausen zu. Treibt ab sofort ChatGPT Voice an; zwei Varianten (GPT-Live-1 und GPT-Live-1 mini), globaler Rollout für ChatGPT-Nutzer, API in Kürze.",
+    "whyItMattered": "Verschiebt Sprach-KI vom turn-basierten Wechsel zum echten, gleichzeitigen Gespräch — Zuhören und Sprechen parallel statt abwechselnd — und macht die Voice-Interaktion mit ChatGPT deutlich natürlicher.",
+    "firstOfKind": "Erste Full-Duplex-Sprachmodellfamilie von OpenAI (gleichzeitiges Hören und Sprechen) für ChatGPT Voice.",
+    "sources": [
+      "https://openai.com/index/introducing-gpt-live/"
+    ],
+    "disputed": false,
+    "verificationNote": "Angekündigt/ausgerollt am 08.07.2026 (OpenAI). Primärseite maschinell nicht abrufbar (HTTP 403); Details (Full-Duplex, GPT-Live-1 + mini, globaler ChatGPT-Rollout, API in Kürze) über die OpenAI-Ankündigung und Berichte (Let's Data Science, MarkTechPost) bestätigt."
+  },
+  {
+    "id": "image-seedream-5-0-pro-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Seedream 5.0 Pro",
+    "org": "ByteDance",
+    "license": "closed",
+    "capability": "Multimodales Bild-Erzeugungsmodell mit durchgängigen Verbesserungen bei Bild-Text-Ausrichtung, Struktur, Textrendering und Ästhetik. Vier Kern-Neuerungen: komplexe Informations-Visualisierung (verwandelt Daten, Konzepte und dichten Text in professionelle Layouts), interaktives pixelgenaues Editieren mit räumlichem Verständnis (Grounding), intelligente Ebenen-Trennung (zerlegt ein Poster in 10+ Layer — Text, Motive, Hintergründe, Deko) und Multi-Image-Fusion. Nativ mehrsprachig (über 10 Sprachen).",
+    "whyItMattered": "Verschiebt Text-zu-Bild von reiner Generierung zu echtem Design-Verständnis: Layout, editierbare Ebenen und komponierbare Bildteile statt nur eines fertigen Bildes — direkt anschlussfähig an professionelle Design-Workflows.",
+    "firstOfKind": "",
+    "sources": [
+      "https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 08.07.2026 direkt im ByteDance-Seed-Blog (Primärquelle) bestätigt."
+  },
+  {
+    "id": "text-grok-4-5-2026-07-08",
+    "date": "2026-07-08",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Grok 4.5",
+    "org": "xAI",
+    "license": "closed",
+    "capability": "Auf dem 1,5-Billionen-Foundation-Modell „V9\" aufgebautes Reasoning-Modell mit zusätzlichen Cursor-Trainingsdaten, konfigurierbarem Reasoning-Aufwand sowie Fokus auf Geschwindigkeit und Token-Effizienz. Ab dem 08.07.2026 über die xAI-API verfügbar ($2/$6 pro 1M Token); öffentlicher Rollout ab 09.07.2026.",
+    "whyItMattered": "xAI positioniert Grok 4.5 als „Opus-Klasse\" — schneller, token-effizienter und günstiger. Wichtig: Die Leistungsaussagen sind Eigenangaben von xAI/Musk; zum Launch lagen keine unabhängigen oder öffentlichen Benchmarks vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-4-5"
+    ],
+    "disputed": false,
+    "verificationNote": "Ankündigung über die offizielle x.ai-News-Seite (vom Nutzer belegt); Seite maschinell nicht abrufbar (HTTP 403). API-Verfügbarkeit, Preise ($2/$6) und öffentlicher Rollout am 09.07. über mehrere Berichte bestätigt. Leistungsaussagen („Opus-Klasse\") sind Eigenangaben von xAI, keine unabhängigen Benchmarks zum Launch-Zeitpunkt."
+  },
+  {
+    "id": "image-muse-image-2026-07-07",
+    "date": "2026-07-07",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Muse Image",
+    "org": "Meta (Superintelligence Labs)",
+    "license": "closed",
+    "capability": "Erstes Bildgenerierungsmodell aus den Meta Superintelligence Labs. Fortgeschrittenes Prompt-Verständnis (Reasoning), Foto-Blending, verlässliches Textrendering, Bildbearbeitung mit Markup-Werkzeugen und @-Mention-Integration für Instagram-Profile. In Meta AI verfügbar, Rollout auf Facebook, Messenger, Instagram und WhatsApp; kostenlos für alltägliche Nutzung, erweiterte Nutzung über Meta-Abos, für Werbetreibende via Meta Advantage+ Creative angekündigt.",
+    "whyItMattered": "Bringt integrierte, reasoning-gestützte Bilderzeugung und -bearbeitung direkt in Metas Massen-Apps mit Milliarden Nutzern — und ist das erste Bildmodell aus Metas neuem Superintelligence-Labs-Stack.",
+    "firstOfKind": "Erstes Bildgenerierungsmodell der Meta Superintelligence Labs.",
+    "sources": [
+      "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 07.07.2026 direkt in der offiziellen Meta-Newsroom-Ankündigung (Primärquelle) bestätigt. Muse Video wurde am selben Tag angekündigt, ist aber „in Entwicklung\" und noch nicht verfügbar — daher (noch) nicht als Release aufgenommen."
+  },
+  {
+    "id": "text-hy3-hunyuan-2026-07-06",
+    "date": "2026-07-06",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Hy3 (Hunyuan)",
+    "org": "Tencent (Hunyuan)",
+    "license": "open",
+    "capability": "Offizielle Version des Hunyuan-Hy3: 295B-MoE-Modell mit 21B aktiven Parametern und 256K-Kontext, veröffentlicht unter Apache-2.0-Lizenz. Gegenüber der Preview (23.04.) weitere Fortschritte bei Code-Generierung und Agenten-Fähigkeiten sowie mehr Stabilität; API über Tencent Cloud TokenHub. Erreicht laut Tencent flagship-nahe Intelligenz bei 2–5× kleinerem Parameter-Budget.",
+    "whyItMattered": "Kleines, effizientes Open-Weights-Modell (nur 21B aktiv), das an die Leistung deutlich größerer Flaggschiffe heranreicht — mit permissiver Apache-2.0-Lizenz und Fokus auf Agenten, Coding und Reasoning für den praktischen, kostengünstigen Einsatz.",
+    "firstOfKind": "",
+    "sources": [
+      "https://hy.tencent.com/research/hy3",
+      "https://www.tencent.com/en-us/articles/2202386.html"
+    ],
+    "disputed": false,
+    "verificationNote": "Offizielle Version am 06.07.2026 veröffentlicht — Datum in der Kopfzeile der offiziellen Tencent-Pressemitteilung (tencent.com, „2026.07.06\") bestätigt. Apache-2.0, 295B-MoE / 21B aktiv / 256K-Kontext. Die zuvor am 23.04.2026 erschienene Preview wurde durch diesen offiziellen Eintrag ersetzt."
+  },
+  {
+    "id": "text-muse-spark-1-1-2026-07-09",
+    "date": "2026-07-09",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Spark 1.1",
+    "org": "Meta (Superintelligence Labs)",
+    "license": "closed",
+    "capability": "Agentisch ausgelegtes multimodales Modell: fortgeschrittenes Reasoning, starke Tool- und Computer-Use-Fähigkeiten, Top-Coding und multimodales Verständnis (Text, Bild, Video, Audio) bei 1-Mio.-Token-Kontext mit aktivem Kontext-Management. Verfügbar als öffentliche Preview der neuen Meta Model API für Entwickler (OpenAI-kompatibel) sowie im „Thinking\"-Modus der Meta-AI-App und auf meta.ai.",
+    "whyItMattered": "Meta positioniert Muse Spark 1.1 als „vollständige agentische Grundlage\" — Millionen-Token-Kontext, volle Multimodalität, starkes Reasoning und Coding in einem OpenAI-kompatiblen Paket. Öffnet Metas Superintelligence-Modelle erstmals über eine eigene Entwickler-API.",
+    "firstOfKind": "",
+    "sources": [
+      "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 09.07.2026 direkt in der offiziellen Meta-AI-Blog-Ankündigung (Primärquelle) bestätigt."
+  },
+  {
+    "id": "text-inkling-2026-07-15",
+    "date": "2026-07-15",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Inkling",
+    "org": "Thinking Machines Lab",
+    "license": "open",
+    "capability": "Erstes Modell von Mira Muratis Thinking Machines Lab — ein quelloffenes „Interaktionsmodell“, das Anfragen über verschiedene Medien hinweg verarbeitet und dabei Kosten gegen Leistung ausbalanciert. Frei verfügbar (Open-Weights zum Herunterladen und Anpassen); das Unternehmen monetarisiert nicht Inkling selbst, sondern das separate Fine-Tuning-Werkzeug Tinker.",
+    "whyItMattered": "Erster öffentlicher Release von Thinking Machines Lab — über ein Jahr nach der Gründung durch Ex-OpenAI-CTO Mira Murati. Positioniert als menschenzentriertes, anpassbares Open-Weights-Modell (laut Firma „nicht das stärkste“ verfügbare Modell, aber stark unter vergleichbaren Open-Weights). Ein weiterer prominenter Frontier-Lab-Player tritt damit öffentlich an.",
+    "firstOfKind": "Erstes öffentlich verfügbares Modell von Thinking Machines Lab (Mira Murati).",
+    "sources": [
+      "https://thinkingmachines.ai/",
+      "https://fortune.com/2026/07/15/what-is-mira-murati-thinking-machines-first-ai-model-inkling/",
+      "https://www.bloomberg.com/news/articles/2026-07-15/murati-s-thinking-machines-releases-first-ai-model-for-broad-use"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 15.07.2026 über mehrere Berichte (Bloomberg, Fortune, MarkTechPost) bestätigt; Open-Weights, frei verfügbar, Monetarisierung über das separate Tool Tinker. Offizielle Primärseite thinkingmachines.ai nicht maschinell abgerufen."
+  },
+  {
+    "id": "text-kimi-k3-2026-07-16",
+    "date": "2026-07-16",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Kimi K3",
+    "org": "Moonshot AI",
+    "license": "open",
+    "capability": "Neues MoE-Flaggschiff mit rund 2,8 Billionen Parametern, neuer „Kimi Delta Attention“-Architektur und 1-Mio.-Token-Kontext, ausgelegt auf langlaufendes Coding und Agenten-Workloads. Zwei Varianten zum Start: K3 Max (Chat/Agent) und K3 Swarm Max (massiv-paralleles Processing). Verfügbar über Kimi Code und die Kimi-App (ab ¥199-Tarif); herunterladbare Open-Weights laut Moonshot bis 27.07.2026 angekündigt.",
+    "whyItMattered": "Hebt Open-Weights-Modelle auf Frontier-Niveau: laut Moonshot 93,5 % auf GPQA Diamond (stärkstes veröffentlichtes Open-Weight-Ergebnis zum Launch), 91,2 % auf BrowseComp und 88,3 % auf Terminal-Bench 2.1 — agentische Werte, die mit den geschlossenen Spitzenmodellen konkurrieren.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.marktechpost.com/2026/07/16/moonshot-ai-releases-kimi-k3-a-2-8-trillion-parameter-open-moe-model-with-kimi-delta-attention-and-1m-context/",
+      "https://simonwillison.net/2026/Jul/16/kimi-k3/"
+    ],
+    "disputed": false,
+    "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar, herunterladbare Open-Weights laut Moonshot bis 27.07.2026. Benchmarks laut Moonshot/Berichten."
+  },
+  {
+    "id": "text-qwen3-8-max-2026-07-19",
+    "date": "2026-07-19",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen3.8-Max (Preview)",
+    "org": "Alibaba",
+    "license": "closed",
+    "capability": "Alibabas neues Flaggschiff der Qwen-Reihe mit laut Ankündigung rund 2,4 Billionen Parametern (aktive Parameterzahl und MoE-Konfiguration nicht offengelegt). Zunächst als Qwen3.8-Max-Preview über Alibaba Cloud (Token Plan), Qoder und QoderWork aufrufbar; das vollständige Modell und offene Gewichte sind laut Alibaba „in Kürze“ geplant.",
+    "whyItMattered": "Vierter Frontier-Launch in elf Tagen (nach Grok 4.5 und GPT-5.6) und Alibabas bislang größtes Modell. Alibaba positioniert es als „nur hinter Fable 5“ — allerdings eine reine Eigenangabe: zum Start lagen keine veröffentlichten oder unabhängigen Benchmarks vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://officechai.com/ai/alibaba-qwen-3-8/",
+      "https://kie.ai/blog/what-is-qwen3-8-max"
+    ],
+    "disputed": true,
+    "verificationNote": "Ankündigung am 19.07.2026; Qwen3.8-Max-Preview über Alibaba Cloud aufrufbar, vollständiges Modell und Open-Weights noch nicht veröffentlicht. Als unbestätigt markiert: keine offizielle Alibaba-Primärquelle maschinell abrufbar, keine unabhängigen Benchmarks, und „zweitbestes Modell nach Fable 5“ ist eine reine Eigenangabe. Datum über mehrere Berichte (OfficeChai, kie.ai, techsy) berichtet."
+  },
+  {
+    "id": "image-qwen-image-3-0-2026-07-18",
+    "date": "2026-07-18",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Qwen-Image-3.0",
+    "org": "Alibaba",
+    "license": "closed",
+    "capability": "Dritte Generation von Alibabas Bildmodell, ausgelegt auf praktisch nutzbare statt nur ästhetische Bilder: verarbeitet Anweisungen von bis zu 4.500 Tokens für informationsdichte Kompositionen in einem Durchgang. „World Knowledge“-Fähigkeiten — natives Rendering von 12 Sprachen, Reproduktion von Oberflächen wie Webseiten und Livestreams sowie Einbindung aktueller Daten aus dem Netz (z. B. eine Wettergrafik für eine bestimmte Stadt und ein Datum). Zunächst nur über Qwen Chat testbar.",
+    "whyItMattered": "Verschiebt Text-zu-Bild von Deko zu funktionalen, informationsdichten Grafiken mit Weltwissen und Live-Daten. Zugleich ein Bruch mit Alibabas offener Linie: anders als Qwen-Image 1.0/2.0 erscheint 3.0 ohne offene Gewichte, Lizenz, Parameterzahl, Benchmarks oder Technical Report.",
+    "firstOfKind": "",
+    "sources": [
+      "https://qwen.ai/blog?id=qwen-image-3.0",
+      "https://www.unite.ai/alibaba-launches-qwen-image-3-0-without-benchmarks-or-weights/"
+    ],
+    "disputed": true,
+    "verificationNote": "Vom Nutzer über den offiziellen Qwen-Blog (qwen.ai/blog?id=qwen-image-3.0) belegt, Release „heute“ (18.07.2026); die Primärseite ist eine JS-App und maschinell nicht auslesbar. Als unbestätigt markiert: keine offenen Gewichte, keine Lizenz, keine Parameterzahl, keine Benchmarks und kein Technical Report; ein Bericht (Unite.AI) nennt zudem den 21.07.2026 als Datum. Verfügbar zunächst nur über Qwen Chat."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "5. Juli 2026",
+  lastVerified: "18. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 212,
+  total: 222,
   placeholder: false,
 };
