@@ -3925,6 +3925,24 @@ export const entries: Entry[] = [
     ],
     "disputed": true,
     "verificationNote": "Ankündigung am 19.07.2026; Qwen3.8-Max-Preview über Alibaba Cloud aufrufbar, vollständiges Modell und Open-Weights noch nicht veröffentlicht. Als unbestätigt markiert: keine offizielle Alibaba-Primärquelle maschinell abrufbar, keine unabhängigen Benchmarks, und „zweitbestes Modell nach Fable 5“ ist eine reine Eigenangabe. Datum über mehrere Berichte (OfficeChai, kie.ai, techsy) berichtet."
+  },
+  {
+    "id": "image-qwen-image-3-0-2026-07-18",
+    "date": "2026-07-18",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Qwen-Image-3.0",
+    "org": "Alibaba",
+    "license": "closed",
+    "capability": "Dritte Generation von Alibabas Bildmodell, ausgelegt auf praktisch nutzbare statt nur ästhetische Bilder: verarbeitet Anweisungen von bis zu 4.500 Tokens für informationsdichte Kompositionen in einem Durchgang. „World Knowledge“-Fähigkeiten — natives Rendering von 12 Sprachen, Reproduktion von Oberflächen wie Webseiten und Livestreams sowie Einbindung aktueller Daten aus dem Netz (z. B. eine Wettergrafik für eine bestimmte Stadt und ein Datum). Zunächst nur über Qwen Chat testbar.",
+    "whyItMattered": "Verschiebt Text-zu-Bild von Deko zu funktionalen, informationsdichten Grafiken mit Weltwissen und Live-Daten. Zugleich ein Bruch mit Alibabas offener Linie: anders als Qwen-Image 1.0/2.0 erscheint 3.0 ohne offene Gewichte, Lizenz, Parameterzahl, Benchmarks oder Technical Report.",
+    "firstOfKind": "",
+    "sources": [
+      "https://qwen.ai/blog?id=qwen-image-3.0",
+      "https://www.unite.ai/alibaba-launches-qwen-image-3-0-without-benchmarks-or-weights/"
+    ],
+    "disputed": true,
+    "verificationNote": "Vom Nutzer über den offiziellen Qwen-Blog (qwen.ai/blog?id=qwen-image-3.0) belegt, Release „heute“ (18.07.2026); die Primärseite ist eine JS-App und maschinell nicht auslesbar. Als unbestätigt markiert: keine offenen Gewichte, keine Lizenz, keine Parameterzahl, keine Benchmarks und kein Technical Report; ein Bericht (Unite.AI) nennt zudem den 21.07.2026 als Datum. Verfügbar zunächst nur über Qwen Chat."
   }
 ];
 
@@ -3932,6 +3950,6 @@ export const dataMeta = {
   lastVerified: "18. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 221,
+  total: 222,
   placeholder: false,
 };
