@@ -3943,13 +3943,66 @@ export const entries: Entry[] = [
     ],
     "disputed": true,
     "verificationNote": "Vom Nutzer über den offiziellen Qwen-Blog (qwen.ai/blog?id=qwen-image-3.0) belegt, Release „heute“ (18.07.2026); die Primärseite ist eine JS-App und maschinell nicht auslesbar. Als unbestätigt markiert: keine offenen Gewichte, keine Lizenz, keine Parameterzahl, keine Benchmarks und kein Technical Report; ein Bericht (Unite.AI) nennt zudem den 21.07.2026 als Datum. Verfügbar zunächst nur über Qwen Chat."
+  },
+  {
+    "id": "text-gemini-3-6-flash-2026-07-21",
+    "date": "2026-07-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 3.6 Flash",
+    "org": "Google",
+    "license": "closed",
+    "capability": "Googles neues Workhorse-Modell der Flash-Reihe: verbessert bei Coding, Knowledge Work und Multimodalität, verbraucht rund 17 % weniger Output-Tokens als Gemini 3.5 Flash (bis zu 65 % weniger in einzelnen Benchmarks) und ist günstiger im Preis ($1,50 pro 1 Mio. Input-, $7,50 pro 1 Mio. Output-Tokens, gesenkt von $9,00). Wissens-Cutoff auf März 2026 vorgezogen; ausgeliefert über Gemini API, AI Studio, Android Studio, Gemini Enterprise und die Gemini-App.",
+    "whyItMattered": "Beerbt Gemini 3.5 Flash direkt als Standard-Arbeitspferd — höhere Token-Effizienz und niedrigere Preise bei besserer Coding-Leistung. Google kündigte parallel an, den „bislang ehrgeizigsten Pre-Training-Lauf“ für Gemini 4 gestartet zu haben, während Gemini 3.5 Pro weiter aussteht.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+      "https://deepmind.google/models/model-cards/gemini-3-6-flash/"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 21.07.2026 gegen die offizielle Google-Blog-Ankündigung (blog.google) und die DeepMind-Model-Card verifiziert; von unabhängiger Berichterstattung (TechCrunch, 9to5Google, MarkTechPost) bestätigt."
+  },
+  {
+    "id": "text-gemini-3-5-flash-lite-2026-07-21",
+    "date": "2026-07-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 3.5 Flash-Lite",
+    "org": "Google",
+    "license": "closed",
+    "capability": "Schnellstes und kostengünstigstes Modell der 3.5-Klasse, ausgelegt auf hohen Durchsatz und niedrige Latenz (rund 350 Output-Tokens/Sekunde) für agentische Workflows, Suche und Dokumentenverarbeitung. Preis: $0,30 pro 1 Mio. Input-, $2,50 pro 1 Mio. Output-Tokens. Sofort verfügbar über Gemini API, AI Studio, Android Studio, Gemini Enterprise und die Gemini-App.",
+    "whyItMattered": "Deckt das untere Preis-/Latenz-Segment der neuen Flash-Generation ab und macht Gemini für hochvolumige, kostensensible Agenten- und Batch-Anwendungen attraktiv — bei laut Google deutlichem Sprung in Coding- und Agenten-Aufgaben gegenüber dem Vorgänger.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 21.07.2026 gegen die offizielle Google-Blog-Ankündigung (blog.google) verifiziert; von unabhängiger Berichterstattung (TechCrunch, 9to5Google, MarkTechPost) bestätigt. Preis/Durchsatz laut offiziellem Blog."
+  },
+  {
+    "id": "text-gemini-3-5-flash-cyber-2026-07-21",
+    "date": "2026-07-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 3.5 Flash Cyber",
+    "org": "Google",
+    "license": "closed",
+    "capability": "Auf 3.5 Flash aufgesetztes, für Security feinjustiertes Modell, das Schwachstellen schnell findet, validiert und patcht — gekoppelt mit Googles CodeMender-Agent. Da leichte, wiederholte Aufrufe über viele Ausführungspfade hier stärker sind als teure Einzelabfragen großer Modelle, fand es laut DeepMind 55 bestätigte Fehler in der V8-JavaScript-Engine (vs. 47 bei 3.5 Flash, 36 bei Claude Opus 4.6) und eine RCE-Lücke in Google-Cloud-APIs in unter zwei Stunden. Wegen der Dual-Use-Risiken zunächst nur für Regierungen und vertrauenswürdige Partner (Limited-Access-Pilot via CodeMender).",
+    "whyItMattered": "Googles erster öffentlich benannter, auf Cybersecurity spezialisierter Vertical-Finetune — ein Signal, dass die großen Labs beginnen, dedizierte Modelle für einzelne Hochrisiko-Domänen zu veröffentlichen, und diese wegen ihres Dual-Use-Charakters bewusst nur eingeschränkt freigeben.",
+    "firstOfKind": "Googles erster öffentlich benannter, auf Cybersecurity spezialisierter Vertical-Finetune.",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+      "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 21.07.2026 gegen die offizielle Google-Blog-Ankündigung (blog.google) und den DeepMind-Blog (deepmind.google) verifiziert; von unabhängiger Berichterstattung (Help Net Security, TechCrunch, MarkTechPost) bestätigt. Verfügbarkeit: Limited-Access-Pilot, zunächst nur für Regierungen und vertrauenswürdige Partner via CodeMender."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "18. Juli 2026",
+  lastVerified: "21. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 222,
+  total: 225,
   placeholder: false,
 };
