@@ -3996,13 +3996,47 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Release am 21.07.2026 gegen die offizielle Google-Blog-Ankündigung (blog.google) und den DeepMind-Blog (deepmind.google) verifiziert; von unabhängiger Berichterstattung (Help Net Security, TechCrunch, MarkTechPost) bestätigt. Verfügbarkeit: Limited-Access-Pilot, zunächst nur für Regierungen und vertrauenswürdige Partner via CodeMender."
+  },
+  {
+    "date": "2026-07-23",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "MAI-Image-2.5-Pro",
+    "org": "Microsoft AI",
+    "license": "closed",
+    "capability": "Bisher fidelity-stärkstes Bildmodell von Microsoft AI: erzeugt hochdetaillierte Bilder aus Text- oder Foto-Prompts, mit Schwerpunkt auf präzisem Editing und akkuratem In-Image-Text-Rendering per natürlicher Sprache. Als Public Preview über Azure Foundry und das MAI Playground verfügbar. Preise: $5 pro 1 Mio. Text-Input-, $8 pro 1 Mio. Bild-Input- und $106 pro 1 Mio. Bild-Output-Tokens.",
+    "whyItMattered": "Pro-Ausbau der bei Build 2026 vorgestellten MAI-Image-2.5-Linie — Microsofts bislang höchste Bild-Fidelity mit einem laut Ankündigung echten Durchbruch beim zuverlässigen Rendern von Text innerhalb generierter Bilder, ein bekanntes Schwachstellen-Feld der Text-zu-Bild-Modelle.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/introducing-mai-image-2-5-pro-and-mai-voice-2-flash/"
+    ],
+    "disputed": false,
+    "verificationNote": "Ankündigungsdatum 23.07.2026 direkt gegen die Primärquelle microsoft.ai (\"Introducing MAI-Image-2.5-Pro and MAI-Voice-2-Flash\") verifiziert; von unabhängiger Berichterstattung bestätigt. Verfügbarkeit: Public Preview über Azure Foundry und MAI Playground.",
+    "id": "image-mai-image-2-5-pro-2026-07-23"
+  },
+  {
+    "date": "2026-07-23",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "MAI-Voice-2-Flash",
+    "org": "Microsoft AI",
+    "license": "closed",
+    "capability": "Auf hohes Volumen und niedrige Latenz optimierte Variante von MAI-Voice-2: erzeugt ausdrucksstarke Sprache mit natürlicher Prosodie und hoher akustischer Qualität, dabei laut Microsoft 2× schneller und 32 % günstiger als MAI-Voice-2. Als Public Preview verfügbar und in Dynamics 365 Contact Center sowie Azure Voice Live integriert; Preis $15 pro 1 Mio. Zeichen. Senkt GPU-Kosten in Contact-Center-Deployments laut Microsoft um bis zu 89 %.",
+    "whyItMattered": "Die bei Build 2026 nur als „coming soon“ angekündigte Flash-Variante von MAI-Voice-2 ist nun verfügbar — ausgelegt auf skalierbare, kostengünstige Echtzeit-Sprachanwendungen (Contact Center, Live-Voice) statt maximaler Qualität pro Einzelaufruf.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/introducing-mai-image-2-5-pro-and-mai-voice-2-flash/"
+    ],
+    "disputed": false,
+    "verificationNote": "Ankündigungsdatum 23.07.2026 direkt gegen die Primärquelle microsoft.ai (\"Introducing MAI-Image-2.5-Pro and MAI-Voice-2-Flash\") verifiziert; von unabhängiger Berichterstattung bestätigt. Ergänzt die am 02.06.2026 zunächst nur als \"coming soon\" gelistete Variante. Verfügbarkeit: Public Preview, integriert in Dynamics 365 Contact Center und Azure Voice Live.",
+    "id": "audio-mai-voice-2-flash-2026-07-23"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "21. Juli 2026",
+  lastVerified: "23. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 225,
+  total: 227,
   placeholder: false,
 };
