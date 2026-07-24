@@ -4030,13 +4030,30 @@ export const entries: Entry[] = [
     "disputed": false,
     "verificationNote": "Ankündigungsdatum 23.07.2026 direkt gegen die Primärquelle microsoft.ai (\"Introducing MAI-Image-2.5-Pro and MAI-Voice-2-Flash\") verifiziert; von unabhängiger Berichterstattung bestätigt. Ergänzt die am 02.06.2026 zunächst nur als \"coming soon\" gelistete Variante. Verfügbarkeit: Public Preview, integriert in Dynamics 365 Contact Center und Azure Voice Live.",
     "id": "audio-mai-voice-2-flash-2026-07-23"
+  },
+  {
+    "date": "2026-07-24",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Opus 5",
+    "org": "Anthropic",
+    "license": "closed",
+    "capability": "Neues Opus-Flaggschiff mit einstellbarem Effort-Level (niedrig/mittel/hoch), das Nutzende zwischen Intelligenz und Token-Sparsamkeit abwägen lässt; Fast-Modus mit 2,5-facher Geschwindigkeit. State of the Art auf Frontier-Bench und GDPval-AA, dreifacher Wert des nächstbesten Modells auf ARC-AGI 3, rund 1,5-fache Pass-Rate auf Zapier AutomationBench und bessere Computer-Use-Werte als Claude Fable 5 auf OSWorld 2.0 bei gut einem Drittel der Kosten. Preis unverändert zu Opus 4.8: $5 pro 1 Mio. Input-, $25 pro 1 Mio. Output-Tokens.",
+    "whyItMattered": "Bringt nahezu Frontier-Intelligenz zum halben Preis von Claude Fable 5 — auf CursorBench 3.2 innerhalb von 0,5 % des Fable-5-Spitzenwerts bei halben Kosten pro Aufgabe. Wird zum Standardmodell in Claude Max und zum stärksten Modell in Claude Pro; verifiziert eigene Arbeit und erholt sich laut Anthropic ohne Eingriff von Fehlern, was den Abstimmungsaufwand in agentischen Workflows senkt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.anthropic.com/news/claude-opus-5"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 24.07.2026 direkt gegen die Anthropic-Ankündigungsseite (Primärquelle) verifiziert; von unabhängiger Berichterstattung (CNBC, Fortune, VentureBeat) bestätigt. Verfügbar über Claude.ai, Claude Code, Claude Cowork und die Claude API. Laut Anthropic weiterhin hinter Mythos 5 bei Cybersecurity-Aufgaben.",
+    "id": "text-claude-opus-5-2026-07-24"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "23. Juli 2026",
+  lastVerified: "24. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 227,
+  total: 228,
   placeholder: false,
 };

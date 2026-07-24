@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import type { Modality } from "@/data/types";
 import { MODALITY_COLOR } from "@/lib/ui";
-import { entries } from "@/data/timeline";
+import { entries, dataMeta } from "@/data/timeline";
 
 const TILES: { m: Modality; label: string; then: string; now: string }[] = [
   { m: "text", label: "Text", then: "Autovervollständigung", now: "schreibt Software & besteht Examen" },
@@ -166,6 +166,28 @@ export function FirstScreen() {
               snipKI für dein Team
               <span className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">→</span>
             </a>
+            {/* Freshness signal — shows the reader the dataset is current */}
+            <span
+              className="flex items-center gap-2 rounded-full px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "#d8e2dc",
+              }}
+            >
+              <span className="relative flex h-1.5 w-1.5" aria-hidden>
+                {!reduce && (
+                  <motion.span
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: "var(--brand)" }}
+                    animate={{ scale: [1, 2.8], opacity: [0.7, 0] }}
+                    transition={{ duration: 1.9, repeat: Infinity, ease: "easeOut" }}
+                  />
+                )}
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--brand)" }} />
+              </span>
+              Stand: {dataMeta.lastVerified}
+            </span>
             <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: "#8c988f" }}>
               {entries.length} Meilensteine · jedes Datum primärgeprüft
             </span>
