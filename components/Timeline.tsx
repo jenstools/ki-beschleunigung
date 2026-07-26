@@ -8,11 +8,16 @@ import { groupByPeriod, formatDate, type Granularity } from "@/lib/metrics";
 import { MODALITY_COLOR, modalityTint } from "@/lib/ui";
 import { EntryCard } from "./EntryCard";
 import { thresholds, type Threshold } from "@/data/thresholds";
+import { dataMeta } from "@/data/timeline";
+
+/** "desc" = newest period first (default), "asc" = the chronological read. */
+type SortOrder = "desc" | "asc";
 
 export function Timeline({ entries }: { entries: Entry[] }) {
   const [mods, setMods] = useState<Set<Modality>>(() => new Set(MODALITY_ORDER));
   const [lics, setLics] = useState<Set<License>>(() => new Set<License>(["open", "closed"]));
   const [granularity, setGranularity] = useState<Granularity>("month");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -58,7 +63,9 @@ export function Timeline({ entries }: { entries: Entry[] }) {
       ),
     [entries, mods, lics, q],
   );
-  const groups = useMemo(
+  // Always group chronologically first — thresholds and the density gradient
+  // are defined against the forward flow — then flip for display if needed.
+  const ascGroups = useMemo(
     () => groupByPeriod(shown, granularity),
     [shown, granularity],
   );
@@ -67,17 +74,36 @@ export function Timeline({ entries }: { entries: Entry[] }) {
 
   // Place each threshold before the first group whose start date reaches it,
   // so the "erst jetzt möglich" beats land in the chronological flow.
-  const bandsByGroup = useMemo(() => {
+  const ascBands = useMemo(() => {
     const sorted = [...thresholds].sort((a, b) => (a.date < b.date ? -1 : 1));
-    const res: Threshold[][] = groups.map(() => []);
+    const res: Threshold[][] = ascGroups.map(() => []);
     let ti = 0;
-    groups.forEach((g, gi) => {
+    ascGroups.forEach((g, gi) => {
       const start = g.entries[0]?.date ?? "9999";
       while (ti < sorted.length && sorted[ti].date <= start) res[gi].push(sorted[ti++]);
     });
     while (ti < sorted.length && res.length) res[res.length - 1].push(sorted[ti++]);
     return res;
-  }, [groups]);
+  }, [ascGroups]);
+
+  // Newest-first: reverse the periods *and* the entries inside each period, so
+  // the flip is consistent all the way down to the individual release.
+  const desc = sortOrder === "desc";
+  const groups = useMemo(
+    () =>
+      desc
+        ? [...ascGroups]
+            .reverse()
+            .map((g) => ({ ...g, entries: [...g.entries].reverse() }))
+        : ascGroups,
+    [ascGroups, desc],
+  );
+  // Bands stay glued to the same group; only their side changes (see render).
+  const bandsByGroup = useMemo(
+    () => (desc ? [...ascBands].reverse() : ascBands),
+    [ascBands, desc],
+  );
+  const newestKey = ascGroups[ascGroups.length - 1]?.key ?? null;
 
   const refs = useRef<Map<string, HTMLDivElement>>(new Map());
 
@@ -118,8 +144,9 @@ export function Timeline({ entries }: { entries: Entry[] }) {
     };
   }, [groups]);
 
-  // Changing a filter shrinks the list — re-anchor to the timeline top so the
-  // user isn't stranded at the (now-missing) old bottom.
+  // Changing a filter shrinks the list — and flipping the sort order moves
+  // everything — so re-anchor to the timeline top instead of leaving the user
+  // stranded at a position that no longer means anything.
   const didMountFilters = useRef(false);
   useEffect(() => {
     if (!didMountFilters.current) {
@@ -135,7 +162,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
       }),
     );
     return () => cancelAnimationFrame(id);
-  }, [mods, lics]);
+  }, [mods, lics, sortOrder]);
 
   const activeYear =
     groups.find((g) => g.key === activeKey)?.year ?? years[0]?.year;
@@ -225,9 +252,29 @@ export function Timeline({ entries }: { entries: Entry[] }) {
           Alles, Monat für Monat.
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
-          Jedes Modell, jedes Datum — von Ende 2022 bis heute. Filtere nach
-          Disziplin, such ein Modell, klapp die Details auf.
+          Jedes Modell, jedes Datum — Ende 2022 bis heute, das Neueste zuerst.
+          Filtere nach Disziplin, such ein Modell, klapp die Details auf.
         </p>
+
+        {/* Freshness — the reader should never have to guess how current this is */}
+        <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="flex items-center gap-2 rounded-full border-[1.5px] border-brand bg-brand/10 px-3.5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-brand-deep">
+            <span className="relative flex h-2 w-2" aria-hidden>
+              {!reduce ? (
+                <motion.span
+                  className="absolute inset-0 rounded-full bg-brand-deep"
+                  animate={{ scale: [1, 2.6], opacity: [0.6, 0] }}
+                  transition={{ duration: 1.9, repeat: Infinity, ease: "easeOut" }}
+                />
+              ) : null}
+              <span className="h-2 w-2 rounded-full bg-brand-deep" />
+            </span>
+            Zuletzt aktualisiert: {dataMeta.lastVerified}
+          </span>
+          <span className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">
+            {entries.length} Releases · jedes Datum primärgeprüft
+          </span>
+        </div>
       </div>
 
       {/* Sticky control bar */}
@@ -270,6 +317,23 @@ export function Timeline({ entries }: { entries: Entry[] }) {
           ) : null}
 
           <div className="ml-auto flex items-center gap-2">
+            {/* Jump straight to the most recent period, whichever end it's on */}
+            {newestKey ? (
+              <button
+                onClick={() => jump(newestKey)}
+                title="Zum neuesten Zeitraum springen"
+                className="flex shrink-0 items-center gap-1 rounded-full border-[1.5px] border-brand-deep/70 bg-brand/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-brand-deep transition-colors hover:border-brand-deep hover:bg-brand/20"
+              >
+                <span aria-hidden>{desc ? "↑" : "↓"}</span>
+                Neustes
+              </button>
+            ) : null}
+
+            {/* Stand — stays on screen for the whole timeline scroll */}
+            <span className="hidden shrink-0 font-mono text-[10px] uppercase tracking-widest text-ink-faint xl:inline">
+              Stand {dataMeta.lastVerified}
+            </span>
+
             {/* Mobile jump-to-year */}
             <select
               aria-label="Zu Jahr springen"
@@ -302,6 +366,35 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                   {g === "month" ? "Monat" : "Quartal"}
                 </button>
               ))}
+            </div>
+
+            {/* Sort order — newest first by default, chronological on request */}
+            <div
+              className="flex items-center overflow-hidden rounded-full border border-rule"
+              role="group"
+              aria-label="Sortierung"
+            >
+              {([["desc", "Neuste"], ["asc", "Älteste"]] as [SortOrder, string][]).map(
+                ([o, label]) => (
+                  <button
+                    key={o}
+                    onClick={() => setSortOrder(o)}
+                    aria-pressed={sortOrder === o}
+                    title={
+                      o === "desc"
+                        ? "Neuste zuerst — zurück in der Zeit"
+                        : "Älteste zuerst — die Beschleunigung von vorn"
+                    }
+                    className="px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-colors"
+                    style={{
+                      background: sortOrder === o ? "var(--ink)" : "transparent",
+                      color: sortOrder === o ? "var(--paper)" : "var(--ink-faint)",
+                    }}
+                  >
+                    {label}
+                  </button>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -393,6 +486,10 @@ export function Timeline({ entries }: { entries: Entry[] }) {
         <div className="relative">
           <div aria-hidden className="absolute bottom-0 left-[20px] top-0 w-px bg-rule" />
 
+          {/* The "more incoming" cap belongs at the present-day edge of the
+              list — which is the top once the order is flipped. */}
+          {groups.length > 0 && !filtering && desc ? <TimelineOutro desc /> : null}
+
           {groups.map((g, gi) => {
             const counts = MODALITY_ORDER.map((m) => ({
               m,
@@ -417,10 +514,12 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                     className="block h-0 scroll-mt-[140px] lg:scroll-mt-[60px]"
                   />
                 ) : null}
-                {!filtering &&
-                  bandsByGroup[gi]?.map((t) => (
-                    <ThresholdBand key={t.date} t={t} />
-                  ))}
+                {/* Ascending: the threshold opens the period. Descending: it
+                    closes it — either way the band sits on the older edge, so
+                    "erst jetzt möglich" is never claimed before its date. */}
+                {!filtering && !desc
+                  ? bandsByGroup[gi]?.map((t) => <ThresholdBand key={t.date} t={t} />)
+                  : null}
                 {/* Sticky period header */}
                 <div className="sticky top-[128px] z-30 bg-paper/92 py-5 backdrop-blur lg:top-[52px]">
                   <div className="group flex items-end gap-3 pl-10 pr-5 sm:pr-7">
@@ -466,7 +565,7 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                   </div>
                 </div>
 
-                {/* Entries, strictly chronological */}
+                {/* Entries, in the active sort order */}
                 <div className="space-y-6 py-5 pl-10">
                   {g.entries.map((e, i) => (
                     <motion.div
@@ -480,6 +579,10 @@ export function Timeline({ entries }: { entries: Entry[] }) {
                     </motion.div>
                   ))}
                 </div>
+
+                {!filtering && desc
+                  ? bandsByGroup[gi]?.map((t) => <ThresholdBand key={t.date} t={t} />)
+                  : null}
               </div>
             );
           })}
@@ -498,14 +601,14 @@ export function Timeline({ entries }: { entries: Entry[] }) {
             </div>
           ) : null}
 
-          {groups.length > 0 && !filtering ? <TimelineOutro /> : null}
+          {groups.length > 0 && !filtering && !desc ? <TimelineOutro /> : null}
         </div>
       </div>
     </section>
   );
 }
 
-function TimelineOutro() {
+function TimelineOutro({ desc = false }: { desc?: boolean }) {
   return (
     <div className="relative scroll-mt-[140px] pb-6 pl-10 pt-4">
       {/* pulsing spine marker */}
@@ -528,11 +631,12 @@ function TimelineOutro() {
           Fortsetzung folgt
         </p>
         <h3 className="font-display mt-2 text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl">
-          Und das war erst der Anfang.
+          {desc ? "Hier fehlt noch der nächste Durchbruch." : "Und das war erst der Anfang."}
         </h3>
         <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-soft">
-          Das Tempo lässt nicht nach — der nächste Durchbruch ist näher, als du
-          denkst. Bleib neugierig.
+          {desc
+            ? "Das Tempo lässt nicht nach — oben landet, was als Nächstes kommt. Scroll nach unten und reise zurück bis Ende 2022."
+            : "Das Tempo lässt nicht nach — der nächste Durchbruch ist näher, als du denkst. Bleib neugierig."}
         </p>
 
         {/* animated "more incoming" dots */}

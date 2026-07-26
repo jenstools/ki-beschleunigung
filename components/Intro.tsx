@@ -12,8 +12,10 @@ export function Intro() {
           Dann geriet der Boden in Bewegung. Was folgt, ist das Protokoll —
           Release für Release, über vier Modalitäten hinweg — davon, wie schnell
           aus &bdquo;unmöglich&ldquo; &bdquo;alltäglich&ldquo; wurde. Lies es
-          langsam. Achte darauf, wie weit die frühen Meilensteine auseinander
-          liegen, und wie sie sich drängen, je näher du der Gegenwart kommst.
+          langsam. Die Liste beginnt bei heute — und je weiter du nach unten
+          scrollst, desto dünner wird sie, bis am Anfang Monate zwischen den
+          Meilensteinen liegen. Wer die Beschleunigung von vorn erleben will,
+          stellt die Sortierung auf &bdquo;Älteste&ldquo;.
         </p>
       </div>
     </section>
