@@ -17,7 +17,9 @@ export function TimeDepthGauge() {
       style={{ opacity }}
       className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 md:flex"
     >
-      <span className="font-mono text-[9px] uppercase tracking-widest text-ink-faint">2022</span>
+      {/* Scrolling down now travels *back* in time (timeline is newest-first),
+          so the gauge reads heute → 2022 top to bottom. */}
+      <span className="font-mono text-[9px] uppercase tracking-widest text-ink-faint">heute</span>
       <div className="relative h-[40vh] w-[2px] rounded-full bg-rule-soft">
         <motion.div
           className="absolute left-0 top-0 w-full rounded-full"
@@ -28,7 +30,7 @@ export function TimeDepthGauge() {
           style={{ top: dotTop, background: "var(--brand-deep)" }}
         />
       </div>
-      <span className="font-mono text-[9px] uppercase tracking-widest text-ink-faint">heute</span>
+      <span className="font-mono text-[9px] uppercase tracking-widest text-ink-faint">2022</span>
     </motion.div>
   );
 }

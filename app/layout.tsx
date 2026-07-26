@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SnipkiBadge } from "@/components/SnipkiBadge";
+import { FreshnessBadge } from "@/components/FreshnessBadge";
 import { TimeDepthGauge } from "@/components/TimeDepthGauge";
 import { ScrollAtmosphere } from "@/components/ScrollAtmosphere";
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <ScrollAtmosphere />
         {children}
         <TimeDepthGauge />
+        <FreshnessBadge />
         <SnipkiBadge />
       </body>
     </html>

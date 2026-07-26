@@ -4140,6 +4140,8 @@ export const entries: Entry[] = [
 
 export const dataMeta = {
   lastVerified: "26. Juli 2026",
+  /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
+  lastVerifiedISO: "2026-07-26",
   windowStart: "2022-08",
   windowEnd: "2026-07",
   total: 233,

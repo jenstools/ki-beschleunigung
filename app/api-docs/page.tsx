@@ -20,6 +20,7 @@ const CURL_EXAMPLE = `curl -s ${ENDPOINT} | jq '.entries[0]'`;
 const RESPONSE_SHAPE = `{
   "meta": {
     "lastVerified": "26. Juli 2026",
+    "lastVerifiedISO": "2026-07-26",
     "windowStart": "2022-08",
     "windowEnd": "2026-07",
     "total": 233,
