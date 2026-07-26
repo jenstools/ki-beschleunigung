@@ -19,16 +19,16 @@ const CURL_EXAMPLE = `curl -s ${ENDPOINT} | jq '.entries[0]'`;
 
 const RESPONSE_SHAPE = `{
   "meta": {
-    "lastVerified": "23. Juni 2026",
+    "lastVerified": "26. Juli 2026",
     "windowStart": "2022-08",
-    "windowEnd": "2026-06",
-    "total": 190,
+    "windowEnd": "2026-07",
+    "total": 233,
     "version": "v1",
     "license": "CC-BY-4.0",
     "attribution": "KI-Zeitstrahl von snipKI",
     "source": "https://timeline.snipki.de"
   },
-  "count": 190,
+  "count": 233,
   "entries": [ /* Entry[] */ ]
 }`;
 

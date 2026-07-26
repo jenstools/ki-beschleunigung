@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 206 entries across text, image, video, audio,
- * late 2022 → 26 June 2026.
+ * German descriptions. 233 entries across text, image, video, audio,
+ * late 2022 → 24 July 2026.
  */
 export const entries: Entry[] = [
   {
@@ -3998,6 +3998,42 @@ export const entries: Entry[] = [
     "verificationNote": "Release am 21.07.2026 gegen die offizielle Google-Blog-Ankündigung (blog.google) und den DeepMind-Blog (deepmind.google) verifiziert; von unabhängiger Berichterstattung (Help Net Security, TechCrunch, MarkTechPost) bestätigt. Verfügbarkeit: Limited-Access-Pilot, zunächst nur für Regierungen und vertrauenswürdige Partner via CodeMender."
   },
   {
+    "date": "2026-07-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Laguna S 2.1",
+    "org": "poolside",
+    "license": "open",
+    "capability": "Offenes MoE-Modell für agentisches Coding: 118 Mrd. Parameter total, davon nur 8 Mrd. pro Token aktiv, bis zu 1 Mio. Token Kontext und getrennte Thinking-/No-Thinking-Modi. Laut poolside 70,2 % auf Terminal-Bench 2.1 (mit Thinking), 78,5 % auf SWE-Bench Multilingual, 40,4 % auf DeepSWE v1.1 und 46,2 % auf SWE Atlas (Codebase-QnA). Gewichte auf Hugging Face unter OpenMDW-1.1 (BF16 plus FP8- und NVFP4-Quantisierungen), lauffähig auf einer einzelnen NVIDIA DGX Spark.",
+    "whyItMattered": "Das stärkste offene Coding-Modell aus dem Westen und ein Gegenbeispiel zur Größenlogik: Es hält auf Long-Horizon-Coding-Benchmarks gegen Modelle mit einem Vielfachen seiner Parameterzahl mit und ging in unter neun Wochen vom Trainingsstart zum Release. poolside veröffentlicht zu jedem publizierten Benchmark-Wert die vollständigen Trajektorien aller Durchläufe (trajectories.poolside.ai) — ein in dieser Form seltener Transparenzschritt bei Agenten-Benchmarks.",
+    "firstOfKind": "",
+    "sources": [
+      "https://poolside.ai/blog/introducing-laguna-s-2-1",
+      "https://huggingface.co/poolside/Laguna-S-2.1"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 21.07.2026 gegen den offiziellen poolside-Blog (Primärquelle) und die Hugging-Face-Model-Cards verifiziert; von unabhängiger Berichterstattung (VentureBeat, GlobeNewswire-Verteilung) bestätigt. Benchmark-Werte sind Herstellerangaben, allerdings mit offengelegten Trajektorien nachprüfbar.",
+    "id": "text-laguna-s-2-1-2026-07-21"
+  },
+  {
+    "date": "2026-07-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Fugu-Cyber",
+    "org": "Sakana AI",
+    "license": "closed",
+    "capability": "Dritter Endpunkt des Fugu-Orchestrators, auf Security-Reasoning abgestimmt: kein Einzelmodell, sondern ein Multi-Agenten-System, das sich wie ein einzelnes Modell verhält und einen Pool spezialisierter Agenten dynamisch für mehrstufige Security-Aufgaben routet und koordiniert. Sakana berichtet 86,9 % auf CyberGym (Berkeley-Benchmark mit 1.507 realen Schwachstellen aus 188 OSS-Fuzz-Projekten) und 72,1 % auf Microsofts CTI-REALM. Zugang nur nach Antrag und manueller Prüfung, im Token-Plan und unter aktualisierter Acceptable-Usage-Policy.",
+    "whyItMattered": "Setzt Orchestrierung statt Modellgröße als Hebel: Werte auf Höhe cyber-spezialisierter Frontier-Modelle wie GPT-5.5-Cyber und Mythos-Preview, erreicht durch Koordination vieler kleiner Agenten statt durch ein größeres Basismodell. Zusammen mit Gemini 3.5 Flash Cyber am selben Tag markiert es den Punkt, an dem Cybersecurity zur ersten Domäne mit eigenen, bewusst zugangsbeschränkten Spezialmodellen wird.",
+    "firstOfKind": "",
+    "sources": [
+      "https://sakana.ai/fugu-cyber-release/",
+      "https://sakana.ai/fugu/"
+    ],
+    "disputed": true,
+    "verificationNote": "Release am 21.07.2026 direkt gegen die Sakana-AI-Ankündigung (Primärquelle) verifiziert. Als unbestätigt markiert, weil alle Benchmark-Werte Herstellerangaben sind: Zum Zeitpunkt der Berichterstattung hat kein unabhängiges Labor die Zahlen reproduziert, und die Benchmark-Methodik wurde nicht offengelegt (Kritik u. a. bei TechTimes). Verfügbarkeit: gated, nur nach Antrag und Freigabe.",
+    "id": "text-fugu-cyber-2026-07-21"
+  },
+  {
     "date": "2026-07-23",
     "datePrecision": "day",
     "modality": "image",
@@ -4032,6 +4068,58 @@ export const entries: Entry[] = [
     "id": "audio-mai-voice-2-flash-2026-07-23"
   },
   {
+    "date": "2026-07-23",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "FLUX 3",
+    "org": "Black Forest Labs",
+    "license": "closed",
+    "capability": "Multimodales Frontier-Modell, das gemeinsam über Bild, Video, Audio und Action-Prediction trainiert wurde — nicht mehrere Einzelmodelle hinter einer gemeinsamen Schnittstelle. Erzeugt laut Berichterstattung bis zu 20 Sekunden Video mitsamt synchronem Ton (Dialog, Soundeffekte, Musik) und hält Produkt- und Materialkonsistenz über Bewegung hinweg. Der Ansatz „Self-Flow“ soll multimodale Generierung und Verstehen innerhalb derselben Architektur ausrichten. Varianten: FLUX 3 Video und FLUX 3 Action (Roboter-Aktionen) im Early Access, FLUX 3 Image in den kommenden Wochen, das offene FLUX 3 Dev später im Jahr 2026.",
+    "whyItMattered": "Erstes Modell, das Video und Ton nicht nachträglich zusammenfügt, sondern gemeinsam aus einem Backbone erzeugt — und dasselbe Fundament über FLUX 3 Action bis in die Robotersteuerung verlängert. Damit verlässt Black Forest Labs die reine Bildgenerierung, mit der es über die FLUX-Reihe bekannt wurde, und stellt Bild, Video, Audio und physische Aktion auf ein einziges Modell.",
+    "firstOfKind": "Erstes Modell mit gemeinsam trainierter Video-, Audio- und Action-Generierung aus einem Backbone.",
+    "sources": [
+      "https://www.globenewswire.com/news-release/2026/07/23/3332364/0/en/black-forest-labs-unveils-flux-3-a-new-multimodal-frontier-model-for-visual-intelligence.html"
+    ],
+    "disputed": true,
+    "verificationNote": "Ankündigungsdatum 23.07.2026 gegen die offizielle Pressemitteilung von Black Forest Labs (GlobeNewswire) verifiziert; von unabhängiger Berichterstattung (VentureBeat, TechTimes) bestätigt. Als unbestätigt markiert, weil zum Ankündigungszeitpunkt keine Benchmarks veröffentlicht waren und nur FLUX 3 Video und Action als gated Early Access für ausgewählte Partner verfügbar sind; die 20-Sekunden-Angabe stammt aus der Berichterstattung, nicht aus der Pressemitteilung.",
+    "id": "video-flux-3-2026-07-23"
+  },
+  {
+    "date": "2026-07-23",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Ling-3.0-flash",
+    "org": "Ant Group",
+    "license": "closed",
+    "capability": "Hybrid-Reasoning-MoE von Ant Groups Lab inclusionAI, gebaut für Agenten im Produktionsmaßstab: 124 Mrd. Parameter total, davon nur rund 5,1 Mrd. pro Token aktiv (1/64 der Experten). Architektur mischt Kimi Delta Attention (KDA) und Multi-head Latent Attention (MLA) im Verhältnis 5:1; Kontextfenster 256K Token, mit 1 Mio. als erklärtem Ziel. Laut Ant erreicht oder schlägt es mit 1/8 der Gesamt- und 1/12 der aktiven Parameter das eigene 1-Billion-Flaggschiff auf den meisten gezeigten Benchmarks. Bis 03.08.2026 kostenlos über OpenRouter und Vercels AI Gateway.",
+    "whyItMattered": "Der bislang deutlichste Effizienzbeleg der Sparse-MoE-Linie: Ein Modell, das ein achtmal größeres Flaggschiff desselben Hauses einholt, verschiebt die Kostenrechnung für hochvolumige Agenten-Workloads — und zeigt, dass chinesische Labs Techniken untereinander übernehmen (KDA stammt aus der Forschung von Moonshot AI, nicht von Ant).",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.com/AntLingAGI/status/2080351022028095681"
+    ],
+    "disputed": true,
+    "verificationNote": "Release am 23.07.2026 gegen die offizielle Ankündigung von Ant Ling (inclusionAI) verifiziert. Als unbestätigt markiert: als Open-Weight mit Apache 2.0 angekündigt, aber zum 24.07.2026 war keine Hugging-Face-Model-Card veröffentlicht und es gab keine selbst-hostbaren Gewichte — praktisch API-only, daher hier als „closed“ geführt. Auch die Benchmark-Aussage ist Herstellerangabe ohne veröffentlichte Benchmark-Tabelle.",
+    "id": "text-ling-3-0-flash-2026-07-23"
+  },
+  {
+    "date": "2026-07-23",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Grok STT 1.0",
+    "org": "xAI",
+    "license": "closed",
+    "capability": "Eigenständiges Speech-to-Text-Modell von xAI: transkribiert Audio in 25 Sprachen — Sprachnotizen, Telefonmitschnitte, Podcasts — mit Wort-Zeitstempeln, optionaler Sprechertrennung (Diarization) und Mehrkanal-Audio. Batch-Modus für vorliegende Dateien, Streaming-Modus für Echtzeit, über den REST-Endpunkt /v1/stt. Preis: $0,10 pro Stunde im Batch, $0,20 pro Stunde im Streaming.",
+    "whyItMattered": "Löst xAIs Sprachverarbeitung aus der Grok-App und macht sie zu einem versionierten API-Produkt für Entwickler — zu einem Stundenpreis, der Transkription als Vorstufe agentischer Pipelines praktisch zur Randnotiz in der Kostenrechnung macht.",
+    "firstOfKind": "",
+    "sources": [
+      "https://openrouter.ai/x-ai/grok-stt-1.0",
+      "https://x.ai/news/grok-stt-and-tts-apis"
+    ],
+    "disputed": true,
+    "verificationNote": "Als unbestätigt markiert, weil die Primärquelle nicht gegengeprüft werden konnte: x.ai liefert auf maschinelle Abrufe HTTP 403, und die xAI-Release-Notes listeten den Eintrag zum Prüfzeitpunkt nicht. Datum 23.07.2026 stützt sich auf die Modellseite bei OpenRouter (Erst-Distribution) sowie Sekundärberichte, die den 23.07. als Live-Datum und den 24.07. als xAI-Ankündigung nennen. Zusätzliche Unschärfe: xAI hatte bereits im April 2026 eigenständige Grok-STT-/TTS-APIs gestartet, sodass unklar bleibt, ob „1.0\" ein neues Modell oder die erste versionierte Freigabe dieser Linie bezeichnet.",
+    "id": "audio-grok-stt-1-0-2026-07-23"
+  },
+  {
     "date": "2026-07-24",
     "datePrecision": "day",
     "modality": "text",
@@ -4051,9 +4139,9 @@ export const entries: Entry[] = [
 ];
 
 export const dataMeta = {
-  lastVerified: "24. Juli 2026",
+  lastVerified: "26. Juli 2026",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 228,
+  total: 233,
   placeholder: false,
 };
