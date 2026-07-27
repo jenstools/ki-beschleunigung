@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 233 entries across text, image, video, audio,
- * late 2022 → 24 July 2026.
+ * German descriptions. 234 entries across text, image, video, audio,
+ * late 2022 → 27 July 2026.
  */
 export const entries: Entry[] = [
   {
@@ -3898,7 +3898,7 @@ export const entries: Entry[] = [
     "name": "Kimi K3",
     "org": "Moonshot AI",
     "license": "open",
-    "capability": "Neues MoE-Flaggschiff mit rund 2,8 Billionen Parametern, neuer „Kimi Delta Attention“-Architektur und 1-Mio.-Token-Kontext, ausgelegt auf langlaufendes Coding und Agenten-Workloads. Zwei Varianten zum Start: K3 Max (Chat/Agent) und K3 Swarm Max (massiv-paralleles Processing). Verfügbar über Kimi Code und die Kimi-App (ab ¥199-Tarif); herunterladbare Open-Weights laut Moonshot bis 27.07.2026 angekündigt.",
+    "capability": "Neues MoE-Flaggschiff mit rund 2,8 Billionen Parametern, neuer „Kimi Delta Attention“-Architektur und 1-Mio.-Token-Kontext, ausgelegt auf langlaufendes Coding und Agenten-Workloads. Zwei Varianten zum Start: K3 Max (Chat/Agent) und K3 Swarm Max (massiv-paralleles Processing). Zum Launch nur über Kimi Code und die Kimi-App (ab ¥199-Tarif) nutzbar; die herunterladbaren Gewichte folgten am 27.07.2026.",
     "whyItMattered": "Hebt Open-Weights-Modelle auf Frontier-Niveau: laut Moonshot 93,5 % auf GPQA Diamond (stärkstes veröffentlichtes Open-Weight-Ergebnis zum Launch), 91,2 % auf BrowseComp und 88,3 % auf Terminal-Bench 2.1 — agentische Werte, die mit den geschlossenen Spitzenmodellen konkurrieren.",
     "firstOfKind": "",
     "sources": [
@@ -3906,7 +3906,7 @@ export const entries: Entry[] = [
       "https://simonwillison.net/2026/Jul/16/kimi-k3/"
     ],
     "disputed": false,
-    "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar, herunterladbare Open-Weights laut Moonshot bis 27.07.2026. Benchmarks laut Moonshot/Berichten."
+    "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar. Die Open-Weights erschienen am 27.07.2026 auf Hugging Face — dazu der eigene Eintrag „Kimi K3 (Open Weights)\". Benchmarks laut Moonshot/Berichten."
   },
   {
     "id": "text-qwen3-8-max-2026-07-19",
@@ -4135,15 +4135,33 @@ export const entries: Entry[] = [
     "disputed": false,
     "verificationNote": "Release am 24.07.2026 direkt gegen die Anthropic-Ankündigungsseite (Primärquelle) verifiziert; von unabhängiger Berichterstattung (CNBC, Fortune, VentureBeat) bestätigt. Verfügbar über Claude.ai, Claude Code, Claude Cowork und die Claude API. Laut Anthropic weiterhin hinter Mythos 5 bei Cybersecurity-Aufgaben.",
     "id": "text-claude-opus-5-2026-07-24"
+  },
+  {
+    "date": "2026-07-27",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Kimi K3 (Open Weights)",
+    "org": "Moonshot AI",
+    "license": "open",
+    "capability": "Moonshot lädt die vollständigen Gewichte des K3-Flaggschiffs auf Hugging Face: 2,8 Billionen Parameter total, davon rund 104 Mrd. pro Token aktiv, 1.048.576 Token Kontext, ausgeliefert mit nativer MXFP4-Quantisierung und MXFP8-Aktivierungen. Das Modell ist damit selbst hostbar — allerdings unter einer eigenen „Kimi K3 License\", die für kommerzielle Nutzung eine separate Vereinbarung verlangt, nicht unter einer OSI-Lizenz.",
+    "whyItMattered": "Mit 57 Punkten im Intelligence Index von Artificial Analysis ist K3 das stärkste offene Modell, das man herunterladen kann: Platz 1 von 98 Open-Weights-Modellen, vor GLM-5.2 Max (51) und MiniMax-M3 (44). Zur geschlossenen Spitze — Claude Opus 5 mit Max Effort bei 61 — bleiben vier Punkte. Frontier-nahe Intelligenz läuft damit erstmals auf eigener Hardware; der Preis dafür sind hohe Inferenzkosten ($3 / $15 pro 1 Mio. Token in der gehosteten Variante) und mit 33 Token/s eine langsame Ausgabe.",
+    "firstOfKind": "",
+    "sources": [
+      "https://huggingface.co/moonshotai/Kimi-K3",
+      "https://artificialanalysis.ai/models/kimi-k3"
+    ],
+    "disputed": false,
+    "verificationNote": "Gewichte am 27.07.2026 über die Hugging-Face-Model-Card (moonshotai/Kimi-K3) verifiziert — der Upload war zum Prüfzeitpunkt wenige Stunden alt und löst die im K3-Eintrag vom 16.07.2026 genannte Ankündigung ein. Intelligence Index 57 und Rang 1/98 unter Open-Weights-Modellen über Artificial Analysis geprüft; die Werte stammen von Artificial Analysis, nicht von Moonshot. Lizenz laut Model Card „Kimi K3 License\" — Open Weights, aber nicht Open Source im OSI-Sinne.",
+    "id": "text-kimi-k3-open-weights-2026-07-27"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "26. Juli 2026",
+  lastVerified: "27. Juli 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-07-26",
+  lastVerifiedISO: "2026-07-27",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 233,
+  total: 234,
   placeholder: false,
 };
