@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 234 entries across text, image, video, audio,
- * late 2022 → 27 July 2026.
+ * German descriptions. 235 entries across text, image, video, audio,
+ * late 2022 → 28 July 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4153,15 +4153,34 @@ export const entries: Entry[] = [
     "disputed": false,
     "verificationNote": "Gewichte am 27.07.2026 über die Hugging-Face-Model-Card (moonshotai/Kimi-K3) verifiziert — der Upload war zum Prüfzeitpunkt wenige Stunden alt und löst die im K3-Eintrag vom 16.07.2026 genannte Ankündigung ein. Intelligence Index 57 und Rang 1/98 unter Open-Weights-Modellen über Artificial Analysis geprüft; die Werte stammen von Artificial Analysis, nicht von Moonshot. Lizenz laut Model Card „Kimi K3 License\" — Open Weights, aber nicht Open Source im OSI-Sinne.",
     "id": "text-kimi-k3-open-weights-2026-07-27"
+  },
+  {
+    "date": "2026-07-28",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "GPT-Transcribe / GPT-Live-Transcribe",
+    "org": "OpenAI",
+    "license": "closed",
+    "capability": "Zwei neue Transkriptionsmodelle in der OpenAI-API, die Whisper als empfohlenen Standard ablösen: GPT-Transcribe für fertige Aufnahmen und Batch-Workloads, GPT-Live-Transcribe für laufende Streams. GPT-Transcribe liefert auch das Endtranskript einer abgeschlossenen Realtime-Runde; GPT-Live-Transcribe hat eine einstellbare Latenz in fünf Stufen, von „minimal\" für Echtzeit-Interaktion bis „xhigh\" für maximalen Kontext. Beide nehmen Kontext als Eingabe an: einen freien Prompt zum Thema der Aufnahme, eine Keyword-Liste für Fachbegriffe und Eigennamen sowie mehrere erwartete Sprachen statt einer einzigen. Laut OpenAI fällt die Transkriptionsfehlerrate von GPT-Transcribe gegenüber whisper-1 auf Common Voice (22 Sprachen) von 40,4 % auf 19,3 % und auf realweltlichem Audio (9 Sprachen) von 15,2 % auf 9,0 %; GPT-Live-Transcribe verbessert das Streaming-Vorgängermodell moderater (9,6 % statt 11,7 % auf realem Audio). Preis: $0,0045 pro Minute für Dateien — unter den $0,006 von gpt-4o-transcribe — und $0,017 pro Minute im Streaming. Kein Word-Timestamping, keine Sprechertrennung, keine SRT/VTT-Ausgabe, keine Übersetzung ins Englische: dafür bleiben die Spezialmodelle nötig.",
+    "whyItMattered": "Whisper war seit 2022 die Standardtranskription für Entwickler; hier wird sie zum Legacy-Pfad — bei rund der Hälfte der Fehler und einem niedrigeren Preis als das bisherige Spitzenmodell. Der eigentliche Bruch ist aber der Kontext als Parameter: Wer dem Modell vorab Fachbegriffe, Namen und mögliche Sprachen nennt, gewinnt laut OpenAI 3–6 Prozentpunkte. Transkription wird damit von einem starren Dienst zu einem steuerbaren Schritt in Sprach-Pipelines — und die Trennung in ein Latenz- und ein Genauigkeitsmodell macht die Abwägung, die Entwickler bisher selbst basteln mussten, zur Modellwahl. Fünf Tage nach Grok STT 1.0 ist damit klar: Speech-to-Text ist 2026 wieder ein umkämpftes eigenes Produktfeld, nicht nur ein Nebenprodukt der Voice-Assistenten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://developers.openai.com/api/docs/guides/transcription",
+      "https://developers.openai.com/changelog",
+      "https://x.com/OpenAIDevs/status/2082201169443905798"
+    ],
+    "disputed": false,
+    "verificationNote": "Release am 28.07.2026 gegen den offiziellen OpenAI-Changelog-Eintrag („Released GPT Transcribe … along with GPT Live Transcribe for low-latency streaming transcription\") und die Entwicklerdokumentation auf developers.openai.com verifiziert; die Ankündigung von @OpenAIDevs trägt dasselbe Datum. Fehlerraten und Preise sind Herstellerangaben aus OpenAIs eigenen Benchmark-Tabellen, hier über Sekundärberichterstattung (AlphaSignal) erfasst, weil openai.com maschinelle Abrufe mit HTTP 403 blockt — sie sind nicht unabhängig gemessen. Gemeint ist jeweils die Transkriptionsfehlerrate über gemischte Benchmark-Sets, nicht eine WER auf einem einzelnen Datensatz.",
+    "id": "audio-gpt-transcribe-gpt-live-transcribe-2026-07-28"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "27. Juli 2026",
+  lastVerified: "29. Juli 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-07-27",
+  lastVerifiedISO: "2026-07-29",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 234,
+  total: 235,
   placeholder: false,
 };
