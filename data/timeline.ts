@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 235 entries across text, image, video, audio,
- * late 2022 → 28 July 2026.
+ * German descriptions. 237 entries across text, image, video, audio,
+ * late 2022 → 29 July 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4172,15 +4172,51 @@ export const entries: Entry[] = [
     "disputed": false,
     "verificationNote": "Release am 28.07.2026 gegen den offiziellen OpenAI-Changelog-Eintrag („Released GPT Transcribe … along with GPT Live Transcribe for low-latency streaming transcription\") und die Entwicklerdokumentation auf developers.openai.com verifiziert; die Ankündigung von @OpenAIDevs trägt dasselbe Datum. Fehlerraten und Preise sind Herstellerangaben aus OpenAIs eigenen Benchmark-Tabellen, hier über Sekundärberichterstattung (AlphaSignal) erfasst, weil openai.com maschinelle Abrufe mit HTTP 403 blockt — sie sind nicht unabhängig gemessen. Gemeint ist jeweils die Transkriptionsfehlerrate über gemischte Benchmark-Sets, nicht eine WER auf einem einzelnen Datensatz.",
     "id": "audio-gpt-transcribe-gpt-live-transcribe-2026-07-28"
+  },
+  {
+    "date": "2026-07-29",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Google Lyria 3.5",
+    "org": "Google",
+    "license": "closed",
+    "capability": "Nächste Iteration von Googles Musikmodell, ausgeliefert in Flow Music — dem eigenen Musikprodukt, in das Google die Lyria-Generierung aus der Gemini-App herausgelöst hat. Google nennt vier Verbesserungen: reichere und komplexere Melodiestrukturen, die natürlicher klingen; höhere Textqualität mit besserer Prompt-Treue und struktureller Bewusstheit, also einem Gespür für Strophe, Refrain und Bogen; ausdrucksstärkere und emotional nuanciertere Vocals mit sauberer Aussprache; sowie direktere Kontrolle über Tempo und Länge der Ausgabe. Alle vier Punkte sind qualitative Herstellerangaben — Google veröffentlicht zu diesem Release keine Benchmarks, keine Längenlimits, keine Preis- oder Tarifangaben und keine API-Verfügbarkeit in Gemini API oder Vertex AI.",
+    "whyItMattered": "Kein Fähigkeitssprung, sondern der Beleg für einen Reifeschritt: Nach Lyria 3 (Februar) und Lyria 3 Pro (März) geht es nicht mehr um längere Tracks oder neue Modalitäten, sondern um Musikalität, Textqualität und Steuerbarkeit — genau die Kriterien, an denen sich Suno und Udio messen lassen. Bemerkenswert ist die Verpackung: Musikgenerierung sitzt bei Google nicht mehr als Feature in der Gemini-App, sondern in einem eigenen Produkt mit eigener Domain. Damit tritt Google zum ersten Mal frontal als Musik-Plattform gegen die Suno/Udio-Achse an, statt Musik als Beigabe des Assistenten zu behandeln.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5/",
+      "https://www.androidauthority.com/google-lyria-3-5-launch-3692517/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 29.07.2026 direkt gegen den Google-Blogeintrag (Primärquelle, dort als „Jul 29, 2026\" ausgewiesen) verifiziert und von unabhängiger Berichterstattung am selben Tag bestätigt (Android Authority; Schlagzeilen gleichen Datums auch bei Neowin und NDTV Profit). Die vier Verbesserungen sind wörtlich Googles eigene Beschreibung ohne Messwerte — es gibt zu diesem Release keine Benchmarks, keinen Vergleich gegen Lyria 3 Pro und keine Zahlen zu Trackdauer. Ob Lyria 3.5 auch über Gemini API oder Vertex AI verfügbar ist, sagt die Ankündigung nicht; genannt wird ausschließlich Flow Music (flowmusic.google). Zu SynthID-Wasserzeichen macht der Post keine Angabe — bei früheren Lyria-Versionen war es Standard, hier aber nicht bestätigt.",
+    "id": "audio-google-lyria-3-5-2026-07-29"
+  },
+  {
+    "date": "2026-07-29",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Grok Voice Think Fast 2",
+    "org": "xAI",
+    "license": "closed",
+    "capability": "Speech-to-Speech-Modell für Voice-Agenten, das parallel zum Sprechen denkt: Das Reasoning läuft nicht vor der Antwort, sondern während sie schon läuft. Die Zeit bis zum ersten Ton fällt von 1,25 auf 0,70 Sekunden, der Median-Verbrauch an Reasoning-Tokens auf das 0,4-Fache von Version 1.0 — laut xAI werden Tool-Calls dadurch meist ausgeführt, bevor der Agent seinen ersten Satz beendet hat. Auf dem Speech-to-Speech-Index von Artificial Analysis steigt der Gesamtwert von 75,7 % auf 82,9 % und liegt damit über GPT-Realtime-2.1 (79,1 %) und Gemini 3.1 Flash (69,5 %); die Teilwerte: Agentik (τ-voice Bench) 56,5 % gegen 45,7 % bei GPT-Realtime und 37,7 % bei Gemini, Conversational Dynamics (Full Duplex Bench) 95,1 % — ein Sprung von 77,8 %, aber knapp hinter GPT-Realtime (95,7 %) —, Speech Reasoning (Big Bench Audio) 97,2 %. Bei der Transkription beansprucht xAI über 24 getestete Sprachen die 1,5- bis 2-fache Genauigkeit dedizierter STT-Modelle (Deepgram Nova 3, ElevenLabs Scribe v2) und bei starkem Hintergrundgeräusch etwa das Zehnfache. Per Reinforcement Learning auf Gesprächsdisziplin trainiert: kürzere Sätze, eine Frage auf einmal, weniger Füllwerk. Preis $0,08 pro Audiominute; der Alias „grok-voice-latest\" springt am 05.08.2026 auf 2.0.",
+    "whyItMattered": "Sechs Tage nach Grok STT 1.0 dreht xAI die eigene Logik um: Das Speech-to-Speech-Modell transkribiert nach Herstellerangaben genauer als die Spezialmodelle, für die man bisher eine separate Stufe in die Pipeline gebaut hat — und unter Störgeräuschen um eine Größenordnung. Der eigentliche Hebel ist aber das Reasoning parallel zur Sprachausgabe. Bislang war Nachdenken bei Voice-Agenten ein hörbares Loch: Erst Stille, dann Antwort. Wenn Tool-Calls losgehen, während der erste Satz noch läuft, verschwindet der Kompromiss zwischen Latenz und Sorgfalt, der Sprachagenten seit dem Advanced Voice Mode von 2024 im Wesentlichen auf Smalltalk beschränkt hat. Der Vorsprung von 11 Punkten auf GPT-Realtime-2.1 im Agentik-Benchmark bei fast gleicher Gesprächsqualität markiert die Verschiebung: Voice ist nicht mehr die Chat-Oberfläche, sondern die Agenten-Oberfläche.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-voice-think-fast-2",
+      "https://www.testingcatalog.com/spacexai-launches-grok-voice-think-fast-2-0-on-agent-builder/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 29.07.2026 sowie alle Zahlen gegen die xAI-Ankündigung als Primärquelle geprüft — allerdings nicht per Direktabruf: x.ai antwortet auf maschinelle Zugriffe mit HTTP 403, gelesen wurde die Seite über einen Text-Extraktionsproxy. Latenz, Benchmarkwerte, Preis und Alias-Umstellung wurden unabhängig durch TestingCatalog und Gadgets360 (beide 29./30.07.2026) mit identischen Zahlen bestätigt. Die Benchmarkwerte stammen aus xAIs eigener Tabelle und sind, obwohl sie sich auf Suiten von Artificial Analysis berufen, hier nicht als unabhängige Messung von Artificial Analysis verifiziert; die Transkriptionsvergleiche gegen Deepgram Nova 3 und ElevenLabs Scribe v2 sind reine Herstellerangaben ohne veröffentlichte Messmethode. Die Ankündigung selbst nennt keinen Auslieferungsweg; dass das Modell über den Grok Voice Agent Builder verfügbar ist, ist durch TestingCatalog belegt, nicht durch xAI. Ob und wann Think Fast 2 in die Grok-Consumer-Apps kommt, ist offen.",
+    "id": "audio-grok-voice-think-fast-2-2026-07-29"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "29. Juli 2026",
+  lastVerified: "30. Juli 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-07-29",
+  lastVerifiedISO: "2026-07-30",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 235,
+  total: 237,
   placeholder: false,
 };
