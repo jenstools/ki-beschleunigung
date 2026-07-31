@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 237 entries across text, image, video, audio,
- * late 2022 → 29 July 2026.
+ * German descriptions. 240 entries across text, image, video, audio,
+ * late 2022 → 31 July 2026.
  */
 export const entries: Entry[] = [
   {
@@ -3356,7 +3356,7 @@ export const entries: Entry[] = [
       "https://www.explainx.ai/blog/seedance-2-5-bytedance-30-second-4k-ai-video-2026"
     ],
     "disputed": false,
-    "note": "Globale Enterprise-Beta; öffentlicher Start für Anfang Juli 2026 angekündigt (Volcano Engine).",
+    "note": "Damals globale Enterprise-Beta; der öffentliche Start erfolgte am 31.07.2026 — siehe eigener Eintrag.",
     "verificationNote": "Vorgestellt am 23.06.2026 auf der Volcano-Engine-FORCE-Konferenz in Peking (zuerst von The Information gemeldet). Kein offizieller ByteDance-Seed-Blogeintrag zu 2.5 verfügbar (Modell in Enterprise-Beta); Specs über mehrere Sekundärquellen bestätigt (30 s nativ in einem Durchgang, bis zu 50 Referenzen, lokales Editieren, 3D-Blockout, ~20 % bessere Prompt-Treue). Native 4K für 2.5 wird berichtet, aber nicht offiziell bestätigt (4K ist für Seedance 2.0 offiziell)."
   },
   {
@@ -4208,15 +4208,75 @@ export const entries: Entry[] = [
     "disputed": false,
     "verificationNote": "Datum 29.07.2026 sowie alle Zahlen gegen die xAI-Ankündigung als Primärquelle geprüft — allerdings nicht per Direktabruf: x.ai antwortet auf maschinelle Zugriffe mit HTTP 403, gelesen wurde die Seite über einen Text-Extraktionsproxy. Latenz, Benchmarkwerte, Preis und Alias-Umstellung wurden unabhängig durch TestingCatalog und Gadgets360 (beide 29./30.07.2026) mit identischen Zahlen bestätigt. Die Benchmarkwerte stammen aus xAIs eigener Tabelle und sind, obwohl sie sich auf Suiten von Artificial Analysis berufen, hier nicht als unabhängige Messung von Artificial Analysis verifiziert; die Transkriptionsvergleiche gegen Deepgram Nova 3 und ElevenLabs Scribe v2 sind reine Herstellerangaben ohne veröffentlichte Messmethode. Die Ankündigung selbst nennt keinen Auslieferungsweg; dass das Modell über den Grok Voice Agent Builder verfügbar ist, ist durch TestingCatalog belegt, nicht durch xAI. Ob und wann Think Fast 2 in die Grok-Consumer-Apps kommt, ist offen.",
     "id": "audio-grok-voice-think-fast-2-2026-07-29"
+  },
+  {
+    "date": "2026-07-30",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Gemini Robotics 2 (mit ER 2 und On-Device 2)",
+    "org": "Google DeepMind",
+    "license": "closed",
+    "capability": "Drei Modelle in einem Release: Gemini Robotics 2 als Vision-Language-Action-Modell, das nicht mehr nur Arme, sondern den ganzen Körper eines Humanoiden steuert — laufen, sich bücken, strecken und dabei greifen, etwa eine Gießkanne aus dem Regal holen; Gemini Robotics ER 2 als übergeordnete Planungsschicht, die auf einem laufenden Videostream mitdenkt und die Motorik an ein beliebiges VLA-Modell abgibt; Gemini Robotics On-Device 2 als lokal laufende Variante ohne Netzverbindung. Ein und derselbe Checkpoint steuert laut Google drei verschiedene Roboterkörper; neue Zwei-Arm-Plattformen sind in wenigen Stunden und typischerweise mit unter 200 Beispielen adaptierbar. Erfolgsquoten aus Googles eigenen Tabellen: Ganzkörper-Manipulation auf Apptronik Apollo (Inspire-Hände) 76,3 % aus dem Regal, 68,4 % vom Tisch, 45,7 % vom Boden; mehrfingrige Feinmotorik (SharpaWave-Hände) 92 % Glühbirne herausdrehen, aber nur 36 % hineindrehen und 44 % Mülltüte zuknoten; Greifer-Aufgaben auf Franka Duo 89,6 % bei Präzisionseinsteckvorgängen, 78,9 % beim Bestücken mit wechselnden Werkzeugen. ER 2 erkennt den Fortschritt einer Aufgabe in fünf Stufen mit 57,4 % Trefferquote, findet den Moment eines Ereignisses im Video mit 91,3 % (mittlere Abweichung 0,96 s) und liest zehn Instrumententypen ab. Neu ist der Sicherheits-Benchmark ASIMOV-Agentic, der prüft, ob ein Agent unsichere Tool-Calls verweigert. Verfügbar ist nur ER 2 (Gemini API mit Live-Streaming-Endpunkt, AI Studio, Enterprise-Preview); VLA und On-Device bleiben bei Early-Access-Partnern. Kein Preis veröffentlicht.",
+    "whyItMattered": "Gemini Robotics 1.5 konnte den Oberkörper am Tisch — Version 2 geht von den Füßen bis in die Fingerspitzen und lässt mehrere, auch unterschiedliche Roboter zusammenarbeiten. Interessanter als die Ganzkörpersteuerung ist der eine Checkpoint für mehrere Körper: Wenn dasselbe Modell einen Humanoiden und einen Zwei-Arm-Tischroboter steuert und neue Hardware mit unter 200 Demonstrationen dazukommt, hört Robotik auf, ein Ein-Roboter-ein-Modell-Geschäft zu sein. Genauso aussagekräftig ist, was Google offenlegt: 36 % beim Eindrehen einer Glühbirne und 44 % beim Zuknoten einer Mülltüte sind die Zahlen eines Feldes, das noch nicht funktioniert — Feinmotorik bleibt das ungelöste Problem, nicht das Verstehen der Aufgabe. Und die Arbeitsteilung wird zum Standard: ER 2 sitzt als Planer in der normalen Gemini-API, die Ausführung liegt bei einem beliebigen VLA darunter.",
+    "firstOfKind": "Erstes Gemini-Robotikmodell mit Ganzkörpersteuerung und Kollaboration mehrerer, auch unterschiedlicher Roboter",
+    "sources": [
+      "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/",
+      "https://www.theverge.com/tech/973276/google-deepmind-gemini-robotics-2-whole-body"
+    ],
+    "disputed": false,
+    "note": "Nur ER 2 ist allgemein zugänglich (Gemini API / AI Studio, Enterprise-Preview); VLA und On-Device 2 laufen über eine Trusted-Tester-Anmeldung.",
+    "verificationNote": "Datum 30.07.2026 gegen die beiden DeepMind-Blogposts als Primärquellen verifiziert (Gemini Robotics 2 und Gemini Robotics ER 2, beide 30.07.2026) und durch Berichterstattung vom selben Tag bestätigt (The Verge, Ars Technica). Alle Erfolgsquoten und Benchmarkwerte stammen aus Googles eigenen Evaluationstabellen, sind nicht unabhängig gemessen und beziehen sich jeweils auf definierte Aufgabensets auf bestimmter Hardware (Apollo mit Inspire- bzw. SharpaWave-Händen, Franka Duo) — keine allgemeine Fähigkeitsaussage. Die Angabe „derselbe Checkpoint für drei Körper\" ist Googles Formulierung zu den gezeigten Demos, nicht ein gemessener Transferwert. Robotik ist in diesem Datensatz keine eigene Modalität; wie schon die Qwen-Robot-Suite (17.06.2026) unter Video eingeordnet — ER 2 arbeitet auf Videoströmen, das VLA erzeugt kein Video. Preise für ER 2 nennt Google nicht.",
+    "id": "video-gemini-robotics-2-2026-07-30"
+  },
+  {
+    "date": "2026-07-31",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Seedance 2.5 (Öffentlicher Start)",
+    "org": "ByteDance",
+    "license": "closed",
+    "capability": "Das am 23.06.2026 vorgestellte Modell geht in den regulären Betrieb, mit eigener Modellseite bei ByteDance Seed. ByteDance beschreibt es dort als gemeinsames Audio-Video-Modell für 30-Sekunden-Erzählungen: bis zu 30 Sekunden in einem Durchgang, zweimal verlängerbar, dazu ruhigere und konsistentere Bewegung. Referenzvideos werden nicht mehr nur in ihrer Bewegung übernommen, sondern in Absicht, Bildaufbau und filmischer Sprache gelesen; Bearbeitungsanweisungen greifen zuverlässiger und decken jetzt auch Audio ab. Für Produktionsarbeit kommen Weißmodell-Steuerung (Vorgabe von Kamera und Bildaufbau über eine 3D-Rohgeometrie), Green-Screen-Bearbeitung, professionelle Kamerafahrten und Performance-Blocking hinzu. Die Referenzobergrenze von 50 verteilt sich laut Modellkarte auf bis zu 30 Bilder, 10 Videoclips und 10 Audioclips. Preise auf BytePlus ModelArk liegen für einen Fünf-Sekunden-Clip im Format 16:9 bei rund $0,103 pro Sekunde in 480p und $0,231 pro Sekunde in 720p — etwa 47–54 % über Seedance 2.0; 4K steht auf der Preisliste nicht. Ausgeliefert wird gestuft: Jimeng und Doubao zuerst, danach BytePlus Global sowie CapCut/Dreamina.",
+    "whyItMattered": "Der Sprung von der Konferenzankündigung zur buchbaren Rechnung: 30 Sekunden in einem Durchgang mit synchronem Ton sind ab jetzt ein Produkt mit Preisschild, kein Enterprise-Beta-Versprechen. Der Preis ist dabei die eigentliche Nachricht — rund die Hälfte mehr pro Sekunde als Seedance 2.0, während ByteDance bei den Mini-Varianten bis auf $0,02 heruntergeht. Video spreizt sich damit sichtbar in ein Massensegment und ein Produktionssegment. Dorthin zielen auch die neuen Funktionen: Weißmodell-Vorgaben, Green Screen und Blocking sind keine Prompt-Spielereien, sondern Schritte aus einer echten Produktionspipeline — der Versuch, KI-Video vom Zufallstreffer zum planbaren Arbeitsmittel zu machen. Am selben Tag legt MiniMax mit H3 ein offenes Gegenmodell vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://seed.bytedance.com/en/seedance2_5",
+      "https://aireiter.com/blog/seedance-2-5",
+      "https://www.testingcatalog.com/exclusive-early-30-second-ai-videos-generated-by-seedance-2-5/"
+    ],
+    "disputed": false,
+    "note": "Gestufter Rollout: Am Starttag zeigten mehrere Plattformen (Dreamina, Runway, Pika) noch „coming soon\" oder Warteliste; die BytePlus-API war laut Berichten ab ca. 16.07.2026 zugänglich.",
+    "verificationNote": "Ergänzt den Eintrag vom 23.06.2026 (Vorstellung auf der Volcano-Engine-FORCE-Konferenz, Enterprise-Beta) um den öffentlichen Start. Fähigkeitsbeschreibung wörtlich von der offiziellen Modellseite seed.bytedance.com/en/seedance2_5 übernommen, die selbst kein Datum trägt. Das Startdatum 31.07.2026 stützt sich auf eine Mitteilung des Jimeng-Teams, die von Sekundärquellen mit Datum vom 29./31.07.2026 wiedergegeben wird, sowie darauf, dass die offizielle Seed-Modellseite an diesem Tag live ging — eine datierte ByteDance-Pressemitteilung existiert nicht. Die Preisangaben sind über eine Sekundärquelle von der ModelArk-Preisliste abgelesen und nicht direkt verifiziert (docs.byteplus.com listete 2.5 zum Prüfzeitpunkt nicht). Native 4K und die Verlängerung auf bis zu drei Minuten werden von Partnerseiten behauptet, sind aber weiterhin nicht offiziell bestätigt; ByteDance nennt nur „zweimal verlängerbar\". Unabhängige Benchmarkwerte (z. B. Artificial Analysis) lagen zum Prüfzeitpunkt nicht vor.",
+    "id": "video-seedance-2-5-public-launch-2026-07-31"
+  },
+  {
+    "date": "2026-07-31",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "MiniMax H3",
+    "org": "MiniMax",
+    "license": "open",
+    "capability": "Von MiniMax als „Open-Weights\"-Videomodell angekündigt: H3 nimmt Text, Bild, Video und Audio in einer gemeinsamen Anfrage als Kontext (bis 7.000 Zeichen Prompt, bis 9 Referenzbilder, 3 Videoclips, 3 Audioclips — Audio nur zusammen mit Bild oder Video) und gibt natives 2K mit synchronem Stereo-Ton aus, 4 bis 15 Sekunden in ganzzahligen Schritten. Neben reiner Generierung nennt MiniMax Bearbeitung vorhandener Aufnahmen und Bewegungsübertragung zwischen Videos. Architektonisch führt eine neue „H3-Omni\"-Transformer-Struktur Text-zu-Bild, Text-zu-Video, Bild-zu-Video und Audio in einem Rahmen zusammen — laut MiniMax rund 30 % mehr Trainingsdurchsatz —, dazu kommt ein neu entworfener Tokenizer (H3-VAE) mit hoher Kompression. Zum Preis sagt MiniMax nur relativ: 2K koste pro Sekunde weniger als ein Drittel vergleichbarer marktüblicher Modelle. Live ist H3 als „MiniMax-H3\" in der API und im MiniMax Hub; die Gewichte sollen „innerhalb weniger Tage\" vollständig offengelegt werden.",
+    "whyItMattered": "Wenn die Gewichte tatsächlich kommen, fällt die letzte große Lücke zwischen offenen und geschlossenen Videomodellen: 2K mit nativem, synchronem Stereo-Ton in einem Modell, das man herunterladen kann — bisher das Merkmal der geschlossenen Spitze um Seedance und Veo. Der Zeitpunkt ist kein Zufall: H3 erscheint am Tag des öffentlichen Seedance-2.5-Starts und unterbietet dessen Sekundenpreis nach Herstellerangabe deutlich. Bemerkenswert ist zudem, worauf MiniMax die Architektur ausdrücklich auslegt — Betrieb auf chinesischen Beschleunigern. Offene Gewichte plus heimische Hardware ergeben einen Videostack, der ohne westliche Cloud und ohne Nvidia auskommt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://platform.minimax.io/docs/release-notes/models",
+      "https://platform.minimax.io/docs/guides/video-generation",
+      "https://news.aibase.com/news/30033"
+    ],
+    "disputed": false,
+    "note": "Gewichte am 31.07.2026 noch nicht veröffentlicht — MiniMax kündigt sie „innerhalb weniger Tage\" an; in der MiniMaxAI-Organisation auf Hugging Face existierte zum Prüfzeitpunkt kein H3-Repository.",
+    "verificationNote": "Datum 31.07.2026 gegen MiniMax' eigene Release-Notes (platform.minimax.io/docs/release-notes/models, dort „Jul. 31, 2026\") verifiziert; die Modellbeschreibung als offenes, universelles multimodales Videomodell und die Eingabe-/Ausgabegrenzen (2K, 4–15 s, 9 Bilder / 3 Videos / 3 Audios, 7.000 Zeichen) stammen aus der offiziellen API-Dokumentation. Architekturangaben (H3-Omni-Transformer, H3-VAE, ~30 % Trainingsdurchsatz), der Preisvergleich („weniger als ein Drittel\") und die Chip-Kompatibilität sind Herstellerangaben, hier über chinesische Sekundärberichterstattung (AIBase) erfasst und nicht unabhängig geprüft; MiniMax veröffentlicht zu H3 keine Benchmarktabelle und keinen Vergleich gegen Seedance, Veo oder Kling. Eine in Sekundärquellen zirkulierende Angabe von rund $0,13 pro Sekunde findet sich auf keiner offiziellen Preisliste und ist hier deshalb nicht aufgenommen. Die Lizenz steht auf „open\" auf Basis der Ankündigung — wie beim Kimi-K3-Eintrag vom 16.07.2026 —, nicht auf Basis herunterladbarer Gewichte.",
+    "id": "video-minimax-h3-2026-07-31"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "30. Juli 2026",
+  lastVerified: "31. Juli 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-07-30",
+  lastVerifiedISO: "2026-07-31",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 237,
+  total: 240,
   placeholder: false,
 };
