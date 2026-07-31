@@ -2,7 +2,7 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 240 entries across text, image, video, audio,
+ * German descriptions. 241 entries across text, image, video, audio,
  * late 2022 → 31 July 2026.
  */
 export const entries: Entry[] = [
@@ -4268,6 +4268,27 @@ export const entries: Entry[] = [
     "note": "Gewichte am 31.07.2026 noch nicht veröffentlicht — MiniMax kündigt sie „innerhalb weniger Tage\" an; in der MiniMaxAI-Organisation auf Hugging Face existierte zum Prüfzeitpunkt kein H3-Repository.",
     "verificationNote": "Datum 31.07.2026 gegen MiniMax' eigene Release-Notes (platform.minimax.io/docs/release-notes/models, dort „Jul. 31, 2026\") verifiziert; die Modellbeschreibung als offenes, universelles multimodales Videomodell und die Eingabe-/Ausgabegrenzen (2K, 4–15 s, 9 Bilder / 3 Videos / 3 Audios, 7.000 Zeichen) stammen aus der offiziellen API-Dokumentation. Architekturangaben (H3-Omni-Transformer, H3-VAE, ~30 % Trainingsdurchsatz), der Preisvergleich („weniger als ein Drittel\") und die Chip-Kompatibilität sind Herstellerangaben, hier über chinesische Sekundärberichterstattung (AIBase) erfasst und nicht unabhängig geprüft; MiniMax veröffentlicht zu H3 keine Benchmarktabelle und keinen Vergleich gegen Seedance, Veo oder Kling. Eine in Sekundärquellen zirkulierende Angabe von rund $0,13 pro Sekunde findet sich auf keiner offiziellen Preisliste und ist hier deshalb nicht aufgenommen. Die Lizenz steht auf „open\" auf Basis der Ankündigung — wie beim Kimi-K3-Eintrag vom 16.07.2026 —, nicht auf Basis herunterladbarer Gewichte.",
     "id": "video-minimax-h3-2026-07-31"
+  },
+  {
+    "date": "2026-07-31",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "DeepSeek-V4-Flash-0731",
+    "org": "DeepSeek",
+    "license": "open",
+    "capability": "Ablösung der V4-Flash-Preview vom 24.04.2026 bei unveränderter Architektur und Größe (284 Mrd. Parameter total, rund 13 Mrd. aktiv, plus Modul für spekulatives Decoding): Laut DeepSeeks eigenem Changelog wurde das Modell nicht neu vortrainiert, sondern ausschließlich neu nachtrainiert („re-post-training\"). Der Zugewinn liegt entsprechend bei agentischen Aufgaben — Terminal Bench 2.1 82,7, Cybergym 76,7, Toolathlon-Verified 70,3, DSBench-FullStack 68,7, DSBench-Hard 59,6, DeepSWE 54,4, NL2Repo 54,2, dazu 25,2 auf Agents' Last Exam und 25,1 auf AutomationBench Public. Der Denkaufwand ist in drei Stufen steuerbar (low, high, max), das Kontextfenster bleibt bei 1 Mio. Tokens mit bis zu 384K Ausgabe-Tokens. Neu sind das native Responses-API-Format (nur für Flash, nicht für Pro) und eine Anpassung für den Betrieb unter Codex. Preise: 0,14 USD Eingabe (Cache-Miss), 0,0028 USD bei Cache-Treffer und 0,28 USD Ausgabe pro Mio. Tokens — rund ein Drittel von V4-Pro (0,435/0,87 USD). Auf dem Artificial-Analysis-Intelligence-Index erreicht Flash-0731 in der Stufe max 50 Punkte, V4-Pro 44. Gewichte unter MIT-Lizenz auf Hugging Face.",
+    "whyItMattered": "Das kleine Modell überholt das große aus dem eigenen Haus: 284 Mrd. Parameter schlagen 1,6 Bio. — bei einem Drittel des Preises und ohne eine einzige neue Pre-Training-Runde. Was DeepSeek hier zeigt, ist keine Skalierung, sondern reines Post-Training auf agentische Arbeit: Terminal-Sitzungen, Tool-Aufrufe, Repository-Aufgaben. Für Anwender verschiebt das die Rechnung deutlich, denn genau diese Aufgaben verbrauchen die meisten Tokens, und mit 0,0028 USD pro Mio. Cache-Treffer-Tokens wird ein Agent, der immer wieder denselben Code-Kontext liest, fast kostenlos. Zur absoluten Spitze bleibt Abstand — Claude Opus 5 (max) liegt bei 61, Kimi K3 (max) bei 57 —, aber der Preis pro Punkt Intelligenz ist bemerkenswert. Und die Reihenfolge ist ungewohnt: Das offizielle V4-Pro-Release steht laut DeepSeek noch aus, die kleine Variante läuft vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://api-docs.deepseek.com/updates",
+      "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+      "https://api-docs.deepseek.com/quick_start/pricing",
+      "https://artificialanalysis.ai/models/deepseek-v4-flash"
+    ],
+    "disputed": false,
+    "note": "Der API-Zugang läuft als öffentliche Beta. Die V4-Pro-API sowie die App- und Web-Modelle bleiben unverändert; ein offizielles V4-Pro-Release kündigt DeepSeek erst an. Auf der Preisseite ist zudem eine noch nicht aktive Spitzenlast-Tarifierung angekündigt (doppelter Preis während der Pekinger Kernzeiten).",
+    "verificationNote": "Datum 31.07.2026 gegen DeepSeeks eigenen Changelog (api-docs.deepseek.com/updates) als Primärquelle verifiziert und dadurch gestützt, dass das Hugging-Face-Repository deepseek-ai/DeepSeek-V4-Flash-0731 am selben Tag veröffentlicht wurde. Alle Benchmarkwerte sind Herstellerangaben aus der Modellkarte, erhoben mit DeepSeeks eigenem Harness (Temperatur 1,0, top_p 0,95) und nicht unabhängig reproduziert; eine Vergleichstabelle gegen fremde Modelle veröffentlicht DeepSeek nicht, und für die Preview-Version liegen keine Werte derselben Suiten vor — die Aussage „besser als die Preview\" ist damit DeepSeeks Formulierung, keine nachgerechnete Differenz. Die Indexwerte 50 (Flash-0731) und 44 (V4-Pro) stammen von Artificial Analysis und beziehen sich auf die Stufe max; Ausgabegeschwindigkeit und Latenz waren dort zum Prüfzeitpunkt noch nicht gemessen. Zwei Widersprüche bleiben offen: Artificial Analysis führt Flash-0731 als proprietär mit nicht verfügbaren Gewichten, obwohl das MIT-lizenzierte Repository am selben Tag online ging (Lizenz hier auf Basis des Repositorys, nicht der Ankündigung), und die Parameterzahl wird von Artificial Analysis mit 284 Mrd. total / 13 Mrd. aktiv angegeben, während die Hugging-Face-Kopfzeile 304 Mrd. ausweist — die Differenz dürfte auf das Modul für spekulatives Decoding zurückgehen, ist von DeepSeek aber nicht aufgelöst.",
+    "id": "text-deepseek-v4-flash-0731-2026-07-31"
   }
 ];
 
@@ -4277,6 +4298,6 @@ export const dataMeta = {
   lastVerifiedISO: "2026-07-31",
   windowStart: "2022-08",
   windowEnd: "2026-07",
-  total: 240,
+  total: 241,
   placeholder: false,
 };
