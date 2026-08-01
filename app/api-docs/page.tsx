@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { dataMeta, entries } from "@/data/timeline";
+import { StructuredData } from "@/components/StructuredData";
+import { apiDocsGraph } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "API — Die Beschleunigung",
   description:
-    "Öffentliche, kostenlose JSON-API des KI-Zeitstrahls: alle Meilenstein-Releases generativer KI als maschinenlesbarer Datensatz. CC-BY-4.0.",
+    "Öffentliche, kostenlose JSON-API des KI-Zeitstrahls: alle Meilenstein-Releases generativer KI als maschinenlesbarer Datensatz. CC-BY-4.0, kein API-Key.",
+  // Must be set explicitly: an unset `alternates` would inherit the root layout's
+  // canonical and point this page at `/`.
+  alternates: { canonical: "/api-docs" },
+  openGraph: {
+    title: "API — Die Beschleunigung",
+    description:
+      "Der komplette KI-Release-Datensatz als offene JSON-API. CC-BY-4.0, kein API-Key.",
+    url: "/api-docs",
+    type: "website",
+  },
 };
 
 const ENDPOINT = "https://timeline.snipki.de/api/v1/timeline";
@@ -100,6 +113,7 @@ function Section({
 export default function ApiDocsPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 pb-32 pt-20">
+      <StructuredData json={apiDocsGraph(entries, dataMeta.lastVerifiedISO)} />
       <Link
         href="/"
         className="font-mono text-xs uppercase tracking-[0.25em] text-brand-deep transition-opacity hover:opacity-70"

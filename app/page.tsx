@@ -13,6 +13,8 @@ import { SchonVergessen } from "@/components/SchonVergessen";
 import { Closing } from "@/components/Closing";
 import { SnipkiBridge } from "@/components/SnipkiBridge";
 import { MidCTA } from "@/components/MidCTA";
+import { StructuredData } from "@/components/StructuredData";
+import { homeGraph } from "@/lib/schema";
 
 export default function Page() {
   const buckets = cadenceByQuarter(entries);
@@ -21,6 +23,7 @@ export default function Page() {
 
   return (
     <main className="relative">
+      <StructuredData json={homeGraph(entries, dataMeta.lastVerifiedISO)} />
       <ScrollProgress />
       <FirstScreen />
       <DamalsHeute />
