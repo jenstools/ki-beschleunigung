@@ -100,3 +100,87 @@ const DOMAIN: Record<string, string> = {
 export function providerDomain(org: string): string {
   return DOMAIN[canonicalOrg(org)] ?? "";
 }
+
+/**
+ * Country of the lab's headquarters, ISO 3166-1 alpha-2.
+ *
+ * Deliberately incomplete: a provider missing from this map resolves to
+ * `undefined`, never to a default bucket. An earlier draft defaulted unknowns
+ * to "US/other" and silently misfiled Kyutai, Meituan, Ant Group and OpenMOSS —
+ * a published country claim has to be verified, not inferred from a name.
+ */
+const COUNTRY: Record<string, string> = {
+  // USA
+  OpenAI: "US",
+  Google: "US",
+  Anthropic: "US",
+  Meta: "US",
+  Microsoft: "US",
+  xAI: "US",
+  Apple: "US",
+  Adobe: "US",
+  Midjourney: "US",
+  Runway: "US",
+  Suno: "US",
+  Udio: "US",
+  "Luma AI": "US",
+  "Pika Labs": "US",
+  "Hume AI": "US",
+  "Sesame AI": "US",
+  Cognition: "US",
+  "Thinking Machines Lab": "US",
+  Genmo: "US",
+  ElevenLabs: "US",
+  // China
+  Alibaba: "CN",
+  ByteDance: "CN",
+  Moonshot: "CN",
+  DeepSeek: "CN",
+  Zhipu: "CN",
+  MiniMax: "CN",
+  Tencent: "CN",
+  Baidu: "CN",
+  Kuaishou: "CN",
+  StepFun: "CN",
+  "Fish Audio": "CN",
+  OpenMOSS: "CN",
+  Meituan: "CN",
+  "Ant Group": "CN",
+  "Shanghai Jiao Tong University": "CN",
+  // Europe
+  "Stability AI": "GB",
+  Recraft: "GB",
+  "Black Forest Labs": "DE",
+  Mistral: "FR",
+  Kyutai: "FR",
+  // Rest of world
+  Lightricks: "IL",
+  "Sakana AI": "JP",
+  TII: "AE",
+  Ideogram: "CA",
+  // Unmapped on purpose — HQ not confirmed against a primary source:
+  // poolside, DeepReinforce, Significant Gravitas, hexgrad.
+};
+
+const REGION_OF: Record<string, "US" | "CN" | "EU" | "OTHER"> = {
+  US: "US",
+  CN: "CN",
+  GB: "EU",
+  DE: "EU",
+  FR: "EU",
+  IL: "OTHER",
+  JP: "OTHER",
+  AE: "OTHER",
+  CA: "OTHER",
+};
+
+/** ISO country of the lab behind an `org` string, or undefined when unverified. */
+export function providerCountry(org: string): string | undefined {
+  return COUNTRY[canonicalOrg(org)];
+}
+
+/** Coarse bloc for the origin comparison, or undefined when the country is unverified. */
+export function providerRegion(org: string): "US" | "CN" | "EU" | "OTHER" | undefined {
+  const country = providerCountry(org);
+  return country ? REGION_OF[country] : undefined;
+}

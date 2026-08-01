@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CLUSTERS } from "@/lib/clusters";
 
 export function Closing({
   total,
@@ -62,6 +63,29 @@ export function Closing({
           </a>
         </div>
       </div>
+
+      {/* The only path from the narrative to the analysis pages. Crawlers reach
+          them from here, so this block is plain server-rendered links. */}
+      <nav className="mt-14 border-t border-rule pt-6">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint">
+          Ausgewertet
+        </p>
+        <ul className="mt-4 space-y-4">
+          {CLUSTERS.map((c) => (
+            <li key={c.path}>
+              <Link
+                href={c.path}
+                className="font-display text-2xl font-bold leading-tight tracking-tight text-brand-deep underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
+              >
+                {c.title}
+              </Link>
+              <p className="mt-1 text-[15px] leading-snug text-ink-soft">
+                {c.claim}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <div className="mt-14 border-t border-rule pt-6">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint">
