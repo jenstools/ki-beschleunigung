@@ -8,14 +8,15 @@ import {
   cadenceByYear,
   chronological,
   cluster,
-  compositeOrgLabels,
+  houseCount,
+  houseCounts,
+  jointCredits,
   licenseByModality,
   licenseByYear,
   longestPauses,
   OPEN_WEIGHTS_PENDING,
   orgPolicy,
   releases,
-  variantOrgPairs,
 } from "@/lib/clusters";
 import { domainOf } from "@/lib/metrics";
 import { clusterGraph } from "@/lib/schema";
@@ -131,7 +132,7 @@ export default function OffenheitPage() {
     rel.filter((e) => e.date > gap.before.date && e.date < gap.after.date),
   );
   const gapFirsts = inGap.filter((e) => e.firstOfKind);
-  const gapOrgs = new Set(inGap.map((e) => e.org)).size;
+  const gapHouses = houseCount(inGap);
 
   // The pace inside the gap is compared against the year it mostly falls in, so
   // the comparison figure comes from the same source as /tempo rather than a
@@ -139,17 +140,13 @@ export default function OffenheitPage() {
   const gapYear = cadenceByYear(rel).find((y) => y.year === Number(gap.before.date.slice(0, 4)))!;
   const gapPaceReference = gapYear.meanGap.toFixed(2).replace(".", ",");
 
-  const orgLabels =
-    policy.onlyOpen.length + policy.onlyClosed.length + policy.mixed.length;
-  // The org field is free text, so the label count above is not a house count.
-  // Both kinds of multi-name label are disclosed rather than normalised away.
-  const composites = compositeOrgLabels(rel);
-  const variantPairs = variantOrgPairs(rel);
-  const jointOrgs = composites.filter((c) => c.kind === "joint").map((c) => c.label);
-  const qualifiedOrgs = composites
-    .filter((c) => c.kind === "qualified")
-    .map((c) => c.label);
-  const overlappingOrgs = composites.filter((c) => c.overlapsWith.length > 0);
+  // Houses, not org labels: `house` is a hand-decided key per entry, so this is
+  // a count of companies rather than of the credits they published under.
+  const houses = policy.onlyOpen.length + policy.onlyClosed.length + policy.mixed.length;
+  // All that is left to disclose: credits naming several companies, where the
+  // release counts for the lead house only.
+  const joint = jointCredits(rel);
+  const hiddenHouses = [...new Set(joint.flatMap((j) => j.hidden))];
 
   const peak = years.reduce((a, b) => (b.openShare > a.openShare ? b : a));
   const trough = years.reduce((a, b) => (b.openShare < a.openShare ? b : a));
@@ -172,9 +169,7 @@ export default function OffenheitPage() {
     ((current.open - pendingThisYear) / current.total) * 100,
   );
 
-  const openOrgs = new Map<string, number>();
-  for (const e of open) openOrgs.set(e.org, (openOrgs.get(e.org) ?? 0) + 1);
-  const topOpen = [...openOrgs.entries()].sort((a, b) => b[1] - a[1]);
+  const topOpen = houseCounts(open);
   const singleShot = topOpen.filter(([, n]) => n === 1).length;
 
   const byYearOpen = new Map<string, Entry[]>();
@@ -214,8 +209,8 @@ export default function OffenheitPage() {
             <p className="mt-4">
               {open.length} der {rel.length} Releases kamen mit offenen
               Gewichten, also {Math.round(shareOfReleases)} Prozent. Sie stammen
-              von {topOpen.length} verschiedenen Organisationen — und liefern
-              einen überproportionalen Anteil der belegten Premieren.
+              von {topOpen.length} verschiedenen Häusern — und liefern einen
+              überproportionalen Anteil der belegten Premieren.
             </p>
           </>
         }
@@ -330,8 +325,8 @@ export default function OffenheitPage() {
             {gap.after.name} ({gap.after.org}).
           </p>
           <p className="mt-4">
-            In dem Fenster erschienen {inGap.length} Releases aus {gapOrgs}{" "}
-            Organisationen — {gapFirsts.length} davon mit einem belegten
+            In dem Fenster erschienen {inGap.length} Releases aus {gapHouses}{" "}
+            Häusern — {gapFirsts.length} davon mit einem belegten
             Premierenanspruch, und{" "}
             <strong className="font-semibold text-ink">alle proprietär</strong>.
             Ein halbes Jahr lang verschob sich also, was möglich war, und keine
@@ -417,9 +412,9 @@ export default function OffenheitPage() {
 
         <ClusterSection kicker="Hauspolitik" title="Offenheit ist selten eine Entscheidung pro Modell">
           <p>
-            Über Organisationen gezählt statt über Releases ergibt sich ein
-            klareres Bild. Von {orgLabels} Organisationsangaben im Datensatz
-            veröffentlichten {policy.onlyOpen.length} ausschließlich offen,{" "}
+            Über Häuser gezählt statt über Releases ergibt sich ein klareres
+            Bild. Von {houses} Häusern im Datensatz veröffentlichten{" "}
+            {policy.onlyOpen.length} ausschließlich offen,{" "}
             {policy.onlyClosed.length} ausschließlich geschlossen — und nur{" "}
             {policy.mixed.length} taten beides. Für die große Mehrheit ist
             Offenheit also keine Abwägung pro Release, sondern eine Festlegung
@@ -427,51 +422,41 @@ export default function OffenheitPage() {
           </p>
           <div className="mt-5 rounded-xl border border-rule bg-paper-2 p-5">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">
-              Warum „Angaben“ und nicht „Häuser“
+              Wie hier ein „Haus“ gezählt wird
             </p>
             <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">
-              Das Organisationsfeld dieses Datensatzes nennt die Urheber eines
-              Releases, wie sie in der Primärquelle stehen — und das ist kein
-              normalisierter Schlüssel. {jointOrgs.length} Angaben nennen
-              mehrere Häuser gemeinsam ({jointOrgs.join("; ")}),{" "}
-              {qualifiedOrgs.length} weitere nennen ein Haus plus Team oder
-              Division ({qualifiedOrgs.join("; ")}). In{" "}
-              {overlappingOrgs.length} dieser Fälle ist eines der genannten
-              Häuser zusätzlich unter eigenem Namen im Datensatz vertreten, wird
-              hier also doppelt gezählt.
+              Jeder Eintrag trägt zwei Felder: die Urhebernennung, wie sie in
+              der Primärquelle steht („Alibaba (Qwen)“, „Google DeepMind“), und
+              daneben das Haus als eigener, von Hand gesetzter Schlüssel. Gezählt
+              wird ausschließlich das Haus, also die Firma — Teams, Divisionen
+              und Schreibvarianten desselben Unternehmens fallen zusammen.
             </p>
             <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">
-              Zusammengeführt liegt die Zahl unterscheidbarer Häuser damit bei
-              höchstens {orgLabels - overlappingOrgs.length} statt {orgLabels},
-              und die {policy.onlyOpen.length} „ausschließlich offen“ sind eine
-              Obergrenze. Höchstens, nicht genau, und zwar aus drei Richtungen:
-              Schreibvarianten derselben Firma erkennt keine Regel („Zhipu /
-              Z.ai“ neben „Zhipu AI (Z.ai)“). Wo ein Haus ausschließlich in einer
-              Gemeinschaftsnennung vorkommt, verschwindet es beim Zusammenführen
-              ganz (CompVis). Und in {variantPairs.length} Fällen ist eine Angabe
-              die mögliche Kurzform einer anderen —{" "}
-              {variantPairs.map(([a, b]) => `${a} / ${b}`).join("; ")} —, wobei
-              nur ein Teil davon wirklich dasselbe Haus ist: „Suno AI“ ist
-              „Suno“, „Google DeepMind“ ist eine eigene Einheit. Diese
-              Entscheidung trifft eine Redaktion, nicht ein Skript, und dieser
-              Datensatz hat sie nicht getroffen. Am Befund ändert das nichts, die
-              drei Gruppen bleiben in derselben Größenordnung — aber die
-              Einzelzahl ist weicher, als sie aussieht.
+              Eine Unschärfe bleibt, und sie ist nicht auflösbar:{" "}
+              {joint.length} Nennungen kreditieren mehrere Firmen gemeinsam.
+              Dort zählt der Release beim federführenden Haus, also bei dem, das
+              ihn veröffentlicht hat —{" "}
+              {joint
+                .map((j) => `„${j.org}“ bei ${j.lead}`)
+                .join("; ")}
+              . {hiddenHouses.length} mitkreditierte Häuser kommen unter keiner
+              anderen Nennung vor und erscheinen deshalb in dieser Zählung
+              überhaupt nicht: {hiddenHouses.join(", ")}. Die Zahl {houses} ist
+              damit um bis zu {hiddenHouses.length} zu niedrig, nicht zu hoch.
             </p>
           </div>
           <p className="mt-4">
             Praktisch heißt das: die Frage „wird dieses Modell offen kommen?“
             ist meist schon beantwortet, bevor das Modell existiert. Die{" "}
-            {policy.mixed.length} gemischten Organisationen sind die
-            interessanten —
+            {policy.mixed.length} gemischten Häuser sind die interessanten —
             dort ist die Lizenz tatsächlich eine Entscheidung:{" "}
             {policy.mixed.join(", ")}.
           </p>
           <p className="mt-4">
             Gleichzeitig ist die offene Seite weniger konzentriert als erwartet.
             Die {open.length} offenen Releases verteilen sich auf{" "}
-            {topOpen.length} Organisationen, von denen {singleShot} genau
-            eines beigetragen haben. Die drei produktivsten —{" "}
+            {topOpen.length} Häuser, von denen {singleShot} genau eines
+            beigetragen haben. Die drei produktivsten —{" "}
             {topOpen
               .slice(0, 3)
               .map(([org, n]) => `${org} (${n})`)
@@ -586,7 +571,7 @@ export default function OffenheitPage() {
           </p>
           <p className="mt-4">
             Umgekehrt taugt die Zahl auch nicht als Abgesang. {open.length}{" "}
-            offene Releases von {topOpen.length} Organisationen sind keine
+            offene Releases von {topOpen.length} Häusern sind keine
             Nischenerscheinung, und der überproportionale Anteil an den
             Premieren zeigt, dass dort echte Erstleistungen entstehen, nicht nur
             Nachbauten. Die Kurve ist flach, nicht fallend — und im laufenden

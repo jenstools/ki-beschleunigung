@@ -52,7 +52,8 @@ const ENTRY_SHAPE = `{
   "datePrecision": "day",            // "day" | "month"
   "modality": "video",               // "text" | "image" | "video" | "audio"
   "name": "Seedance 2.5",
-  "org": "ByteDance",
+  "org": "ByteDance",                // Urhebernennung, wie in der Quelle
+  "house": "ByteDance",              // die Firma — dieses Feld zählen
   "license": "closed",               // "open" | "closed"
   "capability": "…",                 // was es neu konnte
   "whyItMattered": "…",              // Delta zum vorherigen Stand
@@ -68,7 +69,16 @@ const FIELDS: { name: string; type: string; desc: string }[] = [
   { name: "datePrecision", type: '"day" | "month"', desc: "Genauigkeit des Datums." },
   { name: "modality", type: "Modality", desc: "text · image · video · audio." },
   { name: "name", type: "string", desc: "Produkt-/Modellname." },
-  { name: "org", type: "string", desc: "Organisation / Labor." },
+  {
+    name: "org",
+    type: "string",
+    desc: "Urhebernennung, wortgleich zur Primärquelle („Alibaba (Qwen)“). Freitext — nicht zum Zählen.",
+  },
+  {
+    name: "house",
+    type: "string",
+    desc: "Die Firma dahinter, als kanonischer Schlüssel („Alibaba“). Für jede Zählung nach Organisation dieses Feld verwenden.",
+  },
   { name: "license", type: '"open" | "closed"', desc: "Offene Gewichte oder proprietär." },
   { name: "capability", type: "string", desc: "Was das Release neu konnte." },
   { name: "whyItMattered", type: "string", desc: "Der Fortschritt gegenüber dem Stand davor." },

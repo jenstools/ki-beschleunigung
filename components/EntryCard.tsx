@@ -30,7 +30,7 @@ export function EntryCard({ entry }: { entry: Entry }) {
   const color = personal ? "var(--brand-deep)" : MODALITY_COLOR[entry.modality];
   const isOpen = entry.license === "open";
   const day = dayNumber(entry.date, entry.datePrecision);
-  const domain = providerDomain(entry.org);
+  const domain = providerDomain(entry.house);
   const highlight = firstSentence(entry.capability);
   // Only the remainder goes in the disclosure — repeating the teaser reads as a stutter.
   const rest = entry.capability.startsWith(highlight)
