@@ -10,8 +10,28 @@ export type Entry = {
   modality: Modality;
   /** Product / model name, e.g. "Sora", "Claude 3.5 Sonnet". */
   name: string;
-  /** Organization, e.g. "OpenAI", "Alibaba". */
+  /**
+   * Display credit, verbatim from the primary source — "Alibaba (Qwen)",
+   * "Google DeepMind", "Stability AI / CompVis / RunwayML". Free text by
+   * design: it is what the release was published under. Never count it.
+   */
   org: string;
+  /**
+   * The company behind the release, as a canonical key — hand-decided per
+   * entry, never derived from `org` at runtime.
+   *
+   * This is the field every organisation count uses. `org` is free text, so
+   * counting it turns one house into several ("Meta", "Meta AI",
+   * "Meta (Superintelligence Labs)") and any figure built on it is an upper
+   * bound. `house` collapses those, and collapses spelling variants a rule
+   * cannot ("Zhipu / Z.ai" and "Zhipu AI (Z.ai)" are the same company).
+   *
+   * Where several companies are credited jointly, this names the lead house
+   * only — see `JOINT_CREDITS` in lib/providers.ts for those four cases and
+   * the co-credited houses they hide. Keys match the provider registry in
+   * lib/providers.ts, which is asserted at build time.
+   */
+  house: string;
   license: License;
   /** One line: what it could newly do. */
   capability: string;

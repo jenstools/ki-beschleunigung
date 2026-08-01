@@ -1,38 +1,60 @@
-/** Canonical company for an entry's `org` string (collapses qualifiers/sub-labs). */
-export function canonicalOrg(org: string): string {
-  const o = org.toLowerCase();
-  const has = (...ks: string[]) => ks.some((k) => o.includes(k));
-  if (has("openai")) return "OpenAI";
-  if (has("google", "deepmind")) return "Google";
-  if (has("anthropic")) return "Anthropic";
-  if (has("microsoft")) return "Microsoft";
-  if (has("meta")) return "Meta";
-  if (has("alibaba", "qwen")) return "Alibaba";
-  if (has("moonshot", "kimi")) return "Moonshot";
-  if (has("deepseek")) return "DeepSeek";
-  if (has("zhipu", "z.ai", "glm")) return "Zhipu";
-  if (has("minimax", "hailuo")) return "MiniMax";
-  if (has("bytedance", "seed", "seedance")) return "ByteDance";
-  if (has("tencent", "hunyuan")) return "Tencent";
-  if (has("baidu", "ernie")) return "Baidu";
-  if (has("stability")) return "Stability AI";
-  if (has("black forest", "flux")) return "Black Forest Labs";
-  if (has("midjourney")) return "Midjourney";
-  if (has("runway")) return "Runway";
-  if (has("kuaishou", "kling")) return "Kuaishou";
-  if (has("elevenlabs")) return "ElevenLabs";
-  if (has("suno")) return "Suno";
-  if (has("xai", "grok")) return "xAI";
-  if (has("mistral")) return "Mistral";
-  if (has("lightricks", "ltx")) return "Lightricks";
-  if (has("stepfun", "step")) return "StepFun";
-  if (has("fish audio")) return "Fish Audio";
-  if (has("ideogram")) return "Ideogram";
-  if (has("adobe")) return "Adobe";
-  if (has("genmo", "mochi")) return "Genmo";
-  // Fall back to the first segment of the org name.
-  return org.split(/[/(,]/)[0].trim();
-}
+//
+// Provider metadata, keyed on `Entry.house`.
+//
+// `house` is hand-decided per entry (see data/types.ts), so every lookup in
+// this file is an exact map read. An earlier version derived the company from
+// the free-text `org` string with an ordered list of substring tests, which was
+// wrong in a way that only showed up in aggregate: "RunwayML / Stability AI"
+// matched `stability` before `runway` and filed Stable Diffusion 1.5 — a
+// release Runway published — under a British company. Substring order is not
+// an editorial decision, so the decision moved into the data.
+//
+
+/**
+ * Credits that name several genuinely distinct companies. `house` records the
+ * lead — the party that published the release — so the co-credited houses
+ * listed here are not counted anywhere.
+ *
+ * Hand-written, because no rule separates these from a house-plus-division
+ * label: "Alibaba (Qwen)" and "RunwayML / Stability AI" both contain a
+ * separator, but only one of them is two companies. `hidden` names the
+ * co-credited houses that appear nowhere else in the dataset and therefore
+ * drop out of the house count entirely.
+ */
+export const JOINT_CREDITS: {
+  org: string;
+  lead: string;
+  alsoCredited: string[];
+  /** Co-credited houses that appear under no other org label. */
+  hidden: string[];
+}[] = [
+  {
+    org: "OpenMOSS / MOSI.AI / Shanghai Innovation Institute",
+    lead: "OpenMOSS",
+    alsoCredited: ["MOSI.AI", "Shanghai Innovation Institute"],
+    hidden: ["MOSI.AI", "Shanghai Innovation Institute"],
+  },
+  {
+    // Published from the `runwayml/` HuggingFace repo, so Runway is the lead
+    // credit even though Stability AI trained the base model.
+    org: "RunwayML / Stability AI",
+    lead: "Runway",
+    alsoCredited: ["Stability AI"],
+    hidden: [],
+  },
+  {
+    org: "Shanghai Jiao Tong University / Cambridge University",
+    lead: "Shanghai Jiao Tong University",
+    alsoCredited: ["Cambridge University"],
+    hidden: ["Cambridge University"],
+  },
+  {
+    org: "Stability AI / CompVis / RunwayML",
+    lead: "Stability AI",
+    alsoCredited: ["CompVis", "Runway"],
+    hidden: ["CompVis"],
+  },
+];
 
 const PALETTE: Record<string, string> = {
   OpenAI: "#10a37f",
@@ -59,8 +81,9 @@ const PALETTE: Record<string, string> = {
   Mistral: "#fa520f",
 };
 
-export function providerColor(name: string): string {
-  return PALETTE[name] ?? "#8a938d";
+/** Brand colour for a house, or a neutral grey when it has none. */
+export function providerColor(house: string): string {
+  return PALETTE[house] ?? "#8a938d";
 }
 
 const DOMAIN: Record<string, string> = {
@@ -96,9 +119,9 @@ const DOMAIN: Record<string, string> = {
   snipKI: "snipki.de",
 };
 
-/** Best-guess domain for a provider's `org` string (for favicon logos). */
-export function providerDomain(org: string): string {
-  return DOMAIN[canonicalOrg(org)] ?? "";
+/** Domain for a house (for favicon logos); empty string when none is recorded. */
+export function providerDomain(house: string): string {
+  return DOMAIN[house] ?? "";
 }
 
 /**
@@ -174,13 +197,44 @@ const REGION_OF: Record<string, "US" | "CN" | "EU" | "OTHER"> = {
   CA: "OTHER",
 };
 
-/** ISO country of the lab behind an `org` string, or undefined when unverified. */
-export function providerCountry(org: string): string | undefined {
-  return COUNTRY[canonicalOrg(org)];
+/** ISO country of a house's HQ, or undefined when unverified. */
+export function providerCountry(house: string): string | undefined {
+  return COUNTRY[house];
 }
 
 /** Coarse bloc for the origin comparison, or undefined when the country is unverified. */
-export function providerRegion(org: string): "US" | "CN" | "EU" | "OTHER" | undefined {
-  const country = providerCountry(org);
+export function providerRegion(house: string): "US" | "CN" | "EU" | "OTHER" | undefined {
+  const country = providerCountry(house);
   return country ? REGION_OF[country] : undefined;
+}
+
+/**
+ * Build-time guard: every house in the dataset must be a known key here.
+ *
+ * `house` is typed as `string`, so a typo ("Googe") or a new company added to
+ * data/timeline.ts without a registry entry would otherwise fail silently —
+ * missing its colour and logo, and counting as a separate house forever. The
+ * country map stays deliberately incomplete, so unverified HQs are listed by
+ * name rather than tripping this.
+ */
+export function assertKnownHouses(houses: Iterable<string>): void {
+  const known = new Set([
+    ...Object.keys(DOMAIN),
+    ...Object.keys(COUNTRY),
+    ...Object.keys(PALETTE),
+    // No HQ confirmed against a primary source, so intentionally absent from
+    // COUNTRY — but still real, known houses.
+    "poolside",
+    "DeepReinforce",
+    "Significant Gravitas",
+    "hexgrad",
+  ]);
+  const unknown = [...new Set(houses)].filter((h) => !known.has(h)).sort();
+  if (unknown.length) {
+    throw new Error(
+      `Unbekanntes Haus in data/timeline.ts: ${unknown.join(", ")}. ` +
+        `Bitte in lib/providers.ts eintragen (Domain, Land, Farbe) — sonst ` +
+        `zählt es als eigenes Haus, ohne Logo und ohne Region.`,
+    );
+  }
 }

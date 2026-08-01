@@ -2,14 +2,13 @@ import { dataMeta, entries } from "@/data/timeline";
 import {
   chronological,
   cluster,
-  compositeOrgLabels,
+  jointCredits,
   licenseByModality,
   licenseByYear,
   longestPauses,
   OPEN_WEIGHTS_PENDING,
   orgPolicy,
   releases,
-  variantOrgPairs,
 } from "@/lib/clusters";
 import { LICENSE, SITE_URL } from "@/lib/site";
 
@@ -97,27 +96,25 @@ const payload = {
     })),
   },
   /**
-   * Counted over organisations, not releases: for most houses openness is a
-   * standing policy rather than a per-release decision, which the release count
-   * hides because a few prolific labs dominate it.
+   * Counted over houses, not releases: for most houses openness is a standing
+   * policy rather than a per-release decision, which the release count hides
+   * because a few prolific labs dominate it.
    */
   orgPolicy: {
-    onlyOpen: policy.onlyOpen.sort(),
-    onlyClosed: policy.onlyClosed.sort(),
-    mixed: policy.mixed.sort(),
+    onlyOpen: policy.onlyOpen,
+    onlyClosed: policy.onlyClosed,
+    mixed: policy.mixed,
     /**
-     * The three groups above count `org` labels, and `org` is free text. Both
-     * lists ship so a consumer can reproduce the caveat rather than trust the
-     * counts blindly.
+     * The three groups count `house` — a hand-set canonical key per entry — not
+     * the free-text `org` credit, so divisions and spelling variants of one
+     * company do not appear as separate houses.
      *
-     * `compositeLabels` — labels naming more than one thing; where
-     * `overlapsWith` is non-empty, that house is also counted under its own
-     * name. `variantPairs` — plain labels where one may be the short form of the
-     * other. Unresolved on purpose: no rule decides whether "Google DeepMind"
-     * is "Google".
+     * The one irreducible caveat ships with the data: these credits name
+     * several companies, and the release counts for `lead` only. Houses in
+     * `hidden` appear under no other credit and so are absent from the counts
+     * above entirely.
      */
-    compositeLabels: compositeOrgLabels(rel),
-    variantPairs: variantOrgPairs(rel).map(([short, long]) => ({ short, long })),
+    jointCredits: jointCredits(rel),
   },
   count: open.length,
   open: open.map((e) => ({

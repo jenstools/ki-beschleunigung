@@ -1,7 +1,7 @@
 import type { Entry, Modality } from "@/data/types";
 import { MODALITY_ORDER } from "@/data/types";
 import { daysBetween, parseYear } from "@/lib/metrics";
-import { providerRegion } from "@/lib/providers";
+import { assertKnownHouses, JOINT_CREDITS, providerRegion } from "@/lib/providers";
 
 /**
  * Statistics layer for the cluster pages.
@@ -115,6 +115,20 @@ export const CLUSTERS: Cluster[] = [
       "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 70 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
     api: "/api/v1/offenheit",
     verify: (rel) => {
+      // This page counts houses, so an unregistered one would silently become
+      // its own house here. Guarded on the page that publishes the figure.
+      assertKnownHouses(rel.map((e) => e.house));
+      // Every joint credit must still be present under that exact org label,
+      // or the caveat box names a case the dataset no longer contains.
+      for (const j of JOINT_CREDITS) {
+        if (!rel.some((e) => e.org === j.org)) {
+          throw new Error(
+            `Offenheit: Gemeinschaftsnennung "${j.org}" steht in JOINT_CREDITS, ` +
+              `kommt im Datensatz aber nicht mehr vor. Eintrag prüfen.`,
+          );
+        }
+      }
+
       const open = rel.filter((e) => e.license === "open");
       const firsts = rel.filter((e) => e.firstOfKind);
       const byYear = new Map(licenseByYear(rel).map((y) => [y.year, y.openShare]));
@@ -359,53 +373,35 @@ export type OrgPolicy = {
   mixed: string[];
 };
 
-export type CompositeOrg = {
-  label: string;
-  /**
-   * `joint` — several houses credited together, e.g. "RunwayML / Stability AI".
-   * `qualified` — one house plus a team or division, e.g. "Alibaba (Qwen)".
-   *
-   * Both inflate an organisation count, but for different reasons, so they are
-   * not merged into one figure.
-   */
-  kind: "joint" | "qualified";
-  /** Named houses in this label that also appear on their own in the dataset. */
-  overlapsWith: string[];
-};
+/** Distinct houses in a release set, most releases first. */
+export function houseCounts(entries: Entry[]): [string, number][] {
+  const counts = new Map<string, number>();
+  for (const e of entries) counts.set(e.house, (counts.get(e.house) ?? 0) + 1);
+  return [...counts.entries()].sort((a, b) =>
+    b[1] - a[1] || (a[0] < b[0] ? -1 : 1),
+  );
+}
+
+/** How many distinct houses are behind a release set. */
+export function houseCount(entries: Entry[]): number {
+  return new Set(entries.map((e) => e.house)).size;
+}
 
 /**
- * Organisation labels that name more than one thing.
+ * The joint credits actually present in a release set, with the release count
+ * each carries.
  *
- * The `org` field records the credit as the primary source gives it, so a
- * collaboration ("RunwayML / Stability AI") and a division ("Alibaba (Qwen)")
- * each produce their own label. Counting organisations therefore overstates the
- * number of distinct houses whenever one of the named parties also ships under
- * its own name. This surfaces exactly which labels are affected so the page can
- * disclose the double count instead of quietly normalising a free-text field
- * into something it is not.
- *
- * Deliberately incomplete: it cannot catch spelling variants of the same house
- * ("Zhipu / Z.ai" vs. "Zhipu AI (Z.ai)"), so any adjusted count derived from it
- * is an upper bound, not a corrected figure.
+ * Everything else about the free-text `org` field is now resolved in the data
+ * by `Entry.house`, so this is all that is left to disclose: where several
+ * companies are credited together, the release counts for the lead house only.
  */
-export function compositeOrgLabels(entries: Entry[]): CompositeOrg[] {
-  const labels = [...new Set(entries.map((e) => e.org))];
-  const plain = new Set(labels.filter((l) => !/[/()&]/.test(l)));
-
-  return labels
-    .filter((l) => /[/()&]/.test(l))
-    .map((label) => ({
-      label,
-      // A parenthesis marks a qualifier, even when it contains a slash
-      // ("ByteDance (Volcano Engine / Doubao)") — the slash is inside the
-      // division name there, not between two crediting houses.
-      kind: label.includes("(") ? ("qualified" as const) : ("joint" as const),
-      overlapsWith: label
-        .split(/[/()&]/)
-        .map((part) => part.trim())
-        .filter((part) => plain.has(part)),
-    }))
-    .sort((a, b) => (a.label < b.label ? -1 : 1));
+export function jointCredits(
+  entries: Entry[],
+): { org: string; lead: string; alsoCredited: string[]; hidden: string[]; count: number }[] {
+  return JOINT_CREDITS.map((j) => ({
+    ...j,
+    count: entries.filter((e) => e.org === j.org).length,
+  })).filter((j) => j.count > 0);
 }
 
 /**
@@ -432,45 +428,28 @@ export const OPEN_WEIGHTS_PENDING: { id: string; why: string }[] = [
 ];
 
 /**
- * Pairs of plain organisation labels where one is a prefix of the other at a
- * token boundary — "Suno" / "Suno AI", "Google" / "Google DeepMind".
- *
- * Neither the bracket nor the slash rule catches these, and no rule can decide
- * them: "Suno AI" is plainly the same house as "Suno", while "Google DeepMind"
- * is arguably its own unit. They are surfaced, not resolved, so an organisation
- * count can be published as a bound instead of a false precision.
- */
-export function variantOrgPairs(entries: Entry[]): [string, string][] {
-  const plain = [...new Set(entries.map((e) => e.org))]
-    .filter((l) => !/[/()&]/.test(l))
-    .sort();
-
-  const pairs: [string, string][] = [];
-  for (const short of plain) {
-    for (const long of plain) {
-      if (long !== short && long.startsWith(`${short} `)) pairs.push([short, long]);
-    }
-  }
-  return pairs;
-}
-
-/**
  * Whether openness is a house policy or a per-release decision. Counted over
- * organisations rather than releases, because the release count is dominated by
- * a handful of prolific labs and hides how most houses behave.
+ * houses rather than releases, because the release count is dominated by a
+ * handful of prolific labs and hides how most houses behave.
+ *
+ * Keyed on `house`, not `org`: counting the display credit split Meta into
+ * three and Zhipu into two, which inflated every bucket below.
  */
 export function orgPolicy(entries: Entry[]): OrgPolicy {
-  const orgs = new Map<string, { open: number; closed: number }>();
+  const houses = new Map<string, { open: number; closed: number }>();
   for (const e of entries) {
-    const bucket = orgs.get(e.org) ?? { open: 0, closed: 0 };
+    const bucket = houses.get(e.house) ?? { open: 0, closed: 0 };
     bucket[e.license] += 1;
-    orgs.set(e.org, bucket);
+    houses.set(e.house, bucket);
   }
   const policy: OrgPolicy = { onlyOpen: [], onlyClosed: [], mixed: [] };
-  for (const [org, { open, closed }] of orgs) {
-    if (open && closed) policy.mixed.push(org);
-    else if (open) policy.onlyOpen.push(org);
-    else policy.onlyClosed.push(org);
+  for (const [house, { open, closed }] of houses) {
+    if (open && closed) policy.mixed.push(house);
+    else if (open) policy.onlyOpen.push(house);
+    else policy.onlyClosed.push(house);
+  }
+  for (const list of [policy.onlyOpen, policy.onlyClosed, policy.mixed]) {
+    list.sort((a, b) => (a < b ? -1 : 1));
   }
   return policy;
 }
@@ -505,7 +484,7 @@ export type RegionCount = { region: string; count: number };
 export function countsByRegion(entries: Entry[]): RegionCount[] {
   const counts = new Map<string, number>();
   for (const e of entries) {
-    const key = providerRegion(e.org) ?? "unbekannt";
+    const key = providerRegion(e.house) ?? "unbekannt";
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
   return [...counts.entries()]

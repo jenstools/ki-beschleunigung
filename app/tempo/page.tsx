@@ -8,6 +8,7 @@ import {
   chronological,
   cluster,
   densestWeeks,
+  houseCount,
   longestPauses,
   releases,
 } from "@/lib/clusters";
@@ -253,7 +254,7 @@ export default function TempoPage() {
             Rollierendes 7-Tage-Fenster über alle tagesgenauen Releases. Die
             dichteste Woche des Datensatzes brachte{" "}
             {weeks[0].entries.length} fähigkeitsverändernde Releases aus{" "}
-            {new Set(weeks[0].entries.map((e) => e.org)).size} Häusern — in sieben
+            {houseCount(weeks[0].entries)} Häusern — in sieben
             Tagen fast so viele wie im gesamten Jahr 2022 (
             {rel.filter((e) => e.date < "2023").length}).
           </p>

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import type { Entry } from "@/data/types";
 import { monthYear } from "@/lib/metrics";
-import { canonicalOrg, providerColor } from "@/lib/providers";
+import { providerColor } from "@/lib/providers";
 
 const START_Y = 2022;
 const START_M = 8; // August 2022
@@ -31,7 +31,7 @@ export function ProviderRace({ entries }: { entries: Entry[] }) {
       const to = y === END_Y ? END_M : 12;
       for (let m = from; m <= to; m++) months.push({ y, m });
     }
-    const norm = entries.map((e) => ({ p: canonicalOrg(e.org), idx: monthIndex(e.date) }));
+    const norm = entries.map((e) => ({ p: e.house, idx: monthIndex(e.date) }));
     return months.map(({ y, m }, i) => {
       const counts: Record<string, number> = {};
       let total = 0;
