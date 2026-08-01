@@ -1,4 +1,5 @@
 import type { Entry } from "@/data/types";
+import type { Cluster } from "@/lib/clusters";
 import { countsByLicense } from "@/lib/metrics";
 import {
   API_URL,
@@ -131,6 +132,121 @@ function dataset(entries: Entry[], lastVerifiedISO: string): Json {
         encodingFormat: "application/json",
         contentUrl: API_URL,
         license: LICENSE.url,
+      },
+    ],
+  };
+}
+
+// ------------------------------------------------------------- cluster pages
+
+/**
+ * A cluster page's own Dataset node: a *subset* of the master dataset, with its
+ * own `@id` so it can be cited on its own, and `isPartOf` pointing back at
+ * `#dataset` so engines merge the two instead of treating them as rivals.
+ */
+function clusterDataset(
+  c: Cluster,
+  subset: Entry[],
+  lastVerifiedISO: string,
+): Json {
+  const url = `${SITE_URL}${c.path}`;
+  return {
+    "@type": "Dataset",
+    "@id": `${url}#dataset`,
+    name: c.title,
+    description: `${c.claim} Teilmenge aus ${subset.length} von insgesamt kuratierten KI-Releases.`,
+    url,
+    isPartOf: { "@id": DATASET_ID },
+    inLanguage: "de-DE",
+    isAccessibleForFree: true,
+    license: LICENSE.url,
+    creditText: LICENSE.attribution,
+    creator: { "@id": AUTHOR_ID },
+    publisher: { "@id": ORG_ID },
+    dateModified: lastVerifiedISO,
+    temporalCoverage: temporalCoverage(subset),
+    measurementTechnique:
+      "Manuelle Kuration mit unabhängiger Datumsverifikation gegen Primärquellen",
+    distribution: [
+      {
+        "@type": "DataDownload",
+        name: `${c.short} als JSON`,
+        encodingFormat: "application/json",
+        contentUrl: `${SITE_URL}${c.api}`,
+        license: LICENSE.url,
+      },
+    ],
+  };
+}
+
+/** One release as a list item — named, dated, and linked to its primary source. */
+function listItem(entry: Entry, position: number): Json {
+  return {
+    "@type": "ListItem",
+    position,
+    name: `${entry.name} (${entry.org})`,
+    item: {
+      "@type": "SoftwareApplication",
+      name: entry.name,
+      applicationCategory: "Generative KI",
+      datePublished: entry.date,
+      author: { "@type": "Organization", name: entry.org },
+      description: entry.firstOfKind || entry.capability,
+      ...(entry.sources[0] ? { sameAs: entry.sources[0] } : {}),
+    },
+  };
+}
+
+/**
+ * JSON-LD for a cluster page. Every cluster emits the same five-node shape —
+ * Organization, Person, subset Dataset, the page, and an ItemList of the
+ * releases it names — so a machine that has parsed one page can parse all of them.
+ *
+ * `pageType` is "CollectionPage" when the page *is* the list (`/erstmalig`) and
+ * "Article" when the list only supports an argument (`/tempo`).
+ */
+export function clusterGraph(opts: {
+  cluster: Cluster;
+  subset: Entry[];
+  listed: Entry[];
+  lastVerifiedISO: string;
+  pageType: "CollectionPage" | "Article";
+}): Json {
+  const { cluster: c, subset, listed, lastVerifiedISO, pageType } = opts;
+  const url = `${SITE_URL}${c.path}`;
+  const datasetId = `${url}#dataset`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization(),
+      author(),
+      clusterDataset(c, subset, lastVerifiedISO),
+      {
+        "@type": pageType,
+        "@id": `${url}#webpage`,
+        url,
+        name: c.title,
+        headline: c.title,
+        abstract: c.claim,
+        description: c.description,
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": datasetId },
+        mainEntity: { "@id": `${url}#list` },
+        inLanguage: "de-DE",
+        dateModified: lastVerifiedISO,
+        author: { "@id": AUTHOR_ID },
+        publisher: { "@id": ORG_ID },
+        license: LICENSE.url,
+        citation: { "@id": DATASET_ID },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${url}#list`,
+        name: c.title,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: listed.length,
+        itemListElement: listed.map((e, i) => listItem(e, i + 1)),
       },
     ],
   };

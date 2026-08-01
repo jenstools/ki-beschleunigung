@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { dataMeta } from "@/data/timeline";
+import { CLUSTERS } from "@/lib/clusters";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,10 +15,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    // Cluster pages come from the registry, so a new one cannot ship unlisted.
+    ...CLUSTERS.map((c) => ({
+      url: `${SITE_URL}${c.path}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
     {
       url: `${SITE_URL}/api-docs`,
       lastModified,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.6,
     },
   ];

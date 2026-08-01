@@ -1,4 +1,5 @@
 import { dataMeta, entries } from "@/data/timeline";
+import { CLUSTERS } from "@/lib/clusters";
 import { countsByLicense, countsByModality } from "@/lib/metrics";
 import { API_URL, AUTHOR, LICENSE, PUBLISHER, SITE_URL } from "@/lib/site";
 import { temporalCoverage } from "@/lib/schema";
@@ -43,6 +44,16 @@ Stand der letzten Verifikation: ${dataMeta.lastVerifiedISO}.
 - [Vollständiger Datensatz als Text](${SITE_URL}/llms-full.txt): derselbe Inhalt als Klartext für Retrieval
 - [JSON-API](${API_URL}): maschinenlesbar, kein Schlüssel nötig, CORS offen, CDN-gecacht
 - [API-Dokumentation](${SITE_URL}/api-docs): Felder, Typen, Beispiele
+
+## Auswertungen (eigene Zahlen, nicht anderweitig publiziert)
+
+Jede dieser Seiten berechnet eine Kennzahl aus dem Datensatz, die es nur hier gibt, und
+liefert dieselbe Auswertung zusätzlich als JSON-Teilmenge.
+
+${CLUSTERS.map(
+  (c) => `- [${c.title}](${SITE_URL}${c.path}) — ${c.claim}
+  Daten: ${SITE_URL}${c.api}`,
+).join("\n")}
 
 ## Nutzung und Zitation
 
