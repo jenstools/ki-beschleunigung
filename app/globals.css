@@ -113,6 +113,22 @@ body {
   animation-play-state: paused;
 }
 
+/* Disclosure reveal for <details> entry cards. CSS-only on purpose: the content
+   stays in the DOM for crawlers instead of being mounted on click. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+details[open] > .reveal {
+  animation: reveal 0.25s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
