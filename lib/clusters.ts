@@ -41,7 +41,7 @@ export type Cluster = {
   verify: (rel: Entry[]) => void;
 };
 
-function expect(label: string, actual: number, claimed: number): void {
+function expect(label: string, actual: number | string, claimed: number | string): void {
   if (actual !== claimed) {
     throw new Error(
       `Cluster-Claim veraltet: ${label} steht als ${claimed} im Text, ` +
@@ -103,6 +103,56 @@ export const CLUSTERS: Cluster[] = [
       expect("Premieren Bild", byModality.get("image") ?? 0, 21);
       expect("Premieren offen", firsts.filter((e) => e.license === "open").length, 41);
       expect("Premieren strittig", firsts.filter((e) => e.disputed).length, 8);
+    },
+  },
+  {
+    path: "/offenheit",
+    title: "Offenheit: die Lücke von 194 Tagen",
+    short: "Offenheit",
+    claim:
+      "Der Anteil offener Gewichte erreichte 2023 mit 38 % seinen Höchststand und fiel 2025 auf 17 %. Zwischen dem 26. Juni 2025 und dem 6. Januar 2026 liegen 194 Tage, in denen dieser Datensatz keinen einzigen Release mit offenen Gewichten verzeichnet — bei 16 geschlossenen, davon 12 mit Premierenanspruch. Trotzdem stammen 41 der 113 belegten Premieren von offenen Modellen.",
+    description:
+      "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 70 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
+    api: "/api/v1/offenheit",
+    verify: (rel) => {
+      const open = rel.filter((e) => e.license === "open");
+      const firsts = rel.filter((e) => e.firstOfKind);
+      const byYear = new Map(licenseByYear(rel).map((y) => [y.year, y.openShare]));
+      expect("Anteil offen 2023", byYear.get(2023) ?? 0, 38);
+      expect("Anteil offen 2025", byYear.get(2025) ?? 0, 17);
+      expect("Offene Releases gesamt", open.length, 70);
+      expect("Releases gesamt", rel.length, 239);
+
+      // The gap is the headline, so both its length and what filled it are guarded.
+      const gap = longestPauses(open, 1)[0];
+      expect("Länge der Lücke", gap.days, 194);
+      expect("Beginn der Lücke", gap.before.date, "2025-06-26");
+      expect("Ende der Lücke", gap.after.date, "2026-01-06");
+      const inGap = rel.filter((e) => e.date > gap.before.date && e.date < gap.after.date);
+      expect("Releases in der Lücke", inGap.length, 16);
+      expect("Premieren in der Lücke", inGap.filter((e) => e.firstOfKind).length, 12);
+
+      expect("Premieren gesamt", firsts.length, 113);
+      expect("Premieren offen", firsts.filter((e) => e.license === "open").length, 41);
+
+      // The hand-checked pending-weights annotation only holds while those
+      // entries still exist and are still marked open. If one is re-licensed or
+      // removed, the adjusted figure on the page is wrong and must be revisited.
+      for (const { id } of OPEN_WEIGHTS_PENDING) {
+        const entry = rel.find((e) => e.id === id);
+        if (!entry) {
+          throw new Error(
+            `Offenheit: Eintrag ${id} steht in OPEN_WEIGHTS_PENDING, ist aber ` +
+              `nicht mehr im Datensatz. Anmerkung prüfen und entfernen.`,
+          );
+        }
+        expect(`Lizenz von ${id}`, entry.license, "open");
+      }
+      expect(
+        "Offene Releases mit vorliegenden Gewichten",
+        open.length - OPEN_WEIGHTS_PENDING.length,
+        68,
+      );
     },
   },
 ];
@@ -276,6 +326,154 @@ export type LicenseYear = {
   /** Share of releases with open weights, 0–100, rounded. */
   openShare: number;
 };
+
+export type LicenseModality = {
+  modality: Modality;
+  open: number;
+  total: number;
+  /** Share of releases with open weights, 0–100, rounded. */
+  openShare: number;
+};
+
+/** The same split per modality, most open first. */
+export function licenseByModality(entries: Entry[]): LicenseModality[] {
+  return MODALITY_ORDER.map((modality) => {
+    const list = entries.filter((e) => e.modality === modality);
+    const open = list.filter((e) => e.license === "open").length;
+    return {
+      modality,
+      open,
+      total: list.length,
+      openShare: Math.round((open / list.length) * 100),
+    };
+  })
+    .filter((m) => m.total > 0)
+    .sort((a, b) => b.openShare - a.openShare);
+}
+
+export type OrgPolicy = {
+  /** Houses that only ever shipped open weights. */
+  onlyOpen: string[];
+  onlyClosed: string[];
+  /** Houses that shipped both — the only ones for whom openness is a decision per release. */
+  mixed: string[];
+};
+
+export type CompositeOrg = {
+  label: string;
+  /**
+   * `joint` — several houses credited together, e.g. "RunwayML / Stability AI".
+   * `qualified` — one house plus a team or division, e.g. "Alibaba (Qwen)".
+   *
+   * Both inflate an organisation count, but for different reasons, so they are
+   * not merged into one figure.
+   */
+  kind: "joint" | "qualified";
+  /** Named houses in this label that also appear on their own in the dataset. */
+  overlapsWith: string[];
+};
+
+/**
+ * Organisation labels that name more than one thing.
+ *
+ * The `org` field records the credit as the primary source gives it, so a
+ * collaboration ("RunwayML / Stability AI") and a division ("Alibaba (Qwen)")
+ * each produce their own label. Counting organisations therefore overstates the
+ * number of distinct houses whenever one of the named parties also ships under
+ * its own name. This surfaces exactly which labels are affected so the page can
+ * disclose the double count instead of quietly normalising a free-text field
+ * into something it is not.
+ *
+ * Deliberately incomplete: it cannot catch spelling variants of the same house
+ * ("Zhipu / Z.ai" vs. "Zhipu AI (Z.ai)"), so any adjusted count derived from it
+ * is an upper bound, not a corrected figure.
+ */
+export function compositeOrgLabels(entries: Entry[]): CompositeOrg[] {
+  const labels = [...new Set(entries.map((e) => e.org))];
+  const plain = new Set(labels.filter((l) => !/[/()&]/.test(l)));
+
+  return labels
+    .filter((l) => /[/()&]/.test(l))
+    .map((label) => ({
+      label,
+      // A parenthesis marks a qualifier, even when it contains a slash
+      // ("ByteDance (Volcano Engine / Doubao)") — the slash is inside the
+      // division name there, not between two crediting houses.
+      kind: label.includes("(") ? ("qualified" as const) : ("joint" as const),
+      overlapsWith: label
+        .split(/[/()&]/)
+        .map((part) => part.trim())
+        .filter((part) => plain.has(part)),
+    }))
+    .sort((a, b) => (a.label < b.label ? -1 : 1));
+}
+
+/**
+ * Releases carrying `license: "open"` whose weights were not actually
+ * downloadable on the dataset's verification date.
+ *
+ * Hand-checked and listed by id rather than derived: nothing in the schema
+ * distinguishes "weights are published" from "weights were announced", and a
+ * regex over German capability prose would start and stop matching as entries
+ * get copy-edited. The openness figures are published with this adjustment
+ * attached instead of quietly counting releases nobody could download yet.
+ */
+export const OPEN_WEIGHTS_PENDING: { id: string; why: string }[] = [
+  {
+    // The weights landed on 2026-07-27, which is its own entry in the dataset —
+    // counting both makes one open release count twice.
+    id: "text-kimi-k3-2026-07-16",
+    why: "Zum Launch nur über App und API; die Gewichte folgten am 27. Juli 2026 als eigener Eintrag.",
+  },
+  {
+    id: "video-minimax-h3-2026-07-31",
+    why: "Als Open-Weights-Modell angekündigt, die Gewichte waren am Verifikationsdatum noch nicht veröffentlicht.",
+  },
+];
+
+/**
+ * Pairs of plain organisation labels where one is a prefix of the other at a
+ * token boundary — "Suno" / "Suno AI", "Google" / "Google DeepMind".
+ *
+ * Neither the bracket nor the slash rule catches these, and no rule can decide
+ * them: "Suno AI" is plainly the same house as "Suno", while "Google DeepMind"
+ * is arguably its own unit. They are surfaced, not resolved, so an organisation
+ * count can be published as a bound instead of a false precision.
+ */
+export function variantOrgPairs(entries: Entry[]): [string, string][] {
+  const plain = [...new Set(entries.map((e) => e.org))]
+    .filter((l) => !/[/()&]/.test(l))
+    .sort();
+
+  const pairs: [string, string][] = [];
+  for (const short of plain) {
+    for (const long of plain) {
+      if (long !== short && long.startsWith(`${short} `)) pairs.push([short, long]);
+    }
+  }
+  return pairs;
+}
+
+/**
+ * Whether openness is a house policy or a per-release decision. Counted over
+ * organisations rather than releases, because the release count is dominated by
+ * a handful of prolific labs and hides how most houses behave.
+ */
+export function orgPolicy(entries: Entry[]): OrgPolicy {
+  const orgs = new Map<string, { open: number; closed: number }>();
+  for (const e of entries) {
+    const bucket = orgs.get(e.org) ?? { open: 0, closed: 0 };
+    bucket[e.license] += 1;
+    orgs.set(e.org, bucket);
+  }
+  const policy: OrgPolicy = { onlyOpen: [], onlyClosed: [], mixed: [] };
+  for (const [org, { open, closed }] of orgs) {
+    if (open && closed) policy.mixed.push(org);
+    else if (open) policy.onlyOpen.push(org);
+    else policy.onlyClosed.push(org);
+  }
+  return policy;
+}
 
 export function licenseByYear(entries: Entry[]): LicenseYear[] {
   const years = new Map<number, { open: number; closed: number }>();
