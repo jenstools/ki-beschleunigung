@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 241 entries across text, image, video, audio,
- * late 2022 → 31 July 2026.
+ * German descriptions. 242 entries across text, image, video, audio,
+ * late 2022 → 5 August 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4530,15 +4530,36 @@ export const entries: Entry[] = [
     "note": "Der API-Zugang läuft als öffentliche Beta. Die V4-Pro-API sowie die App- und Web-Modelle bleiben unverändert; ein offizielles V4-Pro-Release kündigt DeepSeek erst an. Auf der Preisseite ist zudem eine noch nicht aktive Spitzenlast-Tarifierung angekündigt (doppelter Preis während der Pekinger Kernzeiten).",
     "verificationNote": "Datum 31.07.2026 gegen DeepSeeks eigenen Changelog (api-docs.deepseek.com/updates) als Primärquelle verifiziert und dadurch gestützt, dass das Hugging-Face-Repository deepseek-ai/DeepSeek-V4-Flash-0731 am selben Tag veröffentlicht wurde. Alle Benchmarkwerte sind Herstellerangaben aus der Modellkarte, erhoben mit DeepSeeks eigenem Harness (Temperatur 1,0, top_p 0,95) und nicht unabhängig reproduziert; eine Vergleichstabelle gegen fremde Modelle veröffentlicht DeepSeek nicht, und für die Preview-Version liegen keine Werte derselben Suiten vor — die Aussage „besser als die Preview\" ist damit DeepSeeks Formulierung, keine nachgerechnete Differenz. Die Indexwerte 50 (Flash-0731) und 44 (V4-Pro) stammen von Artificial Analysis und beziehen sich auf die Stufe max; Ausgabegeschwindigkeit und Latenz waren dort zum Prüfzeitpunkt noch nicht gemessen. Zwei Widersprüche bleiben offen: Artificial Analysis führt Flash-0731 als proprietär mit nicht verfügbaren Gewichten, obwohl das MIT-lizenzierte Repository am selben Tag online ging (Lizenz hier auf Basis des Repositorys, nicht der Ankündigung), und die Parameterzahl wird von Artificial Analysis mit 284 Mrd. total / 13 Mrd. aktiv angegeben, während die Hugging-Face-Kopfzeile 304 Mrd. ausweist — die Differenz dürfte auf das Modul für spekulatives Decoding zurückgehen, ist von DeepSeek aber nicht aufgelöst.",
     "id": "text-deepseek-v4-flash-0731-2026-07-31"
+  },
+  {
+    "date": "2026-08-05",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Code (Beta) & Muse Spark 1.2",
+    "org": "Meta",
+    "house": "Meta",
+    "license": "closed",
+    "capability": "Meta bringt erstmals einen eigenen Terminal-Coding-Agenten: Muse Code läuft auf macOS und Linux, wird über ein Installationsskript von dev.meta.ai eingerichtet und arbeitet an Aufgaben über große Repositorys hinweg — Planen, Schreiben, Prüfen. Technisch zwei Besonderheiten. Erstens laufen neben der Hauptschleife dauerhafte Hintergrundagenten mit, die über die ganze Sitzung aktiv bleiben statt pro Aufgabe neu gestartet zu werden; sie arbeiten eigenständig weiter und entscheiden selbst, wann sie sich zurückmelden. Zweitens schreibt Muse Code jeden Modellaufruf, Werkzeuglauf, jede Freigabe und Änderung in ein lokales Ereignisprotokoll — die Laufzeit ist damit exakt wiederholbar und absturzsicher, nach einem Abbruch setzt der Agent genau an der Abbruchstelle fort. Mitgeliefert sind Fertigkeiten wie /plan (Aufgabe zu einem freigabepflichtigen Plan), /grill (der Plan wird unter Druck gesetzt, bis er hält) und /goal. Das zugehörige Modell Muse Spark 1.2 ist eine coding-fokussierte Fortschreibung von 1.1, gemeinsam mit dem Agenten trainiert (Harness-Trajektorien per Rejection Sampling, Rezepte für Goals, Kontextverdichtung und Subagenten) und ausgiebig auf Aufgaben mit langem Horizont: Generierung ganzer Repositorys, große Ende-zu-Ende-Projekte, automatisierte Recherche. Metas eigene Zahlen: Terminal-Bench 2.1 82,9 % (Claude Opus 5 max 86,7, GPT 5.6 Terra 81,8, Grok 4.5 81,6, Gemini 3.6 Flash 78,9, Muse Spark 1.1 76,2), DeepSWE 1.1 59,3 % (Opus 5 65,0, GPT 5.6 Terra 64,8), Meta Internal Coding Bench 70,6 % (Opus 5 79,4), MCP Atlas 90,3 % (Bestwert, vor 1.1 mit 88,1 und Opus 5 mit 85,8) und GDPVal-AA v2 mit 1.631 Elo (Opus 5 1.852). Verfügbar ist 1.2 ab dem Ankündigungstag in Muse Code und in der Meta Model API mit erweitertem globalem Zugang.",
+    "whyItMattered": "Meta steigt dort ein, wo der Wettbewerb um Coding inzwischen entschieden wird — nicht am Modell, sondern am Agenten im Terminal. Nach Claude Code, Codex, Antigravity und Grok Build ist Muse Code der nächste Fall desselben Musters: Das Labor liefert Modell und Harness als ein Produkt und trainiert beide gegeneinander. Genau das macht Meta hier explizit, und es ist die eigentliche Nachricht: Muse Spark 1.2 wurde mit Muse Code ko-trainiert, die Werkzeugoberfläche des Agenten steckt im Training. Bemerkenswert ist zudem, was Meta selbst zeigt: In allen drei Coding-Suiten liegt 1.2 hinter Claude Opus 5, teils deutlich (Meta Internal Coding Bench 70,6 gegen 79,4) — vorn liegt Meta nur bei MCP-Werkzeugnutzung. Ein Labor, das seine eigene Zweitplatzierung publiziert und den Release als „nächsten Schritt zur Spitze\" mit „größeren und deutlich fähigeren Modellen\" in Aussicht stellt, kalkuliert sichtbar mit einer Zwischenstation. Und die Linie von Llama ist endgültig verlassen: Der Coding-Stack des Hauses, das Open Weights groß gemacht hat, ist geschlossen und läuft über die eigene API.",
+    "firstOfKind": "Erster eigener Terminal-Coding-Agent von Meta.",
+    "sources": [
+      "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+      "https://research.meta.ai/static/muse-spark-1-2-methodology",
+      "https://developer.meta.com/ai/products/muse-code"
+    ],
+    "disputed": false,
+    "note": "Muse Code ist Beta und nur für macOS und Linux; installiert wird über ein per curl bezogenes Shell-Skript. Preise nennt Meta weder für Muse Code noch für Muse Spark 1.2 in der API, ebenso keine Kontextfenster- oder Parameterangabe; Gewichte sind nicht verfügbar.",
+    "verificationNote": "Datum 05.08.2026 gegen die Kopfzeile der offiziellen Ankündigung auf research.meta.ai („August 5, 2026\") als Primärquelle verifiziert. Alle Benchmarkwerte sind Metas Eigenangaben, aus den Balkendiagrammen der Ankündigung abgelesen, und nicht unabhängig reproduziert. Die Aufbauten stehen in Metas eigenem Methodenpapier: Terminal-Bench 2.1 mit den 89 Aufgaben des offiziellen Releases, DeepSWE v1.1 mit 113 Aufgaben über 91 Repositorys, beide als Durchschnitt aus fünf Versuchen (pass@1) in isolierten Daytona-Sandboxes; Meta Internal Coding Bench mit 440 aus internen Pull Requests abgeleiteten Aufgaben in einem internen Harness bei zwei Versuchen je Aufgabe; GDPVal-AA v2 als Elo aus Blindvergleichen von Artificial Analysis (menschliche Referenz auf 1.000 verankert); MCP Atlas über den Harness von Scale AI. Entscheidend für die Lesbarkeit der Zahlen: Jedes Modell wurde mit seinem eigenen Agentenprodukt gemessen (Muse Code für 1.2, mini-swe-agent für 1.1, Claude Code für Opus, Codex für GPT, Antigravity für Gemini, Grok Build für Grok, Kimi Code für Kimi) und mit maximaler Denkstufe; Meta weist selbst darauf hin, dass der eigene Aufbau nicht auf fremde Modelle abgestimmt ist und deren Bestleistung deshalb nicht abbilden muss. Bei DeepSWE weicht Meta damit ausdrücklich von der offiziellen Rangliste ab, die für alle Modelle mini-swe-agent verwendet. Die Fallstudie zur Kernel-Optimierung (über 1.000 Werkzeugaufrufe, bis zu 24 Stunden, KDA- und MLA-Kernel in Triton auf NVIDIA Hopper) ist je Kernel ein einzelner Lauf ohne Wiederholungen; Muse Spark 1.2 erreicht dort +68,7 % gegenüber der Referenz bei KDA und +61,1 % bei MLA und liegt in beiden Fällen hinter Opus 5 (+74,0 % bzw. +75,4 %) — im Text der Ankündigung stehen diese Werte nicht, sie sind aus den Diagrammen abgelesen. Der Beitrag erscheint unter „Meta AI Research\" ohne ausdrückliche Nennung der Superintelligence Labs, anders als der Eintrag zu Muse Spark 1.1 vom 09.07.2026; `org` steht deshalb hier auf „Meta\".",
+    "id": "text-muse-code-muse-spark-1-2-2026-08-05"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "31. Juli 2026",
+  lastVerified: "5. August 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-07-31",
+  lastVerifiedISO: "2026-08-05",
   windowStart: "2022-08",
-  windowEnd: "2026-07",
-  total: 241,
+  windowEnd: "2026-08",
+  total: 242,
   placeholder: false,
 };

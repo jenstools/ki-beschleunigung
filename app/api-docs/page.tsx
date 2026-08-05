@@ -32,17 +32,17 @@ const CURL_EXAMPLE = `curl -s ${ENDPOINT} | jq '.entries[0]'`;
 
 const RESPONSE_SHAPE = `{
   "meta": {
-    "lastVerified": "31. Juli 2026",
-    "lastVerifiedISO": "2026-07-31",
+    "lastVerified": "5. August 2026",
+    "lastVerifiedISO": "2026-08-05",
     "windowStart": "2022-08",
-    "windowEnd": "2026-07",
-    "total": 240,
+    "windowEnd": "2026-08",
+    "total": 242,
     "version": "v1",
     "license": "CC-BY-4.0",
     "attribution": "KI-Zeitstrahl von snipKI",
     "source": "https://timeline.snipki.de"
   },
-  "count": 240,
+  "count": 242,
   "entries": [ /* Entry[] */ ]
 }`;
 

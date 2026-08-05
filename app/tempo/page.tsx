@@ -145,7 +145,7 @@ export default function TempoPage() {
                   </td>
                   <td className="whitespace-nowrap py-2 pr-4 text-right font-mono text-[13px] text-ink">
                     {/* Under two days, one decimal would hide the difference
-                        between 0,97 and 1,4 — the two most interesting values. */}
+                        between 1,09 and 1,4 — the two most interesting values. */}
                     {num(h.meanGap, h.meanGap < 2 ? 2 : 1)} Tage
                   </td>
                   <td className="py-2">
@@ -168,7 +168,8 @@ export default function TempoPage() {
             Zwei Einschränkungen, die zu dieser Tabelle gehören: Der Wert für das
             1. Halbjahr 2022 beruht auf {first.count} einzigen Abstand und ist
             damit kein belastbarer Durchschnitt. Und das 2. Halbjahr 2026 ist
-            noch nicht zu Ende; es umfasst bislang nur Juli. Robuster ist der
+            noch nicht zu Ende; es umfasst bislang nur Juli und die ersten
+            Augusttage. Robuster ist der
             Blick auf ganze
             Jahre:{" "}
             {years
@@ -196,7 +197,8 @@ export default function TempoPage() {
             „neues Modell“ auf „gleiches Modell, mehr Reasoning-Zeit und
             Werkzeuge“ — Arbeit, die nicht als Release sichtbar wird, weil sie
             kein neues Datum erzeugt. 2026 kippt es zurück, und zwar heftig: die
-            Kadenz von {num(last.meanGap, 2)} Tagen im Juli bedeutet, dass an den
+            Kadenz von {num(last.meanGap, 2)} Tagen im laufenden Halbjahr
+            bedeutet, dass an den
             meisten Tagen etwas erscheint und an vielen Tagen mehrere Dinge.
             Diese Erklärung steckt nicht im Datensatz — sie ist eine Deutung.
             Prüfbar ist nur die Zahl.
