@@ -53,23 +53,23 @@ function expect(label: string, actual: number | string, claimed: number | string
 export const CLUSTERS: Cluster[] = [
   {
     path: "/tempo",
-    title: "Das Tempo: aus 24 Tagen Abstand wurden 2,7",
+    title: "Das Tempo: aus 24 Tagen Abstand wurden 2,6",
     short: "Tempo",
     claim:
-      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,7. Im laufenden Halbjahr sind es 1,09 — 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
+      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,6. Im laufenden Halbjahr sind es 0,97 — 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
     description:
-      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,7 im Jahr 2026. Halbjahresweise gemessen an 240 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
+      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,6 im Jahr 2026. Halbjahresweise gemessen an 245 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
     api: "/api/v1/tempo",
     verify: (rel) => {
       const years = cadenceByYear(rel);
       const halves = cadenceByHalfYear(rel);
       const round = (n: number, d: number) => Math.round(n * 10 ** d) / 10 ** d;
       expect("Abstand 2022", round(years[0].meanGap, 1), 24.2);
-      expect("Abstand 2026", round(years[years.length - 1].meanGap, 1), 2.7);
+      expect("Abstand 2026", round(years[years.length - 1].meanGap, 1), 2.6);
       expect(
         "Abstand laufendes Halbjahr",
         round(halves[halves.length - 1].meanGap, 2),
-        1.09,
+        0.97,
       );
       // Bounded on both sides: the claim names July, not "everything since July".
       const july = chronological(rel).filter(
@@ -81,7 +81,7 @@ export const CLUSTERS: Cluster[] = [
         july.filter((e, i) => i > 0 && e.date === july[i - 1].date).length,
         15,
       );
-      expect("Releases gesamt", rel.length, 240);
+      expect("Releases gesamt", rel.length, 245);
     },
   },
   {
@@ -89,7 +89,7 @@ export const CLUSTERS: Cluster[] = [
     title: "Erstmalig: 114 belegte Premieren",
     short: "Erstmalig",
     claim:
-      "114 von 240 Releases tragen einen belegten „Erster, der …“-Anspruch: 40 in Text, 27 in Audio, 26 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
+      "114 von 245 Releases tragen einen belegten „Erster, der …“-Anspruch: 40 in Text, 27 in Audio, 26 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
     description:
       "Wer konnte zuerst was? 114 dokumentierte Premieren generativer KI in Text, Bild, Video und Audio — jede mit Releasedatum, Labor und Link auf die Primärquelle, strittige Fälle offen als strittig markiert.",
     api: "/api/v1/erstmalig",
@@ -99,7 +99,7 @@ export const CLUSTERS: Cluster[] = [
         firstsByModality(rel).map((g) => [g.modality, g.entries.length]),
       );
       expect("Premieren gesamt", firsts.length, 114);
-      expect("Releases gesamt", rel.length, 240);
+      expect("Releases gesamt", rel.length, 245);
       expect("Premieren Text", byModality.get("text") ?? 0, 40);
       expect("Premieren Audio", byModality.get("audio") ?? 0, 27);
       expect("Premieren Video", byModality.get("video") ?? 0, 26);
@@ -115,7 +115,7 @@ export const CLUSTERS: Cluster[] = [
     claim:
       "Der Anteil offener Gewichte erreichte 2023 mit 38 % seinen Höchststand und fiel 2025 auf 17 %. Zwischen dem 26. Juni 2025 und dem 6. Januar 2026 liegen 194 Tage, in denen dieser Datensatz keinen einzigen Release mit offenen Gewichten verzeichnet — bei 16 geschlossenen, davon 12 mit Premierenanspruch. Trotzdem stammen 41 der 114 belegten Premieren von offenen Modellen.",
     description:
-      "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 70 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
+      "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 72 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
     api: "/api/v1/offenheit",
     verify: (rel) => {
       // This page counts houses, so an unregistered one would silently become
@@ -137,8 +137,8 @@ export const CLUSTERS: Cluster[] = [
       const byYear = new Map(licenseByYear(rel).map((y) => [y.year, y.openShare]));
       expect("Anteil offen 2023", byYear.get(2023) ?? 0, 38);
       expect("Anteil offen 2025", byYear.get(2025) ?? 0, 17);
-      expect("Offene Releases gesamt", open.length, 70);
-      expect("Releases gesamt", rel.length, 240);
+      expect("Offene Releases gesamt", open.length, 72);
+      expect("Releases gesamt", rel.length, 245);
 
       // The gap is the headline, so both its length and what filled it are guarded.
       const gap = longestPauses(open, 1)[0];
@@ -168,7 +168,7 @@ export const CLUSTERS: Cluster[] = [
       expect(
         "Offene Releases mit vorliegenden Gewichten",
         open.length - OPEN_WEIGHTS_PENDING.length,
-        68,
+        70,
       );
     },
   },
@@ -425,8 +425,10 @@ export const OPEN_WEIGHTS_PENDING: { id: string; why: string }[] = [
     why: "Zum Launch nur über App und API; die Gewichte folgten am 27. Juli 2026 als eigener Eintrag.",
   },
   {
+    // Same double-count as Kimi K3: the weights landed on 2026-08-05 under a
+    // territorially restricted licence and carry their own entry.
     id: "video-minimax-h3-2026-07-31",
-    why: "Als Open-Weights-Modell angekündigt, die Gewichte waren am Verifikationsdatum noch nicht veröffentlicht.",
+    why: "Als Open-Weights-Modell angekündigt; die Gewichte folgten am 5. August 2026 als eigener Eintrag — in der EU allerdings nicht lizenziert.",
   },
 ];
 
