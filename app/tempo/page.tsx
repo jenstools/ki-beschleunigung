@@ -145,7 +145,7 @@ export default function TempoPage() {
                   </td>
                   <td className="whitespace-nowrap py-2 pr-4 text-right font-mono text-[13px] text-ink">
                     {/* Under two days, one decimal would hide the difference
-                        between 1,09 and 1,4 — the two most interesting values. */}
+                        between 0,97 and 1,4 — the two most interesting values. */}
                     {num(h.meanGap, h.meanGap < 2 ? 2 : 1)} Tage
                   </td>
                   <td className="py-2">

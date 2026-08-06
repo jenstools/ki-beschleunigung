@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 242 entries across text, image, video, audio,
- * late 2022 → 5 August 2026.
+ * German descriptions. 247 entries across text, image, video, audio,
+ * late 2022 → 6 August 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4505,8 +4505,8 @@ export const entries: Entry[] = [
       "https://news.aibase.com/news/30033"
     ],
     "disputed": false,
-    "note": "Gewichte am 31.07.2026 noch nicht veröffentlicht — MiniMax kündigt sie „innerhalb weniger Tage\" an; in der MiniMaxAI-Organisation auf Hugging Face existierte zum Prüfzeitpunkt kein H3-Repository.",
-    "verificationNote": "Datum 31.07.2026 gegen MiniMax' eigene Release-Notes (platform.minimax.io/docs/release-notes/models, dort „Jul. 31, 2026\") verifiziert; die Modellbeschreibung als offenes, universelles multimodales Videomodell und die Eingabe-/Ausgabegrenzen (2K, 4–15 s, 9 Bilder / 3 Videos / 3 Audios, 7.000 Zeichen) stammen aus der offiziellen API-Dokumentation. Architekturangaben (H3-Omni-Transformer, H3-VAE, ~30 % Trainingsdurchsatz), der Preisvergleich („weniger als ein Drittel\") und die Chip-Kompatibilität sind Herstellerangaben, hier über chinesische Sekundärberichterstattung (AIBase) erfasst und nicht unabhängig geprüft; MiniMax veröffentlicht zu H3 keine Benchmarktabelle und keinen Vergleich gegen Seedance, Veo oder Kling. Eine in Sekundärquellen zirkulierende Angabe von rund $0,13 pro Sekunde findet sich auf keiner offiziellen Preisliste und ist hier deshalb nicht aufgenommen. Die Lizenz steht auf „open\" auf Basis der Ankündigung — wie beim Kimi-K3-Eintrag vom 16.07.2026 —, nicht auf Basis herunterladbarer Gewichte.",
+    "note": "Gewichte am 31.07.2026 noch nicht veröffentlicht — MiniMax kündigt sie „innerhalb weniger Tage\" an; in der MiniMaxAI-Organisation auf Hugging Face existierte zum Prüfzeitpunkt kein öffentlich sichtbares H3-Repository. Eingelöst am 05.08.2026, allerdings unter einer Lizenz, die die EU, das Vereinigte Königreich, Südkorea und die USA ausschließt — dazu der eigene Eintrag „MiniMax H3 (Open Weights)\".",
+    "verificationNote": "Datum 31.07.2026 gegen MiniMax' eigene Release-Notes (platform.minimax.io/docs/release-notes/models, dort „Jul. 31, 2026\") verifiziert; die Modellbeschreibung als offenes, universelles multimodales Videomodell und die Eingabe-/Ausgabegrenzen (2K, 4–15 s, 9 Bilder / 3 Videos / 3 Audios, 7.000 Zeichen) stammen aus der offiziellen API-Dokumentation. Architekturangaben (H3-Omni-Transformer, H3-VAE, ~30 % Trainingsdurchsatz), der Preisvergleich („weniger als ein Drittel\") und die Chip-Kompatibilität sind Herstellerangaben, hier über chinesische Sekundärberichterstattung (AIBase) erfasst und nicht unabhängig geprüft; MiniMax veröffentlicht zu H3 keine Benchmarktabelle und keinen Vergleich gegen Seedance, Veo oder Kling. Eine in Sekundärquellen zirkulierende Angabe von rund $0,13 pro Sekunde findet sich auf keiner offiziellen Preisliste und ist hier deshalb nicht aufgenommen. Die Lizenz steht auf „open\" auf Basis der Ankündigung — wie beim Kimi-K3-Eintrag vom 16.07.2026 —, nicht auf Basis herunterladbarer Gewichte. Nachtrag: Die Gewichte erschienen am 05.08.2026; die Lizenz erwies sich dabei als räumlich beschränkt und schließt unter anderem die EU aus (siehe den Eintrag „MiniMax H3 (Open Weights)\").",
     "id": "video-minimax-h3-2026-07-31"
   },
   {
@@ -4532,6 +4532,47 @@ export const entries: Entry[] = [
     "id": "text-deepseek-v4-flash-0731-2026-07-31"
   },
   {
+    "date": "2026-08-03",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen3.8-Max (Allgemeine Verfügbarkeit)",
+    "org": "Alibaba",
+    "house": "Alibaba",
+    "license": "closed",
+    "capability": "Alibaba löst die Preview vom 19.07.2026 ab: Qwen3.8-Max ist als reguläres Modell in Alibaba Clouds Model Studio und auf QwenCloud aufrufbar. Erst mit der allgemeinen Verfügbarkeit nennt Alibaba die Konfiguration — 2,4 Billionen Parameter total, davon rund 95 Mrd. pro Token aktiv, aufgesetzt auf die Architektur von Qwen3.5. Kontextfenster 1 Mio. Tokens, bis zu 131.072 Ausgabe-Tokens, Denkaufwand in drei Stufen (low, medium, xhigh). Der Zugang läuft sowohl über ein OpenAI- als auch über ein Anthropic-kompatibles API-Format. Preise pro 1 Mio. Tokens: $2 Eingabe, $6 Ausgabe, $0,25 bei implizitem Cache-Treffer; explizites Caching kostet $2,50 beim Anlegen und $0,17 beim Lesen. Angekündigt, aber zum Prüfzeitpunkt nicht ausgeliefert: offene Gewichte „in der folgenden Woche“ auf Hugging Face und ModelScope, gemeinsam mit einem Qwen3.8-27B.",
+    "whyItMattered": "Alibaba schickt erstmals ein Modell der Max-Klasse auf den Weg zu offenen Gewichten — bisher blieb die Spitze der Qwen-Reihe geschlossen, offen war nur, was darunter lag. Werden 2,4 Billionen Parameter tatsächlich herunterladbar, verschiebt das die Obergrenze des offenen Feldes weit über Kimi K3 hinaus. Bemerkenswert ist zudem, worauf Alibaba die Werbung stützt: nicht auf Benchmarks, sondern auf Dauerläufe — ein Agent, der 16 Tage lang ein Kommandozeilenwerkzeug pflegt (265 Commits, 127 Pull Requests), Dokumente über 200 Seiten und Videos über 100 Stunden Länge, eine einjährige E-Commerce-Simulation mit 4,16-facher Rendite. Der Maßstab wandert von der Frage, was ein Modell in einer Antwort kann, zu der, was es über Wochen durchhält.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+      "https://www.qwencloud.com/models/qwen3.8-max",
+      "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters/"
+    ],
+    "disputed": false,
+    "note": "Die offenen Gewichte sind angekündigt, am 06.08.2026 aber nicht veröffentlicht; bis dahin ist das Modell nur über API und Chat nutzbar. Eine Benchmarktabelle veröffentlicht Alibaba weiterhin nicht.",
+    "verificationNote": "Datum 03.08.2026 gegen die Übersicht „Newly released models“ in Alibaba Clouds Model-Studio-Dokumentation verifiziert, die `qwen3.8-max` unter dem 3. August 2026 führt; Kontextfenster, Ausgabegrenze, Denkstufen und die vollständige Preistabelle gegen die Modellseite auf QwenCloud geprüft. Parameterzahl (2,4 Bio. total / 95 Mrd. aktiv), die Herkunft aus der Qwen3.5-Architektur und die Ankündigung offener Gewichte sind Alibabas Eigenangaben. Alle Leistungsbelege sind Herstellerdemonstrationen ohne nachprüfbaren Aufbau: der 16-Tage-Lauf am Werkzeug oh-my-cli, die Dokument- und Videolängen und die 4,16-fache Rendite in einer selbst gebauten E-Commerce-Simulation — Einzelläufe ohne Wiederholung, ohne Vergleichsmodell und ohne veröffentlichte Methodik. Unabhängige Benchmarks lagen zum Prüfzeitpunkt nicht vor; der Eintrag zur Preview vom 19.07.2026 bleibt deshalb als unbestätigt markiert. `license` steht auf „closed“, weil am 06.08.2026 keine Gewichte verfügbar waren.",
+    "id": "text-qwen3-8-max-2026-08-03"
+  },
+  {
+    "date": "2026-08-04",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Shieldstral 1.0 3B",
+    "org": "Mistral AI",
+    "house": "Mistral",
+    "license": "open",
+    "capability": "Ein Klassifikator für Inhaltsmoderation mit 3 Mrd. Parametern, der keine feste Kategorienliste vorhersagt, sondern eine in natürlicher Sprache formulierte Richtlinie zur Laufzeit als Eingabe nimmt und einen kontinuierlichen Sicherheitswert zurückgibt. Technisch ist die Aufgabe auf eine binäre Ja/Nein-Frage reduziert: feste Systemnachricht, ein einziger Vorwärtsdurchlauf, ein einziges Ausgabetoken, dessen Wahrscheinlichkeit als Schwellwert dient. Derselbe Checkpoint lässt sich damit auf neue Richtlinien umstellen, ohne ihn nachzutrainieren. Basis ist Ministral-3-3B-Base-2512 mit nativem Pixtral-Bildencoder; über dieselbe Schnittstelle moderiert werden reiner Text, reine Bilder und Text-Bild-Kombinationen, in zwölf Sprachen einschließlich Deutsch. Trainiert auf Sequenzen bis 32K Tokens (theoretisch 256K), lauffähig auf einer einzelnen 16-GB-GPU. Lizenz: Apache 2.0, Gewichte auf Hugging Face, dazu ein technischer Bericht.",
+    "whyItMattered": "Der Sprung liegt bei den Bildern: Auf VLGuard erreicht Shieldstral 97,7 statt 88,5 F1, auf UnsafeBench 81,8 statt 72,6 — jeweils gegen OmniGuard-7B als bisher bestes offenes Modell. Bei reiner Textmoderation reicht ein 3-Mrd.-Modell an GPT-OSS-Safeguard mit 20 Mrd. Parametern heran und schlägt es auf mehreren Suiten. Wichtiger als die Punkte ist aber die Bauform: Richtlinien kommen als freier Text zur Laufzeit hinein, nicht als trainiertes Kategorienschema. Genau daran hängen die laufenden Kosten von Moderation — jede Änderung an einer Plattformregel bedeutete bisher eine neue Trainingsrunde. Und mit Apache 2.0 auf einer 16-GB-Karte wird das Bauteil, das jeder Betreiber eines Sprachmodells braucht, ohne API-Abhängigkeit selbst hostbar. Nicht überall vorn: Beim Erkennen von Verweigerungen verliert Shieldstral in allen drei Suiten gegen GPT-OSS-Safeguard-20B, und auf mehrsprachigen RTP-LX-Prompts fällt es mit 70,3 klar hinter Nemotron-3.5-Content-Safety-4B (86,1) zurück.",
+    "firstOfKind": "",
+    "sources": [
+      "https://mistral.ai/news/shieldstral/",
+      "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
+      "https://arxiv.org/abs/2607.25857"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 04.08.2026 gegen Mistrals Ankündigung (mistral.ai/news/shieldstral) als Primärquelle verifiziert. Architektur, Lizenz (Apache 2.0), Sprachliste, Kontextlängen und alle F1-Werte stammen aus der Model Card auf Hugging Face — die Ankündigung selbst zeigt nur Balkendiagramme ohne Zahlen. Sämtliche Werte sind Mistrals Eigenmessungen und nicht unabhängig reproduziert; die Vergleichskonfigurationen hat Mistral gewählt (Shieldstral und ShieldGemma mit Schwellwert 0,5, GPT-OSS-Safeguard-20B mit reasoning_effort=high, Nemotron-3.5-Content-Safety mit reasoning_effort=none, Qwen3Guard als Mittel aus strenger und lockerer Zuordnung), was die Zahlen untereinander nur eingeschränkt vergleichbar macht. Bei LlavaGuard weist Mistral selbst darauf hin, dass Testbilder fehlten und nur eine Teilmenge gewertet wurde. Das Repository mistralai/Shieldstral-1.0-3B wurde laut Hugging-Face-API bereits am 16.07.2026 angelegt, also gut zwei Wochen vor der Ankündigung; wann es öffentlich sichtbar wurde, lässt sich daraus nicht ableiten, das Anlagedatum ist deshalb kein Veröffentlichungsdatum. Der technische Bericht (arXiv 2607.25857) wurde nicht gelesen.",
+    "id": "text-shieldstral-2026-08-04"
+  },
+  {
     "date": "2026-08-05",
     "datePrecision": "day",
     "modality": "text",
@@ -4551,15 +4592,74 @@ export const entries: Entry[] = [
     "note": "Muse Code ist Beta und nur für macOS und Linux; installiert wird über ein per curl bezogenes Shell-Skript. Preise nennt Meta weder für Muse Code noch für Muse Spark 1.2 in der API, ebenso keine Kontextfenster- oder Parameterangabe; Gewichte sind nicht verfügbar.",
     "verificationNote": "Datum 05.08.2026 gegen die Kopfzeile der offiziellen Ankündigung auf research.meta.ai („August 5, 2026\") als Primärquelle verifiziert. Alle Benchmarkwerte sind Metas Eigenangaben, aus den Balkendiagrammen der Ankündigung abgelesen, und nicht unabhängig reproduziert. Die Aufbauten stehen in Metas eigenem Methodenpapier: Terminal-Bench 2.1 mit den 89 Aufgaben des offiziellen Releases, DeepSWE v1.1 mit 113 Aufgaben über 91 Repositorys, beide als Durchschnitt aus fünf Versuchen (pass@1) in isolierten Daytona-Sandboxes; Meta Internal Coding Bench mit 440 aus internen Pull Requests abgeleiteten Aufgaben in einem internen Harness bei zwei Versuchen je Aufgabe; GDPVal-AA v2 als Elo aus Blindvergleichen von Artificial Analysis (menschliche Referenz auf 1.000 verankert); MCP Atlas über den Harness von Scale AI. Entscheidend für die Lesbarkeit der Zahlen: Jedes Modell wurde mit seinem eigenen Agentenprodukt gemessen (Muse Code für 1.2, mini-swe-agent für 1.1, Claude Code für Opus, Codex für GPT, Antigravity für Gemini, Grok Build für Grok, Kimi Code für Kimi) und mit maximaler Denkstufe; Meta weist selbst darauf hin, dass der eigene Aufbau nicht auf fremde Modelle abgestimmt ist und deren Bestleistung deshalb nicht abbilden muss. Bei DeepSWE weicht Meta damit ausdrücklich von der offiziellen Rangliste ab, die für alle Modelle mini-swe-agent verwendet. Die Fallstudie zur Kernel-Optimierung (über 1.000 Werkzeugaufrufe, bis zu 24 Stunden, KDA- und MLA-Kernel in Triton auf NVIDIA Hopper) ist je Kernel ein einzelner Lauf ohne Wiederholungen; Muse Spark 1.2 erreicht dort +68,7 % gegenüber der Referenz bei KDA und +61,1 % bei MLA und liegt in beiden Fällen hinter Opus 5 (+74,0 % bzw. +75,4 %) — im Text der Ankündigung stehen diese Werte nicht, sie sind aus den Diagrammen abgelesen. Der Beitrag erscheint unter „Meta AI Research\" ohne ausdrückliche Nennung der Superintelligence Labs, anders als der Eintrag zu Muse Spark 1.1 vom 09.07.2026; `org` steht deshalb hier auf „Meta\".",
     "id": "text-muse-code-muse-spark-1-2-2026-08-05"
+  },
+  {
+    "date": "2026-08-05",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "SeedRealtime",
+    "org": "ByteDance Seed",
+    "house": "ByteDance",
+    "license": "closed",
+    "capability": "Ein Modell für Echtzeitgespräche, das Audio, Video und Text in einer einzigen Architektur verarbeitet statt in der üblichen Kette aus Spracherkennung, Sprachmodell und Sprachsynthese. Drei Dinge nennt ByteDance als Kern. Erstens gemeinsames Hören und Sehen: Homophone werden über das Kamerabild aufgelöst, Verweise wie „das hier“ und zeitliche Bezüge im Bild verstanden. Zweitens Eigeninitiative — das Modell meldet sich unaufgefordert, wenn im Bild auftaucht, worauf es warten sollte, und webt Werkzeugaufrufe in die laufende Antwort ein. Drittens entscheidet es den Gesprächstakt selbst, wann es also einsetzt, wartet oder unterbricht, statt sich auf eine vorgeschaltete Sprachaktivitätserkennung zu verlassen; laut ByteDance bleibt es dadurch auch bei Nebengesprächen und Hintergrundlärm stabil. Gezeigt wird das an sieben Alltagsszenen — Namen zu Gesichtern am Abendessenstisch, eine Sichuan-Speisekarte auf Englisch erklärt, eine Erinnerung im Museum, eine Korrektur an der Espressomaschine („die Extraktion um zwei bis drei Sekunden verkürzen“), das Auffinden von Abschnitt „3.4 Implementation“ in einem Paper, Lärmfestigkeit am Flughafen Peking-Daxing und eine Englischstunde zwischen Mutter und Tochter. Das Modell ist laut ByteDance vollständig ausgerollt.",
+    "whyItMattered": "Bei Sprachassistenten fällt gerade die Verarbeitungskette — und hier kommt die Kamera dazu. GPT-Live hatte am 08.07.2026 das vollduplexe Sprechen in ein Modell geholt; bei SeedRealtime liegt der Bildkanal im selben Modell, sodass der Assistent sieht, worauf man zeigt. Der eigentliche Bruch ist aber die Eigeninitiative: Ein Modell, das selbst entscheidet, wann es zu sprechen anfängt, verlässt das Frage-Antwort-Muster, auf dem die gesamte Assistenzsoftware der letzten Jahre gebaut ist. Nachprüfbar ist davon fast nichts — ByteDance veröffentlicht keine Benchmarks, keine Latenzwerte und keine API, sondern eine einzige menschliche Bewertung, nach der sich Taktprobleme gegenüber Kettensystemen halbieren. Der Eintrag steht für die Richtung, nicht für gemessene Leistung.",
+    "firstOfKind": "",
+    "sources": [
+      "https://seed.bytedance.com/en/blog/seedrealtime"
+    ],
+    "disputed": false,
+    "note": "Keine API, keine Preisangabe, keine Gewichte und keine Benchmarktabelle. ByteDance nennt auch nicht, in welchem Produkt das Modell ausgerollt ist.",
+    "verificationNote": "Datum 05.08.2026 gegen das Datumsfeld des offiziellen Beitrags auf seed.bytedance.com („2026-08-05“) als Primärquelle verifiziert. Alle Fähigkeitsangaben sind ByteDances eigene Beschreibung; die einzige quantitative Aussage ist eine Ende-zu-Ende-Bewertung durch Menschen, nach der sich „Taktprobleme im audiovisuellen Gespräch halbieren“ — ohne Angabe der Stichprobengröße, der Zahl der Bewertenden oder der Vergleichssysteme. Es gibt keine Benchmarktabelle, keine Latenzzahlen, keine API und keine Preisliste; `license` steht auf „closed“, weil keine Gewichte angeboten werden, nicht auf Basis einer genannten Lizenz. Die sieben Demonstrationsszenen sind Videos aus dem Beitrag und nicht unabhängig reproduzierbar. Als Modalität ist „audio“ gesetzt — der Konvention des GPT-Live-Eintrags vom 08.07.2026 folgend —, obwohl das Modell auch Video als Eingabe nimmt.",
+    "id": "audio-seedrealtime-2026-08-05"
+  },
+  {
+    "date": "2026-08-05",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "MiniMax H3 (Open Weights)",
+    "org": "MiniMax",
+    "house": "MiniMax",
+    "license": "open",
+    "capability": "MiniMax löst die Ankündigung vom 31.07.2026 ein und legt die Gewichte von H3 auf Hugging Face offen (MiniMaxAI/MiniMax-H3, ohne Zugangsschranke). Erst damit werden die Kennzahlen prüfbar: 33 Mrd. Parameter dicht besetzt in einem einzigen Strom — die modalitätsspezifischen Teile sitzen nur in den Ein- und Ausgabeschichten und in den AdaLN-Zweigen, nicht in getrennten Expertentürmen. Ausgabe 4 bis 15 Sekunden, bis 2K (voreingestellt 768 px kürzere Kante), 24 Bilder/s, Stereo-Ton mit 32 kHz, Seitenverhältnisse von 21:9 bis 9:16; als Text- und Bildencoder dient Qwen3-VL-32B unter Apache 2.0. Die Lizenz ist keine Open-Source-Lizenz, sondern ein „MiniMax H3 Community License Agreement“ mit einer entscheidenden Klausel: Als „Excluded Territories“ ausgenommen sind die Europäische Union, das Vereinigte Königreich, Südkorea und die USA. Untersagt ist dort nicht nur der Betrieb des Modells, sondern ausdrücklich auch Vervielfältigung, Bearbeitung, Weitergabe und Vorführung — und dasselbe gilt für die erzeugten Videos. Ab 20 Mio. US-Dollar Jahresumsatz braucht es zusätzlich eine schriftliche Genehmigung, kommerzielle Oberflächen müssen „MiniMax H3“ sichtbar nennen; Gerichtsstand ist Hongkong, Lizenzgeberin die Nanonoble Pte. Ltd. in Singapur.",
+    "whyItMattered": "Die letzte große Lücke zwischen offenen und geschlossenen Videomodellen fällt — für europäische Nutzende aber nicht. Die Gewichte sind herunterladbar, die Lizenz schließt genau jene vier Räume aus, in denen der westliche Markt liegt, und sie erstreckt das Verbot auf die fertigen Videos. Das erste offene Modell mit 2K und nativem Ton ist damit in Deutschland ohne Antrag nicht rechtssicher nutzbar; die API bleibt weltweit offen. MiniMax begründet das im Repository selbst und ungewöhnlich offen: die Durchsetzung der EU-KI-Verordnung, unklare Rechtslage in Großbritannien und Südkorea, laufende US-Urheberrechtsverfahren speziell zu generativer Video-KI. „Noch nicht“ heiße nicht „nie“, schreibt MiniMax dazu. Bemerkenswert ist der zweite Befund: 33 Mrd. Parameter dicht besetzt — ein Videomodell dieser Klasse läuft auf gewöhnlicher Hardware. Was den Zugang begrenzt, ist nicht mehr die Grafikkarte, sondern der Vertrag.",
+    "firstOfKind": "",
+    "sources": [
+      "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+      "https://platform.minimax.io/docs/release-notes/models"
+    ],
+    "disputed": false,
+    "note": "Trotz offener Gewichte in der EU, im Vereinigten Königreich, in Südkorea und in den USA nicht lizenziert — auch nicht für die erzeugten Videos. Zugang für diese Räume nur auf Antrag über platform.minimax.io/h3-license. Die gehostete API ist davon nicht betroffen und bleibt global verfügbar.",
+    "verificationNote": "Datum 05.08.2026 über die Commit-Historie des Hugging-Face-Repositorys MiniMaxAI/MiniMax-H3 gesetzt: „Init“ am 03.08.2026 (16:05 UTC), „Make model_index the public entry“ am 05.08.2026 (08:28 UTC), letzte Änderung 06.08.2026. Das Repository wurde laut API bereits am 28.07.2026 angelegt, war zum Prüfzeitpunkt des H3-Eintrags vom 31.07.2026 aber nicht öffentlich sichtbar. Der genaue Moment der Veröffentlichung lässt sich daraus nicht bestimmen — die Lizenzdatei selbst nennt als „release date“ den 2. August 2026, die dritte abweichende Angabe. Das Datum steht deshalb auf dem Tag, an dem das Repository seine öffentliche Einstiegsdatei erhielt und an dem die Freigabe erstmals berichtet wurde; es kann sich um bis zu drei Tage nach vorne verschieben. Architektur (33 Mrd. dicht, Single-Stream-Omni-Transformer, AdaLN-Zweige), Ausgabeparameter und der Qwen3-VL-32B-Encoder stammen aus der Model Card, sind also Herstellerangaben; eine Benchmarktabelle veröffentlicht MiniMax zu H3 weiterhin nicht. Alle Lizenzangaben wurden direkt in der LICENSE-Datei geprüft (Excluded Territories, §V.4 zur Reichweite auf Outputs, §IV.1 zur 20-Mio.-Dollar-Schwelle, Namensnennungspflicht, Gerichtsstand Hongkong); die Begründungen stehen in der beiliegenden Datei QA-about-License.md. Zum Prüfzeitpunkt wies Hugging Face 12.102 Downloads und 2.666 Likes aus. `license` steht auf „open“, weil die Gewichte tatsächlich frei herunterladbar sind — im OSI-Sinne ist die Lizenz keine Open-Source-Lizenz, und die räumliche Beschränkung ist strenger als bei jedem anderen als offen geführten Eintrag dieses Datensatzes.",
+    "id": "video-minimax-h3-open-weights-2026-08-05"
+  },
+  {
+    "date": "2026-08-06",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Wan3.0-Video",
+    "org": "Alibaba (Wan-Team)",
+    "house": "Alibaba",
+    "license": "closed",
+    "capability": "Auf QwenCloud als Alleskönner-Videomodell gelistet: Erzeugung, referenzgestützte Erzeugung, Bearbeitung, Nachbildung und Bewegungssteuerung in einem Modell statt in einer Familie spezialisierter Endpunkte. Bis 30 Sekunden Länge mit omnimodaler Referenz; als Eingabekontext nimmt das Modell laut Beschreibung Dateien, Webseiten und komplexe Bilder an, Eingabemodalitäten sind Audio, Bild, Text und Video. Ausgabe in 480P, 720P oder 1080P, abgerechnet pro Sekunde mit $0,05, $0,10 und $0,20. Grenzen: 30 Anfragen pro Minute, zwei gleichzeitige Läufe, asynchrone Warteschlange bis 50 Aufträge; angesprochen wird es über den DashScope-Endpunkt zur Videosynthese mit `\"model\": \"wan3.0-video\"`. Als Eigenwerbung nennt die Seite „produktionsreife Figurenkonsistenz“ sowie lebensechtes Bild und Ton.",
+    "whyItMattered": "Dreißig Sekunden in einem Durchlauf, mit Ton und gleichbleibenden Figuren, wären ein Sprung — die geschlossene Spitze rechnet bislang in einstelligen Sekunden pro Einstellung. Und die Bündelung geht in dieselbe Richtung wie MiniMax H3 fünf Tage zuvor: Referenz, Schnitt, Bewegungsübertragung und Erzeugung wandern in ein Modell, statt sich auf mehrere Endpunkte zu verteilen. Der Eintrag ist aber vor allem ein Befund über die Veröffentlichungspraxis selbst: Ein Videomodell steht mit vollständiger Preisliste, Ratenbegrenzung und API-Aufruf auf der eigenen Cloud des Anbieters, bevor es irgendeine Ankündigung, einen Modellbericht oder eine einzige Messung dazu gibt. Wer den Stand der Technik verfolgen will, liest inzwischen Preistabellen.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.qwencloud.com/models/wan3.0-video",
+      "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+    ],
+    "disputed": true,
+    "note": "Geschlossene Beta — der Zugang muss über „Join Beta“ beantragt und freigegeben werden; ohne Freigabe ist das Modell nicht aufrufbar. Kein Ankündigungsbeitrag, kein Modellbericht, keine Benchmarks, keine Angabe zu Architektur oder Größe.",
+    "verificationNote": "Als unbestätigt markiert: Das Datum 06.08.2026 hält fest, wann die Modellseite qwencloud.com/models/wan3.0-video live geprüft wurde — es ist kein von Alibaba genanntes Erscheinungsdatum. Direkt auf der Seite verifiziert sind die Beschreibung als Alleskönner-Modell, die Eingabemodalitäten, die drei Auflösungen mit Sekundenpreisen, die Ratenbegrenzungen, der DashScope-Endpunkt mit `wan3.0-video` und der Beta-Hinweis samt „Join Beta“-Schaltfläche. Vier Gründe für die Kennzeichnung: Erstens ist keine Ankündigung von Alibaba, Qwen oder dem Wan-Team auffindbar. Zweitens führt Alibaba Clouds eigene Übersicht „Newly released models“ am 04.08.2026 weiterhin Wan2.7 (1. Juli 2026) als neuestes Wan-Modell. Drittens existiert kein Internet-Archive-Abzug der Seite, der Zeitpunkt des Onlinegangs lässt sich also nicht eingrenzen. Viertens schreibt evolink.ai (Stand 04.08.2026), Alibaba habe Wan 3.0 zu diesem Datum nicht offiziell angekündigt, und nennt den 06.08.2026 als unbestätigtes, kursierendes Erscheinungsdatum. Alle Fähigkeits- und Preisangaben stammen ausschließlich aus dem Listing; unabhängige Tests, Benchmarks oder Berichterstattung liegen nicht vor. Das Datum ist zu korrigieren, sobald eine offizielle Ankündigung erscheint.",
+    "id": "video-wan3-0-video-2026-08-06"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "5. August 2026",
+  lastVerified: "6. August 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-08-05",
+  lastVerifiedISO: "2026-08-06",
   windowStart: "2022-08",
   windowEnd: "2026-08",
-  total: 242,
+  total: 247,
   placeholder: false,
 };
