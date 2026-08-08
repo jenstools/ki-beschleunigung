@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 247 entries across text, image, video, audio,
- * late 2022 → 6 August 2026.
+ * German descriptions. 248 entries across text, image, video, audio,
+ * late 2022 → 7 August 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4651,15 +4651,36 @@ export const entries: Entry[] = [
     "note": "Geschlossene Beta — der Zugang muss über „Join Beta“ beantragt und freigegeben werden; ohne Freigabe ist das Modell nicht aufrufbar. Kein Ankündigungsbeitrag, kein Modellbericht, keine Benchmarks, keine Angabe zu Architektur oder Größe.",
     "verificationNote": "Als unbestätigt markiert: Das Datum 06.08.2026 hält fest, wann die Modellseite qwencloud.com/models/wan3.0-video live geprüft wurde — es ist kein von Alibaba genanntes Erscheinungsdatum. Direkt auf der Seite verifiziert sind die Beschreibung als Alleskönner-Modell, die Eingabemodalitäten, die drei Auflösungen mit Sekundenpreisen, die Ratenbegrenzungen, der DashScope-Endpunkt mit `wan3.0-video` und der Beta-Hinweis samt „Join Beta“-Schaltfläche. Vier Gründe für die Kennzeichnung: Erstens ist keine Ankündigung von Alibaba, Qwen oder dem Wan-Team auffindbar. Zweitens führt Alibaba Clouds eigene Übersicht „Newly released models“ am 04.08.2026 weiterhin Wan2.7 (1. Juli 2026) als neuestes Wan-Modell. Drittens existiert kein Internet-Archive-Abzug der Seite, der Zeitpunkt des Onlinegangs lässt sich also nicht eingrenzen. Viertens schreibt evolink.ai (Stand 04.08.2026), Alibaba habe Wan 3.0 zu diesem Datum nicht offiziell angekündigt, und nennt den 06.08.2026 als unbestätigtes, kursierendes Erscheinungsdatum. Alle Fähigkeits- und Preisangaben stammen ausschließlich aus dem Listing; unabhängige Tests, Benchmarks oder Berichterstattung liegen nicht vor. Das Datum ist zu korrigieren, sobald eine offizielle Ankündigung erscheint.",
     "id": "video-wan3-0-video-2026-08-06"
+  },
+  {
+    "date": "2026-08-07",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Grok Imagine Image 2.0",
+    "org": "xAI",
+    "house": "xAI",
+    "license": "closed",
+    "capability": "Allgemein verfügbar als neuer „Quality Mode“ auf grok.com/imagine sowie in den Grok-Apps für iOS und Android. xAI richtet das Modell auf Bilder aus, die als Arbeitsmaterial taugen: Es soll Anweisungen bis in die Details befolgen, Typografie und Layout planen „wie ein Designer“ — damit dichte, mehrteilige Visuals zusammenhalten und kleiner Text scharf bleibt — und Eingaben über Generationen und Bearbeitungen hinweg erhalten. Dazu kommt ein Werkzeugsatz für gezieltes Ändern: Ein Zauberstab bearbeitet nur die angezeigte Region und lässt den Rest unberührt, Segmentierung wählt genaue Bildbereiche aus, Hintergrundentfernung exportiert Motive mit Transparenz, und Multi-Referenz nimmt bis zu fünf Eingabebilder in einer einzigen Generierung an, was manuelles Compositing ersetzt. „Smart Resize“ füllt ein gewähltes Seitenverhältnis auf — neun Formate von 1:2 bis 2:1. Neu sind außerdem fünfzehn Vorlagen, die verbreitete Arbeitsabläufe fertig konfiguriert bündeln, von Produktfotos und Bewerbungsfotos über Icons und Spiele-Assets bis zu Merch und Emoji. Für Video zeigt xAI den Aufbau einer zusammenhängenden Welt: Figur, Orte und Requisiten einzeln erzeugt, aber über alle Bilder hinweg in einem Stil gehalten.",
+    "whyItMattered": "Erstmals steht xAI in der Bildgenerierung ganz vorne — mit einem großen Aber. Platz 2 auf beiden Arena-Ranglisten stimmt, nachgeprüft auf den Ranglisten selbst: 1439 Elo bei der Bildbearbeitung hinter gpt-image-2 (1463), 1320 bei Text-zu-Bild hinter gpt-image-2 (1380). Was xAIs eigene Balkendiagramme weglassen, sind die Stimmenzahlen: 5.931 Wertungen bei der Bearbeitung und nur 2.722 bei Text-zu-Bild, gegenüber 184.189 und 69.194 beim Spitzenmodell. Bei Text-zu-Bild ist das Konfidenzintervall mit ±12 deshalb so breit, dass die Rangliste selbst Platz 2 bis 3 ausweist — von reve-2.1 statistisch nicht zu trennen. Eindeutig ist dagegen der Abstand nach oben: 60 Elo auf gpt-image-2. Interessanter als der Platz ist ohnehin, was hier zum Modell gehört. Region statt ganzes Bild neu würfeln, Segmentierung, transparenter Export, fünf Referenzen in einem Durchlauf: Das verschiebt Bildmodelle vom Prompt-zu-Bild-Automaten zum Werkzeug, das an einer bestehenden Datei weiterarbeitet — die Arbeitsschritte, für die bisher eine Bildbearbeitung nebenher offen war. Genau daran hakt es dann auch: Ohne API bleibt das alles zunächst in der Grok-App.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-imagine-image-2",
+      "https://arena.ai/leaderboard/image-edit",
+      "https://arena.ai/leaderboard/text-to-image"
+    ],
+    "disputed": false,
+    "note": "API-Zugang laut Ankündigung „coming soon“ — nutzbar ist das Modell zunächst nur über grok.com/imagine und die Grok-Apps für iOS und Android. Kein Modellbericht, keine Angaben zu Architektur, Größe oder Preisen; Gewichte sind nicht verfügbar.",
+    "verificationNote": "Datum 07.08.2026 hart verifiziert: Die Ankündigungsseite führt im eingebetteten JSON-LD als NewsArticle ein `datePublished` von „2026-08-07T00:00:00Z“ (Autor: Organisation xAI), sichtbar zusätzlich als „Aug 7, 2026“. Die Primärquelle war nur im Browser lesbar — x.ai antwortet auf maschinelle Abrufe mit HTTP 403, wie schon beim Eintrag zu Grok STT 1.0 vom 23.07.2026. Die Arena-Werte sind hier nicht als Herstellerangabe übernommen, sondern am 08.08.2026 direkt auf den Ranglisten von arena.ai (vormals lmarena.ai) gegengeprüft, die dort ihrerseits auf den Stand „Aug 7, 2026“ datiert waren. Bestätigt: Platz 2 in beiden Wertungen, Image Edit 1439 ±8 bei 5.931 Stimmen (Rangspanne 2–2, 53 Modelle), Text-zu-Bild 1320 ±12 bei 2.722 Stimmen (Rangspanne 2–3, 76 Modelle), jeweils hinter gpt-image-2 (medium) mit 1463 ±4 beziehungsweise 1380 ±5. xAIs eigene Diagramme weichen um wenige Elo-Punkte ab — etwa muse-image mit 1407 statt 1405, seedream-5.0-pro mit 1385 statt 1393 — was bei einer laufend aktualisierten Rangliste erwartbar ist; sie nennen aber weder Stimmenzahlen noch Konfidenzintervalle oder Rangspannen. Entscheidend für die Lesart: Gemessen wurde die Konfiguration „(low)“, nicht der auf grok.com ausgelieferte Quality Mode. xAI führt seine Modelle auf Arena unter dem Labornamen „SpaceXAI“, unter dem auch die Ankündigungsseite firmiert, während JSON-LD und Fußzeile weiterhin xAI beziehungsweise die X.AI LLC nennen; `org` steht deshalb wie bei allen anderen xAI-Einträgen auf „xAI“. Der Name folgt hier dem Eintrag zu Grok Imagine Video 1.5 — xAIs eigene Überschrift lautet „Imagine Image 2.0“, die Modell-ID auf Arena `grok-imagine-image-2.0`, der URL-Bestandteil `grok-imagine-image-2`. Nicht überprüfbar sind alle Fähigkeitsaussagen: Es gibt keinen Modellbericht, keine Architektur- oder Parameterangabe, keine Trainingsdetails und keine Preisliste. Die Vorgängermodelle grok-imagine-image, -pro und -quality stehen auf den Arena-Ranglisten, sind in diesem Datensatz aber nicht erfasst — dies ist der erste Bildeintrag von xAI hier.",
+    "id": "image-grok-imagine-image-2-0-2026-08-07"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "6. August 2026",
+  lastVerified: "8. August 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-08-06",
+  lastVerifiedISO: "2026-08-08",
   windowStart: "2022-08",
   windowEnd: "2026-08",
-  total: 247,
+  total: 248,
   placeholder: false,
 };
