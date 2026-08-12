@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 251 entries across text, image, video, audio,
- * late 2022 → 11 August 2026.
+ * German descriptions. 252 entries across text, image, video, audio,
+ * late 2022 → 12 August 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4017,24 +4017,6 @@ export const entries: Entry[] = [
     "verificationNote": "Datum 08.07.2026 direkt im ByteDance-Seed-Blog (Primärquelle) bestätigt."
   },
   {
-    "id": "text-grok-4-5-2026-07-08",
-    "date": "2026-07-08",
-    "datePrecision": "day",
-    "modality": "text",
-    "name": "Grok 4.5",
-    "org": "xAI",
-    "house": "xAI",
-    "license": "closed",
-    "capability": "Auf dem 1,5-Billionen-Foundation-Modell „V9\" aufgebautes Reasoning-Modell mit zusätzlichen Cursor-Trainingsdaten, konfigurierbarem Reasoning-Aufwand sowie Fokus auf Geschwindigkeit und Token-Effizienz. Ab dem 08.07.2026 über die xAI-API verfügbar ($2/$6 pro 1M Token); öffentlicher Rollout ab 09.07.2026.",
-    "whyItMattered": "xAI positioniert Grok 4.5 als „Opus-Klasse\" — schneller, token-effizienter und günstiger. Wichtig: Die Leistungsaussagen sind Eigenangaben von xAI/Musk; zum Launch lagen keine unabhängigen oder öffentlichen Benchmarks vor.",
-    "firstOfKind": "",
-    "sources": [
-      "https://x.ai/news/grok-4-5"
-    ],
-    "disputed": false,
-    "verificationNote": "Ankündigung über die offizielle x.ai-News-Seite (vom Nutzer belegt); Seite maschinell nicht abrufbar (HTTP 403). API-Verfügbarkeit, Preise ($2/$6) und öffentlicher Rollout am 09.07. über mehrere Berichte bestätigt. Leistungsaussagen („Opus-Klasse\") sind Eigenangaben von xAI, keine unabhängigen Benchmarks zum Launch-Zeitpunkt."
-  },
-  {
     "id": "image-muse-image-2026-07-07",
     "date": "2026-07-07",
     "datePrecision": "day",
@@ -4127,6 +4109,24 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "verificationNote": "Veröffentlichung am 16.07.2026 über mehrere Berichte (MarkTechPost, Simon Willison, kie.ai) bestätigt; zunächst über Kimi Code und die Kimi-App verfügbar. Die Open-Weights erschienen am 27.07.2026 auf Hugging Face — dazu der eigene Eintrag „Kimi K3 (Open Weights)\". Benchmarks laut Moonshot/Berichten."
+  },
+  {
+    "id": "text-grok-4-5-2026-07-16",
+    "date": "2026-07-16",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Grok 4.5",
+    "org": "xAI",
+    "house": "xAI",
+    "license": "closed",
+    "capability": "Auf zehntausenden NVIDIA-GB300-Grafikprozessoren trainiertes Reasoning-Modell, gemeinsam mit Cursor trainiert und auf Programmieren, agentische Aufgaben und Wissensarbeit ausgelegt. Das Reinforcement Learning umfasst laut xAI hunderttausende Aufgaben, überwiegend mehrschrittige Softwareentwicklung, mit automatischer und modellbasierter Bewertung; der Trainingsstapel ist stark asynchron, sodass agentische Durchläufe über Stunden laufen können, während das Lernen weitergeht. Ausgeliefert mit 80 Token pro Sekunde, also auf dem Tempo von Flash-Modellen, und mit ausdrücklich auf Token-Effizienz getrimmtem Reasoning: laut xAI im Schnitt 15.954 Ausgabetoken je Aufgabe auf SWE Bench Pro gegenüber 67.020 bei Claude Opus 4.8 (max), also etwa ein Viertel. Preis 2 $ je Million Eingabe- und 6 $ je Million Ausgabetoken. Zum Start Standardmodell in Grok Build, dazu in Cursor in allen Tarifen und über die eigene Konsole und API. Neben dem Programmieren beworben für Büroarbeit — mehrblättrige Excel-Modelle mit Web-Recherche, PowerPoint-Diagramme aus nativen Formen, Word-Prosa — über Plugins für Word, PowerPoint, Excel und Outlook.",
+    "whyItMattered": "Der Anspruch ist nicht der höchste Benchmarkwert, sondern der beste Wert je Zeit- und Kosteneinheit — und die Tabellen des Hauses stützen das ungewöhnlich offen, weil sie zeigen, wo Grok 4.5 verliert: DeepSWE 1.0 62,0 % hinter Fable (max) 66,1 % und GPT-5.5 (xhigh) 64,31 %, DeepSWE 1.1 53 % hinter Fable 70 %, GPT-5.5 67 % und Opus 4.8 (max) 59 %, SWE Bench Pro 64,7 % hinter Fable 80,4 % und Opus 4.8 69,2 %. Vorn liegt es bei SWE Marathon (29,0 % gegen 26,0 % bei Opus 4.8) und praktisch gleichauf bei Terminal Bench 2.1 (83,3 % gegen 84,3 %). Das Argument ist also nicht Spitzenintelligenz, sondern das Verhältnis: dieselbe Klasse bei 80 Token pro Sekunde und einem Viertel der Ausgabetoken. Damit verschiebt sich die Konkurrenzfrage von „welches Modell ist das stärkste“ auf „welches ist das stärkste pro Dollar und pro Minute“ — und das ist die Frage, die über den Einsatz in Agentenschleifen entscheidet, wo ein Modell nicht einmal, sondern zehntausendmal läuft.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-4-5"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum am 12.08.2026 von 08.07.2026 auf 16.07.2026 korrigiert. Der Eintrag stand zuvor auf dem 08.07., weil x.ai auf maschinelle Abrufe mit HTTP 403 antwortet und das Datum deshalb nur aus Sekundärquellen übernommen war. Die Primärquelle ist jetzt im Browser gelesen: x.ai/news/grok-4-5 trägt die Datumszeile „Jul 16, 2026“, ebenso die Übersichtskarte auf x.ai/news. Mit dem Datum entfielen drei Angaben der früheren Fassung, die die Primärquelle nicht deckt: ein „1,5-Billionen-Foundation-Modell V9“ als Grundlage (die Seite nennt stattdessen ein Training über zehntausende NVIDIA GB300), ein öffentlicher Rollout am 09.07.2026 (den beschreibt der eigene Beitrag „Bringing Grok 4.5 to iOS, Android, Web, and X“ vom 22.07.2026) und die Aussage, zum Launch hätten keine unabhängigen Benchmarks vorgelegen (die DeepSWE-Werte stammen laut Seite von einem Datacurve-Eval, gefahren von Artificial Analysis in den Harnesses der jeweiligen Anbieter). Die als Zitat geführte Einordnung „Opus-Klasse“ steht nicht auf der Seite und ist entfernt. Alle Zahlen bleiben Herstellerangaben; die Vergleichswerte sind laut Seite den veröffentlichten System Cards und Leaderboards der jeweiligen Anbieter entnommen, also von xAI ausgewählt."
   },
   {
     "id": "text-qwen3-8-max-2026-07-19",
@@ -4734,6 +4734,25 @@ export const entries: Entry[] = [
     "note": "OpenMDW-1.1 ist keine OSI-geprüfte Open-Source-Lizenz, gibt aber Gewichte, Trainingsdaten und Rezepte zum Herunterladen frei; die Model Card weist das Modell als für den kommerziellen Einsatz freigegeben aus. Die BF16-Gewichte sind ausdrücklich zur Weiterverarbeitung gedacht — Post-Training, Domänenanpassung, eigene Quantisierungen; für den Produktionsbetrieb verweist NVIDIA auf die NVFP4-Fassung. Betriebssystem laut Card: Linux.",
     "verificationNote": "Datum 11.08.2026 dreifach belegt: Der Unternehmensblog blogs.nvidia.com datiert den Beitrag auf den 11. August 2026 (Kari Briski), der Entwicklerblog auf „August 11, 2026 by Chris Alexiuk and Chintan Patel“, und die Model Card führt sowohl „Release Date: August 11, 2026“ als auch „GA (08/11/2026)“. Die Hugging-Face-Repositorys waren deutlich früher angelegt — BF16 am 01.08.2026 (06:55 UTC), NVFP4 am 04.08.2026, das Basismodell und die beiden Entwurfsmodelle am 05.08.2026 —, was wie bei Shieldstral 1.0 und Muse Glimmer nicht als Veröffentlichungsdatum zählt. Dass die Freigabe tatsächlich am 11.08. erfolgte, stützen die Gemeinschaftsquantisierungen, die alle an diesem Tag entstanden (lmstudio-community 00:08 UTC, ggml-org 13:26 UTC, bartowski 15:05 UTC). Architektur, Kontextlänge, Sprachen, Trainingsstufen, Lizenz und Hardwareliste sind der Model Card des BF16-Repositorys entnommen und damit Herstellerangaben. Die Benchmarkwerte sind ebenfalls Eigenangaben, aber ungewöhnlich gut abgesichert: NVIDIA misst alle Vergleichsmodelle im eigenen Harness (NeMo Gym, für SWE-Bench und Terminal-Bench NeMo Evaluator), weist ausdrücklich darauf hin, dass die Werte von den Eigenangaben der jeweiligen Anbieter abweichen können, und veröffentlicht die Auswertungsrezepte zum Nachrechnen. Eine Spannung bleibt: Der Entwicklerblog nennt 86 % Genauigkeit auf PinchBench und „30 % schneller als Qwen3.6 35B bei ähnlicher Genauigkeit“, während dieselbe Tabelle in der Model Card 85,37 für Lightning gegen 88,07 für Qwen ausweist — „ähnliche Genauigkeit“ ist damit gedehnt. Nicht unabhängig geprüft sind die vierfache Ausgabegeschwindigkeit und die Pareto-Aussage zum Intelligence Index von Artificial Analysis. Modelldaten laut Card Dezember 2025 bis Mai 2026, Wissensstand der Vortrainingsdaten September 2025, der Nachtrainingsdaten Mai 2026. Zum Prüfzeitpunkt am 12.08.2026 wies das NVFP4-Repository 152 Likes aus, das BF16-Repository 86. NVIDIA ist mit diesem Eintrag erstmals als eigenes Haus im Datensatz erfasst; zuvor kam der Name nur in fremden Einträgen vor, etwa beim Vergleichsmodell Nemotron-3.5-Content-Safety-4B im Eintrag zu Shieldstral. Nicht erfasst sind die früheren NVIDIA-Veröffentlichungen NemotronLabs-VoiceChat-11B (29.07.2026) und Cosmos-H-Dreams (21.07.2026) — sie liegen außerhalb des geprüften Zeitfensters dieser Nachtragsrunde.",
     "id": "text-nemotron-3-5-lightning-30b-a3b-2026-08-11"
+  },
+  {
+    "date": "2026-08-12",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Grok 4.6",
+    "org": "xAI",
+    "house": "xAI",
+    "license": "closed",
+    "capability": "Nachfolger von Grok 4.5, ausgelegt auf langlaufende Agenten und auf interaktive wie visuelle Arbeit, die über viele Schritte getragen werden muss — ein Thema recherchieren, Informationen auswerten, in einer Codebasis arbeiten, aus einer Idee ein vorzeigbares Artefakt machen. Auf dem Intelligence Index von Artificial Analysis, einem zusammengesetzten Wert aus neun Benchmarks, erreicht es 61 Punkte gegenüber 56 bei Grok 4.5 High. Der Trainingsweg ist dokumentiert: ein längerer ergänzender Trainingslauf als bei 4.5, mit kuratierten modellgenerierten Daten für Schlussfolgern und fortgeschrittene technische Konzepte, hochwertigen Ingenieursdaten und verbessertem Optimierer; die SFT-Trajektorien wurden anschließend von Grok 4.5 selbst neu erzeugt — über verschiedene Reasoning-Stufen, Agentengerüste und Domänen hinweg — und modellbasiert von problematischen Spuren gefiltert. Darauf folgt agentisches Reinforcement Learning über Wissensarbeit, allgemeines Programmieren und Spezialumgebungen für Kernel-Optimierung, Webentwicklung und rechnergestützte Konstruktion. Preis 2 $ je Million Eingabe- und 6 $ je Million Ausgabetoken, unverändert gegenüber Grok 4.5; eine schnelle Variante kostet das Doppelte.",
+    "whyItMattered": "27 Tage nach Grok 4.5, und der Indexwert steigt von 56 auf 61 — womit xAI erstmals Gleichstand mit dem Spitzenmodell von OpenAI beansprucht: 61 zu 61 gegen GPT-5.6 Sol Max, einen Punkt hinter Claude Fable 5 Max (62). Interessanter als der Gleichstand ist, woher er kommt. In der Wissensarbeit führt Grok 4.6 die eigene Tabelle an: GDPVal-AA v2 1.753 gegen 1.741 (Fable 5 Max) und 1.728 (GPT-5.6 Sol Max), AA-Briefcase 1.577 gegen 1.574 und 1.502, auf dem Rechtsbenchmark Harvey LAB 15,8 % gegen 11,3 % und 2,5 %. Bei den härtesten agentischen Aufgaben liegt es dagegen deutlich zurück: Terminal-Bench 3.0 26 % gegen 34,6 % und 34,1 %, DeepSWE 1.1 65,9 % gegen 73 % bei GPT-5.6 Sol Max. Ein zusammengesetzter Indexwert kann also Gleichstand ausweisen, während die Profile weit auseinanderliegen — und weil solche Indizes inzwischen die Währung der Ankündigungen sind, ist das die eigentliche Lehre dieser Tabelle. Zwei Nebenbefunde: Die Trainingsdaten des Nachfolgers stammen vom Vorgänger, hier ungewöhnlich offen dokumentiert. Und xAI berichtet, dass das Modell auf langen Läufen beginnt, die eigene Arbeit zu prüfen, bevor es weitermacht — Selbstverifikation als Nebenprodukt längerer Trajektorien, nicht als eingebautes Verfahren.",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-4-6"
+    ],
+    "disputed": false,
+    "note": "Vom Start an in Cursor und Grok Build, dazu über die eigene API sowie OpenRouter, Vercel und Cloudflare; in der ersten Woche doppeltes Inklusivvolumen in Grok Build und Cursor. Die Website des Hauses tritt inzwischen durchgehend als „SpaceXAI“ auf — Seitentitel, API- und Konsolenbezeichnung, Social-Handle @spacexai —, während der Fußzeilenvermerk weiter „© 2026 X.AI LLC“ nennt; dieser Datensatz führt das Haus deshalb unverändert als xAI.",
+    "verificationNote": "Datum 12.08.2026 direkt aus der Primärquelle: Die Ankündigungsseite x.ai/news/grok-4-6 trägt die Datumszeile „Aug 12, 2026“, ebenso die Übersichtskarte auf x.ai/news. x.ai antwortet auf maschinelle Abrufe mit HTTP 403, die Seite wurde deshalb im Browser gelesen — dasselbe Verfahren wie bei Grok Imagine Image 2.0. Sämtliche Zahlen sind Eigenangaben von xAI, und die Vergleichswerte sind ausdrücklich selbst ausgewählt: Die Tabelle vermerkt „Third-party model scores are the best of self-reported or publicly available results“, die Diagramme „Competitor figures are drawn from the respective developers’ published system cards or benchmark leaderboards“. Unabhängige Messungen lagen zum Prüfzeitpunkt am 12.08.2026 nicht vor; der Vergleichswert für GPT-5.6 Sol Max auf APEX-SWE fehlt in der Tabelle des Hauses ganz. Nicht erfasst sind die übrigen x.ai-Meldungen dieses Fensters, weil sie keine Fähigkeit eines Modells verändern: Grok Bot (11.08.2026), Build Mode und Workflows in Grok Build, Automations in Grok sowie die Plugins für Excel, Outlook und Google Workspace.",
+    "id": "text-grok-4-6-2026-08-12"
   }
 ];
 
@@ -4743,6 +4762,6 @@ export const dataMeta = {
   lastVerifiedISO: "2026-08-12",
   windowStart: "2022-08",
   windowEnd: "2026-08",
-  total: 251,
+  total: 252,
   placeholder: false,
 };
