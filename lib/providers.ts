@@ -79,6 +79,7 @@ const PALETTE: Record<string, string> = {
   Suno: "#f59e0b",
   xAI: "#1f2937",
   Mistral: "#fa520f",
+  NVIDIA: "#76b900",
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -109,6 +110,7 @@ const DOMAIN: Record<string, string> = {
   Suno: "suno.com",
   xAI: "x.ai",
   Mistral: "mistral.ai",
+  NVIDIA: "nvidia.com",
   Lightricks: "lightricks.com",
   StepFun: "stepfun.com",
   "Fish Audio": "fish.audio",
@@ -154,6 +156,7 @@ const COUNTRY: Record<string, string> = {
   "Thinking Machines Lab": "US",
   Genmo: "US",
   ElevenLabs: "US",
+  NVIDIA: "US",
   // China
   Alibaba: "CN",
   ByteDance: "CN",

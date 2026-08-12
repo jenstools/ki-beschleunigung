@@ -30,19 +30,22 @@ const video = entries.filter((e) => e.modality === "video");`;
 
 const CURL_EXAMPLE = `curl -s ${ENDPOINT} | jq '.entries[0]'`;
 
+// Interpolated from `dataMeta` rather than typed out: a hand-written sample
+// payload silently goes stale with every entry added, and this one had been
+// publishing a total 6 releases short of the live API.
 const RESPONSE_SHAPE = `{
   "meta": {
-    "lastVerified": "5. August 2026",
-    "lastVerifiedISO": "2026-08-05",
-    "windowStart": "2022-08",
-    "windowEnd": "2026-08",
-    "total": 242,
+    "lastVerified": "${dataMeta.lastVerified}",
+    "lastVerifiedISO": "${dataMeta.lastVerifiedISO}",
+    "windowStart": "${dataMeta.windowStart}",
+    "windowEnd": "${dataMeta.windowEnd}",
+    "total": ${dataMeta.total},
     "version": "v1",
     "license": "CC-BY-4.0",
     "attribution": "KI-Zeitstrahl von snipKI",
     "source": "https://timeline.snipki.de"
   },
-  "count": 242,
+  "count": ${dataMeta.total},
   "entries": [ /* Entry[] */ ]
 }`;
 

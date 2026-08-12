@@ -144,8 +144,9 @@ export default function TempoPage() {
                     {h.count}
                   </td>
                   <td className="whitespace-nowrap py-2 pr-4 text-right font-mono text-[13px] text-ink">
-                    {/* Under two days, one decimal would hide the difference
-                        between 0,97 and 1,4 — the two most interesting values. */}
+                    {/* Under two days a single decimal starts rounding away the
+                        difference between consecutive half-years, which is the
+                        whole point of the table at this end of the range. */}
                     {num(h.meanGap, h.meanGap < 2 ? 2 : 1)} Tage
                   </td>
                   <td className="py-2">
