@@ -2,6 +2,7 @@ import type { Entry } from "@/data/types";
 import { MODALITY_META } from "@/data/types";
 import { dayNumber, domainOf, monthYear } from "@/lib/metrics";
 import { MODALITY_COLOR, modalityTint } from "@/lib/ui";
+import { logoSrc } from "@/lib/logos";
 import { providerDomain } from "@/lib/providers";
 
 /** German abbreviations whose trailing period must not end the teaser sentence. */
@@ -30,7 +31,10 @@ export function EntryCard({ entry }: { entry: Entry }) {
   const color = personal ? "var(--brand-deep)" : MODALITY_COLOR[entry.modality];
   const isOpen = entry.license === "open";
   const day = dayNumber(entry.date, entry.datePrecision);
-  const domain = providerDomain(entry.house);
+  // A recorded domain is what guarantees a committed icon: `npm run logos`
+  // fetches one per domain and the pre-build check fails if one is missing. The
+  // houses without a domain render without an icon, as they always did.
+  const hasLogo = !!providerDomain(entry.house);
   const highlight = firstSentence(entry.capability);
   // Only the remainder goes in the disclosure — repeating the teaser reads as a stutter.
   const rest = entry.capability.startsWith(highlight)
@@ -94,15 +98,18 @@ export function EntryCard({ entry }: { entry: Entry }) {
       </div>
 
       <div className="mt-1.5 flex items-center gap-2">
-        {domain ? (
+        {hasLogo ? (
+          // Plain <img>, not next/image: these are 18px, already sized and
+          // same-origin, so an optimizer round-trip would only add requests.
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+            src={logoSrc(entry.house)}
             alt=""
             width={18}
             height={18}
             className="h-[18px] w-[18px] shrink-0 rounded-[3px]"
             loading="lazy"
+            decoding="async"
           />
         ) : null}
         <h4 className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl">

@@ -127,6 +127,15 @@ export function providerDomain(house: string): string {
 }
 
 /**
+ * The whole domain table, for the logo pipeline in scripts/logos.ts: it needs
+ * the list of houses that are supposed to have an icon, which a per-house lookup
+ * cannot answer.
+ */
+export function providerDomains(): [string, string][] {
+  return Object.entries(DOMAIN);
+}
+
+/**
  * Country of the lab's headquarters, ISO 3166-1 alpha-2.
  *
  * Deliberately incomplete: a provider missing from this map resolves to
@@ -237,7 +246,8 @@ export function assertKnownHouses(houses: Iterable<string>): void {
     throw new Error(
       `Unbekanntes Haus in data/timeline.ts: ${unknown.join(", ")}. ` +
         `Bitte in lib/providers.ts eintragen (Domain, Land, Farbe) — sonst ` +
-        `zählt es als eigenes Haus, ohne Logo und ohne Region.`,
+        `zählt es als eigenes Haus, ohne Logo und ohne Region. ` +
+        `Nach einem neuen DOMAIN-Eintrag: npm run logos`,
     );
   }
 }
