@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/logos.ts --check && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "logos": "node scripts/logos.ts"
   },
   "dependencies": {
     "motion": "^12.40.0",
