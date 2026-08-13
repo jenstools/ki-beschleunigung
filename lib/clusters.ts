@@ -56,9 +56,9 @@ export const CLUSTERS: Cluster[] = [
     title: "Das Tempo: aus 24 Tagen Abstand wurden 2,4",
     short: "Tempo",
     claim:
-      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,4. Im laufenden Halbjahr sind es 0,94 — weniger als ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
+      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,4. Im laufenden Halbjahr sind es 0,92 — weniger als ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
     description:
-      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,4 im Jahr 2026. Halbjahresweise gemessen an 254 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
+      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,4 im Jahr 2026. Halbjahresweise gemessen an 255 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
     api: "/api/v1/tempo",
     verify: (rel) => {
       const years = cadenceByYear(rel);
@@ -69,7 +69,7 @@ export const CLUSTERS: Cluster[] = [
       expect(
         "Abstand laufendes Halbjahr",
         round(halves[halves.length - 1].meanGap, 2),
-        0.94,
+        0.92,
       );
       // Bounded on both sides: the claim names July, not "everything since July".
       const july = chronological(rel).filter(
@@ -81,7 +81,7 @@ export const CLUSTERS: Cluster[] = [
         july.filter((e, i) => i > 0 && e.date === july[i - 1].date).length,
         15,
       );
-      expect("Releases gesamt", rel.length, 254);
+      expect("Releases gesamt", rel.length, 255);
     },
   },
   {
@@ -89,7 +89,7 @@ export const CLUSTERS: Cluster[] = [
     title: "Erstmalig: 114 belegte Premieren",
     short: "Erstmalig",
     claim:
-      "114 von 254 Releases tragen einen belegten „Erster, der …“-Anspruch: 40 in Text, 27 in Audio, 26 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
+      "114 von 255 Releases tragen einen belegten „Erster, der …“-Anspruch: 40 in Text, 27 in Audio, 26 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
     description:
       "Wer konnte zuerst was? 114 dokumentierte Premieren generativer KI in Text, Bild, Video und Audio — jede mit Releasedatum, Labor und Link auf die Primärquelle, strittige Fälle offen als strittig markiert.",
     api: "/api/v1/erstmalig",
@@ -99,7 +99,7 @@ export const CLUSTERS: Cluster[] = [
         firstsByModality(rel).map((g) => [g.modality, g.entries.length]),
       );
       expect("Premieren gesamt", firsts.length, 114);
-      expect("Releases gesamt", rel.length, 254);
+      expect("Releases gesamt", rel.length, 255);
       expect("Premieren Text", byModality.get("text") ?? 0, 40);
       expect("Premieren Audio", byModality.get("audio") ?? 0, 27);
       expect("Premieren Video", byModality.get("video") ?? 0, 26);
@@ -138,7 +138,7 @@ export const CLUSTERS: Cluster[] = [
       expect("Anteil offen 2023", byYear.get(2023) ?? 0, 38);
       expect("Anteil offen 2025", byYear.get(2025) ?? 0, 17);
       expect("Offene Releases gesamt", open.length, 78);
-      expect("Releases gesamt", rel.length, 254);
+      expect("Releases gesamt", rel.length, 255);
 
       // The gap is the headline, so both its length and what filled it are guarded.
       const gap = longestPauses(open, 1)[0];
