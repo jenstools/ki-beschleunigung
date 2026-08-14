@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 252 entries across text, image, video, audio,
- * late 2022 → 12 August 2026.
+ * German descriptions. 258 entries across text, image, video, audio,
+ * late 2022 → 14 August 2026.
  */
 export const entries: Entry[] = [
   {
@@ -4859,15 +4859,36 @@ export const entries: Entry[] = [
     "note": "Der Einführungspreis gilt bis 31.12.2026; ab 01.01.2027 kostet die Nutzung 1,50 USD pro 1 Mio. Eingabe- und 7,50 USD pro 1 Mio. Ausgabe-Token — das Doppelte. Die Model Card weist denselben Einführungspreis auch für Gemini 3.6 Flash aus, das am 21.07.2026 noch mit 1,50/7,50 USD angekündigt worden war; Google hat den Preis des Vorgängers offenbar mitgesenkt, sagt das aber an keiner Stelle ausdrücklich. Der Frontier-Safety-Bericht zu 3.7 Flash war am 13.08.2026 noch nicht veröffentlicht („will be published shortly“).",
     "verificationNote": "Datum 13.08.2026 dreifach belegt: Der Google-Blogbeitrag „Introducing Gemini 3.7 Flash“ von Tulsee Doshi trägt die Datumszeile „Aug 13, 2026“, die DeepMind-Model-Card ist mit „Published 13 August 2026“ ausgewiesen, und der Changelog der Gemini API führt das Modell unter dem 13. August 2026 als allgemein verfügbar mit der Kennung gemini-3.7-flash — anders als bei den Robotics-Modellen vom 30.07.2026 ohne Preview-Stufe. Alle Benchmark-, Architektur- und Preisangaben sind Herstellerangaben aus Blog und Model Card; die dort genannte Methodenseite (deepmind.com/models/evals-methodology/gemini-3-7-flash) wurde nicht gelesen, unabhängige Messungen lagen am Prüftag nicht vor. Zwei Abweichungen innerhalb der eigenen Unterlagen: Der Blogbeitrag nennt für 3.6 Flash auf DeepSWE v1.1 49,0 %, die Model Card 48,6 % — hier steht der Wert der Karte, weil sie die vollständige Tabelle trägt. Und derselbe Elo-Vergleich (1588 zu 1538) läuft im Blog als „WebDev Arena“ von Arena.ai, in der Karte als „Code Arena“. AutomationBench ist laut Karte ein privates Set; GDPVal-AA v2, Harvey LAB-AA und der Artificial Analysis Intelligence Index sind Fremdsuiten, deren Läufe Google nicht veröffentlicht, und die Vergleichswerte für Claude Sonnet 5, GPT-5.6 Terra und Muse Spark 1.2 hat Google selbst zusammengestellt. Die Frontier-Safety-Bewertung nennt für CBRN und Cybersicherheit ausdrücklich nur das Erreichen der Alert-Schwelle, nicht des Critical Capability Level selbst.",
     "id": "text-gemini-3-7-flash-2026-08-13"
+  },
+  {
+    "date": "2026-08-14",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "GLM-5.3",
+    "org": "Zhipu AI (Z.ai)",
+    "house": "Zhipu",
+    "license": "open",
+    "capability": "Dasselbe Basismodell wie GLM-5.2 — die 744B-MoE-Architektur mit 1-Mio.-Token-Kontext bleibt unangetastet, der gesamte Zugewinn kommt aus skaliertem Post-Training auf synthetisch erzeugten Langhorizont-Umgebungen. Z.ai baut die Aufgaben nicht mehr als Coding-Übungen, sondern als Einheiten echter Expertenarbeit: In einer ML-Infrastruktur-Aufgabe erhält das Modell dieselbe Arbeitsumgebung wie ein Ingenieur — Rechencluster, Storage, interne Dokumentation, Codebase, Experimentergebnisse — und muss Engpässe diagnostizieren, Optimierungen implementieren, Experimente fahren und eine messbare Beschleunigung abliefern, ohne die Korrektheit zu brechen; einzelne Aufgaben entsprechen mehreren Arbeitstagen. Umgebungen und für einen Teil auch das RL-Reward-Signal werden von Pipelines synthetisiert, ein Judge-Agent prüft jede Aufgabe auf Lösbarkeit, Verifier entstehen ohne Zugriff auf die Referenzlösung. Selbstberichtete Werte gegen den eigenen Vorgänger: Terminal-Bench 3.0 28,3 % (4,6), DeepSWE v1.1 66,9 % (46,2), SWE-Marathon v1.1 42,5 % (19,4), FrontierSWE 78,1 % (67,5), Terminal-Bench 2.1 88,2 % (81,0), NL2Repo 58,0 % (48,9), PostTrainBench 39,8 % (31,7), AutomationBench 48,2 % (26,2), Toolathlon Verified 73,0 % (59,9), Agents' Last Exam 28,5 % (23,8), HLE mit Werkzeugen 62,5 % (54,7), GDPval-AA v2 1769 Elo (1508). Auf dem hauseigenen Z.ai Code Bench 50 % über GLM-5.2, bei zugleich sinkendem Token-Verbrauch: 34,5 % bei rund 75K Output-Tokens auf Max-Stufe gegen 23,4 % bei 96K für GLM-5.2, und auf High-Stufe 31,4 % bei rund 50K gegen Claude Opus 4.8 mit 29,5 % bei 120K. Dazu ein zweiter Fähigkeitsblock, den Z.ai selbst als unerwartet beschreibt: CyberGym 84,5 % (77,2) — bester Wert des Benchmarks —, ExploitBench 54,4 % (24,4), ExploitGym 105 gelöste Aufgaben in zwei und 130 in sechs Stunden (29 und 39). Die API kennt drei Denkstufen (low, high, max, Standard max); Thinking lässt sich nicht mehr abschalten.",
+    "whyItMattered": "Zwei Tage, zwei Releases, kein einziger neuer Trainingslauf: Am 13.08. schreibt Google in die Model Card von Gemini 3.7 Flash, dass Architektur, Daten und Hardware die von 3.6 Flash sind, am 14.08. sagt Z.ai denselben Satz über GLM-5.3 und GLM-5.2. Was hier zum Modellwechsel führt, ist nicht mehr Rechenleistung im Pretraining, sondern die Zahl verifizierbarer Aufgabenumgebungen — und die synthetisiert Z.ai inzwischen selbst, samt Reward-Signal. Der zweite Vorgang ist der schwerere: Z.ai berichtet, dass sein Modell in Zusammenarbeit mit chinesischen Sicherheitsteams nach Expertenprüfung 2.436 Schwachstellen in 269 Open-Source-Projekten gefunden hat, davon 1.097 mit mittlerem bis hohem Schweregrad, in Systemkernen, Betriebssystemen, Browser-Engines und Netzprotokollen; die älteste wurde 1981 eingeführt, im Schnitt lagen die Fehler 26,6 Jahre unentdeckt. 53 sind offengelegt, 2.383 stehen unter Embargo. Und die Gewichte kommen ausdrücklich nicht zum Launch: Z.ai hält sie zwei Wochen zurück, bis Sicherheitsprüfung und Hardening abgeschlossen sind — in diesem Datensatz das erste Mal, dass ein Haus die Veröffentlichung offener Gewichte mit Cyber-Fähigkeiten begründet. Bei allem Selbstbewusstsein bleibt der Abstand nach oben genau dort am größten, wo die Kurve am steilsten steigt: Auf ExploitBench stehen 54,4 % gegen 78,0 % (Fable 5) und 76,5 % (GPT-5.6 Sol), auf ExploitGym 105/130 gegen 181/247 Aufgaben. Z.ai schreibt das selbst hin — die Fähigkeit wachse am schnellsten dort, wo man am weitesten zurückliege.",
+    "firstOfKind": "",
+    "sources": [
+      "https://z.ai/blog/glm-5.3",
+      "https://cvd.z.ai/",
+      "https://docs.z.ai/devpack/overview"
+    ],
+    "disputed": false,
+    "note": "Die Gewichte lagen am Prüftag nicht vor: Z.ai kündigt sie für zwei Wochen nach Launch an, nach Abschluss von Sicherheitsprüfung und Hardening; der HuggingFace-Link im Blogbeitrag steht auf „Coming Soon“ und die Organisation zai-org führt (Stand 14.08.2026) GLM-5, GLM-5.1 und GLM-5.2, aber kein GLM-5.3. Breaking Change in der API: thinking.type: \"disabled\" wird nicht mehr unterstützt — Anwendungen müssen vor dem Wechsel auf die Modell-ID glm-5.3 auf enabled plus reasoning_effort: low umstellen, sonst schlägt der Request fehl. Der GLM Coding Plan rechnet neu über ein Punktesystem ab, mit getrennter Zählung für Input, gecachten Input und Output; außerhalb der Spitzenzeiten (14:00–18:00 Uhr UTC+8, Mo–Fr) kosten Aufrufe die Hälfte.",
+    "verificationNote": "Datum 14.08.2026 aus der Datumszeile des offiziellen Z.ai-Blogbeitrags „GLM-5.3: Frontier Coding with Emergent Cyber Capabilities“ („2026-08-14 · Research“); eine zweite unabhängige Primärquelle lag am Prüftag nicht vor, da Gewichte und Model Card noch fehlen — gegengeprüft wurde stattdessen die HuggingFace-API der Organisation zai-org, die kein GLM-5.3-Repository führt, was die Ankündigung stützt. Sämtliche Benchmark-Werte sind Herstellerangaben, auch die Vergleichszahlen für Kimi K3, DeepSeek-V4 Pro-0813, Qwen3.8-Max, Claude Opus 4.8, Fable 5 und GPT-5.6 Sol, die Z.ai selbst zusammengestellt hat. Die Schlagzeile „50 % über GLM-5.2“ steht auf Z.ai Code Bench, einem ausdrücklich hauseigenen, nicht veröffentlichten Benchmark, und ist damit von außen nicht prüfbar. Bei ExploitGym sind die Zeitbudgets nicht gemessen, sondern über die Tokenrate pro Modell normiert (GLM-5.3 mit 115, Kimi K3 mit 40, Qwen3.8 Max mit 47 Token/s laut Artificial Analysis) — eine Methode, die das schnellere Modell begünstigt. Zwei Fußnoten dokumentieren Eingriffe in die Harnesses: Bei SWE-Marathon und PostTrainBench hat Z.ai Anti-Cheat-Prüfungen entfernt und durch LLM-basierte Kontrolle ersetzt, begründet mit False Positives. Die Schwachstellenzahlen beruhen auf Z.ais eigenem Disclosure-Ledger (cvd.z.ai); 53 der 2.436 Funde sind öffentlich, die übrigen 2.383 stehen unter Embargo und sind nicht nachprüfbar. Eine Unstimmigkeit in der Quelle selbst: Die Benchmark-Tabelle führt die Spalte als „Fable 5 (w/ fallback)“, der Fließtext nennt dasselbe Modell mit identischen Werten (CyberGym 83,8; ExploitGym 181/247) „Mythos 5“.",
+    "id": "text-glm-5-3-2026-08-14"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "13. August 2026",
+  lastVerified: "14. August 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-08-13",
+  lastVerifiedISO: "2026-08-14",
   windowStart: "2022-08",
   windowEnd: "2026-08",
-  total: 257,
+  total: 258,
   placeholder: false,
 };
