@@ -80,6 +80,10 @@ const PALETTE: Record<string, string> = {
   xAI: "#1f2937",
   Mistral: "#fa520f",
   NVIDIA: "#76b900",
+  // fal publishes no brand colour beyond its own theme-color meta tag, which is
+  // this near-black — same family as ElevenLabs and xAI, and taken as-is rather
+  // than nudged for contrast, since this map records brand colours.
+  fal: "#19191a",
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -117,6 +121,7 @@ const DOMAIN: Record<string, string> = {
   Ideogram: "ideogram.ai",
   Adobe: "adobe.com",
   Genmo: "genmo.ai",
+  fal: "fal.ai",
   "jens.marketing": "jens.marketing",
   snipKI: "snipki.de",
 };
@@ -166,6 +171,9 @@ const COUNTRY: Record<string, string> = {
   Genmo: "US",
   ElevenLabs: "US",
   NVIDIA: "US",
+  // "fal is an in-person company based in San Francisco" (fal.ai/careers); the
+  // terms name Features and Labels, Suite 10467, San Francisco, CA 94114.
+  fal: "US",
   // China
   Alibaba: "CN",
   ByteDance: "CN",
