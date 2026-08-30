@@ -2,7 +2,7 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 265 entries across text, image, video, audio,
+ * German descriptions. 266 entries across text, image, video, audio,
  * late 2022 → 28 August 2026.
  */
 export const entries: Entry[] = [
@@ -4991,6 +4991,29 @@ export const entries: Entry[] = [
     "id": "text-qwen3-8-flash-next-2026-08-26"
   },
   {
+    "date": "2026-08-26",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Gemini 3.5 Transcribe",
+    "org": "Google",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Googles erstes eigenständiges Spracherkennungsmodell innerhalb der Gemini-Linie und der Nachfolger von Chirp 3 aus der Cloud-Speech-Familie. Zwei Endpunkte: gemini-3.5-transcribe verarbeitet fertige Aufnahmen über die Interactions API, gemini-3.5-transcribe-live streamt bidirektional über die Live API. Die Konfiguration kennt zwei Modi. Voreingestellt ist verbatim — Wort für Wort, samt „ähm“, Wiederholungen und Fehlstarts —, dazu wählbar Sprechertrennung (bis zu 8 Sprecher, ab 3 laut Dokumentation experimentell) und Zeitstempel auf Wortebene, wobei dieselbe Seite vermerkt, dass Wort-Zeitstempel die Genauigkeit verschlechtern können. Der zweite Modus heißt smart und ist das eigentliche Verkaufsargument: Er entfernt Füllwörter und Fehlstarts, löst Selbstkorrekturen im Satz auf (aus „Let's meet on Tuesday, actually no, Wednesday at two“ wird „Let's meet on Wednesday at 2:00 PM“), gliedert Gesprochenes selbstständig in Absätze und Listen und normalisiert Zahlen, Datumsangaben und Beträge („twenty six million dollars“ → „$26M“). Beide Modi schließen sich aus: smart lässt sich weder mit Zeitstempeln noch mit Sprechertrennung kombinieren. Dazu automatische Spracherkennung über mehr als 85 Locales samt Sprachwechsel innerhalb eines Satzes und Custom Vocabulary mit bis zu 1.000 Begriffen (beste Ergebnisse laut Dokumentation bis 100). Grenzen: eine Stunde pro Datei, 30 Minuten sobald Sprechertrennung oder Zeitstempel aktiv sind, 10 Minuten pro Live-Sitzung; kein Denkmodus, kein Caching, keine Batch-Verarbeitung, keine strukturierte Ausgabe. Herstellerangaben zur Güte: 4,0 % Word Error Rate im Streaming und 2,6 % ohne Streaming, beides Google zufolge gemessen von Artificial Analysis, auf FLEURS 5,50 bzw. 5,04 % und 70 % kürzere Zeit bis zum endgültigen Transkript gegenüber Chirp 3. Preise in der Gemini-API: 2,00 $ je 1 Mio. Audio-Eingabe-Token und 12,00 $ je 1 Mio. Text-Ausgabe-Token, nach Googles eigener Umrechnung rund 5 $ je 1.000 Minuten; das Live-Modell kostet 3,50 und 21,00 $, also etwa 9 $ je 1.000 Minuten, die kostenlose Stufe bleibt gratis. Ausgeliefert wird es am selben Tag in Produkte: Rambler auf Gboard, die Gemini-App auf macOS, Google Antigravity mit Bildschirmkontext, den Build-Modus von AI Studio, angekündigt für Chrome. In der macOS-App gibt das Transkriptionsmodell Aufgaben per Function Calling an andere Gemini-Modelle ab — Bilder erzeugen, lokale Dateien auswerten —, während beide Dokumentationen Function Calling für die API als nicht unterstützt führen.",
+    "whyItMattered": "Transkription hört hier auf, ein Protokoll zu sein. Der smart-Modus löscht, was gesagt wurde, und ersetzt es durch das, was gemeint war: Aus „invite Alice and, wait no, Bob and Carol“ wird im Beispiel der Dokumentation „invite Bob and Carol“ — Alice verschwindet aus dem Transkript. Als Lesefassung ist das ein Fortschritt, als Aufzeichnung eine Interpretation, und die Trennung ist sauber gezogen, weil verbatim die Voreinstellung bleibt und smart sich mit Zeitstempeln und Sprechertrennung nicht kombinieren lässt — wer eine forensisch belastbare Spur braucht, kann die aufgeräumte Fassung technisch nicht bekommen. Der Superlativ trägt dabei nur hausintern: Google nennt das Modell „our most precise speech-to-text model yet“ und beruft sich dafür auf Artificial Analysis — dieselbe Quelle führt es mit denselben 2,6 % auf Platz 5 ihrer WER-Bestenliste, was im Blogbeitrag fehlt. Der Sprung liegt also nicht in der Genauigkeit, sondern im Preis und in der Fläche. Rund 9 $ je 1.000 Streaming-Minuten unterbieten OpenAIs GPT-Live-Transcribe vom 28.07.2026 (0,017 $ pro Minute, also 17 $) um fast die Hälfte, und beim ersten Teiltranskript liegt Googles Live-Modell laut Artificial Analysis mit 5,8 % vor OpenAIs 6,3 %. Bei fertigen Dateien ist es umgekehrt: OpenAI ist mit 0,0045 $ pro Minute billiger, kann dort aber weder Sprecher trennen noch Wörter zeitstempeln — genau die zwei Funktionen, die dieses Modell mitbringt. Das seit Grok STT 1.0, GPT-Transcribe und MAI-Transcribe-1 wieder umkämpfte Feld ist damit arbeitsteilig, nicht entschieden. Und drittens verschiebt sich, was ein Transkriptionsmodell überhaupt ist: Wenn es per Function Calling Bilder erzeugen und Dateien auswerten lässt, ist Sprache kein Eingabekanal mehr, sondern eine Ausführungsschicht — vorerst nur in der macOS-App, und die API-Dokumentation widerspricht dem Blogbeitrag an genau diesem Punkt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/",
+      "https://ai.google.dev/gemini-api/docs/transcribe",
+      "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe",
+      "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
+      "https://ai.google.dev/gemini-api/docs/pricing"
+    ],
+    "disputed": false,
+    "note": "Der Auslieferungsstand ist am Prüftag uneinheitlich beschrieben: Der Blogbeitrag spricht von einer öffentlichen Vorschau, das Änderungsprotokoll der Gemini-API führt das Modell zum 26.08.2026 als allgemein verfügbar (GA), die Dokumentation der Gemini Enterprise Agent Platform als Preview und mit den Modell-IDs gemini-3.5-transcribe-preview bzw. -live-preview, die Entwicklerdokumentation ohne den Zusatz. Nur die Region global. In den Produkten gilt: Rambler auf Gboard ist zunächst auf das Pixel 11 beschränkt und soll später im Jahr auf weitere Geräte kommen, die macOS-App startet auf Englisch, Chrome ist angekündigt. Eingaben über die kostenlose Stufe werden laut Preisseite zur Produktverbesserung genutzt. Von den 86 Sprachcodes der Enterprise-Tabelle sind nur 29 als „Supported“ geführt, 57 als „Experimental“ — darunter es-419 (Spanisch, Lateinamerika), während es-US als unterstützt gilt. Das Live-Modell liefert Zeitstempel nur auf Äußerungsebene und keine Sprechertrennung.",
+    "verificationNote": "Datum 26.08.2026 aus dem Meta-Feld article:published_time des Blogbeitrags (2026-08-26T17:00:00+00:00) — Primärquelle, bestätigt durch den auf denselben Tag datierten Eintrag im Änderungsprotokoll der Gemini-API sowie durch die Erstberichterstattung am Abend desselben Tages. Nachprüfbar in der Dokumentation sind Modi, Modell-IDs, Sprecher- und Längengrenzen, Custom-Vocabulary-Obergrenze, Sprachtabellen und Preise. Vier Widersprüche in Googles eigenem Material, die der Eintrag offenlegt statt auflöst: erstens der Auslieferungsstand (Preview gegen GA, siehe Hinweis); zweitens die Sprecherzahl — Blogbeitrag und Artificial Analysis nennen bis zu drei Sprecher, beide Dokumentationstabellen bis zu acht (ab drei jeweils experimentell); drittens die Audiolänge — die Entwicklerdokumentation nennt eine Stunde und 30 Minuten mit Zusatzfunktionen, die Enterprise-Dokumentation 15 bzw. 10 Minuten; viertens Function Calling, das Blogbeitrag und Presseberichte als Fähigkeit der macOS-App beschreiben, während beide Dokumentationen es in der Fähigkeitstabelle als nicht unterstützt führen. Die Sprachtabelle der Entwicklerdokumentation ist zudem in sich fehlerhaft: en-IN steht zweimal darin, einmal als „English (India)“ und einmal als „Indian English“, und Codes wie en-AU, fr-CA und es-ES fehlen, die die Enterprise-Tabelle als unterstützt führt. Sämtliche Gütezahlen sind Herstellerangaben oder von Google zitiert: Die 2,6 % bestätigt Artificial Analysis im eigenen Beitrag vom 26.08.2026, ergänzt aber Platz 5 der AA-WER-Rangliste und rund 84-fache Echtzeitgeschwindigkeit — beides steht nicht im Blogbeitrag; die 4,0 % im Streaming sind AAs Wert für das erste endgültige Transkript (0,40 s nach Ende der Sprachaktivität), während das erste Teiltranskript nach 0,25 s bei 5,8 % liegt. Die FLEURS-Werte sind Googles eigene Messung, der Vergleichswert 7,32 % für Chirp 3 im Streaming stammt aus der Berichterstattung, die Google zitiert, nicht aus einer von mir gelesenen Google-Seite. Die Minutenpreise sind Googles eigene Umrechnung der Token-Listenpreise (25 Audio-Token pro Sekunde, 175 Text-Token pro Minute), keine Messung. Kein Modellbericht, keine Modellkarte, keine Gewichte — Lizenz „closed“, weil das Modell ausschließlich über die APIs und Google-Produkte erreichbar ist. Kein firstOfKind gesetzt: Weder Sprechertrennung noch Wort-Zeitstempel noch aufgeräumte Transkripte sind neu, und die Function-Calling-Premiere widerspricht der eigenen API-Dokumentation.",
+    "id": "audio-gemini-3-5-transcribe-2026-08-26"
+  },
+  {
     "date": "2026-08-27",
     "datePrecision": "day",
     "modality": "video",
@@ -5035,11 +5058,11 @@ export const entries: Entry[] = [
 ];
 
 export const dataMeta = {
-  lastVerified: "28. August 2026",
+  lastVerified: "30. August 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-08-28",
+  lastVerifiedISO: "2026-08-30",
   windowStart: "2022-08",
   windowEnd: "2026-08",
-  total: 265,
+  total: 266,
   placeholder: false,
 };
