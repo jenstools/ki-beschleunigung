@@ -84,6 +84,9 @@ const PALETTE: Record<string, string> = {
   // this near-black — same family as ElevenLabs and xAI, and taken as-is rather
   // than nudged for contrast, since this map records brand colours.
   fal: "#19191a",
+  // No published brand colour; taken from the accent blue used for links on
+  // worldlabs.ai (the page's own theme-color meta tag is a near-white #f9f9fb).
+  "World Labs": "#2A679C",
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -124,6 +127,7 @@ const DOMAIN: Record<string, string> = {
   fal: "fal.ai",
   "jens.marketing": "jens.marketing",
   snipKI: "snipki.de",
+  "World Labs": "worldlabs.ai",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -174,6 +178,9 @@ const COUNTRY: Record<string, string> = {
   // "fal is an in-person company based in San Francisco" (fal.ai/careers); the
   // terms name Features and Labels, Suite 10467, San Francisco, CA 94114.
   fal: "US",
+  // Incorporated January 2024 in Palo Alto, HQ since reported as San Francisco
+  // (LinkedIn company profile; Preqin asset profile: "San Francisco, CA, US").
+  "World Labs": "US",
   // China
   Alibaba: "CN",
   ByteDance: "CN",
