@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 266 entries across text, image, video, audio,
- * late 2022 → 28 August 2026.
+ * German descriptions. 268 entries across text, image, video, audio,
+ * late 2022 → 2 September 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5098,15 +5098,56 @@ export const entries: Entry[] = [
     "note": "World Labs' bisherige Weltmodell-Linie — Marble (erstes kommerzielles Weltmodell-Produkt, November 2025), die World API (Januar 2026) und die SceniX-Akquisition für Robotik-Fähigkeiten (Juli 2026) — ist in diesem Datensatz bislang nicht separat erfasst; Atlas ist der erste Eintrag der Reihe. Modalität als „video“ geführt, obwohl Atlas laut eigener Beschreibung kein Videomodell, sondern ein Multi-Modal-Weltmodell mit explizitem 3D-Output ist — die Einordnung folgt der am ehesten passenden der vier im Datensatz geführten Kategorien.",
     "verificationNote": "Datum 01.09.2026 direkt aus dem World-Labs-Blogbeitrag („September 1, 2026“ im Fließtext) und unabhängig bestätigt durch AI Weekly (Zeitstempel 01.09.2026, 18:27 UTC) und radiancefields.com (ebenfalls 01.09.2026). Sämtliche Vergleichszahlen — Präferenzwerte gegen MiniMax H3, Gemini Omni Flash, Happy Horse 1.1, FLUX 3 und Seedance 2.5 sowie die 3D-Rekonstruktionsfehler auf DTU/ETH3D/ScanNet — sind Herstellerangaben von World Labs, unabhängig zitiert und mit Zahlen versehen durch AI Weekly, aber nicht durch eine dritte, unabhängig durchgeführte Messung geprüft. Der Kamerakontroll-Vergleich ist laut World Labs' eigenem Text asymmetrisch: Vergleichsmodelle erhalten den Kamerapfad nur als Textbeschreibung, weil sie keine native Kamera-Eingabe kennen; World Labs nennt das selbst als Einschränkung. Die 3D-Rekonstruktionswerte stammen aus von World Labs selbst reproduzierten Basiswerten für alle Vergleichsmodelle, nicht aus einem veröffentlichten Drittanbieter-Leaderboard. Kein Zugang für unabhängige Tests am Prüftag: Atlas ist ausschließlich über einen Early-Access-Antrag mit ungenannten Partnern erreichbar, keine Gewichte, kein Preis, keine öffentliche API — alle Angaben stammen aus World Labs' eigenem Blogbeitrag und Demo-Material. Als firstOfKind gesetzt ist ausschließlich die architektonische Vereinigung der vier Modalitäten mit explizitem 3D-Output, nicht die Benchmark-Überlegenheit gegenüber Video- oder Rekonstruktionsspezialisten, die auf den oben genannten Vorbehalten beruht.",
     "id": "video-atlas-2026-09-01"
+  },
+  {
+    "date": "2026-09-02",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 3.8 Flash",
+    "org": "Google",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Direkter Nachfolger von Gemini 3.7 Flash, laut Model Card ausdrücklich auf dessen Fundament aufgesetzt (Architektur, Trainingsdaten und Hardware unverändert). Verbessert laut Google „end-to-end“ autonome Softwareentwicklung, agentische Workflows und mehrstufiges Reasoning: DeepSWE v1.1 übertrifft nach eigenen Angaben „die meisten größeren Frontier-Modelle“ bei komplexen technischen Aufgaben, ebenso auf dem Vals Finance Agent V2 und Harveys Legal-Agent-Benchmark — konkrete Prozentwerte nennt Google in keinem der drei Fälle. Einzige belegte Zahl: 54,9 % auf HLE-Verified. Kontextfenster weiterhin bis 1 Mio. Token bei Text, Bild, Ton und Video, Ausgabe bis 64K Token, Wissens-Cutoff März 2026 (einzelne Domänen Januar 2025). Einführungspreis wie beim Vorgänger 0,75 USD Eingabe- / 3,75 USD Ausgabe-Token pro Mio. bis 31.12.2026, danach 1,50 / 7,50 USD. Verfügbar über Gemini API, Google AI Studio, Android Studio, Stitch, die Gemini Enterprise Agent Platform sowie für Google-AI-Pro/Ultra-Abonnenten in der Gemini-App, im AI-Modus der Google-Suche und in Google Sheets.",
+    "whyItMattered": "20 Tage nach 3.7 Flash das dritte Flash-Update in sieben Wochen — und laut eigener Model Card wieder kein neuer Trainingslauf, sondern ein Nachschliff. Bemerkenswert ist der Widerspruch innerhalb von Googles eigenen Unterlagen: Der Blogbeitrag preist Fortschritte gegenüber 3.7 Flash „über Softwareentwicklung, agentische Aufgaben und kritisches, mehrstufiges Reasoning“, die Frontier-Safety-Bewertung in derselben Model Card stuft das Modell dagegen ausdrücklich als ohne „bedeutende neue Fähigkeiten oder wesentliche Leistungssteigerungen“ ein und hält es für unwahrscheinlich, dass es überhaupt eine Tracked/Critical Capability Level erreicht. Zum selben Zeitpunkt formalisiert Google mit dem „Fairwind Program“ erstmals einen benannten Zugangsprozess für die parallel veröffentlichte Cyber-Variante — vorher lief der Zugang zu 3.5 Flash Cyber noch über einen informellen CodeMender-Pilotenkreis.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+      "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
+    ],
+    "disputed": false,
+    "note": "Einführungspreis gilt bis 31.12.2026, danach der doppelte Standardpreis (wie schon bei 3.6 und 3.7 Flash). Für DeepSWE v1.1, Vals Finance Agent V2 und Harveys Legal-Agent-Benchmark nennt Google nur die Vergleichsrichtung, keine Zahlen.",
+    "verificationNote": "Datum 02.09.2026 durch den Google-Blogbeitrag (Bylines Tulsee Doshi und Raluca Ada Popa) und die DeepMind-Model-Card übereinstimmend als Veröffentlichungsdatum ausgewiesen, unabhängig am selben Tag bestätigt durch CybersecurityNews, AndroidHeadlines und iTechPost. Vorab kursierten ab 27.08.2026 Berichte (Business Insider, danach das Wall Street Journal) über ein internes Preview namens „Gemini 3.8 Flash“ (Codename „Skimaki“, getestet auf der internen Plattform „Jetski“), inklusive eines von Google-Mitarbeitenden intern bevorzugten Vergleichs gegen Claude Opus — diese Vorabberichte sind nicht Grundlage des Eintrags, decken sich aber im Zeitfenster mit der offiziellen Veröffentlichung. Sämtliche Benchmark- und Preisangaben sind Herstellerangaben aus Blogbeitrag und Model Card; für DeepSWE v1.1, den Vals Finance Agent V2 und Harveys Legal-Agent-Benchmark nennt Google ausdrücklich keine Zahlen, nur die Vergleichsrichtung. Die Diskrepanz zwischen der Ankündigungssprache des Blogs und der nüchternen Einschätzung in der Frontier-Safety-Bewertung der Model Card steht wörtlich in derselben Quelle.",
+    "id": "text-gemini-3-8-flash-2026-09-02"
+  },
+  {
+    "date": "2026-09-02",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 3.8 Flash Cyber",
+    "org": "Google",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Auf 3.8 Flash aufgesetzte, für Cybersicherheit feinjustierte Variante: findet, validiert und patcht Softwareschwachstellen automatisiert. Laut Google übertrifft sie auf CyberGym sowohl den eigenen Vorgänger 3.5 Flash Cyber als auch größere Frontier-Modelle (ohne genannte Werte) und erreicht in einem internen Test über 20 Programmiersprachen — zuvor lag der Fokus auf C/C++ — eine Erfolgsquote von über 70 % bei der Schwachstellenerkennung. Beim automatisierten Patchen auf CWE-Bench: 47,2 % Pass@1, knapp unter einem nicht genannten „führenden Frontier-Modell“ mit 47,8 %, laut Google aber zu deutlich geringeren Kosten. Auf dem Prompt-Injection-Benchmark Gray Swan ein „signifikanter Sprung“ gegenüber der Vorgängergeneration, ebenfalls ohne Zahl. Dazu drei von Google selbst berichtete Praxisfälle: Chromes Security-Team erhielt „2,6-mal mehr korrekte Patches“ als von größeren kommerziellen Modellen, die Sicherheitsfirma Wiz maß 7,5–9,7 % höhere Trefferquote bei 2,3- bis 5,2-fach geringeren Kosten auf internen Pentesting-Benchmarks, und Googles eigenes Cloud-Vulnerability-Research-Team fand eine kritische Schwachstelle in unter zwei Stunden statt der sonst monatelangen manuellen Recherche. Zugang ausschließlich über das neu benannte „Fairwind Program“ — für „vertrauenswürdige Regierungsstellen sowie Betreiber kritischer Infrastruktur und Software-Maintainer“ nach Antrag über deepmind.google/fairwind-program, ohne genannte Bearbeitungsfrist.",
+    "whyItMattered": "Google überspringt mit dieser Variante zwei eigene Generationen: Auf 3.5 Flash Cyber vom 21.07.2026 folgt nicht 3.6 oder 3.7 Flash Cyber, sondern direkt 3.8 — die Cyber-Linie hält also nicht dieselbe Wochentakt-Kadenz wie die Basismodelle. Bemerkenswert ist die ausdrückliche Priorisierung: Google schreibt, man habe „das Beheben von Schwachstellen gegenüber offensiven Fähigkeiten wie der Ausnutzung priorisiert“ — eine explizite Positionierung im selben Feld, in dem OpenAI mit GPT-5.5-Cyber und GPT-5.6-Cyber, Anthropic mit einer Mythos-Vorabversion und Sakana mit Fugu-Cyber bereits eigene, zugangsbeschränkte Modelle führen. Mit dem „Fairwind Program“ bekommt der bislang informelle CodeMender-Pilotenzugang von 3.5 Flash Cyber erstmals einen eigenen Namen und einen offiziellen Bewerbungsprozess — ein Signal, dass Google den gated Zugang zu Cyber-Modellen als dauerhafte Struktur statt als Übergangslösung anlegt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+      "https://cybersecuritynews.com/gemini-3-8-flash-cyber/",
+      "https://www.androidheadlines.com/2026/09/google-debuts-gemini-3-8-flash-cyber-variants.html"
+    ],
+    "disputed": false,
+    "note": "Für CyberGym und Gray Swan nennt Google nur die Vergleichsrichtung, keine Zahlen. Die Praxisfälle (Chrome Security, Wiz, Cloud Vulnerability Research) sind ausschließlich Googles eigene Fallstudien, keine unabhängig reproduzierten Messungen. Keine genannte Bearbeitungsfrist für Fairwind-Anträge.",
+    "verificationNote": "Datum 02.09.2026 durch den gemeinsamen Google-Blogbeitrag mit 3.8 Flash verifiziert, unabhängig am selben Tag bestätigt durch CybersecurityNews und AndroidHeadlines. Eine eigene DeepMind-Model-Card für die Cyber-Variante lag am Prüftag nicht vor — wie schon bei 3.5 Flash Cyber läuft die Cyber-Fassung offenbar ohne separate Model Card, nur über Blogbeitrag und Produktseite. Sämtliche Benchmark- und Fallstudienangaben sind Herstellerangaben; keine der gesichteten Quellen übt Kritik oder ordnet die Zahlen unabhängig ein. Der Name des „nicht genannten führenden Frontier-Modells“ beim CWE-Bench-Vergleich (47,8 %) bleibt in allen gesichteten Quellen ungenannt.",
+    "id": "text-gemini-3-8-flash-cyber-2026-09-02"
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "1. September 2026",
+  lastVerified: "2. September 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-09-01",
+  lastVerifiedISO: "2026-09-02",
   windowStart: "2022-08",
   windowEnd: "2026-09",
-  total: 268,
+  total: 270,
   placeholder: false,
 };
