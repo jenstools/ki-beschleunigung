@@ -56,9 +56,9 @@ export const CLUSTERS: Cluster[] = [
     title: "Das Tempo: aus 24 Tagen Abstand wurden 2,3",
     short: "Tempo",
     claim:
-      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,3. Im laufenden Halbjahr sind es 1,03 — gut ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
+      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,3. Im laufenden Halbjahr sind es 1,09 — gut ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
     description:
-      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,3 im Jahr 2026. Halbjahresweise gemessen an 271 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
+      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,3 im Jahr 2026. Halbjahresweise gemessen an 273 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
     api: "/api/v1/tempo",
     verify: (rel) => {
       const years = cadenceByYear(rel);
@@ -69,7 +69,7 @@ export const CLUSTERS: Cluster[] = [
       expect(
         "Abstand laufendes Halbjahr",
         round(halves[halves.length - 1].meanGap, 2),
-        1.03,
+        1.09,
       );
       // Bounded on both sides: the claim names July, not "everything since July".
       const july = chronological(rel).filter(
@@ -81,27 +81,27 @@ export const CLUSTERS: Cluster[] = [
         july.filter((e, i) => i > 0 && e.date === july[i - 1].date).length,
         15,
       );
-      expect("Releases gesamt", rel.length, 271);
+      expect("Releases gesamt", rel.length, 273);
     },
   },
   {
     path: "/erstmalig",
-    title: "Erstmalig: 116 belegte Premieren",
+    title: "Erstmalig: 117 belegte Premieren",
     short: "Erstmalig",
     claim:
-      "116 von 271 Releases tragen einen belegten „Erster, der …“-Anspruch: 41 in Text, 27 in Audio, 27 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
+      "117 von 273 Releases tragen einen belegten „Erster, der …“-Anspruch: 41 in Text, 28 in Audio, 27 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
     description:
-      "Wer konnte zuerst was? 116 dokumentierte Premieren generativer KI in Text, Bild, Video und Audio — jede mit Releasedatum, Labor und Link auf die Primärquelle, strittige Fälle offen als strittig markiert.",
+      "Wer konnte zuerst was? 117 dokumentierte Premieren generativer KI in Text, Bild, Video und Audio — jede mit Releasedatum, Labor und Link auf die Primärquelle, strittige Fälle offen als strittig markiert.",
     api: "/api/v1/erstmalig",
     verify: (rel) => {
       const firsts = rel.filter((e) => e.firstOfKind);
       const byModality = new Map(
         firstsByModality(rel).map((g) => [g.modality, g.entries.length]),
       );
-      expect("Premieren gesamt", firsts.length, 116);
-      expect("Releases gesamt", rel.length, 271);
+      expect("Premieren gesamt", firsts.length, 117);
+      expect("Releases gesamt", rel.length, 273);
       expect("Premieren Text", byModality.get("text") ?? 0, 41);
-      expect("Premieren Audio", byModality.get("audio") ?? 0, 27);
+      expect("Premieren Audio", byModality.get("audio") ?? 0, 28);
       expect("Premieren Video", byModality.get("video") ?? 0, 27);
       expect("Premieren Bild", byModality.get("image") ?? 0, 21);
       expect("Premieren offen", firsts.filter((e) => e.license === "open").length, 41);
@@ -113,7 +113,7 @@ export const CLUSTERS: Cluster[] = [
     title: "Offenheit: die Lücke von 194 Tagen",
     short: "Offenheit",
     claim:
-      "Der Anteil offener Gewichte erreichte 2023 mit 38 % seinen Höchststand und fiel 2025 auf 17 %. Zwischen dem 26. Juni 2025 und dem 6. Januar 2026 liegen 194 Tage, in denen dieser Datensatz keinen einzigen Release mit offenen Gewichten verzeichnet — bei 16 geschlossenen, davon 12 mit Premierenanspruch. Trotzdem stammen 41 der 116 belegten Premieren von offenen Modellen.",
+      "Der Anteil offener Gewichte erreichte 2023 mit 38 % seinen Höchststand und fiel 2025 auf 17 %. Zwischen dem 26. Juni 2025 und dem 6. Januar 2026 liegen 194 Tage, in denen dieser Datensatz keinen einzigen Release mit offenen Gewichten verzeichnet — bei 16 geschlossenen, davon 12 mit Premierenanspruch. Trotzdem stammen 41 der 117 belegten Premieren von offenen Modellen.",
     description:
       "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 84 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
     api: "/api/v1/offenheit",
@@ -138,7 +138,7 @@ export const CLUSTERS: Cluster[] = [
       expect("Anteil offen 2023", byYear.get(2023) ?? 0, 38);
       expect("Anteil offen 2025", byYear.get(2025) ?? 0, 17);
       expect("Offene Releases gesamt", open.length, 84);
-      expect("Releases gesamt", rel.length, 271);
+      expect("Releases gesamt", rel.length, 273);
 
       // The gap is the headline, so both its length and what filled it are guarded.
       const gap = longestPauses(open, 1)[0];
@@ -149,7 +149,7 @@ export const CLUSTERS: Cluster[] = [
       expect("Releases in der Lücke", inGap.length, 16);
       expect("Premieren in der Lücke", inGap.filter((e) => e.firstOfKind).length, 12);
 
-      expect("Premieren gesamt", firsts.length, 116);
+      expect("Premieren gesamt", firsts.length, 117);
       expect("Premieren offen", firsts.filter((e) => e.license === "open").length, 41);
 
       // The hand-checked pending-weights annotation only holds while those
