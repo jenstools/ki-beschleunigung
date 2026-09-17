@@ -47,6 +47,10 @@ const SIGNATURES: { kind: "png" | "jpeg" | "webp"; magic: Buffer; at: number }[]
  */
 const ICON_SOURCE: Record<string, string> = {
   ByteDance: "seed.bytedance.com",
+  // shlab.org.cn carries no favicon; the www host has one, but only at 16px.
+  // atria-asi.ai serves the mark at the full 128px, and Atria is the name the
+  // lab's release in this dataset ships under.
+  "Shanghai AI Laboratory": "atria-asi.ai",
 };
 
 const iconUrl = (domain: string) =>

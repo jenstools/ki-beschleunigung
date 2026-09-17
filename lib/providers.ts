@@ -87,6 +87,11 @@ const PALETTE: Record<string, string> = {
   // No published brand colour; taken from the accent blue used for links on
   // worldlabs.ai (the page's own theme-color meta tag is a near-white #f9f9fb).
   "World Labs": "#2A679C",
+  // typesafe.ai is a Framer build with no theme-color meta tag at all. Taken
+  // from the pink design token the site uses as the fill on its own buttons and
+  // cards; the near-black #1E1E1E that dominates the page is the outline colour
+  // of that neo-brutalist style, not a brand fill.
+  "TypeSafe AI": "#f386a1",
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -128,6 +133,10 @@ const DOMAIN: Record<string, string> = {
   "jens.marketing": "jens.marketing",
   snipKI: "snipki.de",
   "World Labs": "worldlabs.ai",
+  // The lab's own site, not the atria-asi.ai product domain the model is served
+  // from — `house` is the institution, and shlab.org.cn is what it publishes under.
+  "Shanghai AI Laboratory": "shlab.org.cn",
+  "TypeSafe AI": "typesafe.ai",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -197,6 +206,9 @@ const COUNTRY: Record<string, string> = {
   Meituan: "CN",
   "Ant Group": "CN",
   "Shanghai Jiao Tong University": "CN",
+  // Model card: "developed by the Shanghai Artificial Intelligence Laboratory";
+  // the release announcement carries the dateline "Shanghai, China".
+  "Shanghai AI Laboratory": "CN",
   // Europe
   "Stability AI": "GB",
   Recraft: "GB",
@@ -209,7 +221,9 @@ const COUNTRY: Record<string, string> = {
   TII: "AE",
   Ideogram: "CA",
   // Unmapped on purpose — HQ not confirmed against a primary source:
-  // poolside, DeepReinforce, Significant Gravitas, hexgrad.
+  // poolside, DeepReinforce, Significant Gravitas, hexgrad, TypeSafe AI
+  // (which only states that "our service is currently based" on the US West
+  // Coast — a service location is not a headquarters).
 };
 
 const REGION_OF: Record<string, "US" | "CN" | "EU" | "OTHER"> = {

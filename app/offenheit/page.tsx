@@ -275,7 +275,8 @@ export default function OffenheitPage() {
             {trough.openShare} Prozent ({trough.year}), aktuell{" "}
             {current.openShare} Prozent ({current.year}). Der höchste Wert des
             Datensatzes liegt damit drei Jahre zurück. Das Jahr {current.year}{" "}
-            ist noch nicht zu Ende — es umfasst bislang die Monate bis Juli.
+            ist noch nicht zu Ende — es reicht bislang bis zum{" "}
+            {dateLabel(chronological(rel)[rel.length - 1].date)}.
           </p>
           <div className="mt-5 rounded-xl border border-rule bg-paper-2 p-5">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">
