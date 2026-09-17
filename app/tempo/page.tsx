@@ -168,9 +168,9 @@ export default function TempoPage() {
           <p className="mt-5 text-[14px] leading-relaxed text-ink-faint">
             Zwei Einschränkungen, die zu dieser Tabelle gehören: Der Wert für das
             1. Halbjahr 2022 beruht auf {first.count} einzigen Abstand und ist
-            damit kein belastbarer Durchschnitt. Und das 2. Halbjahr 2026 ist
-            noch nicht zu Ende; es umfasst bislang nur Juli und die ersten
-            Augusttage. Robuster ist der
+            damit kein belastbarer Durchschnitt. Und das {last.label} ist
+            noch nicht zu Ende; es reicht bislang bis zum{" "}
+            {dateLabel(sorted[sorted.length - 1].date)}. Robuster ist der
             Blick auf ganze
             Jahre:{" "}
             {years
