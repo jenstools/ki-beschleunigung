@@ -92,6 +92,12 @@ const PALETTE: Record<string, string> = {
   // cards; the near-black #1E1E1E that dominates the page is the outline colour
   // of that neo-brutalist style, not a brand fill.
   "TypeSafe AI": "#f386a1",
+  // Xiaomi is deliberately absent, so it falls through to the neutral grey.
+  // mimo.xiaomi.com carries no theme-color meta tag and no reachable colour
+  // token — the article is served from an iframe whose styles live in separate
+  // bundles — and the group's own orange (#FF6900) is one channel-step from the
+  // #ff6a00 recorded for Alibaba, which would make two houses indistinguishable
+  // in the charts. Guessing a colour to fill the gap is worse than having none.
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -137,6 +143,10 @@ const DOMAIN: Record<string, string> = {
   // from — `house` is the institution, and shlab.org.cn is what it publishes under.
   "Shanghai AI Laboratory": "shlab.org.cn",
   "TypeSafe AI": "typesafe.ai",
+  // The MiMo lab's own publishing surface rather than xiaomi.com: the group is a
+  // consumer-electronics manufacturer, and everything this dataset records from
+  // it is announced here.
+  Xiaomi: "mimo.xiaomi.com",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -209,6 +219,11 @@ const COUNTRY: Record<string, string> = {
   // Model card: "developed by the Shanghai Artificial Intelligence Laboratory";
   // the release announcement carries the dateline "Shanghai, China".
   "Shanghai AI Laboratory": "CN",
+  // HKEX annual report 2025: "Head Office and Principal Place of Business in the
+  // Chinese Mainland: Xiaomi Campus, Anningzhuang Road, Haidian District,
+  // Beijing", the same address the IR contact page gives. The Cayman Islands
+  // entry in that report is the registered office, not the headquarters.
+  Xiaomi: "CN",
   // Europe
   "Stability AI": "GB",
   Recraft: "GB",

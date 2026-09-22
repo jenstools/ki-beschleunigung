@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/logos.ts --check && next build",
+    "build": "node scripts/logos.ts --check && node scripts/sources.ts --check && next build",
     "start": "next start",
     "lint": "eslint",
-    "logos": "node scripts/logos.ts"
+    "logos": "node scripts/logos.ts",
+    "sources": "node scripts/sources.ts",
+    "candidates": "node scripts/candidates.ts"
   },
   "dependencies": {
     "motion": "^12.40.0",
