@@ -2,7 +2,7 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 283 entries across text, image, video, audio,
+ * German descriptions. 284 entries across text, image, video, audio,
  * late 2022 → 22 September 2026.
  */
 export const entries: Entry[] = [
@@ -5379,6 +5379,26 @@ export const entries: Entry[] = [
     "id": "text-step-5-preview-2026-09-20"
   },
   {
+    "date": "2026-09-20",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Qwen-Image-2.1",
+    "org": "Alibaba (Qwen)",
+    "house": "Alibaba",
+    "license": "open",
+    "capability": "Bildmodell mit 7 Mrd. Parametern im Generierungsteil (32 Single-Stream-DiT-Layer), das Text-zu-Bild und Bildbearbeitung in einem System führt. Drei Fähigkeiten hebt das Haus hervor: native Transparenz, also direkte RGBA-Ausgabe mit Alphakanal statt nachträglichem Freistellen — der empfohlene Prompt benennt sie ausdrücklich („This is an RGBA image with transparency… The image has alpha channel and the background is transparent.\"); bis zu zehn Referenzbilder in einer Anfrage für Kompositionen aus mehreren Motiven; und native 2K-Auflösung bis 2048 × 2048 Pixel über Seitenverhältnisse von 1:1 bis 9:16. Bearbeitet wird lokal über Kreise, aufgemalte Markierungen oder Masken, wobei Personen und Produkte über die Bearbeitung hinweg erhalten bleiben sollen. Die Gewichte liegen als Safetensors in BF16 auf HuggingFace, Inferenz setzt torch ≥ 2.4.0 und transformers ≥ 5.17 voraus. Unterstützung im Ökosystem ab Tag eins: Diffusers über eine eigene QwenImage21Pipeline, ComfyUI nativ, dazu vLLM-Omni und SGLang.",
+    "whyItMattered": "Der eigentliche Vorgang ist hier kein Qualitätssprung, sondern eine Linienteilung — und die Versionsnummer ist das Indiz. Alibabas Bildreihe war zuletzt zugelaufen: Qwen-Image-2.0 erschien im Februar 2026 ohne offene Gewichte, und Qwen-Image-3.0 kam im Juli ohne Gewichte, ohne Lizenz, ohne Parameterzahl und ohne Benchmarks. Qwen-Image-2.1 erscheint zwei Monate nach 3.0 und trägt trotzdem die kleinere Nummer: Es ist nicht der Nachfolger des Flaggschiffs, sondern der offene Zweig daneben — herunterladbare Gewichte, benannte Lizenz, genannte Parameterzahl. Für die offene Seite ist das ein Rückgewinn gegenüber dem Stand vom Juli; die Spitze der Reihe bleibt aber geschlossen, und offen heißt hier nur eingeschränkt offen, denn die Qwen Research License erlaubt ausschließlich Forschung und Evaluation. Wer mit dem Modell Geld verdienen will, braucht eine separate Vereinbarung. Fachlich ist die Kombination aus nativem Alphakanal und zehn Referenzbildern die praktisch interessanteste Angabe, weil sie zwei Handgriffe ersetzt, für die bisher eine Bildbearbeitung nebenherlaufen musste. Neu in der offenen Klasse ist sie nicht: Ideogram 4.0 lieferte am 03.06.2026 native Transparenz und 2K-Auflösung mit offenen Gewichten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://github.com/QwenLM/Qwen-Image-2.1",
+      "https://huggingface.co/Qwen/Qwen-Image-2.1"
+    ],
+    "disputed": false,
+    "note": "Die Lizenz ist nicht-kommerziell. Die Qwen Research License Agreement erlaubt Nutzung, Vervielfältigung, Weitergabe und Bearbeitung „FOR NON-COMMERCIAL PURPOSES ONLY\" und definiert das als „for research or evaluation purposes only\"; kommerzielle Nutzung erfordert laut Lizenztext eine gesonderte Vereinbarung, anzufragen unter model-business@notice.qwencloud.com. Weitergabe ist unter denselben Bedingungen erlaubt, abgeleitete Modelle dürfen „Qwen\" nicht als Hauptbezeichnung führen. Die 7 Mrd. Parameter beziehen sich nach Angabe der Modellkarte auf den Teil für die Bildgenerierung, nicht zwingend auf das Gesamtsystem. Die Ankündigungsseite des Hauses (qwen.ai/blog?id=qwen-image-2.1) ist wie schon bei Qwen-Image-3.0 eine JavaScript-Anwendung und gibt bei Textextraktion nichts zurück; nachprüfbar sind das GitHub-Repository und die Modellkarte, die beide hier als Quelle stehen.",
+    "verificationNote": "Datum 20.09.2026 wörtlich aus dem News-Abschnitt des offiziellen Repositorys QwenLM/Qwen-Image-2.1 („2026.09.20: We released Qwen-Image-2.1!\"), unabhängig gestützt durch die am selben Tag datierten Day-0-Einträge zu Diffusers, ComfyUI, vLLM-Omni und SGLang sowie durch das vorliegende Modell-Repository auf HuggingFace, in dem die Gewichte am Prüftag tatsächlich herunterladbar waren. license: open bezeichnet in diesem Datensatz öffentlich herunterladbare Gewichte, nicht OSI-Konformität — dieselbe Behandlung wie bei der FLUX.1 Non-Commercial License, bei MusicGen unter CC-BY-NC 4.0 und bei der Fish Audio Research License; die Einschränkung steht in note. Anders als bei Step 5 Preview ist hier kein Eintrag in OPEN_WEIGHTS_PENDING nötig, weil die Gewichte nicht angekündigt, sondern vorhanden sind. Nicht als disputed markiert: Datum, Lizenz, Parameterzahl und Fähigkeiten stehen in zwei maschinell prüfbaren Primärquellen, und keine tragende Aussage dieses Eintrags stützt sich auf eine unbelegte Eigenangabe. Die Repository-Beschreibung nennt das Modell „Qwen's most powerful open-source image generation model\" — diese Einordnung ist hier nicht übernommen: Weder das Repository noch die Modellkarte enthalten eine einzige Benchmark-Zahl oder einen Vergleich, auch nicht gegen Qwen-Image-2.0 oder 3.0, und am Prüftag lag keine unabhängige Messung vor. Kein firstOfKind: Native Transparenz und 2K-Auflösung in einem Modell mit offenen Gewichten sind hier bereits mit Ideogram 4.0 vom 03.06.2026 verzeichnet, transparenter Export auch bei Grok Imagine und gpt-image-2.5; die Ankündigung erhebt selbst keinen Vorrangsanspruch. Das Haus Alibaba ist in lib/providers.ts mit Domain, Land und Farbe erfasst, der Anzeige-Credit „Alibaba (Qwen)\" folgt dem Eintrag zu Qwen-Image-2.0.",
+    "id": "image-qwen-image-2-1-2026-09-20"
+  },
+  {
     "date": "2026-09-21",
     "datePrecision": "day",
     "modality": "text",
@@ -5428,6 +5448,6 @@ export const dataMeta = {
   lastVerifiedISO: "2026-09-22",
   windowStart: "2022-08",
   windowEnd: "2026-09",
-  total: 283,
+  total: 284,
   placeholder: false,
 };
