@@ -92,6 +92,15 @@ const PALETTE: Record<string, string> = {
   // cards; the near-black #1E1E1E that dominates the page is the outline colour
   // of that neo-brutalist style, not a brand fill.
   "TypeSafe AI": "#f386a1",
+  // aleph-alpha.com has no theme-color meta tag; its favicon and logo fill is
+  // this near-black, taken as-is like fal above. The orange-red accent
+  // (#ff4b1d) sits one step from Mistral's #fa520f and the Kolibri campaign's
+  // green gradient is a campaign colour, not the house colour.
+  "Aleph Alpha": "#171717",
+  // reflection.ai publishes no brand colour. Taken from the site's own
+  // --color-accent-dark token, which matches the dark-green artwork of the Beam
+  // announcement; the lime --color-accent (#dcef54) is the highlight, not the fill.
+  "Reflection AI": "#1e3207",
   // Xiaomi is deliberately absent, so it falls through to the neutral grey.
   // mimo.xiaomi.com carries no theme-color meta tag and no reachable colour
   // token — the article is served from an iframe whose styles live in separate
@@ -143,6 +152,8 @@ const DOMAIN: Record<string, string> = {
   // from — `house` is the institution, and shlab.org.cn is what it publishes under.
   "Shanghai AI Laboratory": "shlab.org.cn",
   "TypeSafe AI": "typesafe.ai",
+  "Aleph Alpha": "aleph-alpha.com",
+  "Reflection AI": "reflection.ai",
   // The MiMo lab's own publishing surface rather than xiaomi.com: the group is a
   // consumer-electronics manufacturer, and everything this dataset records from
   // it is announced here.
@@ -194,6 +205,8 @@ const COUNTRY: Record<string, string> = {
   Genmo: "US",
   ElevenLabs: "US",
   NVIDIA: "US",
+  // TechCrunch (05.10.2026): "Brooklyn-based startup".
+  "Reflection AI": "US",
   // "fal is an in-person company based in San Francisco" (fal.ai/careers); the
   // terms name Features and Labels, Suite 10467, San Francisco, CA 94114.
   fal: "US",
@@ -230,6 +243,8 @@ const COUNTRY: Record<string, string> = {
   "Black Forest Labs": "DE",
   Mistral: "FR",
   Kyutai: "FR",
+  // Press release datelined Heidelberg; Speyerer Straße 14, 69115 Heidelberg.
+  "Aleph Alpha": "DE",
   // Rest of world
   Lightricks: "IL",
   "Sakana AI": "JP",

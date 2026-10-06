@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 290 entries across text, image, video, audio,
- * late 2022 → 29 September 2026.
+ * German descriptions. 299 entries across text, image, video, audio,
+ * late 2022 → 6 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5572,15 +5572,207 @@ export const entries: Entry[] = [
     "note": "Weitere DevDay-Ankündigungen vom 29.09.2026 ohne neues Modell und daher ohne eigenen Eintrag: Dots (immer aktive Agenten für Pro und Business Premium, Beta für Enterprise, Edu und Healthcare), die Agents API mit verwalteter Laufzeit und Computer-Use, eine Ultrafast-Stufe (GPT-6 Astra Ultrafast sofort für Pro 500 und Enterprise), eine Vorschau für Private Inference, Codex in der Cloud mit Code Review und Codex Security, eine Decisions API für Routing auf Luna-Basis, Bedrock Managed Agents in Zusammenarbeit mit AWS, ein OpenAI Marketplace und der neue Pro-500-Tarif. Laut Artificial Analysis verbraucht GPT-6.1 Sol 10 bis 30 % mehr Ausgabe-Tokens als GPT-6 Sol; der niedrigere Preis pro Aufgabe kommt also trotz, nicht wegen des Tokenverbrauchs zustande (Daten von Artificial Analysis, https://artificialanalysis.ai/).",
     "verificationNote": "Datum 29.09.2026 aus dem auf „September 29, 2026“ datierten DevDay-Rückblick, der GPT-6.1 Sol listet, und aus der Modellseite („available starting today“), die im Abruf selbst kein Datum zeigte; Artificial Analysis datiert Release und Messung ebenfalls auf den 29.09. Alle Benchmark- und Kostenangaben in capability außer den AA-Werten sind Herstellerangaben mit Herstellereinstellungen; OpenAI nennt überwiegend Abstände statt absoluter Werte, die sich deshalb nicht mit den Tabellen anderer Hersteller in diesem Datensatz verrechnen lassen. Die Indexwerte 52 (max) und 48 (medium) stammen aus Artificial Analysis Intelligence Index v4.3.2 und sind damit direkt vergleichbar mit GPT-6 Sol (48), Claude Opus 5.5 (58) und Claude Sonnet 5.5 (56) in diesem Datensatz (Daten von Artificial Analysis, https://artificialanalysis.ai/). Keine OpenAI-Quelle erwähnt eine Verfügbarkeit in GitHub Copilot. disputed: false, weil Datum, Preise und Verfügbarkeit übereinstimmend belegt sind; kein firstOfKind, weil ein Zwischen-Upgrade einer bestehenden Modellstufe kein Erstes seiner Art ist.",
     "id": "text-gpt-6-1-sol-2026-09-29"
+  },
+  {
+    "id": "text-gemini-4-argon-2026-09-30",
+    "date": "2026-09-30",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 4 Argon",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Neues Frontier-Modell von Google für langlaufende Software-Engineering-, Finanz-/Rechts- und Cyber-Defense-Aufgaben. Das Ausgabelimit steigt laut Google von 64K auf 1 Mio. Token. Eigene Angaben: 77,9 % auf DeepSWE v1.1 (neuer Bestwert), 91,7 % auf LVBench (Langvideo-Verständnis), Platz 1 auf dem Vals Index, 51,3 % auf Zapiers AutomationBench (Platz 1) und 68 % auf CWE-bench v1 (Gleichstand an der Spitze). Argon soll Schwachstellen autonom finden, validieren und patchen; für vertrauenswürdige Verteidiger gibt es eine Variante ohne Cyber-Guardrails. Einführungspreis 2 USD Eingabe / 10 USD Ausgabe pro Mio. Token (gecachte Eingabe 95 % günstiger), danach 4 / 20 USD.",
+    "whyItMattered": "Googles neue Spitzenklasse oberhalb der Flash-Reihe, die zunächst nur über das Fairwind-Zugangsprogramm statt für alle Entwickler erscheint (zuvor lief das nur bei der Cyber-Variante 3.8 Flash Cyber). Gegenüber 3.8 Flash (Output 64K Token) ist vor allem das 1-Mio.-Token-Ausgabefenster ein Sprung: Einzelne Denk- und Arbeitsläufe mit Hunderttausenden Token am Stück werden möglich. Bei Cyber-Defense setzt Google auf selbstständiges Finden und Patchen von Schwachstellen statt nur auf Assistenz.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+      "https://deepmind.google/fairwind-program/",
+      "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/"
+    ],
+    "disputed": true,
+    "verificationNote": "Datum 30.09.2026 steht im Google-Blogbeitrag (Autor Koray Kavukcuoglu); die Seite trägt in den Metadaten 01.10.2026, der sichtbare Beitragstext nennt Sep 30. Zugang laut Blog und DeepMind-Fairwind-Seite: zunächst nur ausgewählte, geprüfte Cyber-Verteidiger im Fairwind-Programm (Bewerbung per Formular; Nutzung nur durch interne Security-/IR-/Pentest-Teams). Breite Verfügbarkeit (zahlende API-Kunden und Google-AI-Ultra-Abonnenten) nur als „bald“ angekündigt, ohne Datum. Preis (2/10 USD, danach 4/20 USD laut Fußnote) und alle Benchmarkwerte sind ausschließlich Herstellerangaben aus dem Blog; die Werte stehen teils nur in Diagrammen, im Text nur DeepSWE v1.1 77,9 %, AutomationBench 51,3 %, LVBench 91,7 %, CWE-bench v1 68 %. Keine unabhängige Messung (z. B. Artificial Analysis) gefunden und das Modell ist öffentlich nicht testbar; Vals Index und CWE-bench sind externe Benchmarks, die Werte hier aber von Google berichtet (eine koreanische Zeitung nennt 68,9 % auf dem Vals Index, nicht an Primärquelle geprüft). Eine Modell-ID und die Kontextfenstergröße der Eingabe sind in den abgerufenen Primärquellen nicht genannt (die KI-Zusammenfassung des Blogs spricht von „1 Mio. Token Limit“, der Haupttext nur vom Ausgabelimit).",
+    "note": "Nur für ausgewählte Cyber-Verteidiger im Fairwind-Programm verfügbar; breite Freigabe für API-Kunden und Google-AI-Ultra-Abonnenten ist angekündigt, aber noch ohne Termin."
+  },
+  {
+    "id": "image-nano-banana-2-1-2026-10-06",
+    "date": "2026-10-06",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Nano Banana 2.1",
+    "org": "Google",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Update des Flash-Bildmodells Nano Banana 2 (Gemini 3.1 Flash Image) für Bilderzeugung und dialogisches Editieren mit besserer Bildqualität, Textdarstellung und Infografik-Layout sowie behobenen Kachel-Artefakten bei Extremformaten (1:4, 4:1, 1:8, 8:1) in 2K/4K. Bis zu 14 Referenzbilder (Konsistenz für bis zu 4 Figuren und 10 Objekte), Suchgrounding mit Web- und Bildersuche, einstellbare Denkstufen (minimal/medium/high), Ausgabe in 1K/2K/4K. API-Preis laut Google: 30 USD pro Mio. Bild-Output-Token, also 0,0336 USD (1K), 0,0504 USD (2K) bzw. 0,0756 USD (4K) pro Bild; Text/Bild-Eingabe 1,50 USD, Text-Ausgabe 7,50 USD pro Mio. Token. Verfügbar in der Gemini-API/AI Studio (gemini-nano-banana-2.1), im AI-Modus der Google-Suche und in Google Flow.",
+    "whyItMattered": "Gegenüber Nano Banana 2 (0,067 USD pro 1K-Bild bei 60 USD pro Mio. Bild-Token) halbiert sich der Bildpreis pro Ausgabe bei gleicher Token-Zahl, während Texteingabe (1,50 statt 0,50 USD) teurer wird. Im Vergleich zu Nano Banana Pro bleibt es das effizientere Flash-Modell. Google nennt die Verbesserungen „über alle Bereiche“, belegt sie aber mit keiner Zahl; der Fortschritt liegt in Details wie Maskenbearbeitung, Subjekt-Konsistenz und Text im Bild.",
+    "firstOfKind": "",
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1",
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://x.com/Google/status/2107501209154204148",
+      "https://x.com/rmstein/status/2107513543327412436"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 06.10.2026 über Googles X-Ankündigung (@Google, 06.10.2026, laut SERoundtable und SQ Magazine zitiert) und Robby Steins Post zum AI-Modus am selben Tag bestätigt; Modelldokumentation (Modell-ID gemini-nano-banana-2.1, Stand 06.10.2026) und Preisseite von Google direkt abgerufen. Die X-Posts selbst wurden nicht geladen, sondern nur über zwei Fachmedien zitiert. Es gibt keinen Blogbeitrag, keine Model Card und keine Benchmark- oder Elo-Zahlen von Google; die Aussage „outperforms our previous models across the board“ ist reine Herstellerangabe, Rangplätze (z. B. Artificial Analysis/Arena) lagen für 2.1 noch nicht vor. Flow: erste Sichtungen am 05.10.2026 (Drittquellen) vor der Ankündigung. Gemini-App: Drittquellen berichten vom Auftauchen, eine Google-Primärquelle dafür wurde nicht gefunden. AI Overviews nutzen das Modell laut Berichten noch nicht. Eingabelimit 131.072, Ausgabelimit 32.768 Token laut Doku. Preise gelten für die Standard-Stufe, Batch ist halb so teuer; Grounding: 5.000 Anfragen/Monat frei, danach 14 USD pro 1.000.",
+    "note": "Rollout läuft gestaffelt: In der Google-App (AI-Modus) per Banane-Symbol unter der Suchleiste, in AI Overviews offenbar noch nicht."
+  },
+  {
+    "id": "text-kolibri-2026-10-03",
+    "date": "2026-10-03",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Kolibri",
+    "org": "Aleph Alpha",
+    "house": "Aleph Alpha",
+    "license": "open",
+    "capability": "Zweisprachiges Englisch-Deutsch-MoE-Reasoning-Modell mit 78,1 Mrd. Gesamt- und 3,46 Mrd. aktiven Parametern (384 Experten, davon 6 aktiv), rund 24 Bio. Trainingstoken (20 Bio. Pretraining, 3,44 Bio. Mid-Training, 0,2 Bio. Langkontext) und 1.048.576 Token Kontext (nativ trainiert bis 262.144, Empfehlung ≤262.144). Gewichte liegen unter Apache 2.0 auf Hugging Face (FP8, ca. 78 GB, lauffähig ab 2× H100 bzw. 1× H200/B200); Reasoning in vier Stufen (none/low/medium/high) und natives Tool Calling. Rund 21 % der Pretraining-Token sind deutsch, mit eigenem zweisprachigem Tokenizer (128k Vokabular). Selbstberichtet (Aleph Alpha, Tech Report/Blog) schlägt oder erreicht es Qwen3.6-35B-A3B, Nemotron 3 Super 120B-A12B und Mistral Small 4 119B-A6B u. a. bei AIME 2025 96,9 (deutsch: 87,5), GPQA Diamond 84,3 (deutsch: 81,3), LiveCodeBench v6 85,9 und τ³-bench banking 38,1; schwächer bleibt es bei BFCL v4 (61,4 gegen 67,2 bei Qwen) und AA-Omniscience (−32,8 gegen −15,3).",
+    "whyItMattered": "Aleph Alpha tritt mit einem offenen Modell an, das sich an aktuellen offenen Modellen misst: Der Vorgänger Kolibri Origin (30,6 Mrd./3,27 Mrd. aktiv, 65k Kontext) blieb intern, Kolibri hebt bei ähnlich vielen aktiven Parametern AIME 2025 von 81,9 auf 96,9 und den Kontext von 65k auf 1M. Für Deutsch bringt es eine Apache-2.0-Lizenz, einen deutsch-optimierten Tokenizer und separat ausgewiesene deutsche Benchmarks (AIME, GPQA) mit; durch die 3,5 Mrd. aktiven Parameter läuft es On-Premise auf zwei Datacenter-GPUs.",
+    "firstOfKind": "",
+    "sources": [
+      "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/",
+      "https://aleph-alpha.com/en/news/kolibri-sovereign-ai-made-in-germany/",
+      "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+      "https://aleph-alpha.com/downloads/tech-report.pdf"
+    ],
+    "disputed": true,
+    "verificationNote": "Datum 03.10.2026 gegen drei Primärquellen geprüft: Hugging-Face-Modellkarte (Release Date: 3rd of October 2026), Aleph-Alpha-Blogpost (datiert 03/10/2026, Tabelle: Release 3 October 2026) und Pressemitteilung (datiert 05/10/2026, Heidelberg: Modell sei seit 3. Oktober verfügbar). Die Abweichung ist nur der spätere Pressetermin; der Blog nennt den Tag der Deutschen Einheit. Die HF-Repo-Erstellung wurde nicht separat per API abgefragt. Kolibri Origin war laut Blog ausdrücklich nicht öffentlich (Release: no public release; Pre-Training-Ende 11.06.2026, Kolibri 11.09.2026), Kolibri ist also das erste veröffentlichte Modell der Familie. Alle Benchmarks stammen von Aleph Alpha selbst (Blog-Tabelle, Tech Report); unabhängige Messungen (z. B. Artificial Analysis) wurden nicht gefunden, der Tech Report enthält keine externe Evaluation. Die Pareto-Aussage (Qualität gegen Serving-Kosten) ist vendor-eigen, Reasoning-Stufe der Tabellenwerte nicht ausgewiesen. Interne Kundenproxy-Benchmarks (z. B. Luft- und Raumfahrt 0,14 → 0,59) sind nicht reproduzierbar. Unterschiedliche Angaben zum Deutsch-Anteil: Blog 21,3 % der Pretraining-Token, Modellkarte ca. 23,9 %, Pressemitteilung ca. 23 %; hier „rund 21 %“ nach Blog (4,3 Bio. von 20 Bio.). Parameterzahl: Blog „78B/3B“, Modellkarte exakt 78.103.074.560 / 3.457.573.120. Kontext: 1 Mio. Token validiert, empfohlen ≤262.144. Lizenz Apache 2.0 laut Modellkarte (License: apache-2.0). Kontext Cohere-Vereinbarung (16.09.2026, laut Pressemitteilung noch unter Genehmigungsvorbehalt) hier nicht relevant für das Datum.",
+    "note": "Nur Englisch und Deutsch. Gewichte (FP8, ca. 78 GB) benötigen laut Modellkarte mindestens 2× A100 80 GB, 2× H100, 1× H200 oder 1× B200; Betrieb über das Aleph-Alpha-vLLM-Plugin (aleph-alpha-inference)."
+  },
+  {
+    "id": "text-mistral-large-4-2026-10-06",
+    "date": "2026-10-06",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Mistral Large 4 (Preview)",
+    "org": "Mistral AI",
+    "house": "Mistral",
+    "license": "open",
+    "capability": "Multimodales MoE-Modell („Le Chonk“, intern ML4) mit rund 1 Billion Parametern, 49 Mrd. aktiv, Bild- und Texteingabe, Textausgabe, hybrid aus Instruct und Reasoning, ausgelegt auf Programmieren, Agenten, Cybersicherheit, Finanzen und Recht; Trainingsdaten in über 160 Sprachen, darunter alle EU-Amtssprachen. Als Public Preview ab dem 06.10.2026 per API in Mistral Studio, Gewichte sollen „bis Ende des Monats“ folgen (laut VentureBeat am 27.10.). Preisliste laut Doku: 1,36 $ Input und 4,18 $ Output je Mio. Token, in der Doku aktuell auf 0,68 $ bzw. 2,09 $ halbiert; Kontext 1M laut Doku. Selbstberichtet (Mistral): DeepSWE v1.1 61,7 %, Terminal-Bench 4 28,3 %, AutomationBench 59,9 %, Cybench 93 %; Harvey Legal Agent Benchmark ca. 15 % Task-Pass-Rate (Vals.ai-Leaderboard führt Kimi K3 bei 12,92 %). Unabhängig (Artificial Analysis): Intelligence Index 38 (Platz 64 von 225), 116 Token/s, 524k Kontextfenster in deren Messung.",
+    "whyItMattered": "Mistrals nach eigener Aussage größtes und leistungsfähigstes Modell bisher und ebenfalls nach eigener Aussage das stärkste offene Gewichtsmodell aus den USA oder Europa; der Vorgänger Mistral Medium 3.5 hat laut Artificial Analysis nur 128B Parameter und Index 14. Mit 38 Punkten liegt ML4 aber klar unter den chinesischen Offenen derselben Klasse (MiMo-V2.6-Pro 46, GLM-5.3 45, Kimi K3 44), die Lücke zum Frontier schließt sich also nur teilweise. Besonders ist der Cyber-Fokus: ML4 verweigert in dem von Artificial Analysis stammenden Test (Schwachstelle reproduzieren und patchen) nicht und erreicht 82 %, während Claude Opus 5.5 und GPT-6 Astra laut Mistral wegen Verweigerung nahe null liegen.",
+    "firstOfKind": "",
+    "sources": [
+      "https://mistral.ai/news/mistral-large-4/",
+      "https://docs.mistral.ai/models/mistral-large-4",
+      "https://artificialanalysis.ai/models/mistral-large-4",
+      "https://venturebeat.com/technology/mistral-debuts-large-4-le-chonk-a-1-trillion-parameter-text-output-model-with-high-benchmarks-planned-for-open-weights-release"
+    ],
+    "disputed": true,
+    "verificationNote": "Datum 06.10.2026 bestätigt durch Mistrals Ankündigung (mistral.ai/news/mistral-large-4, 6. Oktober 2026) und die Modelldoku (Public Preview, 6. Oktober 2026, v26.10). Lizenz-Feld „open“ gesetzt, weil Mistral das Modell als „open-weight“ bezeichnet und die Freigabe zugesagt hat; die Gewichte sind am 06.10. aber noch nicht öffentlich (Artificial Analysis führt das Preview ausdrücklich als proprietär), daher der Hinweis im Kartentext. Den Lizenznamen nennt Mistral bisher nicht (Doku-Reiter Weights: leere Lizenzliste); VentureBeat schreibt nur von einer „custom Mistral license“, das ist nicht primär bestätigt. Den 27.10. nennt nur VentureBeat; Mistral selbst schreibt „end of this month“. Abweichungen zwischen Primärquellen: Ankündigung 1 Bio./49 Mrd. aktiv, Doku 1,05 Bio./52 Mrd. aktiv plus 1,6-Mrd.-Vision-Encoder; Kontext Doku 1M, Artificial Analysis 524k (an anderer Stelle 520k). Preise: Doku zeigt 1,36/0,14/4,18 $ durchgestrichen und 0,68/0,07/2,09 $ als aktuellen Preis (Rabatt nicht erklärt, vermutlich Preview-Aktion); die Ankündigungsseite und Artificial Analysis nennen 1,36/4,18 $. Fast alle Benchmarks sind von Mistral selbst gewählt und gemessen (DeepSWE, Terminal-Bench 4, Harvey, Cybench, B3, KORA); extern sind der Artificial Analysis Intelligence Index (38), die Vals.ai-Leaderboard-Werte der Konkurrenten für Harvey und die Surge-AI-Blindbewertung (Coding 3,74 von 5, Platz 2 von 5 hinter Opus 5, von Mistral beauftragt). Die Harvey-Zahl (15 %) stammt aus VentureBeat, das Mistrals Diagramm auswertet; die Ankündigung selbst nennt nur „übertrifft alle Open-Source-Modelle“. Das Modell wird bei Mistral weiter trainiert, die Zahlen gelten für den Preview-Stand. Der Spitzname „Le Chonk“ steht in Mistrals Ankündigung („very officially: le Chonk“).",
+    "note": "Public Preview: Gewichte noch nicht veröffentlicht, Zugang bis dahin nur per API (Mistral Studio). Open-Weights-Freigabe von Mistral für Ende Oktober 2026 angekündigt (27.10. laut VentureBeat), Lizenz noch nicht benannt."
+  },
+  {
+    "id": "audio-mai-voice-2-1-mai-voice-2-1-flash-2026-10-01",
+    "date": "2026-10-01",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "MAI-Voice-2.1 & MAI-Voice-2.1-Flash",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Zwei Text-to-Speech-Modelle von Microsoft AI, die den Sprachumfang von MAI-Voice-2 von 15 auf 23 Sprachen (26 Locales) erweitern. Eine einzelne Stimme spricht alle Sprachen mit muttersprachlichem Akzent, statt einen Akzent über Sprachen hinweg mitzuschleppen. Beide unterstützen Stimmklonen aus 5 bis 60 Sekunden Referenzaudio (gesperrter Zugang mit Einwilligungsnachweis), Emotions- und Stilsteuerung per SSML sowie Mehrsprecher-Dialoge. MAI-Voice-2.1 ($22 pro 1 Mio. Zeichen) zielt auf Langform wie Hörbücher, Voice-over und E-Learning mit konsistenter Stimme über lange Texte. MAI-Voice-2.1-Flash ($15 pro 1 Mio. Zeichen) ist für Sprachagenten und Contact-Center ausgelegt, streamt Audio mit Barge-in-Unterstützung und erzeugt laut Microsoft 45 Sekunden Audio bei 150 ms Ende-zu-Ende-Latenz, mit 55 % schnellerer Modellinferenz und rund 60 % niedrigeren Kosten als vergleichbare Modelle. Zugang über Microsoft Foundry (Azure Speech SDK und REST), Azure Voice Live, MAI Playground, OpenRouter und Vercel; LiveKit folgt.",
+    "whyItMattered": "MAI-Voice-2 beherrschte 15 Sprachen und band Code-Switching nur für ausgewählte Sprachpaare; die Flash-Variante der Vorgängerreihe war auf Geschwindigkeit und Preis optimiert. Mit 2.1 gilt eine durchgehende Markenstimme jetzt für 23 Sprachen, und die schnelle Variante erbt diese Mehrsprachigkeit statt sie zu opfern. Zusammen mit MAI-Transcribe-2-Streaming am selben Tag schließt Microsoft die Hör-Sprech-Schleife eines Sprachagenten komplett mit eigenen Modellen. Die Leistungszahlen zu Flash (150 ms, 55 %, 60 %) sind reine Herstellerangaben ohne genannte Vergleichsmodelle; eine unabhängige Messung etwa in der Artificial-Analysis-Speech-Arena wurde nicht gefunden.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/our-first-streaming-transcription-model/",
+      "https://microsoft.ai/pdf/MAI-Voice-2.1-Model-Card-Memo.pdf",
+      "https://microsoft.ai/pdf/MAI-Voice-2.1-Flash-Model-Card-Memo.pdf",
+      "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-voices"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 01.10.2026 gegen den microsoft.ai-Beitrag („Our first streaming transcription model debuts at no. 1 on Artificial Analysis“, dort „October 1, 2026“) und die Modellkarten („Last updated: October 1st, 2026“) bestätigt. Preise ($22 bzw. $15 pro 1 Mio. Zeichen), 23 Sprachen/26 Locales und Klon-Spezifikation stimmen zwischen Blogbeitrag und Modellkarten überein; Sprachlisten der Modellkarten direkt gelesen (Flash-Karte nennt kein English UK/India, die Standardkarte schon; beide sprechen von 23 Sprachen). Status laut Microsoft Learn: Public Preview ohne SLA. Latenz (150 ms für 45 s Audio), 55 % schnellere Inferenz und ca. 60 % günstiger „als vergleichbare Modelle“ sind ausschließlich Herstellerangaben; Vergleichsbasis nicht genannt, keine unabhängige Messung gefunden (Artificial-Analysis-TTS-Arena-Seite war nicht abrufbar). Nicht als disputed markiert, weil Datum, Preise und Spezifikationen primär belegt sind und die Herstellerzahlen im Text als solche gekennzeichnet sind. Zusätzlich Slator (05.10.2026) als Sekundärquelle konsistent.",
+    "note": "Beide Modelle sind laut Microsoft Learn in Public Preview (ohne SLA, nicht für Produktion empfohlen). Stimmklonen nur nach Antrag auf gesperrten Zugang (Limited Access Review) und mit aufgezeichneter Einwilligung der Sprecherin oder des Sprechers. LiveKit-Anbindung steht noch aus."
+  },
+  {
+    "id": "audio-mai-transcribe-2-streaming-2026-10-01",
+    "date": "2026-10-01",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "MAI-Transcribe-2-Streaming",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Streaming-Spracherkennung von Microsoft AI für 60 Sprachen mit automatischer, fortlaufender Spracherkennung während der Sitzung. Liefert erste Hypothesen („Partials“) laut Microsoft nach etwas über 100 ms Audio, revidiert sie mit wachsendem Kontext und committet danach einen stabilen Text; so können Sprachagenten schon mitten im Satz Tools aufrufen. Zugang über eine OpenAI-Realtime-kompatible WebSocket-API oder das Azure Speech SDK. Einführungspreis $0,54 pro Audiostunde bis 31.12.2026. Laut Microsofts Modellkarte erreicht das Modell im Artificial-Analysis-Streaming-Ranking die niedrigste mittlere Wortfehlerrate für finale Transkripte (2,5 %), vor Grok Transcribe 2.0 (2,7 %), Muse Voice Transcribe und Cartesia Ink 2 (je 3,1 %), ElevenLabs Scribe v2 Realtime (3,6 %) und GPT-Live Transcribe (3,9 %); Platz 1 auch bei Partials und auf der Pareto-Front aus Genauigkeit und Latenz. In Microsofts interner Messung erscheinen Wörter beim Diktat und bei Untertiteln doppelt so schnell wie beim nächsten Konkurrenten. Verfügbar über Microsoft Foundry und Azure Voice Live.",
+    "whyItMattered": "MAI-Transcribe-1 (April 2026) und MAI-Transcribe-2 (September, Batch) arbeiteten auf fertigen Aufnahmen; Streaming ist die Voraussetzung für Echtzeit-Sprachagenten, Live-Untertitel und Diktat. Microsoft beansprucht hier einen Platz an der Spitze eines unabhängigen Echtzeit-Rankings (Artificial Analysis), und zwar bei der Genauigkeit nach Ende der Äußerung und bei den vorläufigen Texten. Der Vorsprung auf den Zweitplatzierten ist mit 0,2 Prozentpunkten klein; die Sprachabdeckung (60) und die Realtime-API-Kompatibilität sind der praktisch wichtigere Hebel für Entwickler, die bisher auf OpenAI-, ElevenLabs- oder Grok-Streaming setzen.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/our-first-streaming-transcription-model/",
+      "https://microsoft.ai/pdf/MAI-Transcribe-2-Streaming-Model-Card-Memo.pdf",
+      "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe-2-streaming"
+    ],
+    "disputed": true,
+    "verificationNote": "Datum 01.10.2026 gegen den microsoft.ai-Beitrag („October 1, 2026“) und die Modellkarte („Last updated: October 1st, 2026“) bestätigt; Preis $0,54/Stunde bis 31.12.2026, 60 Sprachen (Liste gelesen), Zugangswege und Regionen (Central US, Sweden Central, Southeast Asia; East US 2 „coming soon“) stimmen mit Microsoft Learn überein. Status laut Learn: Public Preview ohne SLA. Die Wortfehlerraten und der Platz 1 stammen aus Microsofts eigener Modellkarte bzw. dem Blogbeitrag, die sich auf Artificial Analysis berufen; die Artificial-Analysis-Seite selbst (artificialanalysis.ai/speech-to-text) zeigte im Abruf nur das Batch-AA-WER-Ranking, die Streaming-Rangliste mit MAI-Transcribe-2-Streaming konnte nicht eigenständig bestätigt werden. Die Aussage „2x schneller als der nächste Konkurrent“ ist eine interne Herstellermessung. Deshalb disputed: Kernzahlen nur herstellerseitig belegt, Datum und Spezifikationen dagegen primär bestätigt. Slator (05.10.2026) wiederholt die Ranking-Aussage als Microsofts Angabe."
+  },
+  {
+    "id": "text-reflection-beam-2026-10-05",
+    "date": "2026-10-05",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Beam",
+    "org": "Reflection AI",
+    "house": "Reflection AI",
+    "license": "open",
+    "capability": "Erstes Modell von Reflection AI und zugleich das erste offene Gewichtsmodell des Nvidia-gestützten US-Start-ups: ein reines Text-Mixture-of-Experts mit 501 Mrd. Parametern, davon 23 Mrd. aktiv pro Token, 52 Schichten und 1 Mio. Token Kontext. Vortraining auf 23,8 Billionen Token (unter vier Wochen auf 6.144 GB300-GPUs), danach vier Wochen Reinforcement Learning auf 10.500 GB300-GPUs mit über 100 Mio. Rollouts in rund einer Million Coding-, Agenten- und STEM-Umgebungen; der Denkaufwand ist per Parameter einstellbar. Selbstberichtete Werte: SWE-Bench Verified 80,9 (Inkling 77,6, Nemotron 3 Ultra 70,7), Terminal-Bench v2.1 80,1 (GLM 5.2: 81,0; Kimi K3: 88,3; Qwen 3.8 Max: 86,6), SWE-Bench Pro v1 65,5 (GLM 5.2: 62,1), DeepSWE v1.1 44,4 (GLM 5.2: 44,0; Kimi K3: 68,0). Auf anspruchsvollen Reasoning-Benchmarks soll Beam GLM 5.2 erreichen und dabei 3 bis 4 Mal weniger Inferenzrechenaufwand brauchen (geschätzt als 2 × aktive Parameter × mittlere erzeugte Token).",
+    "whyItMattered": "Westliche offene Modelle lagen bei Coding und Agenten bisher deutlich hinter den chinesischen: Das beste im Reflection-Vergleich, Thinking Machines' Inkling, kommt auf Terminal-Bench v2.1 nur auf 63,8, Nemotron 3 Ultra auf 56,4. Beam schließt auf 80,1 auf und liegt damit auf Höhe von GLM 5.2 (81,0), bleibt aber hinter Kimi K3 (88,3), Qwen 3.8 Max (86,6) und GLM 5.3 (88,2). Der Abstand zur Spitze ist also nicht geschlossen, sondern wird über Effizienz erkauft: 23 Mrd. aktive Parameter gegenüber rund 40 Mrd. bei GLM 5.2 (744 Mrd. gesamt, laut TechCrunch) und über 2 Bio. Gesamtparametern bei Qwen 3.8 Max.",
+    "firstOfKind": "",
+    "sources": [
+      "https://reflection.ai/blog/introducing-beam"
+    ],
+    "disputed": true,
+    "note": "Gewichte noch nicht veröffentlicht: Reflection AI kündigt sie samt technischem Bericht und Modellkarte für „später im Oktober 2026“ unter Apache 2.0 an. Bis dahin gibt es nur eine Warteliste für ausgewählte Nutzer (platform.reflection.ai); kein öffentlicher Preis.",
+    "verificationNote": "Datum 05.10.2026 gegen den Blogbeitrag „Introducing Beam“ auf reflection.ai (datiert Oktober 5, 2026) verifiziert; TechCrunch (05.10.) und The Next Web (05.10.) bestätigen den Termin. Als umstritten markiert, weil (1) die Gewichte, der technische Bericht und die Modellkarte zum Prüfzeitpunkt (06.10.2026) nicht öffentlich sind und die Lizenz Apache 2.0 bislang nur eine Ankündigung ist - das Feld „open“ gilt daher unter Vorbehalt; (2) alle Benchmarkwerte Eigenangaben von Reflection sind, TechCrunch ausdrücklich „not independently verified“ schreibt; (3) der 3-bis-4-fach-Effizienzvergleich eine Schätzung ist (FLOPs ≈ 2 × aktive Parameter × mittlere Token pro Versuch, ohne Prefill, Attention und Serving-Overhead), bei der Reflection Vergleichswerte anderer Modelle aus Artificial Analysis und DataCurve übernimmt. Eigene Artificial-Analysis-Zahlen zu Beam habe ich nicht gefunden. Die Vergleichstabelle hat viele Lücken (NR = nicht berichtet), etwa fehlt SWE-Bench Verified für GLM 5.2 und Kimi K3. Reflection räumt selbst ein, dass Kimi K3 bei der Rohleistung vorn liegt; TNW weist darauf hin, dass auch die eigenen Zahlen Kimi K3 vorn sehen. Die Angabe zur GLM-5.2-Größe (744 Mrd. gesamt, 40 Mrd. aktiv) stammt aus TechCrunch, nicht aus der Reflection-Quelle. Beam ist laut Blog rein textbasiert (keine Bildeingabe), 1 Mio. Token Kontext entsteht im Midtraining. Sitz des Unternehmens laut TechCrunch: Brooklyn, USA; gegründet 2024 von früheren Google-DeepMind-Forschern."
+  },
+  {
+    "id": "text-qwen3-8-omni-flash-2026-09-18",
+    "date": "2026-09-18",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen3.8-Omni-Flash",
+    "org": "Alibaba",
+    "house": "Alibaba",
+    "license": "closed",
+    "capability": "Natives Omni-Modell von Alibaba: nimmt Text, Bilder, Audio und Video entgegen (1 Mio. Token Kontext, bis zu 131.072 Token Ausgabe, Audio in 113 Sprachen und Dialekten, Besprechungen mit Bild und Ton bis zu einer Stunde) und antwortet ausschließlich mit Text; Sprachausgabe läuft über Qwen3.5-Omni bzw. die separate Realtime-Variante. Laut Alibaba verbessert sich der Durchschnitt über 29 Benchmarks um mehr als 25 % gegenüber Qwen3.5-Omni-Plus, etwa WildClawBench-MM 71,0 (vorher 34,5; Gemini 3.8 Flash 58,9), UniClawBench 69,6 (67,1; Gemini 69,0), StreamingBench 80,8 (57,1) und bei der Sprechererkennung in AliMeeting DER/cpWER 3,4/17,2 statt 88,1/89,6. Preis über Alibaba Cloud Model Studio (Singapur): 0,15 USD je Mio. Eingabe-Token, 0,016 USD bei Cache-Treffer, 0,47 USD je Mio. Ausgabe-Token; in der chinesischen Region 0,113/0,382 USD.",
+    "whyItMattered": "Qwen3.5-Omni-Plus kostete noch 1,40 USD (Text/Bild/Video) bzw. 11 USD (Audio) je Mio. Eingabe-Token; Qwen3.8-Omni-Flash berechnet für alle Eingabearten einheitlich 0,15 USD - nach Alibabas Rechnung über 98 % weniger pro Stunde Audio und über 93 % weniger pro Stunde Audio-Video. Der Sprung liegt bei agentischen Aufgaben (Werkzeugnutzung auf Audio-Video, +36,5 Punkte auf WildClawBench-MM), nicht bei der Wahrnehmung: Bei DailyOmni bleibt es bei 85,1 wie beim Vorgänger, und Gemini 3.8 Flash liegt bei Audio-Video-Reasoning (OmniVideoBench 65,2 zu 63,4; Video-MME-v2 71,0 zu 65,0) weiter vorn. Bei reinem Audio liegt Alibaba nach eigener Aussage insgesamt vor Gemini 3.8 Flash.",
+    "firstOfKind": "",
+    "sources": [
+      "https://qwen.ai/blog?id=qwen3.8-omni-flash",
+      "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "https://www.alibabacloud.com/help/en/model-studio/qwen-omni"
+    ],
+    "disputed": false,
+    "note": "Nur als gehostete API verfügbar (Alibaba Cloud Model Studio, Chat-Completions- und Responses-API), keine offenen Gewichte; offen veröffentlicht wurden lediglich die Begleitwerkzeuge Qwen-MM-Plugins und Qwen-Live Harness.",
+    "verificationNote": "Datum 18.09.2026 gegen den Qwen-Blogbeitrag „Qwen3.8-Omni-Flash: Omni Senses. Agentic Delivery.“ (datiert 2026/09/18) verifiziert. Abweichungen: Die Blogseite trägt im Titel noch den Zusatz „[draft]“, und ihre Metadaten nennen den 14.09.; die Model-Studio-Hilfeseite zeigt in den Metadaten den 09.09.; Aggregatoren (models.dev, OpenCode) führen den 17.09. Gezählt wird der im Blog genannte Veröffentlichungstag. Preise aus der Model-Studio-Preisseite (Singapur: 0,15/0,016/0,47 USD; Festland China, Hongkong, Frankfurt, Virginia, Tokio: 0,113/0,014/0,382 USD) und der Qwen-Omni-Doku (Eingabe Text, Bild, Audio, Video; Ausgabe Text; 1M Kontext) geprüft; Qwen-Omni-Doku wurde nur über Suchauszüge gelesen. Dass es keine offenen Gewichte gibt, ist ein Schluss aus Abwesenheit: Das Modell steht bei Alibaba im gehosteten Preisabschnitt, nicht in der Open-Source-Liste, im Blog werden nur Plugins und Harness als Open Source genannt, Aggregatoren führen „Weights: not released“. Alle Benchmarkwerte sind Eigenangaben von Alibaba; Agenten-Benchmarks wurden mit Claude Code (WildClawBench-MM, AgenticVBench) bzw. OpenClaw (UniClawBench) als Harness erhoben. Die Preissenkung von „über 98 %/93 %“ beruht auf Alibabas eigener Methode (30 × die Eingabekosten von zwei Minuten Material, Video mit 720p bei 1 fps); sie vergleicht mit anderen Parametern bei Gemini und Seed. Ein Aggregator nennt „30 Evaluationen/26 %“, der Blog selbst „29 Evaluationen/25 %“ - es gilt der Blog."
+  },
+  {
+    "id": "video-flux-3-action-2026-09-23",
+    "date": "2026-09-23",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "FLUX 3 Action",
+    "org": "Black Forest Labs",
+    "house": "Black Forest Labs",
+    "license": "open",
+    "capability": "Offenes „World Action Model“ mit 7 Mrd. Parametern für Robotersteuerung, abgeleitet vom multimodalen FLUX-3-Backbone: Aus Kamerabildern, Roboterzustand und Textanweisung sagt es 32 Aktionen (SO-101: 42; rund zwei Sekunden Bewegung) voraus und entrauscht gemeinsam damit die nächsten Videoframes. Auf der RoboLab-120-Bestenliste von NVIDIA erreicht die auf DROID feinabgestimmte Variante 42,92 % Erfolgsquote (515 von 1.200 Läufen) gegenüber 36,8 % für das 16-Mrd.-Modell Cosmos3-Nano-Policy und 28,0 % für π0.5. Auf einer B200 (FP8) benötigt die guidance-distillierte Variante 42,24 % bei einem Echtzeitfaktor von 0,048 gegenüber 0,150 bei Cosmos 3 Nano; BFL nennt bis zu 3,95-fache Beschleunigung. Veröffentlicht sind die Checkpoints base, so101 und droid auf Hugging Face (je mit BF16-, FP8- sowie guidance- und step-distillierten Varianten beim DROID-Modell) samt Trainingscode und LeRobot-Integration, die BFL mit NVIDIA und Hugging Face gebaut hat.",
+    "whyItMattered": "Bisher musste man bei offenen Robotik-Richtlinien wählen: Weltaktionsmodelle wie Cosmos 3 Nano führten die Bestenlisten an, brauchten aber laut BFL rund das 4,7-Fache an Rechenzeit pro Bewegungssekunde wie π0.5; reine Vision-Language-Action-Modelle wie π0.5 sind schnell, scheitern aber an fast jedem vierten Lauf mehr. FLUX 3 Action liegt mit 42,92 % vor dem bisherigen Spitzenreiter (Cosmos3-Nano 36,8 %, geschlossenes OASIS WAM 39,0 %) bei weniger als halb so vielen Parametern (7 Mrd. gegen 16 Mrd.). Der Ein-Schritt-Checkpoint schlägt mit 38,3 % ebenfalls alle anderen offenen Richtlinien und ist laut BFL 1,34- bis 2,28-mal schneller pro Bewegungssekunde als π0.5, braucht dafür aber laut Bestenliste 69 GB VRAM.",
+    "firstOfKind": "",
+    "sources": [
+      "https://bfl.ai/models/flux-3-action",
+      "https://huggingface.co/blog/black-forest-labs/flux-3-action",
+      "https://huggingface.co/black-forest-labs/flux-3-action-base",
+      "https://huggingface.co/black-forest-labs/flux-3-action-base/blob/main/LICENSE.md",
+      "https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html"
+    ],
+    "disputed": false,
+    "note": "Gewichte offen auf Hugging Face, aber unter der FLUX Kommunity License v1.0: frei für nicht-kommerzielle und nicht-produktive Nutzung; kommerziell nur für Nutzer mit weniger als 5 Mio. US-Dollar Jahresumsatz (inkl. verbundener Unternehmen), sonst Lizenz über bfl.ai/licensing. Der Begleitcode (flux-action) steht unter Apache 2.0.",
+    "verificationNote": "Datum 23.09.2026 gegen BFL-Blog und BFL-Post auf X (beide 23.09.) sowie den Hugging-Face-Blogbeitrag (23.09.) verifiziert; VentureBeat berichtet am selben Tag. Abweichung: Die drei Hugging-Face-Repositories wurden bereits am 22.09.2026 um 10:36-10:39 UTC angelegt, die Lizenzdatei kam am 22.09. um 21:15 UTC, die BFL-Modellseite führt in den Metadaten den 22.09.; als Veröffentlichungstag zählt die öffentliche Ankündigung am 23.09. Die Vorankündigung als gated Early Access stammt vom 23.07.2026 (siehe Eintrag FLUX 3). Die Zahlen stammen von BFL; die Gesamtquote 42,92 % steht aber auch auf der von NVIDIA betriebenen RoboLab-Bestenliste (Platz 1, 515/1.200, 7B, 69 GB VRAM), die Einreichung stammt allerdings erkennbar vom Hersteller, eine unabhängige Nachmessung habe ich nicht gefunden. Der Wert gilt für die DROID-feinabgestimmte Variante in der Simulation (Tischaufgaben in Isaac Lab), nicht für reale Roboter; die BFL-Modellseite nennt für den Ein-Schritt-Checkpoint 38,3 % und für den guidance-distillierten 42,2 %. Neu auf der Bestenliste sind inzwischen HiDream-O1-Embodied (39,9 %) und Atomic-WAM (39,6 %), beide hinter FLUX 3 Action. Die Behauptung „Cosmos 3 Nano 12 Mrd.“ bei Gigazine widerspricht BFL und der Bestenliste (16 Mrd.); es gilt 16 Mrd. Lizenz: Der Lizenztext (LICENSE.md) verifiziert; „open“ ist hier im Sinne von offenen Gewichten mit Nutzungsbeschränkung gesetzt, nicht OSI-konform - gleiche Einordnung wie bei FLUX.1 Kontext [dev] im Datensatz („open“ mit Hinweis auf die Nicht-Kommerziell-Lizenz); FLUX 3 (23.07.2026) steht dagegen als „closed“, weil damals nur Early Access bestand. Modalität „video“ gewählt nach dem Präzedenzfall Gemini Robotics 2 und Qwen-Robot Suite (Robotik ist keine eigene Modalität; das Modell sagt zudem gemeinsam mit den Aktionen Videoframes voraus und entstammt dem FLUX-3-Videobackbone). Der Textencoder ist eine unveränderte Kopie von Qwen3-VL-4B-Instruct (Apache 2.0)."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "30. September 2026",
+  lastVerified: "6. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-09-30",
+  lastVerifiedISO: "2026-10-06",
   windowStart: "2022-08",
-  windowEnd: "2026-09",
-  total: 290,
+  windowEnd: "2026-10",
+  total: 299,
   placeholder: false,
 };
