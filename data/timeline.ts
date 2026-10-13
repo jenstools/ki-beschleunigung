@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 299 entries across text, image, video, audio,
- * late 2022 → 6 October 2026.
+ * German descriptions. 302 entries across text, image, video, audio,
+ * late 2022 → 13 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5764,15 +5764,79 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Gewichte offen auf Hugging Face, aber unter der FLUX Kommunity License v1.0: frei für nicht-kommerzielle und nicht-produktive Nutzung; kommerziell nur für Nutzer mit weniger als 5 Mio. US-Dollar Jahresumsatz (inkl. verbundener Unternehmen), sonst Lizenz über bfl.ai/licensing. Der Begleitcode (flux-action) steht unter Apache 2.0.",
     "verificationNote": "Datum 23.09.2026 gegen BFL-Blog und BFL-Post auf X (beide 23.09.) sowie den Hugging-Face-Blogbeitrag (23.09.) verifiziert; VentureBeat berichtet am selben Tag. Abweichung: Die drei Hugging-Face-Repositories wurden bereits am 22.09.2026 um 10:36-10:39 UTC angelegt, die Lizenzdatei kam am 22.09. um 21:15 UTC, die BFL-Modellseite führt in den Metadaten den 22.09.; als Veröffentlichungstag zählt die öffentliche Ankündigung am 23.09. Die Vorankündigung als gated Early Access stammt vom 23.07.2026 (siehe Eintrag FLUX 3). Die Zahlen stammen von BFL; die Gesamtquote 42,92 % steht aber auch auf der von NVIDIA betriebenen RoboLab-Bestenliste (Platz 1, 515/1.200, 7B, 69 GB VRAM), die Einreichung stammt allerdings erkennbar vom Hersteller, eine unabhängige Nachmessung habe ich nicht gefunden. Der Wert gilt für die DROID-feinabgestimmte Variante in der Simulation (Tischaufgaben in Isaac Lab), nicht für reale Roboter; die BFL-Modellseite nennt für den Ein-Schritt-Checkpoint 38,3 % und für den guidance-distillierten 42,2 %. Neu auf der Bestenliste sind inzwischen HiDream-O1-Embodied (39,9 %) und Atomic-WAM (39,6 %), beide hinter FLUX 3 Action. Die Behauptung „Cosmos 3 Nano 12 Mrd.“ bei Gigazine widerspricht BFL und der Bestenliste (16 Mrd.); es gilt 16 Mrd. Lizenz: Der Lizenztext (LICENSE.md) verifiziert; „open“ ist hier im Sinne von offenen Gewichten mit Nutzungsbeschränkung gesetzt, nicht OSI-konform - gleiche Einordnung wie bei FLUX.1 Kontext [dev] im Datensatz („open“ mit Hinweis auf die Nicht-Kommerziell-Lizenz); FLUX 3 (23.07.2026) steht dagegen als „closed“, weil damals nur Early Access bestand. Modalität „video“ gewählt nach dem Präzedenzfall Gemini Robotics 2 und Qwen-Robot Suite (Robotik ist keine eigene Modalität; das Modell sagt zudem gemeinsam mit den Aktionen Videoframes voraus und entstammt dem FLUX-3-Videobackbone). Der Textencoder ist eine unveränderte Kopie von Qwen3-VL-4B-Instruct (Apache 2.0)."
+  },
+  {
+    "id": "text-muse-wonder-2026-10-12",
+    "date": "2026-10-12",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Wonder & Muse Wonder Full",
+    "org": "Meta",
+    "house": "Meta",
+    "license": "closed",
+    "capability": "Metas neue Reasoning-Modelle, aufgebaut auf größeren Basismodellen als Muse Spark und im hauseigenen Gigawatt-Rechenzentrum Prometheus trainiert; eine Parameterzahl nennt Meta nicht. Beide verarbeiten laut Artificial Analysis Text, Bild, Audio und Video bei 1 Mio. Token Kontext und antworten mit Text. Meta stellt zwei Eigenschaften heraus: „Active Memory“ (relevante Details über Gespräche hinweg behalten und im passenden Moment wieder hervorholen) und „Active Focus“ (bei schwierigen Aufgaben dranbleiben, andere Wege probieren, Fehler beheben und vor wichtigen Schritten nachfragen). Gemessen wird das mit den Meta-Benchmarks MemoryBench, FocusBench und SWE-Marathon sowie Harvey LAB. Muse Wonder ist ab dem Starttag über die Meta Model API (4 USD je Mio. Eingabe-, 0,20 USD gecachte Eingabe-, 20 USD je Mio. Ausgabe-Token) und in Muse Code verfügbar; Muse Wonder Full gibt es ausschließlich für Muse-Code-Abonnenten und nicht über die API. Unabhängig gemessen (Artificial Analysis Intelligence Index, max. Denkaufwand): Muse Wonder 52, Muse Wonder Full 56, Muse Spark 1.3 zuvor 48; bei GDPval-AA v2.1 erreicht Full 1.857 Elo (Claude Opus 5.5: 1.866, innerhalb der Konfidenzintervalle).",
+    "whyItMattered": "Metas Muse-Linie war bis August ein Spark-Modell mit niedriger Latenz; Wonder ist der erste Versuch des Hauses auf Frontier-Niveau. Der Sprung ist unabhängig bestätigt: 8 Indexpunkte von Spark 1.3 (48) zu Wonder Full (56) in sechs Wochen, auf Höhe von Claude Sonnet 5.5 (56, max) und vor Claude Haiku 5.5 (43, max). Der Preis zieht mit: 4/20 USD entsprechen Opus 5.5 und verdoppeln Sonnet 5.5 sowie GPT-6.1 Sol (je 2/10 USD), bleiben aber 60 % unter GPT-6 Astra und Fable 5.1 (10/50 USD); Spark 1.3 kostete noch 1,25/4,25 USD. Schwäche laut Artificial Analysis ist das Faktenwissen (AA-Omniscience 30 bei Full, 25 bei Wonder; Halluzinationsrate 23 % bzw. 27 %). Das stärkere Modell gibt es nur über das Abo-Produkt Muse Code, nicht über die API.",
+    "firstOfKind": "",
+    "sources": [
+      "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+      "https://research.meta.ai/blog/muse-wonder",
+      "https://artificialanalysis.ai/articles/muse-wonder"
+    ],
+    "disputed": true,
+    "note": "Geschlossene Gewichte. Muse Wonder Full ist nur für Muse-Code-Abonnenten verfügbar und wird laut TechCrunch und Artificial Analysis nicht über die API angeboten; ein Preis je Token existiert dafür nicht. Meta kündigt an, Wonder „bald“ auch in der Verbraucher-App Muse einzusetzen (zuerst für zahlende Abonnenten, ohne Datum) und einen ausführlicheren Sicherheitsbericht nachzureichen.",
+    "verificationNote": "Datum 12.10.2026 gegen die Meta-Newsroom-Ankündigung („October 12, 2026“), den Meta-Research-Blogbeitrag (gleiches Datum), den Artificial-Analysis-Artikel und TechCrunch (12.10.) bestätigt; Aggregatormeldungen mit Zeitstempel 9.–10.10. gelten als Rauschen. Disputed, weil Metas eigene Aussage – „state-of-the-art“ bei Agenten-, Gedächtnis- und Coding-Aufgaben, laut TechCrunch gleichauf mit Fable 5.1 und GPT-6 Astra – auf Benchmarks beruht, die Meta selbst gewählt hat (MemoryBench, FocusBench, SWE-Marathon); die Ergebnistabelle der Ankündigung ist eine Grafik und wurde nicht im Wortlaut gelesen. Die Gleichauf-Aussage mit Fable 5.1 und Astra wurde nicht gegen deren Index-Werte bei Artificial Analysis geprüft. Unabhängig belegt sind nur die Werte von Artificial Analysis (Index 52 und 56 bei max. Aufwand, Coding Agents Index in Muse Code 68 für Full und 63 für Wonder gegenüber 54 für Spark 1.3); die Modellseiten dort tragen unterschiedliche Rangnenner (Platz 9 von 216 bzw. 4 von 699), deshalb werden keine Plätze genannt. Preis für Wonder aus Artificial Analysis und TechCrunch übereinstimmend; Plan-Preise von Muse Code und der Modellname muse-wonder-1.0 stammen nur aus Drittquellen und sind nicht aufgenommen. Modalitäten (Eingabe Text/Bild/Audio/Video, Ausgabe Text) und Kontext 1 Mio. nennt nur Artificial Analysis, nicht Meta. Die Schlagzeile „Metas erstes Frontier-Modell“ ist Medienrahmung, kein Anspruch von Meta – deshalb kein firstOfKind."
+  },
+  {
+    "id": "text-claude-haiku-5-5-2026-10-07",
+    "date": "2026-10-07",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Haiku 5.5",
+    "org": "Anthropic",
+    "house": "Anthropic",
+    "license": "closed",
+    "capability": "Anthropics kleinstes und schnellstes Modell der 5.5-Generation: 1 Mio. Token Kontext (Haiku 4.5: 200.000), bis zu 128.000 Token Ausgabe, Text- und Bildeingabe, Wissensstand Juni 2026, adaptives Denken (standardmäßig an) und ein einstellbarer Denkaufwand von low bis max. Preis gestaffelt nach Promptlänge: bis 100.000 Token 0,10 USD je Mio. Eingabe- und 0,50 USD je Mio. Ausgabe-Token, darüber 0,50/2,50 USD (Haiku 4.5: pauschal 1/5 USD). Verfügbar ab dem Starttag über die Claude API (claude-haiku-5-5), Amazon Bedrock, Google Cloud, Microsoft Foundry und Claude Platform on AWS. Herstellerangaben: GDPval-AA v2.1 1.620 Elo (Haiku 4.5: 735; GPT-6 Luna: 1.437), OSWorld 2.1 72,4 % (15,7 %), Terminal-Bench 4.0 39,2 % (0,0 %), Humanity's Last Exam mit Werkzeugen 57,4 % (18,7 %). Unabhängig gemessen (Artificial Analysis Intelligence Index): 38 bei hohem und 43 bei maximalem Denkaufwand.",
+    "whyItMattered": "Haiku 5.5 verschiebt, was ein Modell der Preisklasse unter 1 USD je Mio. Token leisten kann: Bei max. Aufwand liegt es laut Artificial Analysis mit 43 vor GLM-5.3 Flash (42), Gemini 3.8 Flash (41) und GPT-6 Luna (38) und auf Höhe von Kimi K3 (44), 13 Punkte hinter Sonnet 5.5 (56) – bei einem Zwanzigstel von dessen Preis im Bereich bis 100.000 Token. Der Preisvorteil gegenüber Haiku 4.5 ist 90 % bis 100.000 Token und 50 % darüber, relativiert sich aber: Der neue Tokenizer zählt denselben Text laut Dokumentation rund 30 % höher, Anthropic selbst beziffert die Ersparnis im Schnitt auf etwa 75 %. Außerdem braucht das Modell viel Denkaufwand: rund 162.000 Ausgabe-Token je Indexaufgabe bei max., mehr als Opus 5.5. Anthropic selbst nennt Sonnet 5.5 und Opus 5.5 weiter besser für komplexes agentisches Coding; Haiku ist als Subagent, für Klassifikation, Extraktion, Routing und Support gedacht.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.anthropic.com/claude-haiku-5-5",
+      "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+      "https://artificialanalysis.ai/articles/claude-haiku-5-5",
+      "https://www.anthropic.com/claude-haiku-5-5-system-card"
+    ],
+    "disputed": false,
+    "note": "Nur als gehostetes Modell verfügbar, keine offenen Gewichte. Sampling-Parameter (temperature, top_p, top_k) müssen weggelassen werden. Mit demselben Tag führte Anthropic monatliche API-Guthaben für Max- und Team-Abonnenten ein und halbierte die Cache-Lesepreise von Sonnet 5.5.",
+    "verificationNote": "Datum 07.10.2026 viermal bestätigt: Ankündigung („October 7, 2026“), Dokumentationsseite („Released October 7, 2026“), Artificial Analysis und Unite.ai (sekundär). Der Pfad anthropic.com/news/claude-haiku-5-5 liefert 404; die Ankündigung liegt unter anthropic.com/claude-haiku-5-5. Alle Benchmark-Zahlen der Tabelle (GDPval-AA, OSWorld, Terminal-Bench, HLE) sind Anthropics eigene Angaben, ohne Angabe des Denkaufwands; Artificial Analysis misst bei Terminal-Bench 4.0 33 % statt der 39,2 % von Anthropic (Gemini 3.8 Flash 20 %, GPT-6 Luna 13 %). Der Intelligence Index nennt zwei Werte, die beide unabhängig sind: 38 (hoch) und 43 (max); die Überschrift des AA-Artikels zitiert 43. Anthropic bezeichnet es als erstes Haiku mit einstellbarem Denkaufwand und adaptivem Denken (Artificial Analysis bestätigt das) und als das billigste, schnellste und fähigste kleine Modell des Hauses – das sind Herstellerangaben über die eigene Linie, deshalb kein firstOfKind. Die Aussage zu rund 75 % durchschnittlicher Ersparnis beruht auf Anthropics Annahme, dass etwa 90 % der Haiku-4.5-Anfragen unter 100.000 Token liegen. Die Nutzung auf claude.ai führt die Ankündigung nicht ausdrücklich auf; die Systemkarte beschreibt sie."
+  },
+  {
+    "id": "video-vidu-q4-preview-2026-10-07",
+    "date": "2026-10-07",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Vidu Q4 Preview",
+    "org": "ShengShu Technology (Vidu)",
+    "house": "ShengShu",
+    "license": "closed",
+    "capability": "Erste öffentliche Vorschau auf das Flaggschiff-Videomodell des Pekinger Tsinghua-Ablegers ShengShu: Bild-zu-Video und Referenz-zu-Video mit nativem Ton (Dialog mit Lippensynchronität, Soundeffekte, Atmosphäre), Clips von 3 bis 16 Sekunden mit Schnitten innerhalb einer Aufnahme, Auflösungen von 540p bis 4K (10-Bit-Farbe bei 2K und 4K). Als Referenz nimmt es laut Vidu bis zu 15 Bilder und 0 bis 3 Audioclips. Zugang über vidu.com und die API (Modell-ID viduq4-preview); reine Text-zu-Video-Eingabe gibt es in der Vorschau noch nicht.",
+    "whyItMattered": "Q4 bringt nativen Ton mit Lippensynchronität und Schnitte innerhalb eines Clips in Vidus Flaggschiff-Linie, bis 4K und 16 Sekunden. Die Vorschau ist noch kein fertiges Produkt: Vidu kündigt das offizielle Q4 erst an, und eine unabhängige Einordnung gibt es noch nicht.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.globenewswire.com/news-release/2026/10/07/3376813/0/en/shengshu-technology-launches-vidu-q4-preview-a-next-generation-ai-video-model-built-for-lifelike-performances.html",
+      "https://www.prnewswire.com/news-releases/vidu-launches-q4-preview-making-flagship-ai-video-creation-accessible-to-everyone-302901266.html",
+      "https://www.vidu.com/vidu-q4"
+    ],
+    "disputed": true,
+    "note": "Vorschau ohne Text-zu-Video; das offizielle Q4 steht laut Vidu noch aus. Proprietär, kein Gewichtezugang.",
+    "verificationNote": "Datum 07.10.2026 durch zwei Pressemitteilungen desselben Tages bestätigt (GlobeNewswire, Peking; PRNewswire, Singapur) und durch Partnerankündigungen vom 8.–9.10. gestützt. Disputed aus drei Gründen. Erstens widersprechen sich die Preise: PRNewswire nennt einen Einführungspreis ab 0,014 USD je Sekunde („bis zu fünfmal mehr Ausgabe für dasselbe Budget“), GlobeNewswire dagegen 0,045 USD je Sekunde bei 540p bis 0,39 USD bei 4K mit 30 % Rabatt auf Bild- und Referenz-zu-Video bis 30.11. – wahrscheinlich Aktions- gegen Listenpreis, was die Quellen nicht klären; deshalb steht hier kein Preis im Text. Zweitens liegt keine Benchmark-Angabe von Vidu oder Artificial Analysis vor: Der einzige gefundene Wert (1.179 Elo in der Bild-zu-Video-Arena mit Ton gegenüber 1.056 für Q3 Pro) stammt von der inoffiziellen Seite viduq4.xyz und konnte nicht bei Artificial Analysis nachgeprüft werden; er ist nicht aufgenommen. Drittens ist die Zahl der Referenzbilder uneinheitlich (Vidu-Seite: bis 15; inoffizielle Seite: 12); es gilt die Vidu-Seite. Hauptsitz Peking nach dem Dateline der GlobeNewswire-Meldung; die Singapur-Meldung stammt von der internationalen Marke. Haus neu im Datensatz, in lib/providers.ts mit Domain und Land eingetragen; eine Markenfarbe ist absichtlich nicht hinterlegt, weil keine veröffentlicht ist."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "6. Oktober 2026",
+  lastVerified: "13. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-06",
+  lastVerifiedISO: "2026-10-13",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 299,
+  total: 302,
   placeholder: false,
 };
