@@ -107,6 +107,7 @@ const PALETTE: Record<string, string> = {
   // bundles — and the group's own orange (#FF6900) is one channel-step from the
   // #ff6a00 recorded for Alibaba, which would make two houses indistinguishable
   // in the charts. Guessing a colour to fill the gap is worse than having none.
+  // ShengShu is absent for the same reason: no published brand colour.
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -158,6 +159,9 @@ const DOMAIN: Record<string, string> = {
   // consumer-electronics manufacturer, and everything this dataset records from
   // it is announced here.
   Xiaomi: "mimo.xiaomi.com",
+  // Vidu is the product brand of ShengShu Technology; vidu.com is where every
+  // release is announced, so the domain is the product's, the house the company's.
+  ShengShu: "vidu.com",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -237,6 +241,10 @@ const COUNTRY: Record<string, string> = {
   // Beijing", the same address the IR contact page gives. The Cayman Islands
   // entry in that report is the registered office, not the headquarters.
   Xiaomi: "CN",
+  // GlobeNewswire release for Vidu Q4 Preview (07.10.2026) is datelined Beijing;
+  // the company is a Tsinghua spin-out. The Singapore-datelined PRNewswire copy
+  // is the Vidu brand's international arm, not the headquarters.
+  ShengShu: "CN",
   // Europe
   "Stability AI": "GB",
   Recraft: "GB",
