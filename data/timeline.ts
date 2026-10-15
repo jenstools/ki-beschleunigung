@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 302 entries across text, image, video, audio,
- * late 2022 → 13 October 2026.
+ * German descriptions. 306 entries across text, image, video, audio,
+ * late 2022 → 15 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5828,15 +5828,95 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Vorschau ohne Text-zu-Video; das offizielle Q4 steht laut Vidu noch aus. Proprietär, kein Gewichtezugang.",
     "verificationNote": "Datum 07.10.2026 durch zwei Pressemitteilungen desselben Tages bestätigt (GlobeNewswire, Peking; PRNewswire, Singapur) und durch Partnerankündigungen vom 8.–9.10. gestützt. Disputed aus drei Gründen. Erstens widersprechen sich die Preise: PRNewswire nennt einen Einführungspreis ab 0,014 USD je Sekunde („bis zu fünfmal mehr Ausgabe für dasselbe Budget“), GlobeNewswire dagegen 0,045 USD je Sekunde bei 540p bis 0,39 USD bei 4K mit 30 % Rabatt auf Bild- und Referenz-zu-Video bis 30.11. – wahrscheinlich Aktions- gegen Listenpreis, was die Quellen nicht klären; deshalb steht hier kein Preis im Text. Zweitens liegt keine Benchmark-Angabe von Vidu oder Artificial Analysis vor: Der einzige gefundene Wert (1.179 Elo in der Bild-zu-Video-Arena mit Ton gegenüber 1.056 für Q3 Pro) stammt von der inoffiziellen Seite viduq4.xyz und konnte nicht bei Artificial Analysis nachgeprüft werden; er ist nicht aufgenommen. Drittens ist die Zahl der Referenzbilder uneinheitlich (Vidu-Seite: bis 15; inoffizielle Seite: 12); es gilt die Vidu-Seite. Hauptsitz Peking nach dem Dateline der GlobeNewswire-Meldung; die Singapur-Meldung stammt von der internationalen Marke. Haus neu im Datensatz, in lib/providers.ts mit Domain und Land eingetragen; eine Markenfarbe ist absichtlich nicht hinterlegt, weil keine veröffentlicht ist."
+  },
+  {
+    "id": "text-glm-legal-2026-10-12",
+    "date": "2026-10-12",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "GLM-Legal",
+    "org": "Zhipu AI (Z.ai)",
+    "house": "Zhipu",
+    "license": "closed",
+    "capability": "Auf Rechtsarbeit nachtrainierte Variante von GLM-5.3-Flash (320 Mrd. Parameter gesamt, 18 Mrd. aktiv, 1 Mio. Token Kontext) für Vertragsprüfung, Beweisauswertung und Compliance-Recherche. Z.ai beschreibt ein spezialisiertes Mid-Training plus Post-Training in agentischen Aufgabenumgebungen; eine eigene Parameterzahl nennt Z.ai nicht. Auf Harveys Legal Agent Benchmark (LAB, 1.250 Aufgaben in 24 Rechtsgebieten, bestanden nur bei erfüllten Kriterien insgesamt) erreicht das Modell 19,2 % nach Z.ai bzw. 19,17 % in der Vals-AI-Messung, das Basismodell kommt auf 6,67 %. Vals AI führt es damit auf Platz 7 von 79, bei 0,15 USD je Testaufgabe. Zugang nur per API auf Antrag, ohne veröffentlichten Preis.",
+    "whyItMattered": "Zeigt, was Domänen-Nachtraining auf einem günstigen Basismodell bringt: 12,5 Prozentpunkte mehr auf Harvey LAB, vor Kimi K3 (12,92 %), Claude Fable 5 (11,25 %) und GPT-6 Astra (5,42 %), zu einem Bruchteil der Kosten (0,15 USD gegenüber 19,23 USD je Aufgabe bei Fable 5). Die Grenzen liegen im selben Datensatz: Auf dem Legal Research Bench fällt das Modell hinter sein Basismodell zurück (41,83 % gegenüber 45,19 %), ein Läufer braucht im Schnitt 1 Stunde 12 Minuten je Aufgabe, und sechs Modelle liegen auf Harvey LAB vorn, angeführt von Muse Spark 1.2 (25,42 %).",
+    "firstOfKind": "",
+    "sources": [
+      "https://z.ai/blog/glm-legal",
+      "https://www.vals.ai/models/zai_glm-legal",
+      "https://www.marktechpost.com/2026/10/13/zai-glm-legal-harvey-lab-legal-ai-model/"
+    ],
+    "disputed": true,
+    "note": "Zugang nur auf Antrag über z.ai/consultation/legal; Z.ai nennt weder Preis noch Gewichte. Eine Aufnahme in die Desktop-App AutoClaw ist angekündigt, ohne Datum.",
+    "verificationNote": "Datum 12.10.2026 durch den Z.ai-Blogbeitrag (datiert 2026-10-12) und die Vals-AI-Modellseite (Release Date: Oct 12, 2026) bestätigt. Disputed, weil die Lizenz widersprüchlich beschrieben wird: Vals AI führt das Modell als „open weights“, MarkTechPost schreibt, ein Hugging-Face-Repository existiere (Stand 13.10.2026) nicht und der Zugang sei nur über die Antragsseite möglich; Z.ai selbst nennt in der Ankündigung keine Gewichte. Hier gilt „closed“, bis Gewichte öffentlich sind. Die 19,2 % bzw. 19,17 % auf Harvey LAB und die LegalBench-Werte (86,23 %) wurden von Vals AI unabhängig gemessen, Z.ai verweist selbst darauf; die Aussage „Parität mit geschlossenen Frontier-Modellen“ auf LegalBench und PLawBench nennt Z.ai ohne eigene Zahlen. Der Preis von 0,075/0,25 USD je Mio. Token gilt nur für die Vals-Läufe (beide GLM-Modelle gleich angesetzt), nicht als öffentlicher Preis. Die Parameterzahl des Basismodells stammt aus der GLM-5.3-Flash-Dokumentation, nicht aus einer GLM-Legal-Quelle. Die Rangangaben (Platz 7 von 79) gelten für den Stand 12.–14.10.2026 und verschieben sich mit neuen Läufen."
+  },
+  {
+    "id": "audio-fish-audio-drama-3-2026-10-13",
+    "date": "2026-10-13",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Drama 3",
+    "org": "Fish Audio",
+    "house": "Fish Audio",
+    "license": "open",
+    "capability": "Text-zu-Sprache-Modell mit 35 Mrd. Parametern (Mixture-of-Experts, rund 3 Mrd. aktiv pro Token), das Sprechrichtungen in einfacher Sprache befolgt: Flüstern bleibt Flüstern, ein Lachen sitzt an der gewünschten Stelle, und die Stimmung lässt sich mitten im Satz oder für einzelne Wörter ändern. 83 Sprachen, bis zu 16 Sprecher in einer Anfrage, Stimmklonen aus einem Referenzclip. Beim Pronunciation-Robustness-Test von Artificial Analysis (schwierige Wörter, Zahlen, Codes in englischen Sätzen, von Menschen geprüft) liegt es mit 93,2 % auf Platz 1, vor Fish Audios eigenem S2.1 Pro (88,1 %). Gewichte auf Hugging Face, außerdem über die Fish-Audio-API (50 USD je Mio. Zeichen, bis 12.11.2026 im Einführungspreis 10 USD), die Website und die App.",
+    "whyItMattered": "Fish Audio hat S2 im März als offenes Gewichtsmodell veröffentlicht; Drama 3 setzt auf Steuerbarkeit statt Treue zur Referenzstimme, weil es mit einem Modell menschlicher Präferenzen statt mit Erkennbarkeits- und Ähnlichkeitsbelohnungen trainiert wurde. Der Preis dafür ist Hardware: Selbst betreiben braucht mindestens eine NVIDIA-GPU mit 48 GB (FP8), CPU, Apple und AMD sind nicht unterstützt. Bei der Gesamtqualität (Artificial-Analysis-Elo) bleibt das Modell mit 1.242 (Preview) hinter mehreren geschlossenen APIs, etwa Eleven v4 Turbo (1.328) und Qwen-Audio-3.0-TTS-Plus (1.266).",
+    "firstOfKind": "",
+    "sources": [
+      "https://fish.audio/blog/fish-audio-drama-3/",
+      "https://huggingface.co/fishaudio/drama-3",
+      "https://www.marktechpost.com/2026/10/14/fish-audio-drama-3-open-weight-tts-model/"
+    ],
+    "disputed": false,
+    "note": "Offene Gewichte, aber unter der neuen Fish Audio Community License v1.0: frei für Forschung und nicht-kommerzielle Nutzung, kommerziell frei nur unter 500.000 USD Jahresumsatz (inkl. verbundener Unternehmen); wer Drama 3 als TTS-, Klon- oder Inferenzdienst anbieten will, braucht eine eigene Lizenz. Das Klonen einer echten Person ohne Einwilligung ist untersagt, Produkte müssen „Built with Fish Audio“ anzeigen.",
+    "verificationNote": "Datum 13.10.2026 gegen den Fish-Audio-Blogbeitrag („October 13, 2026 | Drama 3 is available today“) geprüft; MarkTechPost und das Hugging-Face-Repository bestätigen Gewichte, Größe und Lizenz. Abweichung in der Lizenzangabe: Das Metadatenfeld des Hugging-Face-Repositorys trägt den Schlüssel „fish-audio-research-license“, die Modellkarte, der Blog und die LICENSE-Datei nennen dagegen die Community License v1.0; maßgeblich ist hier der Lizenztext. „open“ gilt im Sinne offener Gewichte mit Nutzungsbeschränkung, nicht OSI-konform, wie bei FLUX 3 Action. Die Platzierung auf Platz 1 bei Pronunciation Robustness ist die Angabe von Artificial Analysis (laut Fish Audio als „Drama 3 Preview“ gelistet), die Bestenliste selbst wurde nicht abgerufen. Die Elo-Zahlen (1.242 gegenüber 1.328 und 1.266) stammen aus der Vergleichstabelle von MarkTechPost mit Verweis auf Artificial Analysis und wurden nicht an der Quelle nachgeprüft. Latenz (88,9 ms bis zum ersten Ton auf einer H200) ist eine Herstellerangabe der Modellkarte. „Mid-Sentence-Steuerung“ und das Präferenzmodell stammen aus Fish Audios Blog und Technical Report (arXiv 2610.18010), unabhängig nicht belegt."
+  },
+  {
+    "id": "audio-grok-voice-3-2026-10-14",
+    "date": "2026-10-14",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "Grok Voice 3.0",
+    "org": "xAI",
+    "house": "xAI",
+    "license": "closed",
+    "capability": "Speech-to-Speech-Modell für Sprachagenten, das einen Anrufer hört, nachdenkt, Werkzeuge aufruft und in einem Zug antwortet. Auf dem Speech-to-Speech-Index von Artificial Analysis erreicht es 86,9 (Grok Voice 2.0: 81,3; GPT-Live-1 Astra, Medium: 83,2; Gemini 3.8 Live mit Extended Thinking: 82,6): Big Bench Audio 98,5 %, Task Success Rate 94,8 %, Full Duplex Bench 97,0 % (Pausen, Wechsel, Unterbrechungen), τ-Voice 71,6 % bei laut xAI 40 % geringerer Latenz als GPT-Live-1 (Astra), Antwortzeit unter einer Sekunde. Auf ServiceNows EVA-Bench erzielt es die höchste Genauigkeit (74 %). Verfügbar am Starttag in der Voice Agent API zum unveränderten Preis von 0,08 USD pro Minute (4,80 USD pro Stunde); `grok-voice-latest` wurde automatisch umgestellt.",
+    "whyItMattered": "Der Wert ist der erste Speech-to-Speech-Spitzenplatz, den xAI hält: 5,6 Indexpunkte vor Grok Voice 2.0 und 3,7 vor GPT-Live-1 (Astra). Zugleich bleibt der Preis gleich, nach xAIs Messung liegen die Kosten je Aufgabe unter GPT-Live-1 (Astra, Medium) und GPT-Realtime-2.1. Das Modell läuft nach xAI bereits produktiv in Tesla-Fahrzeugen („Millionen Gespräche am Tag“) und in den Starlink-Callcentern (20.000 Anrufe täglich, rund 70 % ohne Mensch gelöst).",
+    "firstOfKind": "",
+    "sources": [
+      "https://x.ai/news/grok-voice-3",
+      "https://artificialanalysis.ai/speech-to-speech"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 14.10.2026 gegen die xAI-Ankündigung (datiert Oct 14, 2026, „available today“) geprüft; LLM Gateway, eesel und weitere Berichte nennen denselben Tag. Der Index-Wert 86,9 sowie die Vergleichswerte der Konkurrenz stammen aus xAIs Tabelle mit Quelle Artificial Analysis vom 13.10.2026; die Bestenliste bei Artificial Analysis wurde nicht selbst abgerufen, und der Vorsprung gilt für den Stand der Messung. τ-Voice (71,6 %, „vergleichbar mit GPT-Live-1 Astra“), die 40 % geringere Latenz, die Kosten je Aufgabe, der EVA-Bench-Wert und alle Nutzungszahlen (Tesla, Starlink) sind Herstellerangaben; das ServiceNow-Zitat ist ein Partnerzitat. Die Sprachanzahl nennt die Ankündigung nicht. Kein firstOfKind: „intelligentestes Sprachmodell“ ist xAIs Formulierung, kein belegter Erstanspruch."
+  },
+  {
+    "id": "text-nemotron-3-5-bolt-74b-a9b-2026-10-15",
+    "date": "2026-10-15",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Nemotron 3.5 Bolt 74B-A9B",
+    "org": "NVIDIA",
+    "house": "NVIDIA",
+    "license": "open",
+    "capability": "Mixture-of-Experts-Modell mit 74 Mrd. Parametern, davon 9 Mrd. aktiv pro Token, das NVIDIA mit 2-Bit-Quantisierung und quantisierungsbewusstem Training (QAT) auf 24 GB Speicher packt und für lokale Agenten auf den RTX-Spark-Laptops (Verkaufsstart 16.10.2026) auslegt. NVIDIA nennt es schneller als die meisten bekannten dichten Modelle und intelligenter als die meisten MoE-Modelle ähnlicher Speichergröße; Zahlen dazu legt der Blog nicht vor. Wie bei den übrigen Nemotron-Modellen sollen Gewichte, Trainingsdaten und Rezepte offen sein; Unterstützung zum Start in llama.cpp, vLLM, Ollama, Unsloth und LM Studio, außerdem über die Agenten Hermes und OpenClaw.",
+    "whyItMattered": "Verschiebt das Argument von „klein genug für den Laptop“ zu „74 Mrd. Parameter in 24 GB“: 2-Bit-Gewichte mit QAT statt nachträglicher Quantisierung auf einem Modell, das schon für diese Größe trainiert wurde. Ob die Qualität hält, ist offen. Zum Datum des Eintrags gibt es weder unabhängige Benchmarks noch eine bestätigte Veröffentlichung der Gewichte.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/"
+    ],
+    "disputed": true,
+    "note": "Zum Prüfzeitpunkt (15.10.2026) noch nicht bestätigt, dass die Gewichte öffentlich sind; die Lizenz hat NVIDIA nicht genannt (Nemotron-Modelle stehen bisher unter der NVIDIA Nemotron Open Model License). Das kleinere Nemotron 3.5 Bolt E4B soll am 23.10.2026 folgen und ist nicht Teil dieses Eintrags.",
+    "verificationNote": "Datum 15.10.2026 aus dem NVIDIA-Blog (veröffentlicht 14.10.2026; „available Thursday, Oct. 15“); Berichte vom 13. und 14.10. nennen denselben Termin. Disputed aus drei Gründen. Erstens ist das Datum ein angekündigter Termin: Weder ein Hugging-Face-Repository (Abruf lieferte HTTP 401) noch eine NVIDIA-Modellkarte konnte am 15.10. bestätigt werden; alfw.ai schreibt ausdrücklich, die Gewichte seien am 13.10. nicht öffentlich gewesen. Zweitens steht „open“ für NVIDIAs Aussage „fully open source, including training data, weights and recipes“ - ohne Lizenznamen und ohne gelesene Modellkarte; das Feld gilt unter Vorbehalt. Drittens beruhen alle Angaben (74B/9B, 24 GB, 2-Bit-QAT, Geschwindigkeits- und Intelligenzvergleich) auf der NVIDIA-Ankündigung; Benchmarks und unabhängige Messungen (Artificial Analysis, BenchLM: noch leer) liegen nicht vor, ebenso keine Kontextlänge und kein Preis. Die Rechnung 74 Mrd. Parameter bei 2 Bit ergibt rund 18,5 GB für die Gewichte, 24 GB lässt Platz für Cache, ist aber keine von NVIDIA belegte Messung."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "13. Oktober 2026",
+  lastVerified: "15. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-13",
+  lastVerifiedISO: "2026-10-15",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 302,
+  total: 306,
   placeholder: false,
 };
