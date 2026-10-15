@@ -56,9 +56,9 @@ export const CLUSTERS: Cluster[] = [
     title: "Das Tempo: aus 24 Tagen Abstand wurden 2,1",
     short: "Tempo",
     claim:
-      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,1. Im laufenden Halbjahr sind es 1,13 — gut ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
+      "2022 lagen zwischen zwei fähigkeitsverändernden KI-Releases im Schnitt 24,2 Tage. 2026 sind es 2,1. Im laufenden Halbjahr sind es 1,11 — gut ein Tag; 15 der 32 Releases im Juli 2026 fielen auf einen Tag, an dem es noch ein weiteres gab.",
     description:
-      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,1 im Jahr 2026. Halbjahresweise gemessen an 300 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
+      "Wie stark der Abstand zwischen zwei fähigkeitsverändernden KI-Releases geschrumpft ist: 24,2 Tage im Jahr 2022, 2,1 im Jahr 2026. Halbjahresweise gemessen an 304 primärgeprüften Releases, mit den längsten Pausen und den dichtesten Wochen.",
     api: "/api/v1/tempo",
     verify: (rel) => {
       const years = cadenceByYear(rel);
@@ -69,7 +69,7 @@ export const CLUSTERS: Cluster[] = [
       expect(
         "Abstand laufendes Halbjahr",
         round(halves[halves.length - 1].meanGap, 2),
-        1.13,
+        1.11,
       );
       // Bounded on both sides: the claim names July, not "everything since July".
       const july = chronological(rel).filter(
@@ -81,7 +81,7 @@ export const CLUSTERS: Cluster[] = [
         july.filter((e, i) => i > 0 && e.date === july[i - 1].date).length,
         15,
       );
-      expect("Releases gesamt", rel.length, 300);
+      expect("Releases gesamt", rel.length, 304);
     },
   },
   {
@@ -89,7 +89,7 @@ export const CLUSTERS: Cluster[] = [
     title: "Erstmalig: 117 belegte Premieren",
     short: "Erstmalig",
     claim:
-      "117 von 300 Releases tragen einen belegten „Erster, der …“-Anspruch: 41 in Text, 28 in Audio, 27 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
+      "117 von 304 Releases tragen einen belegten „Erster, der …“-Anspruch: 41 in Text, 28 in Audio, 27 in Video, 21 in Bild. 41 davon kamen mit offenen Gewichten. Bei 8 ist der Anspruch oder das Datum strittig — mit Begründung, warum.",
     description:
       "Wer konnte zuerst was? 117 dokumentierte Premieren generativer KI in Text, Bild, Video und Audio — jede mit Releasedatum, Labor und Link auf die Primärquelle, strittige Fälle offen als strittig markiert.",
     api: "/api/v1/erstmalig",
@@ -99,7 +99,7 @@ export const CLUSTERS: Cluster[] = [
         firstsByModality(rel).map((g) => [g.modality, g.entries.length]),
       );
       expect("Premieren gesamt", firsts.length, 117);
-      expect("Releases gesamt", rel.length, 300);
+      expect("Releases gesamt", rel.length, 304);
       expect("Premieren Text", byModality.get("text") ?? 0, 41);
       expect("Premieren Audio", byModality.get("audio") ?? 0, 28);
       expect("Premieren Video", byModality.get("video") ?? 0, 27);
@@ -115,7 +115,7 @@ export const CLUSTERS: Cluster[] = [
     claim:
       "Der Anteil offener Gewichte erreichte 2023 mit 38 % seinen Höchststand und fiel 2025 auf 17 %. Zwischen dem 26. Juni 2025 und dem 6. Januar 2026 liegen 194 Tage, in denen dieser Datensatz keinen einzigen Release mit offenen Gewichten verzeichnet — bei 16 geschlossenen, davon 12 mit Premierenanspruch. Trotzdem stammen 41 der 117 belegten Premieren von offenen Modellen.",
     description:
-      "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 93 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
+      "Offene gegen geschlossene Gewichte über vier Jahre: Höchststand 38 % im Jahr 2023, Tiefpunkt 17 % im Jahr 2025, dazwischen eine Lücke von 194 Tagen ohne einen einzigen offenen Release. Mit allen 95 offenen Releases, Primärquellen und der Aufschlüsselung nach Modalität und Haus.",
     api: "/api/v1/offenheit",
     verify: (rel) => {
       // This page counts houses, so an unregistered one would silently become
@@ -137,8 +137,8 @@ export const CLUSTERS: Cluster[] = [
       const byYear = new Map(licenseByYear(rel).map((y) => [y.year, y.openShare]));
       expect("Anteil offen 2023", byYear.get(2023) ?? 0, 38);
       expect("Anteil offen 2025", byYear.get(2025) ?? 0, 17);
-      expect("Offene Releases gesamt", open.length, 93);
-      expect("Releases gesamt", rel.length, 300);
+      expect("Offene Releases gesamt", open.length, 95);
+      expect("Releases gesamt", rel.length, 304);
 
       // The gap is the headline, so both its length and what filled it are guarded.
       const gap = longestPauses(open, 1)[0];
@@ -168,7 +168,7 @@ export const CLUSTERS: Cluster[] = [
       expect(
         "Offene Releases mit vorliegenden Gewichten",
         open.length - OPEN_WEIGHTS_PENDING.length,
-        87,
+        88,
       );
     },
   },
@@ -455,6 +455,12 @@ export const OPEN_WEIGHTS_PENDING: { id: string; why: string }[] = [
     // are promised "later this month" under Apache 2.0.
     id: "text-reflection-beam-2026-10-05",
     why: "Zum Start nur Warteliste für ausgewählte Nutzer; Gewichte unter Apache 2.0 laut Reflection im Laufe des Oktobers 2026, am 5. Oktober nicht herunterladbar.",
+  },
+  {
+    // 15 October is NVIDIA's announced date; no repository or model card could
+    // be confirmed on the verification date, and no licence is named.
+    id: "text-nemotron-3-5-bolt-74b-a9b-2026-10-15",
+    why: "NVIDIA kündigt Gewichte, Trainingsdaten und Rezepte für den 15. Oktober 2026 an; am Prüftag war weder ein Repository noch eine Modellkarte bestätigt, eine Lizenz ist nicht benannt.",
   },
 ];
 
