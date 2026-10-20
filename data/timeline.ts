@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 306 entries across text, image, video, audio,
- * late 2022 → 15 October 2026.
+ * German descriptions. 311 entries across text, image, video, audio,
+ * late 2022 → 19 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5908,15 +5908,125 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Zum Prüfzeitpunkt (15.10.2026) noch nicht bestätigt, dass die Gewichte öffentlich sind; die Lizenz hat NVIDIA nicht genannt (Nemotron-Modelle stehen bisher unter der NVIDIA Nemotron Open Model License). Das kleinere Nemotron 3.5 Bolt E4B soll am 23.10.2026 folgen und ist nicht Teil dieses Eintrags.",
     "verificationNote": "Datum 15.10.2026 aus dem NVIDIA-Blog (veröffentlicht 14.10.2026; „available Thursday, Oct. 15“); Berichte vom 13. und 14.10. nennen denselben Termin. Disputed aus drei Gründen. Erstens ist das Datum ein angekündigter Termin: Weder ein Hugging-Face-Repository (Abruf lieferte HTTP 401) noch eine NVIDIA-Modellkarte konnte am 15.10. bestätigt werden; alfw.ai schreibt ausdrücklich, die Gewichte seien am 13.10. nicht öffentlich gewesen. Zweitens steht „open“ für NVIDIAs Aussage „fully open source, including training data, weights and recipes“ - ohne Lizenznamen und ohne gelesene Modellkarte; das Feld gilt unter Vorbehalt. Drittens beruhen alle Angaben (74B/9B, 24 GB, 2-Bit-QAT, Geschwindigkeits- und Intelligenzvergleich) auf der NVIDIA-Ankündigung; Benchmarks und unabhängige Messungen (Artificial Analysis, BenchLM: noch leer) liegen nicht vor, ebenso keine Kontextlänge und kein Preis. Die Rechnung 74 Mrd. Parameter bei 2 Bit ergibt rund 18,5 GB für die Gewichte, 24 GB lässt Platz für Cache, ist aber keine von NVIDIA belegte Messung."
+  },
+  {
+    "id": "text-mai-base-2-2026-10-15",
+    "date": "2026-10-15",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "MAI-Base-2",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Mixture-of-Experts-Basismodell mit 2,8 Billionen Parametern gesamt, davon 80 Mrd. aktiv pro Token (MAI-Base-1: 1 Billion bzw. 35 Mrd.). Microsoft AI hat das Pre-Training abgeschlossen: 38 Tage auf 16.000 NVIDIA-GB200-GPUs im August und September 2026, rund 50 Billionen Token. Neu gegenüber MAI-Base-1 ist das Training von Beginn an mit Bildern (encoderfreie VLM-Architektur, Bild-Text-Daten 18 % der Trainingsmischung). Auf Microsofts eigenen Held-out-Tests (Code, STEM, Mathe, QA; Bits pro Byte) liegt das Modell vor DeepSeek-V4-Pro-Base, Kimi K3, Qwen3.8 und MiMo-V2.6-Pro-RL. Microsoft schätzt sein Trainingsrezept als 4,2- bis 12,3-mal recheneffizienter als das von DeepSeek-V4-Pro-Base ein. Das Modell ist ein Basismodell im Post-Training: nicht nutzbar, nur beschrieben.",
+    "whyItMattered": "Zeigt, wie weit Microsoft AI den Bruch mit der OpenAI-Abhängigkeit treibt: Das Haus, das mit MAI-Base-1 (1 Billion Parameter) begann, hat ein Modell der Größenklasse von Kimi K3 (ebenfalls 2,8 Billionen) vorgezeigt, trainiert nach Microsofts Angabe ohne Destillation aus Fremdmodellen. Genau diese Datenherkunft nennt Microsoft als Grund, die Gewichte später an ausgewählte Partner über Foundry zu lizenzieren, statt sie offenzulegen. Ob das Modell nach dem Post-Training mit den besten geschlossenen Modellen mithalten kann, ist offen: Der Blog vergleicht nur mit offenen Modellen und nur per Held-out-Verlust, nicht mit Aufgaben-Benchmarks.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/frontier-pre-training-at-microsoft-ai/",
+      "https://microsoft.ai/pdf/Frontier-Pre-training-at-Microsoft-AI.pdf?v=2",
+      "https://www.techrepublic.com/es/article/news-microsoft-mai-base-2-ai-model-efficiency/"
+    ],
+    "disputed": true,
+    "note": "Kein Release: MAI-Base-2 ist laut Microsoft im Post-Training. Es gibt weder Zugang noch Preis, Datum, Demo oder veröffentlichte Gewichte. Microsoft will die Gewichte später an vertrauenswürdige Partner über Foundry lizenzieren und nicht öffentlich freigeben.",
+    "verificationNote": "Datum 15.10.2026 gegen den Microsoft-AI-Blog (Lab Notes „Frontier Pre-training at Microsoft AI“, datiert October 15, 2026) und Presseberichte (Investing.com, TechRepublic, technology.org) bestätigt. Disputed, weil es eine Ankündigung des Trainingsabschlusses ist, kein Release: Microsoft schreibt „recently completed pre-training“ und „currently undergoing post-training“; Verfügbarkeitstermine und Preise nennt es nicht. „closed“ ist eine Ableitung aus der Absicht, Gewichte nur an Partner zu lizenzieren („will enable us to license our model weights to trusted partners through Foundry“); eine Lizenz existiert noch nicht. „Übertrifft jedes getestete offene Modell“ ist ein Herstellerclaim auf eigenen Held-out-Sets (Code aus Microsofts eigener Codebasis; STEM, Mathe und QA bei Anbietern beauftragt); unabhängige Messungen liegen nicht vor. Nur DeepSeek-V4-Pro-Base ist ein echtes Base-Modell; Kimi K3, Qwen3.8-2.4T-A95B und MiMo-V2.6-Pro-RL wurden als post-trainierte Checkpoints verglichen, mit Vorbehalt im Blog; geschlossene Modelle fehlen. Die „4-12x“-Effizienz (4,2 bis 12,3) ist eine Schätzung, wie viel Rechenleistung das Microsoft-Rezept bräuchte, um DeepSeek-V4-Pro-Base zu erreichen, kein Vergleich fertiger Modelle. Die Zahlen zu GPUs (16.000 GB200), Tokens (50 Billionen), Trainingsdauer (38 Tage) und Bildanteil (18 %) stammen aus dem Blog; ein Bericht (KuCoin/MetaEra) nennt fälschlich 6.000 GPUs. Die Aussage „ohne Destillation“ ist Microsofts Angabe. Weder Gewichte noch Modellkarte noch Foundry-Seite wurden geprüft, da es sie nicht gibt. Die Modalität „text“ ist eine Vereinfachung, das Modell ist von Beginn an multimodal vortrainiert."
+  },
+  {
+    "id": "text-muse-spark-open-2026-10-15",
+    "date": "2026-10-15",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Spark Open",
+    "org": "Meta (Superintelligence Labs)",
+    "house": "Meta",
+    "license": "open",
+    "capability": "Metas erstes großes Open-Weight-Modell der Muse-Reihe: 816 Mrd. Parameter gesamt, 42 Mrd. aktiv pro Token (Mixture-of-Experts-Transformer mit Perception Encoder), 1 Mio. Token Kontext. Eingabe Text, Bild, Video und Audio, Ausgabe nur Text, trainiert auf Daten aus über 100 Sprachen. Ausgelegt für Coding und Agentenarbeit (lange Aufgabenketten, Software-Engineering, mehrstufiges Schlussfolgern); Reasoning lässt sich laut Hugging Face nicht abschalten, nur auf „low“ senken. Laut Meta abgeleitet vom geschlossenen Muse Spark, mit zusätzlichem Sicherheits-Post-Training für den Betrieb ohne Schutzschicht des Anbieters. Gewichte in BF16 und NVFP4 auf Hugging Face, außerdem über Amazon SageMaker AI, Google Cloud Model Garden und Microsoft Foundry; gehostet bei Baseten, Fireworks AI, Groq, Modal, Nebius, OpenRouter und Together AI (dort 1,25 $ Eingabe / 4,25 $ Ausgabe je 1 Mio. Token). Hardware laut Modellkarte: mindestens 700 GB GPU-Speicher für NVFP4, 2 TB für BF16. Auf dem Schreibtisch läuft es nach Metas Angabe auf zwei Mac Studios mit M5 Ultra und je 512 GB. In Metas eigener Benchmarktabelle (xhigh) liegt es vorn bei JobBench (61,8) und MCP-Atlas (89,2), dahinter bei Terminal-Bench 2.1 (76,4 gegenüber 85,0 für Kimi K3) und DeepSWE 1.1 (60 gegenüber 68).",
+    "whyItMattered": "Nach Muse Glimmer 30B im August (dicht, Apache 2.0) öffnet Meta erstmals ein Modell dieser Größenordnung. Die Einordnung als „fähigstes offenes US-Modell“ ist Metas eigener Anspruch und gilt nur gegenüber den ebenfalls genannten US-Konkurrenten Inkling (26) und Nemotron 3 Ultra (23) auf dem Artificial-Analysis-Index; die chinesischen Open-Weight-Modelle liegen vorn (GLM 5.3: 45, Kimi K3: 44, Qwen3.8: 40, Muse Spark Open: 39, Mistral Large 4: 38). Das Profil deckt sich mit früheren Muse-Releases: vorn bei Werkzeugnutzung und Agentenaufgaben, hinter den chinesischen Modellen beim Coden im Terminal. Die Lokal-Botschaft ist enger, als die Schlagzeile klingt: Laut Engadget und TechCrunch braucht man mindestens 1 TB RAM, und das 512-GB-Mac-Studio, auf das sich Metas Aussage stützt, war zum Start nicht erhältlich. Anders als bei Glimmer ist die Lizenz nicht OSI-konform: Meta verlangt den Hinweis „Built with Muse Spark Open“ und von Unternehmen mit über 20 Mio. $ Umsatz, die Modelle als Dienst anbieten, einen eigenen Vertrag. Interne Nutzung und Einbau in eigene Produkte bleiben frei.",
+    "firstOfKind": "",
+    "sources": [
+      "https://research.meta.ai/blog/muse-spark-open",
+      "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+      "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md",
+      "https://research.meta.ai/static/muse-spark-open-evaluation-methodology",
+      "https://artificialanalysis.ai/models/muse-spark-open",
+      "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/"
+    ],
+    "disputed": true,
+    "note": "Gewichte öffentlich auf Hugging Face (Zugriff nach Formular), aber unter der Muse Model License, nicht OSI-konform: Hinweis „Built with Muse Spark Open“ in jedem Produkt, das Modell oder Derivate nutzt; wer mit Konzernverbund über 20 Mio. US-Dollar Jahresumsatz Modelle als Dienst (API) anbietet, braucht einen separaten Vertrag mit Meta; nicht für Personen unter 18 Jahren vorgesehen. Lokal nur mit viel Speicher: mindestens 700 GB (NVFP4) beziehungsweise 2 TB (BF16) GPU-Speicher laut Modellkarte; die von Meta genannte Mac-Konfiguration war zum Start noch nicht im Handel.",
+    "verificationNote": "Datum 15.10.2026 gegen den Meta-Research-Blogbeitrag, die Modellkarte („Date of Release: October 15th, 2026“), die Lizenzdatei, den Hugging-Face-Blog und TechCrunch bestätigt. Gewichte tatsächlich öffentlich geprüft (Repositorys Muse-Spark-Open-816B-A42B und -NVFP4 unter meta-models, Zugriff nach Formular); das Anlagedatum der Repositorys wurde nicht geprüft. „open“ ist im Sinne offener Gewichte mit Nutzungsbeschränkung gesetzt, wie bei FLUX 3 Action; der Wortlaut der Nutzungsrichtlinie (Anhang A) wurde nicht gelesen. Parameter, Kontext und Architektur sind Herstellerangaben aus der Modellkarte. Benchmarks: Alle Tabellenwerte sind Herstellerangaben, die Harnesse unterscheiden sich je Modell. Unabhängig bestätigt ist nur der Intelligence-Index-Wert 39 durch die Modellseite von Artificial Analysis. Disputed bleibt der Anspruch „most capable US open-weight model“: Er ist Metas Formulierung (TechCrunch zitiert ihn als Herstellerclaim), stützt sich nur auf den Vergleich mit Inkling und Nemotron 3 Ultra, und ob es ein anderes, stärkeres offenes US-Modell gibt, wurde nicht systematisch geprüft. Die Aussage, es sei von Muse Spark abgeleitet, stammt von Meta; Berichte über einen späteren Checkpoint (Spark 1.3) sind nur sekundär und nicht aufgenommen. Hosting-Preise aus VentureBeat, Artificial Analysis und OpenRouter-Listings übereinstimmend. Meta kündigt eine ausführliche Evaluierung an."
+  },
+  {
+    "id": "text-deepseek-v4-1-flash-1017-2026-10-17",
+    "date": "2026-10-17",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "DeepSeek-V4.1-Flash-1017",
+    "org": "DeepSeek",
+    "house": "DeepSeek",
+    "license": "open",
+    "capability": "Neuer Post-Training-Checkpoint von DeepSeek-V4.1-Flash vom 10.09.2026; DeepSeek nennt ihn selbst ein „minor update“. Architektur, Kontextfenster (1 Mio. Token) und Preise bleiben, die Gewichte erscheinen als eigenes Hugging-Face-Repository unter MIT-Lizenz (48 Safetensors-Dateien, 510 GB), und der API-Name deepseek-flash, die Web-Oberfläche und die App laufen ab sofort auf der neuen Fassung. Geändert hat sich das Verhalten: Laut DeepSeek löst das Modell Aufgaben schneller und mit kürzeren Ausgaben. Selbstberichtete Werte gegen V4.1-Flash (alt → neu): HLE ohne Werkzeuge 36,8 → 42,6, Terminal-Bench 4.0 31,2 → 42,3, DeepSWE v1.1 74,2 → 77,0, ProgramBench 20,3 → 29,1, Automation-Bench 54,8 → 60,5, Agents’ Last Exam 31,8 → 35,4. Am selben Tag öffnet DeepSeek eine Search- und eine Fetch-API für alle Entwickler, je 0,75 $ pro 1.000 Aufrufe; Aufrufe über serverseitige Werkzeuge in DeepSeek Harness, Claude Code und Codex sind bis zum 31.10.2026, 16:00 UTC, kostenlos.",
+    "whyItMattered": "Der Abstand zum Vorgänger entsteht allein im Post-Training, bei gleichem Preis und gleicher Größe: Artificial Analysis misst 45 Punkte auf dem Intelligence Index gegenüber 39 für V4.1-Flash und führt das Modell damit gleichauf mit GLM-5.3 als zweitbestes offenes Modell, einen Punkt hinter MiMo-V2.6-Pro (46) und vor Kimi K3 (44). Am stärksten verschiebt sich das Wissensverhalten: Die Quote nicht halluzinierter Antworten auf AA-Omniscience steigt von 4 % auf 33 %, der Omniscience-Index von −5 auf +5. In DeepSeeks eigener Tabelle liegt das Modell auf DeepSWE v1.1 (77,0) über Claude Opus 5 (74,0) und GPT-5.6 Sol (73,0). Die Grenzen stehen in derselben Tabelle: Terminal-Bench 4.0 (42,3 gegen 51,8) und HLE (42,6 gegen 56,3) bleiben bei Opus 5. Preis-Leistung ist kein Durchmarsch: MiMo-V2.6-Pro bietet auf Artificial Analysis mehr Punkte (46) bei 0,13 $ je Aufgabe, gegenüber 0,26 $ hier.",
+    "firstOfKind": "",
+    "sources": [
+      "https://api-docs.deepseek.com/news/news261017",
+      "https://api-docs.deepseek.com/updates",
+      "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
+    ],
+    "disputed": false,
+    "note": "Das Modell ersetzt V4.1-Flash vom 10.09.2026 in API, App und Web; deepseek-flash zeigt nun auf die 1017-Fassung, die Preise sind laut Changelog unverändert. Die Gewichte der Septemberfassung bleiben in ihrem eigenen Repository.",
+    "verificationNote": "Datum 17.10.2026 mehrfach belegt: DeepSeeks Changelog und Ankündigung, das Hugging-Face-Repository (laut HF-API am 17.10.2026 angelegt), Artificial Analysis („Released October 17, 2026“) und MarkTechPost. Die Bloomberg-Meldung vom 17.10. wurde nur indirekt gesehen. Lizenz MIT als LICENSE-Datei, nicht gated. Die 1017-Karte enthält keine eigene Architekturbeschreibung; die Konfiguration entspricht in den geprüften Feldern dem Vorgänger, Parameterzahl und Kontext sind deshalb dem Vorgängereintrag entnommen und hier nicht neu bestätigt (die Hugging-Face-Kopfzeile zeigt 763 Mrd.; die 485 Mrd. im Eintrag vom 10.09.2026 lassen sich damit nicht mehr nachvollziehen). Sämtliche Benchmarkwerte der Tabelle sind Herstellerangaben, die Vergleichswerte für Konkurrenten hat DeepSeek selbst zusammengestellt; es gibt elf Suiten, ein Gesamtvergleich mit dem Septembereintrag ist nur darauf möglich. Unabhängig gemessen (Artificial Analysis): Index 45 gegenüber 39. Teils gegenläufig zu DeepSeeks Tabelle: Terminal-Bench 4.0 34 % statt 42,3 (anderer Aufbau), AutomationBench-AA fällt von 69 % auf 67 %, Geschwindigkeit sinkt von 232 auf 211 Token pro Sekunde, und AA nennt das Modell „very verbose“. DeepSeeks Aussage „kürzere Ausgaben“ ist weder bestätigt noch widerlegt. Nicht aufgenommen: Behauptungen sekundärer Seiten, die der Primärquelle widersprechen. Ein technischer Bericht zu 1017 liegt nicht vor. Kuratierungsentscheidung: DeepSeek selbst spricht von einem „minor update“; aufgenommen wegen des unabhängig gemessenen Sprungs von 39 auf 45."
+  },
+  {
+    "id": "text-minimax-m3-1-flash-2026-10-19",
+    "date": "2026-10-19",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "MiniMax M3.1 Flash",
+    "org": "MiniMax",
+    "house": "MiniMax",
+    "license": "closed",
+    "capability": "Reasoning-Modell für Agenten, Coding, Computer-Use und Cybersicherheit mit 1 Mio. Token Kontext und Text-, Bild- und Video-Eingabe (Ausgabe: Text). Das Denken ist immer aktiv, die Tiefe stellt man per Effort-Parameter ein (low bis max, Standard max). MiniMax nennt „aggressivere Sparsity“ als Grund für die Geschwindigkeit: im Alltag 200+ Token/s, rund dreimal schneller als M3. Parameterzahl und Architektur nennt MiniMax nicht. Herstellerwerte: 73,7 % auf DeepSWE v1.1, 62,2 auf Automation-Bench, 61,7 auf OSWorld V2, 29,6 auf Agents’ Last Exam, 82 % auf CyberGym. Preis pauschal 0,15 USD Input, 0,60 USD Output und 0,015 USD gecachter Input je 1 Mio. Token. Zugang über MiniMax-API, M Plan, MiniMax Code und OpenRouter.",
+    "whyItMattered": "Zeigt, wie weit der Preisdruck bei Agentenmodellen geht: Auf dem Intelligence Index von Artificial Analysis steigt das Modell von 29 (M3) auf 42, bei weniger als halben Kosten je Aufgabe (rund 0,22 USD). Es liegt gleichauf mit GLM-5.3-Flash, vor Gemini 3.8 Flash (41) und hinter DeepSeek V4.1 Flash 1017 (45). Die Stärken laut Artificial Analysis: 48 % auf Humanity's Last Exam und 56 % richtige Antworten auf AA-Omniscience. Die Schwäche ist die Halluzinationsrate von 93 %, weil das Modell fast jede Frage beantwortet, statt zu passen. Außerdem ist es mit rund 180–189 Mio. Ausgabe-Token im Index sehr wortreich. Bei den Herstellerzahlen liegt DeepSeek V4.1 Flash 1017 bei DeepSWE (77,0 gegenüber 73,7) vorn.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.minimax.io/blog/minimax-m31f",
+      "https://artificialanalysis.ai/models/minimax-m3-1-flash",
+      "https://the-decoder.com/minimax-m3-1-flash-shows-chinas-ai-price-race-has-no-floor-in-sight/"
+    ],
+    "disputed": false,
+    "note": "Gewichte am 20.10.2026 noch nicht veröffentlicht: MiniMax kündigt sie für den 23.10.2026 an, ohne Lizenz und ohne Hugging-Face-Repository. Die Entwicklerdokumentation nennt das Modell bereits „open-weight“. Bis zur Veröffentlichung gilt „closed“. Eine Vorabversion (M3.1 Flash Preview) lief seit 27.09.2026 in MiniMax Code.",
+    "verificationNote": "Datum 19.10.2026 gegen den MiniMax-Blogbeitrag und Artificial Analysis bestätigt. Preise, Kontext und Verfügbarkeit stammen aus dem MiniMax-Blog und stimmen mit der Artificial-Analysis-Seite überein. Abweichung im Index: Die Modellseite von Artificial Analysis nennt 43, Anbieterübersicht und The Decoder nennen 42; der Eintrag verwendet 42. Intelligence Index, HLE (48 %), AA-Omniscience (56 %), Halluzinationsrate (93 %) und Kosten je Aufgabe (0,22 USD) sind unabhängige Messungen von Artificial Analysis, hier aus dem Decoder-Bericht übernommen; die Rangangaben gegenüber GLM-5.3-Flash, Gemini 3.8 Flash und DeepSeek wurden nicht an der Quelle nachgeprüft. Alle übrigen Benchmarkwerte sind Herstellerangaben ohne unabhängigen Lauf. Die Geschwindigkeitsangabe (200+ Token/s) ist eine Herstellerangabe; Artificial Analysis misst dagegen 116–123 Token/s. Die Video-Eingabe stammt aus Drittquellen und der Entwicklerdokumentation, der Blog nennt sie nicht. Die Parameterzahl ist nicht belegt und bleibt weggelassen (Ollama nennt 428 Mrd., Artificial Analysis sagt, MiniMax habe sie nicht veröffentlicht). Nach Veröffentlichung der Gewichte braucht es ein Update oder einen Folge-Eintrag."
+  },
+  {
+    "id": "text-mercury-3-2026-10-19",
+    "date": "2026-10-19",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Mercury 3",
+    "org": "Inception",
+    "house": "Inception",
+    "license": "closed",
+    "capability": "Flaggschiff der Mercury-Familie von Inception und nach Herstellerangabe das leistungsfähigste bisher veröffentlichte Diffusions-Sprachmodell (dLLM): Statt Token für Token zu schreiben, verfeinert es ganze Textblöcke parallel. Inception nennt 1.068 Token pro Sekunde auf NVIDIA-GPUs, 1 Mio. Token Kontext (Mercury 2.5: 260.000), bis zu 131.072 Ausgabetoken, Tool-Aufrufe, strukturierte Ausgaben und vier Reasoning-Stufen (instant, low, medium, high). Eine Parameterzahl nennt Inception nicht, nur „mehr als 40-mal größer als Mercury 1“. Preis regulär 0,20 USD je Mio. Eingabe- und 0,70 USD je Mio. Ausgabetoken, zum Start 50 % Rabatt, Cache-Eingabe 90 % günstiger. Zugang per OpenAI-kompatibler API (Inception, OpenRouter, Baseten, Vercel), keine offenen Gewichte.",
+    "whyItMattered": "Inception will zeigen, dass Textdiffusion mit der Größe skaliert: Gegenüber Mercury 1 sei die Qualität über Standard-Benchmarks etwa auf das Dreifache gestiegen, bei weiterhin über 1.000 Token pro Sekunde. In Inceptions eigener Tabelle (alle Modelle mit mittlerer Einstellung) liegt Mercury 3 vor GPT-6 Luna und Claude Haiku 5.5, etwa bei GPQA Diamond (89,23 gegenüber 86,36 und 84,51), IFBench (76,84 gegenüber 61,82 und 54,65) und SWE-Bench Atlas (51,08 gegenüber 33,33 und 32,26). Haiku 5.5 liegt bei DeepSWE v1 (51,62 gegenüber 46,31) und MRCR v2 (78,40 gegenüber 75,50) vorn, Luna bei AA-Omniscience. Der Abstand zu den Wettbewerbern gilt nur für diese Auswahl und ist bislang nicht unabhängig bestätigt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+      "https://www.businesswire.com/news/home/20261019090400/en/Inception-Launches-Mercury-3-Setting-a-New-Pareto-Frontier-in-Speed-and-Intelligence",
+      "https://docs.inceptionlabs.ai/get-started/models",
+      "https://www.marktechpost.com/2026/10/19/inception-mercury-3-diffusion-llm/"
+    ],
+    "disputed": true,
+    "note": "Nur als gehostete API verfügbar (Inception API, OpenRouter, Baseten, Vercel) sowie in der Chat-App Mercury Chat; Gewichte sind nicht veröffentlicht. Der Startrabatt von 50 % ist zeitlich nicht befristet angegeben.",
+    "verificationNote": "Datum 19.10.2026 durch die Inception-Pressemitteilung (Business Wire), die Blogliste und Stefano Ermons Ankündigung bestätigt. Abweichung: Ein Suchauszug der OpenRouter-Modellseite nennt den 16.10.2026; das ließ sich nicht gegenprüfen, alle Hersteller- und Presseangaben sagen 19.10. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Die 1.068 Token/s misst Inception selbst, und die Benchmarktabelle stammt von Inception. Artificial Analysis führte Mercury 3 am 20.10.2026 noch nicht. Die Zahl „8 von 12 Benchmarks“ stammt aus Zweitquellen (MarkTechPost, CellCog); die Tabelle selbst wurde nicht im Blogtext gelesen, die Einzelwerte sind aber über mehrere Quellen übereinstimmend. Preise, Kontext, Ausgabelimit und Reasoning-Stufen stammen aus der Inception-Doku und der Pressemitteilung. Parameterzahl und Architekturdetails sind nicht veröffentlicht. Der Erstanspruch „erstes kommerzielles dLLM“ gehört zu Mercury 1 (Mercury Coder, Februar 2025), nicht zu Mercury 3; das Neue ist der behauptete Skalierungsnachweis für Textdiffusion. Haus neu im Datensatz (Sitz laut Pressemitteilung Redwood City, Kalifornien), in lib/providers.ts mit Domain und Land eingetragen; eine Markenfarbe ist absichtlich nicht hinterlegt, weil keine veröffentlicht ist."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "15. Oktober 2026",
+  lastVerified: "20. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-15",
+  lastVerifiedISO: "2026-10-20",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 306,
+  total: 311,
   placeholder: false,
 };
