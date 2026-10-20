@@ -107,7 +107,7 @@ const PALETTE: Record<string, string> = {
   // bundles — and the group's own orange (#FF6900) is one channel-step from the
   // #ff6a00 recorded for Alibaba, which would make two houses indistinguishable
   // in the charts. Guessing a colour to fill the gap is worse than having none.
-  // ShengShu is absent for the same reason: no published brand colour.
+  // ShengShu and Inception are absent for the same reason: no published brand colour.
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -162,6 +162,7 @@ const DOMAIN: Record<string, string> = {
   // Vidu is the product brand of ShengShu Technology; vidu.com is where every
   // release is announced, so the domain is the product's, the house the company's.
   ShengShu: "vidu.com",
+  Inception: "inceptionlabs.ai",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -211,6 +212,8 @@ const COUNTRY: Record<string, string> = {
   NVIDIA: "US",
   // TechCrunch (05.10.2026): "Brooklyn-based startup".
   "Reflection AI": "US",
+  // Press release of 19.10.2026 (Mercury 3) is datelined Redwood City, California.
+  Inception: "US",
   // "fal is an in-person company based in San Francisco" (fal.ai/careers); the
   // terms name Features and Labels, Suite 10467, San Francisco, CA 94114.
   fal: "US",
