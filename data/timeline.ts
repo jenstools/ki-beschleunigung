@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 311 entries across text, image, video, audio,
- * late 2022 → 19 October 2026.
+ * German descriptions. 315 entries across text, image, video, audio,
+ * late 2022 → 23 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -5995,7 +5995,7 @@ export const entries: Entry[] = [
     ],
     "disputed": false,
     "note": "Gewichte am 20.10.2026 noch nicht veröffentlicht: MiniMax kündigt sie für den 23.10.2026 an, ohne Lizenz und ohne Hugging-Face-Repository. Die Entwicklerdokumentation nennt das Modell bereits „open-weight“. Bis zur Veröffentlichung gilt „closed“. Eine Vorabversion (M3.1 Flash Preview) lief seit 27.09.2026 in MiniMax Code.",
-    "verificationNote": "Datum 19.10.2026 gegen den MiniMax-Blogbeitrag und Artificial Analysis bestätigt. Preise, Kontext und Verfügbarkeit stammen aus dem MiniMax-Blog und stimmen mit der Artificial-Analysis-Seite überein. Abweichung im Index: Die Modellseite von Artificial Analysis nennt 43, Anbieterübersicht und The Decoder nennen 42; der Eintrag verwendet 42. Intelligence Index, HLE (48 %), AA-Omniscience (56 %), Halluzinationsrate (93 %) und Kosten je Aufgabe (0,22 USD) sind unabhängige Messungen von Artificial Analysis, hier aus dem Decoder-Bericht übernommen; die Rangangaben gegenüber GLM-5.3-Flash, Gemini 3.8 Flash und DeepSeek wurden nicht an der Quelle nachgeprüft. Alle übrigen Benchmarkwerte sind Herstellerangaben ohne unabhängigen Lauf. Die Geschwindigkeitsangabe (200+ Token/s) ist eine Herstellerangabe; Artificial Analysis misst dagegen 116–123 Token/s. Die Video-Eingabe stammt aus Drittquellen und der Entwicklerdokumentation, der Blog nennt sie nicht. Die Parameterzahl ist nicht belegt und bleibt weggelassen (Ollama nennt 428 Mrd., Artificial Analysis sagt, MiniMax habe sie nicht veröffentlicht). Nach Veröffentlichung der Gewichte braucht es ein Update oder einen Folge-Eintrag."
+    "verificationNote": "Datum 19.10.2026 gegen den MiniMax-Blogbeitrag und Artificial Analysis bestätigt. Preise, Kontext und Verfügbarkeit stammen aus dem MiniMax-Blog und stimmen mit der Artificial-Analysis-Seite überein. Abweichung im Index: Die Modellseite von Artificial Analysis nennt 43, Anbieterübersicht und The Decoder nennen 42; der Eintrag verwendet 42. Intelligence Index, HLE (48 %), AA-Omniscience (56 %), Halluzinationsrate (93 %) und Kosten je Aufgabe (0,22 USD) sind unabhängige Messungen von Artificial Analysis, hier aus dem Decoder-Bericht übernommen; die Rangangaben gegenüber GLM-5.3-Flash, Gemini 3.8 Flash und DeepSeek wurden nicht an der Quelle nachgeprüft. Alle übrigen Benchmarkwerte sind Herstellerangaben ohne unabhängigen Lauf. Die Geschwindigkeitsangabe (200+ Token/s) ist eine Herstellerangabe; Artificial Analysis misst dagegen 116–123 Token/s. Die Video-Eingabe stammt aus Drittquellen und der Entwicklerdokumentation, der Blog nennt sie nicht. Die Parameterzahl ist nicht belegt und bleibt weggelassen (Ollama nennt 428 Mrd., Artificial Analysis sagt, MiniMax habe sie nicht veröffentlicht). Die Gewichte erschienen am 23.10.2026, siehe den Folge-Eintrag „MiniMax M3.1 Flash (Open Weights)“."
   },
   {
     "id": "text-mercury-3-2026-10-19",
@@ -6018,15 +6018,100 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Nur als gehostete API verfügbar (Inception API, OpenRouter, Baseten, Vercel) sowie in der Chat-App Mercury Chat; Gewichte sind nicht veröffentlicht. Der Startrabatt von 50 % ist zeitlich nicht befristet angegeben.",
     "verificationNote": "Datum 19.10.2026 durch die Inception-Pressemitteilung (Business Wire), die Blogliste und Stefano Ermons Ankündigung bestätigt. Abweichung: Ein Suchauszug der OpenRouter-Modellseite nennt den 16.10.2026; das ließ sich nicht gegenprüfen, alle Hersteller- und Presseangaben sagen 19.10. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Die 1.068 Token/s misst Inception selbst, und die Benchmarktabelle stammt von Inception. Artificial Analysis führte Mercury 3 am 20.10.2026 noch nicht. Die Zahl „8 von 12 Benchmarks“ stammt aus Zweitquellen (MarkTechPost, CellCog); die Tabelle selbst wurde nicht im Blogtext gelesen, die Einzelwerte sind aber über mehrere Quellen übereinstimmend. Preise, Kontext, Ausgabelimit und Reasoning-Stufen stammen aus der Inception-Doku und der Pressemitteilung. Parameterzahl und Architekturdetails sind nicht veröffentlicht. Der Erstanspruch „erstes kommerzielles dLLM“ gehört zu Mercury 1 (Mercury Coder, Februar 2025), nicht zu Mercury 3; das Neue ist der behauptete Skalierungsnachweis für Textdiffusion. Haus neu im Datensatz (Sitz laut Pressemitteilung Redwood City, Kalifornien), in lib/providers.ts mit Domain und Land eingetragen; eine Markenfarbe ist absichtlich nicht hinterlegt, weil keine veröffentlicht ist."
+  },
+  {
+    "id": "text-claude-duet-2026-10-21",
+    "date": "2026-10-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Duet",
+    "org": "Anthropic",
+    "house": "Anthropic",
+    "license": "closed",
+    "capability": "Proaktiver Agent auf Basis von Claude Opus 5.5: Duet schickt morgens eine Kurzübersicht über die verbundenen Apps, prüft sie tagsüber alle paar Stunden und meldet sich nur, wenn etwas Aufmerksamkeit braucht. Aufgaben vom Termin bis zum Dashboard, Forecast oder zur Web-App erledigt er auf einer eigenen virtuellen Maschine mit Browser weiter, auch wenn Laptop und Handy aus sind. Er übernimmt Gedächtnis, Skills und Verbindungen aus dem Claude-Konto und nutzt über 6.000 Konnektoren aus dem Claude Marketplace. Vor Nachrichten, Zahlungen, Unterschriften und Löschungen zeigt er die Aktion und wartet auf Freigabe; Wertpapierhandel und Überweisungen zwischen Konten sind auch mit Freigabe gesperrt. Research Preview als eigene App (iOS, Android) und auf claude.ai, Warteliste, zunächst Pro und Max in den USA, im bestehenden Nutzungslimit enthalten.",
+    "whyItMattered": "Anthropic zieht nach OpenAI (Dots) und Meta (Muse) und setzt den Agenten vom Antwortenden zum Anstoßenden: Das Produkt meldet sich selbst, statt auf einen Prompt zu warten. Anthropic zielt dabei auf Berufstätige und kleine Unternehmen, nicht auf Privatnutzer; Besorgungen wie Ticketbuchung räumt das Unternehmen selbst als schwächer ein. Neu ist weniger das Modell als die Sicherheitsarchitektur drumherum: ein eigener Klassifikator gegen das Weitergeben sensibler Daten (Kreditkartennummern, Ausweisdaten), Zugangsdaten, die der Agent nie direkt sieht, und derselbe Auto-Mode-Klassifikator wie in Claude Code.",
+    "firstOfKind": "",
+    "sources": [
+      "https://claude.com/resources/articles/claude-duet",
+      "https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html",
+      "https://9to5google.com/2026/10/21/claude-duet-anthropic-ai-agent-waitlist/",
+      "https://www.technology.org/2026/10/22/anthropic-claude-duet-proactive-ai-agent-research-preview/"
+    ],
+    "disputed": false,
+    "note": "Research Preview mit Warteliste, nur für Pro- und Max-Abonnenten in den USA; kein offener Zugang. Anthropic nennt Duet selbst eine frühe Version, die Threads falsch lesen oder Dringlichkeit falsch einschätzen kann.",
+    "verificationNote": "Datum 21.10.2026 gegen Anthropics Ankündigung (claude.com/resources/articles/claude-duet, „Today, we’re opening a research preview“, Veröffentlichungsdatum 2026-10-21) und CNBC, 9to5Google und Technology.org bestätigt. Der Pfad anthropic.com/news/claude-duet liefert 404; die Ankündigung liegt unter claude.com. Es gibt keine Benchmarks und keine Parameterangaben; alle Aussagen zu Funktionen und Schutzmaßnahmen stammen aus Anthropics Ankündigung, ihre Wirksamkeit ist nicht unabhängig geprüft. Kein firstOfKind: OpenAI (Dots) und Meta (Muse) haben vergleichbare proaktive Agenten Wochen zuvor gestartet. Modalität „text“, weil Duet ein sprach- und textbasierter Agent auf Claude Opus 5.5 ist; ein eigenes Modell erscheint mit dem Produkt nicht."
+  },
+  {
+    "id": "text-recursive-flint-2026-10-21",
+    "date": "2026-10-21",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Flint",
+    "org": "Recursive",
+    "house": "Recursive",
+    "license": "open",
+    "capability": "Offenes Coding-Modell für lokale Agenten: Mixture-of-Experts mit 39,8 Mrd. Parametern, von denen rund 2,5 Mrd. pro Token aktiv sind (256 Experten, 6 pro Token, 262.144 Token Kontext), mit Reasoning und mehrstufigem Tool-Aufruf, Ein- und Ausgabe nur Text. Recursive nennt 74,2 % auf SWE-bench Verified, 89,7 % auf SWE-bench Pro v2 und 54,9 % auf Terminal-Bench 2.1 und misst auf einem MacBook Pro mit M4 Pro rund 131 Token pro Sekunde. Gewichte (BF16, rund 80 GB) unter Apache 2.0 auf Hugging Face; quantisierte Fassungen (INT4, NVFP4, GGUF) folgten am selben Tag, auch kostenlos über OpenRouter.",
+    "whyItMattered": "Zeigt, wie weit sich Coding-Fähigkeit in ein laptoptaugliches Modell pressen lässt: Bei Recursives eigenem Durchschnitt über sechs Tests liegt nur Qwen3.8 27B vor Flint, und bei SWE-bench Verified liegt es vor anderen Modellen unter 50 Mrd. Parametern. Zweitens ist es der erste öffentliche Test von Recursives Forschungssystem Eureka Machine, das nach Firmenangabe an nahezu jedem Schritt von Pretraining bis Inferenz beteiligt war, sodass ein kleines Team das Modell in unter vier Monaten von Grund auf baute. Die Hersteller räumen ein, dass Flint mehr Anleitung braucht als große kostenpflichtige Coding-Assistenten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://huggingface.co/RecursiveSI/flint",
+      "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
+      "https://openrouter.ai/recursive/flint-v1.0:free",
+      "https://www.marktechpost.com/2026/10/21/recursive-flint-local-coding-model/"
+    ],
+    "disputed": true,
+    "note": "Gewichte unter Apache 2.0; der BF16-Checkpoint braucht rund 80 GB und eine B300 oder H200 pro Replik. Für Laptops sind die separat veröffentlichten quantisierten Fassungen gedacht.",
+    "verificationNote": "Datum 21.10.2026 gegen die Hugging-Face-Organisationsseite (Repositorys am 21.10. angelegt), TechCrunch („released its first model, Flint, on Wednesday“, 21.10.2026), OpenRouter (Veröffentlichung 2026-10-21) und MarkTechPost bestätigt. Architektur, Parameterzahl (39,8 Mrd. gesamt), Kontext und Lizenz stammen aus der Modellkarte. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Die drei Benchmarkwerte stammen aus der Modellkarte (Recursives eigene Läufe, mini-swe-agent bzw. Terminus 2), die Tempoangabe von 131 Token/s aus Recursives Tests laut TechCrunch; andere Quellen nennen abweichende Werte (MarkTechPost und der Reddit-Thread zum Release nennen mehr als 125 bzw. über 220 Token/s, je nach Hardware und Quantisierung). Die Aussage „vor anderen Modellen unter 50 Mrd. Parametern“ und der Vergleich mit Qwen3.8 27B beruhen auf Recursives Auswahl. Unabhängige Messungen lagen am 23.10.2026 nicht vor. Der Hinweis auf die Eureka Machine ist eine Herstellerangabe; wie viel Zeit sie gespart hat, nennt Recursive nicht. Haus neu im Datensatz (Hugging-Face-Organisation „Recursive Superintelligence, Inc.“), in lib/providers.ts mit Domain eingetragen; der Sitz ist in keiner der beiden Quellen genannt und bleibt deshalb ohne Land, eine Markenfarbe ist nicht hinterlegt."
+  },
+  {
+    "id": "image-canva-craft-2026-10-22",
+    "date": "2026-10-22",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Canva Craft",
+    "org": "Canva",
+    "house": "Canva",
+    "license": "closed",
+    "capability": "Erstes von Canva Research von Grund auf trainiertes Bildmodell. Es arbeitet in zwei Stufen: Ein Planungsmodell schreibt zuerst die Komposition (Elemente, räumliche Beziehungen, Größenverhältnisse, Hierarchie, Textinhalte), ein Rendermodell setzt den Plan in ein Bild mit bis zu 2K Auflösung in über 30 Seitenverhältnissen um. Trainiert wurde es stark auf Designs, darunter Millionen von Canva-Vorlagen (Poster, Social Posts, Folien, Infografiken, Speisekarten), und erzeugt Text in 55 Sprachen. Die Ausgaben lassen sich über Magic Layers in bearbeitbare Ebenen umwandeln. Verfügbar für alle Canva-Nutzer im Dream Lab und über die öffentliche Canva-API; die Anbindung an den Canva-MCP-Server soll folgen.",
+    "whyItMattered": "Canva baut vom Käufer fremder Bildmodelle zum Hersteller eines eigenen um und trennt dabei Bildplanung von Pixelerzeugung, damit lesbarer Text und gezielte Änderungen ohne Nebenwirkungen gelingen. Nach Canvas Darstellung debütierte Craft auf Platz 4 der Crowd-Rangliste DesignArena und führt dort bei „People & Portraits“ und „Landscapes & Nature“; zwei günstigere Varianten (Craft-fast, Craft-ultrafast) sind angekündigt. Die Rangangaben stammen von Canva selbst und sind nicht unabhängig bestätigt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.canva.com/newsroom/news/canva-craft/",
+      "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/"
+    ],
+    "disputed": true,
+    "note": "Nur gehostet (Canva und Canva-API), keine offenen Gewichte, keine Parameterzahl. Die schnelleren Varianten Craft-fast und Craft-ultrafast sind angekündigt, aber nicht erschienen.",
+    "verificationNote": "Datum 22.10.2026 aus der TechCrunch-Meldung vom 22.10.2026 (19:00 UTC) übernommen; die Canva-Newsroom-Seite („Available now … to all Canva users globally“) trägt kein Datum. Wegen der Zeitverschiebung zu Sydney könnte Canva intern den 23.10. führen. Disputed, weil das Datum nicht an der Primärseite hängt und die Rangangaben („zweitfortschrittlichstes Labor für Bildgenerierung“, Platz 4 auf DesignArena, Platz 1 in zwei Unterkategorien) Herstellerangaben ohne Gegenprüfung auf DesignArena sind. Die Trainingsdaten (Canva-Vorlagen) und die 55 Textsprachen stammen aus dem Canva-Beitrag. TechCrunch nennt 30 Seitenverhältnisse, Canva „more than 30“; der Eintrag folgt Canva. Haus neu im Datensatz, in lib/providers.ts mit Domain eingetragen; der Sitz ist in den gelesenen Quellen nicht genannt und bleibt deshalb ohne Land, eine Markenfarbe ist nicht hinterlegt."
+  },
+  {
+    "id": "text-minimax-m3-1-flash-open-weights-2026-10-23",
+    "date": "2026-10-23",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "MiniMax M3.1 Flash (Open Weights)",
+    "org": "MiniMax",
+    "house": "MiniMax",
+    "license": "open",
+    "capability": "MiniMax veröffentlicht die Gewichte von M3.1 Flash auf Hugging Face und ModelScope, wie am 19.10.2026 angekündigt: nativ multimodales Mixture-of-Experts-Modell mit rund 428 Mrd. Parametern, davon 23 Mrd. aktiv pro Token, 1 Mio. Token Kontext, Text-, Bild- und Video-Eingabe, Text-Ausgabe. Dazu gehören der DSpark-Draft-Head für spekulatives Dekodieren und der Leitfaden für SGLang, vLLM und TokenSpeed. Die Lizenz ist die MiniMax Community License: kostenlos für nichtkommerzielle Zwecke; wer kommerziell nutzt, muss „Built with MiniMax M3.1-Flash“ zeigen und MiniMax einmalig benachrichtigen, ab 20 Mio. USD Jahresumsatz ist eine schriftliche Freigabe nötig; ein Anhang untersagt unter anderem militärische Zwecke.",
+    "whyItMattered": "Aus dem Preisbrecher vom 19.10. wird ein Modell, das sich selbst betreiben lässt, auch wenn 428 Mrd. Parameter Rechenzentrumshardware verlangen. Die Gewichte ersetzen die Zusage „offen“ aus der Entwicklerdokumentation durch eine geprüfte Lizenz, und sie ist keine freie: Kommerzielle Nutzung ist an Namensnennung, Benachrichtigung und bei großen Umsätzen an eine Genehmigung gebunden. Das Modell zählt damit zu den offenen Releases mit eingeschränkter Lizenz wie Muse Spark Open.",
+    "firstOfKind": "",
+    "sources": [
+      "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/main/LICENSE",
+      "https://x.com/MiniMax_AI/status/2113436864904610008"
+    ],
+    "disputed": false,
+    "note": "Folge-Eintrag zu MiniMax M3.1 Flash vom 19.10.2026, das dort als „closed“ geführt wird; beide Einträge beschreiben dasselbe Modell. Lizenz ist die MiniMax Community License, nicht OSI-konform.",
+    "verificationNote": "Datum 23.10.2026 gegen den offiziellen X-Beitrag von MiniMax („weights are now public“, 23.10.2026) und die Hugging-Face-Modellkarte (Datei LICENSE zuletzt geändert am 23.10.2026) bestätigt; die Modellkarte und die Presseberichte (RootData) nennen denselben Tag. Parameterzahl (428 Mrd. gesamt, 23 Mrd. aktiv) und Lizenztext stammen aus der Modellkarte und der LICENSE-Datei und widerlegen die frühere Lücke im Eintrag vom 19.10. Einzelne Benchmarkwerte der Modellkarte weichen von den Zahlen des Blogs vom 19.10. leicht ab (etwa Automation-Bench 62,8 statt 62,2 und CyberGym 82,2 statt 82); beides sind Herstellerangaben ohne unabhängigen Lauf. Dieser Eintrag ist ein Folge-Eintrag nach dem Muster von Kimi K3 und MiniMax H3: Das Original bleibt „closed“, damit der Release nicht doppelt als offen zählt. Die Klassifizierung als „open“ folgt der Linie bei Muse Spark Open (Gewichte öffentlich, Lizenz nicht OSI-konform)."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "20. Oktober 2026",
+  lastVerified: "23. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-20",
+  lastVerifiedISO: "2026-10-23",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 311,
+  total: 315,
   placeholder: false,
 };

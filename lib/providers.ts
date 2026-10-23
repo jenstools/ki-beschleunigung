@@ -163,6 +163,8 @@ const DOMAIN: Record<string, string> = {
   // release is announced, so the domain is the product's, the house the company's.
   ShengShu: "vidu.com",
   Inception: "inceptionlabs.ai",
+  Recursive: "recursive.com",
+  Canva: "canva.com",
 };
 
 /** Domain for a house (for favicon logos); empty string when none is recorded. */
@@ -262,7 +264,8 @@ const COUNTRY: Record<string, string> = {
   TII: "AE",
   Ideogram: "CA",
   // Unmapped on purpose — HQ not confirmed against a primary source:
-  // poolside, DeepReinforce, Significant Gravitas, hexgrad, TypeSafe AI
+  // poolside, DeepReinforce, Significant Gravitas, hexgrad, Recursive, Canva,
+  // TypeSafe AI
   // (which only states that "our service is currently based" on the US West
   // Coast — a service location is not a headquarters).
 };
