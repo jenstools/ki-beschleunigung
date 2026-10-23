@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import { PageviewBeacon } from "@/components/PageviewBeacon";
 import "./globals.css";
 import { SnipkiBadge } from "@/components/SnipkiBadge";
 import { FreshnessBadge } from "@/components/FreshnessBadge";
@@ -89,8 +89,7 @@ export default function RootLayout({
         <TimeDepthGauge />
         <FreshnessBadge />
         <SnipkiBadge />
-        {/* Cookieless page-view stats; only reports once Web Analytics is enabled on the Vercel project. */}
-        <Analytics />
+        <PageviewBeacon />
       </body>
     </html>
   );

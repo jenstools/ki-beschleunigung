@@ -4,7 +4,7 @@ import { AI_CRAWLERS, SITE_URL } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow: ["/stats", "/api/collect"] },
       // Explicit opt-in for answer engines and AI crawlers: the dataset is
       // CC-BY and we *want* it retrieved, quoted and cited.
       { userAgent: [...AI_CRAWLERS], allow: "/" },
