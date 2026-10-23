@@ -2,7 +2,7 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 315 entries across text, image, video, audio,
+ * German descriptions. 316 entries across text, image, video, audio,
  * late 2022 → 23 October 2026.
  */
 export const entries: Entry[] = [
@@ -6103,6 +6103,25 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Folge-Eintrag zu MiniMax M3.1 Flash vom 19.10.2026, das dort als „closed“ geführt wird; beide Einträge beschreiben dasselbe Modell. Lizenz ist die MiniMax Community License, nicht OSI-konform.",
     "verificationNote": "Datum 23.10.2026 gegen den offiziellen X-Beitrag von MiniMax („weights are now public“, 23.10.2026) und die Hugging-Face-Modellkarte (Datei LICENSE zuletzt geändert am 23.10.2026) bestätigt; die Modellkarte und die Presseberichte (RootData) nennen denselben Tag. Parameterzahl (428 Mrd. gesamt, 23 Mrd. aktiv) und Lizenztext stammen aus der Modellkarte und der LICENSE-Datei und widerlegen die frühere Lücke im Eintrag vom 19.10. Einzelne Benchmarkwerte der Modellkarte weichen von den Zahlen des Blogs vom 19.10. leicht ab (etwa Automation-Bench 62,8 statt 62,2 und CyberGym 82,2 statt 82); beides sind Herstellerangaben ohne unabhängigen Lauf. Dieser Eintrag ist ein Folge-Eintrag nach dem Muster von Kimi K3 und MiniMax H3: Das Original bleibt „closed“, damit der Release nicht doppelt als offen zählt. Die Klassifizierung als „open“ folgt der Linie bei Muse Spark Open (Gewichte öffentlich, Lizenz nicht OSI-konform)."
+  },
+  {
+    "id": "text-kimi-k3-1-pro-2026-10-23",
+    "date": "2026-10-23",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Kimi K3.1 Pro",
+    "org": "Moonshot AI (Kimi)",
+    "house": "Moonshot",
+    "license": "open",
+    "capability": "Erstes Modell der K3.1-Reihe und nachtrainierte Fassung von Kimi K3 mit deutlich mehr Post-Training-Rechenleistung: offenes Modell der 3-Billionen-Parameter-Klasse mit 1 Mio. Token Kontext, verbessert bei Coding, 3D-Modellierung (CAD- und Blender-Skripte, Unity, Unreal, Godot), Finanzrecherche und agentischen Aufgaben. Moonshot nennt 65,7 % auf Terminal-Bench 4.0 (GPT-6 Astra 58,2 %, Claude Opus 5.5 66,4 %), 92,7 % auf BenchCAD mit Werkzeugen und 64,4 auf OfficeQA Pro v2; die Halluzinationsrate auf dem eigenen Kimi-Hallu-Bench-Hard fiel von 23,4 % (K3) auf 8,3 %. Dazu erscheint Kimi K3.1 Pro Highspeed mit der zwei- bis dreifachen Geschwindigkeit. Zugang ab sofort über Kimi.ai, die Apps, Kimi Work, Kimi Code und die Kimi-API; die vollständigen Gewichte sollen bis zum 4. November 2026 folgen.",
+    "whyItMattered": "Moonshot schiebt drei Monate nach K3 (16.07.2026) ein Update nach, das bei Terminal-Bench 4.0 nach eigenen Zahlen nur 0,7 Punkte hinter Claude Opus 5.5 liegt — ein offenes Modell nahe an der Spitze proprietärer Systeme. Ungewöhnlich ist die Offenlegung zur Cybersicherheit: Moonshot entfernte cyberbezogene Daten aus Mid-Training und RL-Umgebungen; auf der hauseigenen xdev-bench-hard sinkt die Lösungsquote dadurch von 90,5 % auf 81,0 %, und die Offensivfähigkeit liege bewusst unter der von Frontier-Modellen. Alle Vergleichswerte sind Herstellerangaben, teils auf internen Benchmarks.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.kimi.ai/blog/kimi-k3-1-pro"
+    ],
+    "disputed": true,
+    "note": "Zum Start nur gehostet (Kimi.ai, Apps, Kimi Work, Kimi Code, API); Gewichte laut Moonshot bis zum 4. November 2026, eine Lizenz ist noch nicht benannt. Für Kimi-Enterprise-Administratoren ist der Zugang zunächst standardmäßig deaktiviert.",
+    "verificationNote": "Datum 23.10.2026 gegen den offiziellen Moonshot-Blogbeitrag („available today“, Seite undatiert) und einen X-Beitrag vom 23.10.2026 bestätigt. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Terminal-Bench 4.0 und BenchCAD mit eigenem Harness, mehrere Benchmarks intern (Kimi Code Bench 3.0, Kimi Hallu Bench Hard, xdev-bench-hard), Vergleichswerte teils aus Berichten der Wettbewerber; unabhängige Messungen lagen am 23.10.2026 nicht vor. Die Lizenz ist offen (license: open) nach der Zusage „open-weight“ im Blog; die Gewichte lagen am Prüftag nicht vor, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts (dieselbe Behandlung wie GLM-5.3). Nach Veröffentlichung der Gewichte ist ein Folge-Eintrag nach dem Muster von Kimi K3 (27.07.2026) nötig. Parameterzahl nur als „3T-class“ genannt; der Eintrag nennt keine genaue Zahl."
   }
 ];
 
@@ -6112,6 +6131,6 @@ export const dataMeta = {
   lastVerifiedISO: "2026-10-23",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 315,
+  total: 316,
   placeholder: false,
 };

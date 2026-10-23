@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-313 Meilenstein-Releases generativer KI, 27. Januar 2022 → 23. Oktober 2026, über Text, Bild, Video und Audio.
+314 Meilenstein-Releases generativer KI, 27. Januar 2022 → 23. Oktober 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **313**
-- Nach Modalität: Text 149, Bild 50, Video 50, Audio 64
-- Offene Gewichte: 99 · Geschlossen: 214
-- Als `disputed` markiert: 36
+- Releases gesamt: **314**
+- Nach Modalität: Text 150, Bild 50, Video 50, Audio 64
+- Offene Gewichte: 100 · Geschlossen: 214
+- Als `disputed` markiert: 37
 - First-of-Kind-Aussagen: 117
 - Häuser: 60 (US 25 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 653
-- Tagesgenaue Daten: 312 von 313 (1 nur monatsgenau bekannt)
+- Primärquellen-Links: 654
+- Tagesgenaue Daten: 313 von 314 (1 nur monatsgenau bekannt)
 - Letzter Prüflauf: 23. Oktober 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 315 Einträge: 313 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 316 Einträge: 314 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-36 von 313 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+37 von 314 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -68,3 +68,4 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-10-19 | Mercury 3 (Inception) | Datum 19.10.2026 durch die Inception-Pressemitteilung (Business Wire), die Blogliste und Stefano Ermons Ankündigung bestätigt. Abweichung: Ein Suchauszug der OpenRouter-Modellseite nennt den 16.10.2026; das ließ sich nicht gegenprüfen, alle Hersteller- und Presseangaben sagen 19.10. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Die 1.068 Token/s misst Inception selbst, und die Benchmarktabelle stammt von Inception. Artificial Analysis führte Mercury 3 am 20.10.2026 noch nicht. Die Zahl „8 von 12 Benchmarks“ stammt aus Zweitquellen (MarkTechPost, CellCog); die Tabelle selbst wurde nicht im Blogtext gelesen, die Einzelwerte sind aber über mehrere Quellen übereinstimmend. Preise, Kontext, Ausgabelimit und Reasoning-Stufen stammen aus der Inception-Doku und der Pressemitteilung. Parameterzahl und Architekturdetails sind nicht veröffentlicht. Der Erstanspruch „erstes kommerzielles dLLM“ gehört zu Mercury 1 (Mercury Coder, Februar 2025), nicht zu Mercury 3; das Neue ist der behauptete Skalierungsnachweis für Textdiffusion. Haus neu im Datensatz (Sitz laut Pressemitteilung Redwood City, Kalifornien), in lib/providers.ts mit Domain und Land eingetragen; eine Markenfarbe ist absichtlich nicht hinterlegt, weil keine veröffentlicht ist. |
 | 2026-10-21 | Flint (Recursive) | Datum 21.10.2026 gegen die Hugging-Face-Organisationsseite (Repositorys am 21.10. angelegt), TechCrunch („released its first model, Flint, on Wednesday“, 21.10.2026), OpenRouter (Veröffentlichung 2026-10-21) und MarkTechPost bestätigt. Architektur, Parameterzahl (39,8 Mrd. gesamt), Kontext und Lizenz stammen aus der Modellkarte. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Die drei Benchmarkwerte stammen aus der Modellkarte (Recursives eigene Läufe, mini-swe-agent bzw. Terminus 2), die Tempoangabe von 131 Token/s aus Recursives Tests laut TechCrunch; andere Quellen nennen abweichende Werte (MarkTechPost und der Reddit-Thread zum Release nennen mehr als 125 bzw. über 220 Token/s, je nach Hardware und Quantisierung). Die Aussage „vor anderen Modellen unter 50 Mrd. Parametern“ und der Vergleich mit Qwen3.8 27B beruhen auf Recursives Auswahl. Unabhängige Messungen lagen am 23.10.2026 nicht vor. Der Hinweis auf die Eureka Machine ist eine Herstellerangabe; wie viel Zeit sie gespart hat, nennt Recursive nicht. Haus neu im Datensatz (Hugging-Face-Organisation „Recursive Superintelligence, Inc.“), in lib/providers.ts mit Domain eingetragen; der Sitz ist in keiner der beiden Quellen genannt und bleibt deshalb ohne Land, eine Markenfarbe ist nicht hinterlegt. |
 | 2026-10-22 | Canva Craft (Canva) | Datum 22.10.2026 aus der TechCrunch-Meldung vom 22.10.2026 (19:00 UTC) übernommen; die Canva-Newsroom-Seite („Available now … to all Canva users globally“) trägt kein Datum. Wegen der Zeitverschiebung zu Sydney könnte Canva intern den 23.10. führen. Disputed, weil das Datum nicht an der Primärseite hängt und die Rangangaben („zweitfortschrittlichstes Labor für Bildgenerierung“, Platz 4 auf DesignArena, Platz 1 in zwei Unterkategorien) Herstellerangaben ohne Gegenprüfung auf DesignArena sind. Die Trainingsdaten (Canva-Vorlagen) und die 55 Textsprachen stammen aus dem Canva-Beitrag. TechCrunch nennt 30 Seitenverhältnisse, Canva „more than 30“; der Eintrag folgt Canva. Haus neu im Datensatz, in lib/providers.ts mit Domain eingetragen; der Sitz ist in den gelesenen Quellen nicht genannt und bleibt deshalb ohne Land, eine Markenfarbe ist nicht hinterlegt. |
+| 2026-10-23 | Kimi K3.1 Pro (Moonshot AI (Kimi)) | Datum 23.10.2026 gegen den offiziellen Moonshot-Blogbeitrag („available today“, Seite undatiert) und einen X-Beitrag vom 23.10.2026 bestätigt. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Terminal-Bench 4.0 und BenchCAD mit eigenem Harness, mehrere Benchmarks intern (Kimi Code Bench 3.0, Kimi Hallu Bench Hard, xdev-bench-hard), Vergleichswerte teils aus Berichten der Wettbewerber; unabhängige Messungen lagen am 23.10.2026 nicht vor. Die Lizenz ist offen (license: open) nach der Zusage „open-weight“ im Blog; die Gewichte lagen am Prüftag nicht vor, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts (dieselbe Behandlung wie GLM-5.3). Nach Veröffentlichung der Gewichte ist ein Folge-Eintrag nach dem Muster von Kimi K3 (27.07.2026) nötig. Parameterzahl nur als „3T-class“ genannt; der Eintrag nennt keine genaue Zahl. |
