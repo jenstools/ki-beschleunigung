@@ -107,7 +107,7 @@ const PALETTE: Record<string, string> = {
   // bundles — and the group's own orange (#FF6900) is one channel-step from the
   // #ff6a00 recorded for Alibaba, which would make two houses indistinguishable
   // in the charts. Guessing a colour to fill the gap is worse than having none.
-  // ShengShu and Inception are absent for the same reason: no published brand colour.
+  // ShengShu, Inception and Liquid AI are absent for the same reason: no published brand colour.
 };
 
 /** Brand colour for a house, or a neutral grey when it has none. */
@@ -163,6 +163,7 @@ const DOMAIN: Record<string, string> = {
   // release is announced, so the domain is the product's, the house the company's.
   ShengShu: "vidu.com",
   Inception: "inceptionlabs.ai",
+  "Liquid AI": "liquid.ai",
   Recursive: "recursive.com",
   Canva: "canva.com",
 };
@@ -216,6 +217,8 @@ const COUNTRY: Record<string, string> = {
   "Reflection AI": "US",
   // Press release of 19.10.2026 (Mercury 3) is datelined Redwood City, California.
   Inception: "US",
+  // MIT spin-off headquartered in Cambridge, Massachusetts (liquid.ai/company).
+  "Liquid AI": "US",
   // "fal is an in-person company based in San Francisco" (fal.ai/careers); the
   // terms name Features and Labels, Suite 10467, San Francisco, CA 94114.
   fal: "US",

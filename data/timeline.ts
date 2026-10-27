@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 316 entries across text, image, video, audio,
- * late 2022 → 23 October 2026.
+ * German descriptions. 318 entries across text, image, video, audio,
+ * late 2022 → 27 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6122,15 +6122,55 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Zum Start nur gehostet (Kimi.ai, Apps, Kimi Work, Kimi Code, API); Gewichte laut Moonshot bis zum 4. November 2026, eine Lizenz ist noch nicht benannt. Für Kimi-Enterprise-Administratoren ist der Zugang zunächst standardmäßig deaktiviert.",
     "verificationNote": "Datum 23.10.2026 gegen den offiziellen Moonshot-Blogbeitrag („available today“, Seite undatiert) und einen X-Beitrag vom 23.10.2026 bestätigt. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Terminal-Bench 4.0 und BenchCAD mit eigenem Harness, mehrere Benchmarks intern (Kimi Code Bench 3.0, Kimi Hallu Bench Hard, xdev-bench-hard), Vergleichswerte teils aus Berichten der Wettbewerber; unabhängige Messungen lagen am 23.10.2026 nicht vor. Die Lizenz ist offen (license: open) nach der Zusage „open-weight“ im Blog; die Gewichte lagen am Prüftag nicht vor, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts (dieselbe Behandlung wie GLM-5.3). Nach Veröffentlichung der Gewichte ist ein Folge-Eintrag nach dem Muster von Kimi K3 (27.07.2026) nötig. Parameterzahl nur als „3T-class“ genannt; der Eintrag nennt keine genaue Zahl."
+  },
+  {
+    "id": "text-gpt-6-1-terra-2026-10-26",
+    "date": "2026-10-26",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "GPT-6.1 Terra",
+    "org": "OpenAI",
+    "house": "OpenAI",
+    "license": "closed",
+    "capability": "Upgrade der mittleren Stufe von OpenAIs Modellfamilie und Nachfolger von GPT-5.6 Terra, ausgerichtet auf schnelle, günstige Computernutzung: Bildschirminhalte lesen, Anwendungen bedienen, Formulare ausfüllen, Webseiten navigieren, dazu klareres Schreiben und detaillierteres visuelles Verständnis (etwa technische Zeichnungen). Standardpreise pro Mio. Tokens: 1 USD Eingabe, 0,05 USD für gecachte Eingabe, 5 USD Ausgabe — laut OpenAI 50 % unter GPT-5.6 Terra und GPT-6.1 Sol. OpenAI nennt auf Terminal-Bench 4.0 bei maximalem Aufwand 50,3 % (GPT-5.6 Terra: 21,5 %) und eine Fehlerrate auf eigenen fehlerprovozierenden Prompts von 16,7 % statt 53,6 % bei niedrigem Aufwand (4,3 % bei maximalem). Auf Agents' Last Exam liege Terra bei mittlerem Aufwand 15 Prozentpunkte über GPT-5.6 Terra zu etwa einem Drittel der Kosten und auf dem Niveau von GPT-6 Astra bei einem Zehntel des Preises pro Token. Verfügbar ab sofort für Plus, Pro, Enterprise und Edu in ChatGPT Work und Codex sowie in der API als gpt-6.1-terra.",
+    "whyItMattered": "Fünf Wochen nach GPT-6.1 Sol (29.09.2026) zieht OpenAI das Preisniveau der Mittelklasse nach unten: Computer-Use und Agentenarbeit, bei GPT-6 Astra im September noch Flaggschiff-Domäne, kosten nun ein Zehntel pro Token. Der Schritt folgt dem Muster der Familie — jede Stufe übernimmt binnen Wochen, was kurz zuvor die Spitze konnte. Zu lesen ist das mit Vorsicht: sämtliche Benchmark-, Kosten- und Fehlerraten-Vergleiche stammen von OpenAI selbst, teils auf internen Benchmarks, und der Vergleich mit Claude Opus 5.5 (laut OpenAI rund ein Neuntel der Kosten je Aufgabe) beruht auf OpenAIs eigener Messung.",
+    "firstOfKind": "",
+    "sources": [
+      "https://openai.com/index/introducing-gpt-6-1-terra/",
+      "https://siliconangle.com/2026/10/26/openai-launches-gpt-6-1-terra-for-faster-better-performing-ai-agents-at-half-the-price/"
+    ],
+    "disputed": false,
+    "note": "Alle Leistungs- und Kostenangaben sind Herstellerangaben; eine unabhängige Messung (etwa Artificial Analysis) lag am Prüftag nicht vor.",
+    "verificationNote": "Datum 26.10.2026 aus dem OpenAI-Beitrag („Starting today, GPT-6.1 Terra is available“, Seite im Abruf undatiert) und der SiliconANGLE-Meldung vom 26.10.2026 („today released GPT-6.1 Terra“) bestätigt; der Release-Tracker aireleasetracker.com führt den Release ebenfalls am 26.10.2026. Preise, Verfügbarkeit und Modell-ID direkt aus dem OpenAI-Beitrag gelesen. Die Benchmarkzahlen (Terminal-Bench 4.0, Agents' Last Exam, OSWorld 2.1, Fehlerrate) sind Herstellerangaben ohne Drittreproduktion; die Systemkarte wurde nicht eingesehen."
+  },
+  {
+    "id": "text-liquid-lfm3-2026-10-27",
+    "date": "2026-10-27",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "LFM3",
+    "org": "Liquid AI",
+    "house": "Liquid AI",
+    "license": "open",
+    "capability": "Neue Generation der Liquid Foundation Models: sechs offene Modelle der 2-Mrd.-Klasse auf einem gemeinsamen Backbone (LFM3-1.7B-Base, 22 Billionen Token Vortraining) — LFM3-1.7B (Text, 256K Kontext), LFM3-VL-2B (Bild und Video), LFM3-Audio-2B (Sprache, Tool-Aufrufe, 18 Sprachen), LFM3-Omni-2B (Sehen, Hören, Sprechen in einem Modell) sowie die Entscheidungsmodelle d1-2B und d1-Omni-2B, die statt Text eine Entscheidung ausgeben. Neu ist eine „Tri-Hybrid“-Architektur aus 13 gated Short-Convolutions, 5 Sliding-Window- und 6 Global-Attention-Schichten sowie hauseigene Vision- und Audio-Encoder. Liquid nennt für LFM3-1.7B bessere Ergebnisse als LFM2.5-2.6B bei 35 % weniger Parametern; das Textmodell passt mit 4-Bit-Quantisierung in rund 1 GB und lässt sich auf einer einzelnen GPU feintunen. Gewichte auf Hugging Face (LFM Open License v1.0), dazu Playground und Liquid-API.",
+    "whyItMattered": "Statt eines großen Allzweckmodells setzt Liquid auf eine Familie, die sich pro Anwendungsfall zuschneiden lässt und lokal läuft: Nach eigenen Messungen ist LFM3-1.7B auf Smartphone, Raspberry Pi und Laptop das schnellste Modell seiner Klasse und schlägt Qwen3.5-2B bei Agentenaufgaben auf dem Mac (64 % gegen 48 % Erfolgsquote, laut Liquid). Neu im Datensatz ist die Modellsorte der Entscheidungsmodelle. Die Vergleiche mit Qwen3.5, Gemma 4, GPT-5.6 Luna und Gemini 3.5 Flash Lite sind Herstellerangaben.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.liquid.ai/blog/lfm3",
+      "https://huggingface.co/blog/LiquidAI/lfm3"
+    ],
+    "disputed": false,
+    "note": "Lizenz ist die LFM Open License v1.0, nicht OSI-konform. Das Basismodell LFM3-1.7B-Base war auf Hugging Face bereits am 26.10.2026 sichtbar; der Eintrag datiert auf die Ankündigung vom 27.10.2026.",
+    "verificationNote": "Datum 27.10.2026 aus dem Liquid-Blog („OCT 27, 2026“), dem Hugging-Face-Blog („Published October 27, 2026“) und dem X-Beitrag von Liquid AI (27.10.2026) bestätigt; Presseberichte (Unite.AI, AI Weekly) nennen denselben Tag. Ein Drittanbieter-Log führt LFM3-1.7B-Base bereits am 26.10.2026 — daher Datum der Ankündigung, nicht des ersten Upload. Alle Benchmark- und Geschwindigkeitswerte sind Herstellerangaben ohne unabhängigen Lauf."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "23. Oktober 2026",
+  lastVerified: "27. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-23",
+  lastVerifiedISO: "2026-10-27",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 316,
+  total: 318,
   placeholder: false,
 };
