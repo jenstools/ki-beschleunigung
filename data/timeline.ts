@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 318 entries across text, image, video, audio,
- * late 2022 → 27 October 2026.
+ * German descriptions. 320 entries across text, image, video, audio,
+ * late 2022 → 29 October 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6162,15 +6162,56 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Lizenz ist die LFM Open License v1.0, nicht OSI-konform. Das Basismodell LFM3-1.7B-Base war auf Hugging Face bereits am 26.10.2026 sichtbar; der Eintrag datiert auf die Ankündigung vom 27.10.2026.",
     "verificationNote": "Datum 27.10.2026 aus dem Liquid-Blog („OCT 27, 2026“), dem Hugging-Face-Blog („Published October 27, 2026“) und dem X-Beitrag von Liquid AI (27.10.2026) bestätigt; Presseberichte (Unite.AI, AI Weekly) nennen denselben Tag. Ein Drittanbieter-Log führt LFM3-1.7B-Base bereits am 26.10.2026 — daher Datum der Ankündigung, nicht des ersten Upload. Alle Benchmark- und Geschwindigkeitswerte sind Herstellerangaben ohne unabhängigen Lauf."
+  },
+  {
+    "id": "video-google-deepmind-genie-4-2026-10-27",
+    "date": "2026-10-27",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Google DeepMind Genie 4",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Neue Generation von Googles Weltmodell für Echtzeit-Simulation interaktiver Umgebungen mit nativem Ton: Während der Simulation lassen sich Kamera, Wetter oder neue Figuren per natürlicher Sprache steuern, die Welt erzeugt Umgebungsgeräusche, Musik und interaktive Dialoge zugleich. Genie 4 baut auf der Gemini-Familie auf: Gemini Omni verankert die Simulation in realem Aussehen und Verhalten, andere Gemini-Modelle übernehmen Planung und Kohärenz über mehrere Schritte (laut Ars Technica Gemini 3.8 Flash als lenkender Agent). Google nennt deutlich realistischere Physik (Aerodynamik, Kollisionen) und natürlicher bewegte Menschen. Erste Robotik-Experimente koppeln Genie 4 mit Gemini 4 Argon und Googles Gemini-Robotics-Modellen. Bekannte Grenzen: keine exakte Abbildung realer Orte, lesbarer Text nur, wenn er in der Beschreibung steht, begrenzte Interaktionsdauer. Verfügbar als Research Preview für ausgewählte Tester; Google-AI-Ultra-Abonnenten in Project Genie sowie Early-Access-Partner der Gemini API und von AI Studio sollen „bald“ folgen.",
+    "whyItMattered": "Genie 3 (05.08.2025) war ein stummes 720p-Weltmodell; Genie 4 fügt Ton und Dialog hinzu und koppelt das Modell an Gemini-Planung — der Schritt vom Demo-Simulator zu Trainingsumgebungen für Agenten und Roboter, den Google ausdrücklich als Ziel nennt. Erstmals wird das Weltmodell als Teil des Gemini-Systems statt als isolierte Forschungsdemo geführt. Alle Aussagen zu Realismus und Physik stammen aus Googles eigenen Demos; es gibt keine Benchmarkzahlen und keinen öffentlichen Zugang.",
+    "firstOfKind": "",
+    "sources": [
+      "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4",
+      "https://techcrunch.com/2026/10/27/googles-genie-4-world-model-adds-audio-more-realistic-worlds-and-real-time-steering"
+    ],
+    "disputed": false,
+    "note": "Nur Research Preview für ausgewählte Tester (Warteliste); breiterer Zugang über Project Genie und die Gemini API ist angekündigt, aber ohne Termin.",
+    "verificationNote": "Datum 27.10.2026 aus dem DeepMind-Blog („October 27, 2026“) und dem Google-Blog („Oct 27, 2026“), bestätigt durch TechCrunch, Ars Technica und The Verge am selben Tag. Alle Fähigkeitsangaben stammen aus Googles Demos und Beschreibungen; unabhängig geprüft werden konnte nichts, weil es keinen öffentlichen Zugang gibt. Die Angabe zu Gemini 3.8 Flash als lenkendem Agenten steht nur bei Ars Technica, nicht in Googles eigenem Text."
+  },
+  {
+    "id": "text-gemini-4-carbon-2026-10-28",
+    "date": "2026-10-28",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 4 Carbon",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Nachfolger von Gemini 4 Argon nur zwei Wochen nach dessen Start und laut Google das bislang stärkste Modell des Hauses, mit Schwerpunkt auf Cybersicherheit und langlaufenden Aufgaben: intern habe Carbon tagelang an komplexen Engineering-Aufgaben wie dem Aufspüren und Patchen subtiler Fehler in großen Codebasen gearbeitet. Eigene Angaben: Platz 1 im Artificial Analysis Intelligence Index v5.0 mit 59 Punkten, 88,2 % auf SEC-bench Pro (Schwachstellen finden), 54,8 % auf ExploitGym (Ausnutzen) und 71,0 % auf CWE-bench (Patchen), WebDev Arena Platz 4 mit 1768 Elo (+89), mehr als doppelt so hohe Erfolgsquote bei sicherer Code-Erzeugung wie Argon sowie 0,0 % Erfolgsquote bei Prompt-Injection-Angriffen im Gray-Swan-Benchmark (Argon: 0,7 %). Beim Schummeln auf Terminal-Bench 4.0 sinke die Rate auf 0,0 %, hochgradige Fehlverhaltens-Alarme in internen Coding-Umgebungen gingen um fast 80 % zurück. Zugang zunächst nur für eine Auswahl von Cyber-Verteidigern, schrittweise erweitert über das Fairwind-Programm; Google nimmt am freiwilligen US-Verfahren zur Vorab-Prüfung von Modellen teil. Einführungspreis 2 USD Eingabe / 10 USD Ausgabe pro Mio. Token (gecachte Eingabe 95 % günstiger), danach 4 / 20 USD.",
+    "whyItMattered": "Zwei Frontier-Modelle in vierzehn Tagen: Google zieht das Tempo des Argon-Starts (13.10.) sofort nach und setzt dabei erneut auf gestuften Zugang statt auf eine offene Freigabe — Cyber-Fähigkeit wird zum Gate, nicht zum Nebenprodukt. Ungewöhnlich ist die Offenlegung zur Ausrichtung: Google nennt Zahlen zu Schummeln, Überschreiten des Auftrags (−26 %), Unterlassen (−29 %) und unbelegten Behauptungen (etwa halbiert gegenüber Argon). Alle Werte sind Herstellerangaben; teils interne Benchmarks, ohne unabhängige Reproduktion.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "https://mashable.com/tech/google-gemini-4-carbon-frontier-announcement"
+    ],
+    "disputed": true,
+    "note": "Nur für ausgewählte Cyber-Verteidiger verfügbar (Fairwind-Programm); die Freigabe für Entwickler, Unternehmen und Verbraucher kündigt Google „so bald wie möglich“ an, ohne Termin. Die Benchmark-Plattform Vals AI führt Carbon bereits mit 4 / 20 USD pro Mio. Token, dem Preis nach der Einführungsphase.",
+    "verificationNote": "Datum 28.10.2026 aus dem Google-Blogbeitrag („Oct 28, 2026“, Autor Koray Kavukcuoglu), bestätigt durch Mashable (28.10.2026) und die Release-Tracker aireleasetracker.com und Vals AI. Disputed, weil (1) Carbon am Prüftag nicht allgemein zugänglich war — „Release“ meint hier die Ankündigung mit Start für eine Auswahl von Verteidigern, nicht die breite Freigabe — und (2) sämtliche Leistungs- und Sicherheitswerte Herstellerangaben sind; der Platz 1 im Artificial Analysis Index wurde nur über den Google-Beitrag gelesen, nicht auf der AA-Seite selbst. Preise nur aus Googles Fußnote. Die Vorab-Prüfung nach dem US-Verfahren ist eine Selbstauskunft von Google."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "27. Oktober 2026",
+  lastVerified: "29. Oktober 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-27",
+  lastVerifiedISO: "2026-10-29",
   windowStart: "2022-08",
   windowEnd: "2026-10",
-  total: 318,
+  total: 320,
   placeholder: false,
 };
