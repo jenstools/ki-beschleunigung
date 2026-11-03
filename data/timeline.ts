@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 320 entries across text, image, video, audio,
- * late 2022 → 29 October 2026.
+ * German descriptions. 322 entries across text, image, video, audio,
+ * late 2022 → 3 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6203,15 +6203,55 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Nur für ausgewählte Cyber-Verteidiger verfügbar (Fairwind-Programm); die Freigabe für Entwickler, Unternehmen und Verbraucher kündigt Google „so bald wie möglich“ an, ohne Termin. Die Benchmark-Plattform Vals AI führt Carbon bereits mit 4 / 20 USD pro Mio. Token, dem Preis nach der Einführungsphase.",
     "verificationNote": "Datum 28.10.2026 aus dem Google-Blogbeitrag („Oct 28, 2026“, Autor Koray Kavukcuoglu), bestätigt durch Mashable (28.10.2026) und die Release-Tracker aireleasetracker.com und Vals AI. Disputed, weil (1) Carbon am Prüftag nicht allgemein zugänglich war — „Release“ meint hier die Ankündigung mit Start für eine Auswahl von Verteidigern, nicht die breite Freigabe — und (2) sämtliche Leistungs- und Sicherheitswerte Herstellerangaben sind; der Platz 1 im Artificial Analysis Index wurde nur über den Google-Beitrag gelesen, nicht auf der AA-Seite selbst. Preise nur aus Googles Fußnote. Die Vorab-Prüfung nach dem US-Verfahren ist eine Selbstauskunft von Google."
+  },
+  {
+    "id": "video-kuaishou-kling-4-0-2026-10-15",
+    "date": "2026-10-15",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Kling 4.0",
+    "org": "Kuaishou (Kling AI)",
+    "house": "Kuaishou",
+    "license": "closed",
+    "capability": "Videomodell der vierten Kling-Generation: bis zu 30 Sekunden in einem Durchlauf (Kling 3.0: bis 15 Sekunden), stabilere großflächige Bewegung bei schnellen Szenen und komplexen Kamerafahrten, Stereo-Ton mit Lippensynchronisation und „Omni Reference“ mit bis zu 15 Referenzmaterialien (Bilder, Videos, Stimmprofile, Elemente) samt mehreren Keyframes. Zugang über Web und App, dazu Kling MCP und CLI für KI-Agenten; die API für Unternehmen und Entwickler wurde als „bald“ angekündigt.",
+    "whyItMattered": "Verdoppelt die Länge zusammenhängender Kling-Clips von 15 auf 30 Sekunden und macht aus einer Kette zusammengeschnittener Kurzclips eine einzige Einstellung mit Ton und festen Referenzen für Figuren, Bewegung und Stimme. Alle Angaben stammen von Kuaishou; unabhängige Messungen wurden nicht geprüft.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.globenewswire.com/news-release/2026/10/16/3382768/0/en/kling-ai-officially-launches-next-generation-kling-4-0-raising-the-bar-for-professional-grade-video-models.html",
+      "https://kling.ai/blog/kling-4-vs-3?tab=all"
+    ],
+    "disputed": false,
+    "note": "Die API für Unternehmen und Entwickler war zum Prüftag (03.11.2026) laut Kuaishou noch nicht allgemein verfügbar. Die schnellere Variante Kling 4.0 Flash war seit dem 28.09.2026 für Abonnenten des Ultra-Jahrestarifs im Early Access.",
+    "verificationNote": "Datum 15.10.2026 aus der offiziellen Kuaishou-Pressemitteilung (GlobeNewswire/Investor Relations, Dateline 16.10.2026: „officially launched on October 15“). Der Eintrag wurde am 03.11.2026 nachgetragen; er fehlte bis dahin im Datensatz. Die Ankündigung mit Early Access lag früher (Kling-Blog, 28.–30.09.2026); als Release zählt hier der offizielle Start. Funktionsangaben (30 Sekunden, Omni Reference mit bis zu 15 Referenzen, Stereo-Ton) stammen aus der Pressemitteilung und dem Kling-Blog und sind Herstellerangaben."
+  },
+  {
+    "id": "text-longcat-2-5-2026-11-02",
+    "date": "2026-11-02",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "LongCat-2.5",
+    "org": "Meituan (LongCat)",
+    "house": "Meituan",
+    "license": "closed",
+    "capability": "Nativ multimodales Modell für langlaufende Agentenaufgaben: laut Meituan 1,6 Billionen Parameter in Summe, rund 48 Mrd. aktiv pro Token, 1 Mio. Token Kontext, Vision direkt im Rückgrat statt über einen separaten Encoder. Auf Terminals, Browser, Oberflächen, Tabellen und Designwerkzeuge ausgelegt; trainiert unter anderem mit gescheiterten Agentenläufen als Aufgaben, 4-Bit-Inferenz (W4A4) für inländische chinesische Beschleuniger. Meituan nennt 88,4 auf Terminal Bench v2.1 und 91,9 auf BrowseComp. Zugang über den LongCat-Chat und die API.",
+    "whyItMattered": "Nachfolger von LongCat-2.0 (29.06.2026), dessen Gewichte offen waren: Dieses Mal erscheint das Modell zunächst nur gehostet, Gewichte auf GitHub und Hugging Face sind „coming soon“. Neu gegenüber 2.0 ist die native Bildverarbeitung bei gleicher Größenangabe. Sämtliche Benchmarkwerte sind Herstellerangaben ohne unabhängige Messung.",
+    "firstOfKind": "",
+    "sources": [
+      "https://longcat.ai/blog/longcat-2.5/",
+      "https://technode.com/2026/11/02/meituan-launches-longcat-2-5-multimodal-ai-model-for-extended-coding-tasks/"
+    ],
+    "disputed": true,
+    "note": "Zum Start nur über Chat und API; Gewichte und Lizenz sind nicht veröffentlicht („coming soon“ auf dem Blog). Eine Preview war seit dem 25.09.2026 über die API verfügbar.",
+    "verificationNote": "Datum 02.11.2026 aus TechNode und Pandaily (beide 02.11.2026) sowie der Meldung der Meituan-Redaktion; der englische Blogbeitrag auf longcat.ai trägt das Datum 01.11.2026. Disputed, weil (1) die Datumsangabe zwischen 01. und 02.11. schwankt, (2) alle Leistungswerte Herstellerangaben sind, die Pandaily ausdrücklich als nicht unabhängig geprüft kennzeichnet, und (3) OrcaRouter am 29.10.2026 berichtete, die Parameterzahlen (1,6T / ~48B) seien von der Modellkarte von LongCat-2.0 auf die Preview übertragen worden; ob sie für 2.5 zutreffen, ist offen. Die Angabe „nativ multimodal“ folgt Meituan; die API-Dokumentation der Preview nannte Text als Eingabe. Klassifizierung „closed“, weil am Prüftag keine Gewichte vorlagen; sollten sie erscheinen, ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "29. Oktober 2026",
+  lastVerified: "3. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-10-29",
+  lastVerifiedISO: "2026-11-03",
   windowStart: "2022-08",
-  windowEnd: "2026-10",
-  total: 320,
+  windowEnd: "2026-11",
+  total: 322,
   placeholder: false,
 };

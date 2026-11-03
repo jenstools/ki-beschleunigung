@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-318 Meilenstein-Releases generativer KI, 27. Januar 2022 → 28. Oktober 2026, über Text, Bild, Video und Audio.
+320 Meilenstein-Releases generativer KI, 27. Januar 2022 → 2. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **318**
-- Nach Modalität: Text 153, Bild 50, Video 51, Audio 64
-- Offene Gewichte: 101 · Geschlossen: 217
-- Als `disputed` markiert: 38
+- Releases gesamt: **320**
+- Nach Modalität: Text 154, Bild 50, Video 52, Audio 64
+- Offene Gewichte: 101 · Geschlossen: 219
+- Als `disputed` markiert: 39
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 663
-- Tagesgenaue Daten: 317 von 318 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 29. Oktober 2026
+- Primärquellen-Links: 667
+- Tagesgenaue Daten: 319 von 320 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 3. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 320 Einträge: 318 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 322 Einträge: 320 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-38 von 318 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+39 von 320 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -70,3 +70,4 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-10-22 | Canva Craft (Canva) | Datum 22.10.2026 aus der TechCrunch-Meldung vom 22.10.2026 (19:00 UTC) übernommen; die Canva-Newsroom-Seite („Available now … to all Canva users globally“) trägt kein Datum. Wegen der Zeitverschiebung zu Sydney könnte Canva intern den 23.10. führen. Disputed, weil das Datum nicht an der Primärseite hängt und die Rangangaben („zweitfortschrittlichstes Labor für Bildgenerierung“, Platz 4 auf DesignArena, Platz 1 in zwei Unterkategorien) Herstellerangaben ohne Gegenprüfung auf DesignArena sind. Die Trainingsdaten (Canva-Vorlagen) und die 55 Textsprachen stammen aus dem Canva-Beitrag. TechCrunch nennt 30 Seitenverhältnisse, Canva „more than 30“; der Eintrag folgt Canva. Haus neu im Datensatz, in lib/providers.ts mit Domain eingetragen; der Sitz ist in den gelesenen Quellen nicht genannt und bleibt deshalb ohne Land, eine Markenfarbe ist nicht hinterlegt. |
 | 2026-10-23 | Kimi K3.1 Pro (Moonshot AI (Kimi)) | Datum 23.10.2026 gegen den offiziellen Moonshot-Blogbeitrag („available today“, Seite undatiert) und einen X-Beitrag vom 23.10.2026 bestätigt. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Terminal-Bench 4.0 und BenchCAD mit eigenem Harness, mehrere Benchmarks intern (Kimi Code Bench 3.0, Kimi Hallu Bench Hard, xdev-bench-hard), Vergleichswerte teils aus Berichten der Wettbewerber; unabhängige Messungen lagen am 23.10.2026 nicht vor. Die Lizenz ist offen (license: open) nach der Zusage „open-weight“ im Blog; die Gewichte lagen am Prüftag nicht vor, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts (dieselbe Behandlung wie GLM-5.3). Nach Veröffentlichung der Gewichte ist ein Folge-Eintrag nach dem Muster von Kimi K3 (27.07.2026) nötig. Parameterzahl nur als „3T-class“ genannt; der Eintrag nennt keine genaue Zahl. |
 | 2026-10-28 | Gemini 4 Carbon (Google DeepMind) | Datum 28.10.2026 aus dem Google-Blogbeitrag („Oct 28, 2026“, Autor Koray Kavukcuoglu), bestätigt durch Mashable (28.10.2026) und die Release-Tracker aireleasetracker.com und Vals AI. Disputed, weil (1) Carbon am Prüftag nicht allgemein zugänglich war — „Release“ meint hier die Ankündigung mit Start für eine Auswahl von Verteidigern, nicht die breite Freigabe — und (2) sämtliche Leistungs- und Sicherheitswerte Herstellerangaben sind; der Platz 1 im Artificial Analysis Index wurde nur über den Google-Beitrag gelesen, nicht auf der AA-Seite selbst. Preise nur aus Googles Fußnote. Die Vorab-Prüfung nach dem US-Verfahren ist eine Selbstauskunft von Google. |
+| 2026-11-02 | LongCat-2.5 (Meituan (LongCat)) | Datum 02.11.2026 aus TechNode und Pandaily (beide 02.11.2026) sowie der Meldung der Meituan-Redaktion; der englische Blogbeitrag auf longcat.ai trägt das Datum 01.11.2026. Disputed, weil (1) die Datumsangabe zwischen 01. und 02.11. schwankt, (2) alle Leistungswerte Herstellerangaben sind, die Pandaily ausdrücklich als nicht unabhängig geprüft kennzeichnet, und (3) OrcaRouter am 29.10.2026 berichtete, die Parameterzahlen (1,6T / ~48B) seien von der Modellkarte von LongCat-2.0 auf die Preview übertragen worden; ob sie für 2.5 zutreffen, ist offen. Die Angabe „nativ multimodal“ folgt Meituan; die API-Dokumentation der Preview nannte Text als Eingabe. Klassifizierung „closed“, weil am Prüftag keine Gewichte vorlagen; sollten sie erscheinen, ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. |
