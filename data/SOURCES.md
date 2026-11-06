@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-320 Meilenstein-Releases generativer KI, 27. Januar 2022 → 2. November 2026, über Text, Bild, Video und Audio.
+324 Meilenstein-Releases generativer KI, 27. Januar 2022 → 5. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **320**
-- Nach Modalität: Text 154, Bild 50, Video 52, Audio 64
-- Offene Gewichte: 101 · Geschlossen: 219
-- Als `disputed` markiert: 39
+- Releases gesamt: **324**
+- Nach Modalität: Text 157, Bild 51, Video 52, Audio 64
+- Offene Gewichte: 103 · Geschlossen: 221
+- Als `disputed` markiert: 42
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 667
-- Tagesgenaue Daten: 319 von 320 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 3. November 2026
+- Primärquellen-Links: 674
+- Tagesgenaue Daten: 323 von 324 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 6. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 322 Einträge: 320 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 326 Einträge: 324 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-39 von 320 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+42 von 324 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -71,3 +71,6 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-10-23 | Kimi K3.1 Pro (Moonshot AI (Kimi)) | Datum 23.10.2026 gegen den offiziellen Moonshot-Blogbeitrag („available today“, Seite undatiert) und einen X-Beitrag vom 23.10.2026 bestätigt. Disputed, weil sämtliche Leistungswerte Herstellerangaben sind: Terminal-Bench 4.0 und BenchCAD mit eigenem Harness, mehrere Benchmarks intern (Kimi Code Bench 3.0, Kimi Hallu Bench Hard, xdev-bench-hard), Vergleichswerte teils aus Berichten der Wettbewerber; unabhängige Messungen lagen am 23.10.2026 nicht vor. Die Lizenz ist offen (license: open) nach der Zusage „open-weight“ im Blog; die Gewichte lagen am Prüftag nicht vor, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts (dieselbe Behandlung wie GLM-5.3). Nach Veröffentlichung der Gewichte ist ein Folge-Eintrag nach dem Muster von Kimi K3 (27.07.2026) nötig. Parameterzahl nur als „3T-class“ genannt; der Eintrag nennt keine genaue Zahl. |
 | 2026-10-28 | Gemini 4 Carbon (Google DeepMind) | Datum 28.10.2026 aus dem Google-Blogbeitrag („Oct 28, 2026“, Autor Koray Kavukcuoglu), bestätigt durch Mashable (28.10.2026) und die Release-Tracker aireleasetracker.com und Vals AI. Disputed, weil (1) Carbon am Prüftag nicht allgemein zugänglich war — „Release“ meint hier die Ankündigung mit Start für eine Auswahl von Verteidigern, nicht die breite Freigabe — und (2) sämtliche Leistungs- und Sicherheitswerte Herstellerangaben sind; der Platz 1 im Artificial Analysis Index wurde nur über den Google-Beitrag gelesen, nicht auf der AA-Seite selbst. Preise nur aus Googles Fußnote. Die Vorab-Prüfung nach dem US-Verfahren ist eine Selbstauskunft von Google. |
 | 2026-11-02 | LongCat-2.5 (Meituan (LongCat)) | Datum 02.11.2026 aus TechNode und Pandaily (beide 02.11.2026) sowie der Meldung der Meituan-Redaktion; der englische Blogbeitrag auf longcat.ai trägt das Datum 01.11.2026. Disputed, weil (1) die Datumsangabe zwischen 01. und 02.11. schwankt, (2) alle Leistungswerte Herstellerangaben sind, die Pandaily ausdrücklich als nicht unabhängig geprüft kennzeichnet, und (3) OrcaRouter am 29.10.2026 berichtete, die Parameterzahlen (1,6T / ~48B) seien von der Modellkarte von LongCat-2.0 auf die Preview übertragen worden; ob sie für 2.5 zutreffen, ist offen. Die Angabe „nativ multimodal“ folgt Meituan; die API-Dokumentation der Preview nannte Text als Eingabe. Klassifizierung „closed“, weil am Prüftag keine Gewichte vorlagen; sollten sie erscheinen, ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. |
+| 2026-11-04 | Hy4 (Tencent (Hy)) | Datum 04.11.2026 aus der Tencent-Pressemitteilung (veröffentlicht 04.11.2026), bestätigt durch Unite.AI und Vals AI („released November 4, 2026“) in den Suchergebnissen. Disputed, weil (1) die Gewichte am Prüftag nicht veröffentlicht waren — „open“ folgt der Zusage von Tencent, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts, und nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig — und (2) alle Leistungsangaben Herstellerangaben aus interner Prüfung sind; die Modellseite hy.tencent.ai/research/hy4 lieferte beim Abruf nur eine Fehlerseite. Parameterzahl und Kontext für die Endfassung nennt die Mitteilung nicht; die Werte der Vorschau (770 Mrd./49 Mrd. aktiv) werden nicht übertragen. |
+| 2026-11-05 | GPT-6 Cyber (OpenAI) | Datum 05.11.2026 gegen zwei unabhängige Berichte vom selben Tag bestätigt (Fortune, 12:01 Uhr ET; SiliconANGLE, aktualisiert 17:52 Uhr ET); beide nennen den Start als „heute“. Die Primärquelle (OpenAI-Beitrag, System Card) wurde nicht gelesen; ein per Hinweis angegebener X-Beitrag von OpenAI wurde nicht abgerufen. Disputed, weil alle Leistungs- und Sicherheitszahlen Herstellerangaben aus zweiter Hand sind. Zwei per Hinweis gemeldete Werte, ExploitGym 48,5 % gegenüber 32,1 % bei GPT-5.6-Cyber sowie die API-Preise von 20/100 US-Dollar je Million Token, ließen sich in den gelesenen Quellen nicht bestätigen und stehen deshalb nicht im Eintrag. Die Zählung „viertes Cyber-Modell dieses Jahres“ stammt von beiden Berichten (Fortune nennt Versionen im April, Juni und August); die Einstufung als „Critical“ ist OpenAIs Selbstauskunft. |
+| 2026-11-05 | Inkling 2 Small (Thinking Machines Lab) | Datum 05.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 5, 2026“) und dem Artikel von Artificial Analysis (05.11.2026). Parameterzahl, Bildeingabe und die Gewichtszusage stehen im Blogbeitrag; Index-Wert, Benchmark-Vergleiche, Token- und Kostenangaben sowie die Preise stammen von Artificial Analysis. Disputed, weil die Gewichte am Prüftag nicht veröffentlicht waren; „open“ folgt der Apache-2.0-Zusage von Thinking Machines, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. Der Wert 13 für Inkling Small ergibt sich aus Artificial Analysis („up 18 points“); die Modellkarte wurde nicht gelesen. |

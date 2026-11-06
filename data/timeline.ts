@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 322 entries across text, image, video, audio,
- * late 2022 → 3 November 2026.
+ * German descriptions. 326 entries across text, image, video, audio,
+ * late 2022 → 6 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6243,15 +6243,93 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Zum Start nur über Chat und API; Gewichte und Lizenz sind nicht veröffentlicht („coming soon“ auf dem Blog). Eine Preview war seit dem 25.09.2026 über die API verfügbar.",
     "verificationNote": "Datum 02.11.2026 aus TechNode und Pandaily (beide 02.11.2026) sowie der Meldung der Meituan-Redaktion; der englische Blogbeitrag auf longcat.ai trägt das Datum 01.11.2026. Disputed, weil (1) die Datumsangabe zwischen 01. und 02.11. schwankt, (2) alle Leistungswerte Herstellerangaben sind, die Pandaily ausdrücklich als nicht unabhängig geprüft kennzeichnet, und (3) OrcaRouter am 29.10.2026 berichtete, die Parameterzahlen (1,6T / ~48B) seien von der Modellkarte von LongCat-2.0 auf die Preview übertragen worden; ob sie für 2.5 zutreffen, ist offen. Die Angabe „nativ multimodal“ folgt Meituan; die API-Dokumentation der Preview nannte Text als Eingabe. Klassifizierung „closed“, weil am Prüftag keine Gewichte vorlagen; sollten sie erscheinen, ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig."
+  },
+  {
+    "id": "text-gpt-6-cyber-2026-11-05",
+    "date": "2026-11-05",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "GPT-6 Cyber",
+    "org": "OpenAI",
+    "house": "OpenAI",
+    "license": "closed",
+    "capability": "Auf GPT-6 Astra aufbauendes Modell für autorisierte Schwachstellenforschung und Exploit-Entwicklung, das nach OpenAIs Angaben Astra bei den meisten Cyberaufgaben übertrifft. Es wurde darauf trainiert, innerhalb der freigegebenen Ziele zu bleiben: Im neuen Test ExploitGym Honeypot, der leicht angreifbare Nebendienste um eine schwere Aufgabe stellt, verließ es ohne Einsatzhinweise in 0,07 % der Läufe den Rahmen (GPT-5.6-Cyber: 5,51 %), mit Hinweisen in keinem. In einer ersten Forschungskampagne fanden Forschende mit dem Modell 81 bis dahin unbekannte Firefox-Schwachstellen, die Mozilla als schwerwiegend einstufte, und entwickelten funktionierende Exploits für 948 Linux-Kernel-Schwachstellen, davon 588 bis dahin unbekannt. Zugang zunächst nur für ausgewählte, freigegebene Kunden der Stufe Daybreak Red über API und Codex, in den kommenden Wochen für alle Daybreak-Red-Kunden.",
+    "whyItMattered": "Das vierte Cyber-Spezialmodell, das OpenAI in diesem Jahr veröffentlicht, und das erste, das im eigenen Preparedness Framework als „Critical“ eingestuft wird, der höchsten Cyberstufe; GPT-5.6-Cyber lag bei „High“, Astra selbst bei „Critical“. Neu ist der Schwerpunkt auf Rahmentreue statt nur auf Fähigkeit: Der Honeypot-Test geht auf einen Vorfall im Juli zurück, bei dem OpenAIs Testagenten bei einer Aufgabe in Hugging Face eingedrungen waren. Die unabhängige Einordnung fällt nüchterner aus: Das Sicherheitslabor Irregular sieht beide Modelle bis auf stärkere Ergebnisse bei langen mehrstufigen Aufgaben als vergleichbar, und keines überwand vollständig gehärtete Ziele aus OpenAIs eigenem Testsatz.",
+    "firstOfKind": "",
+    "sources": [
+        "https://siliconangle.com/2026/11/05/openai-launches-gpt-6-cyber-a-gpt-6-astra-model-built-to-keep-vulnerability-research-in-scope/",
+        "https://fortune.com/2026/11/05/openai-debuts-new-cybersecurity-focused-ai-model-amid-growing-alarm-about-ai-driven-cyber-attacks/"
+    ],
+    "disputed": true,
+    "note": "Zugang nur nach Antragsverfahren (Daybreak Red); API-Anfragen müssen standardmäßig aus freigegebenen Netzwerken kommen. Parallel öffnet OpenAI GPT-5.6-Cyber für alle Kunden der Stufe und erweitert den frühen Astra-Zugang über Daybreak Blue.",
+    "verificationNote": "Datum 05.11.2026 gegen zwei unabhängige Berichte vom selben Tag bestätigt (Fortune, 12:01 Uhr ET; SiliconANGLE, aktualisiert 17:52 Uhr ET); beide nennen den Start als „heute“. Die Primärquelle (OpenAI-Beitrag, System Card) wurde nicht gelesen; ein per Hinweis angegebener X-Beitrag von OpenAI wurde nicht abgerufen. Disputed, weil alle Leistungs- und Sicherheitszahlen Herstellerangaben aus zweiter Hand sind. Zwei per Hinweis gemeldete Werte, ExploitGym 48,5 % gegenüber 32,1 % bei GPT-5.6-Cyber sowie die API-Preise von 20/100 US-Dollar je Million Token, ließen sich in den gelesenen Quellen nicht bestätigen und stehen deshalb nicht im Eintrag. Die Zählung „viertes Cyber-Modell dieses Jahres“ stammt von beiden Berichten (Fortune nennt Versionen im April, Juni und August); die Einstufung als „Critical“ ist OpenAIs Selbstauskunft."
+  },
+  {
+    "id": "image-gpt-image-2-6-flare-sunburst-2026-11-04",
+    "date": "2026-11-04",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "GPT-Image-2.6 (Flare & Sunburst)",
+    "org": "OpenAI",
+    "house": "OpenAI",
+    "license": "closed",
+    "capability": "Zwei neue Bildmodelle für die API, begleitet von ChatGPT Images 2.6: Flare liefert nach OpenAI-Angaben schon bei niedriger Qualität in etwa sechs Sekunden ein Bild, Sunburst zielt auf detailreiche Kompositionen und gleichbleibende Ergebnisse über mehrere Bearbeitungen. Die Bildgenerierung ist laut OpenAI 50 % schneller als zuvor. Neu sind animierte GIFs aus Prompt oder Bild (Tempo und einzelne Frames editierbar), SVG-Export, Markup-gestützte Bearbeitung, ein Parameter „complexity“ (low, medium, high) sowie in ChatGPT gespeicherte Referenzbilder von Personen, Haustieren und Figuren, die ohne erneutes Hochladen wiederverwendet werden. Abrechnung nach Token wie bei Images 2.5: 30 US-Dollar je Million Bild-Ausgabetoken.",
+    "whyItMattered": "Aus dem Bildmodell wird ein Format-Generator: GIF und SVG kommen direkt aus der Bildgenerierung, ohne Umweg über Video- oder Vektorwerkzeuge, und gespeicherte Referenzen lösen das wiederkehrende Problem gleicher Figuren über mehrere Bilder. Das Tempo ist die zweite Aussage, aber die einzige, die sich messen ließe: Es gibt keine Benchmarkwerte, und die Token-Preise sind zwar gleich geblieben, doch ein Entwickler im OpenAI-Forum errechnet für niedrige und mittlere Qualität spürbar mehr Ausgabetoken je Bild als bei 2.5, was die effektiven Kosten erhöhen würde. Acht Wochen nach Images 2.5 (08.09.2026) ist das ein schneller Folgeschritt desselben Hauses.",
+    "firstOfKind": "",
+    "sources": [
+        "https://community.openai.com/t/images-upgraded-introducing-chatgpt-images-2-6/1412901",
+        "https://www.marktechpost.com/2026/11/04/openai-gpt-image-2-6-flare-sunburst/"
+    ],
+    "disputed": false,
+    "verificationNote": "Datum 04.11.2026 gegen die Ankündigung im OpenAI-Entwicklerforum (04.11.2026, verlinkt auf openai.com/index/introducing-images-2-6 und die Modellseiten) und MarkTechPost (04.11.2026, „Nov 4, 2026“) bestätigt. Der verlinkte OpenAI-Beitrag selbst wurde nicht abgerufen. Preise (Text-Eingabe 5, Bild-Eingabe 8, Bild-Ausgabe 30 US-Dollar je Million Token, für beide Modelle gleich) nach MarkTechPost unter Berufung auf die Modellseiten. Die Aussage zu höheren Ausgabetoken stammt von einem einzelnen Forumsbeitrag und ist nicht gegengeprüft. 50 % schneller und „in sechs Sekunden“ sind Herstellerangaben ohne Messmethode. Der Eintrag nennt die Modelle gemeinsam wie bei Images 2.5."
+  },
+  {
+    "id": "text-hy4-2026-11-04",
+    "date": "2026-11-04",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Hy4",
+    "org": "Tencent (Hy)",
+    "house": "Tencent",
+    "license": "open",
+    "capability": "Tencents Flaggschiff Hy4 als Nachfolger der Vorschau Hy4-preview: erstmals mit Bildverständnis (feine Bildverarbeitung, komplexe Diagramme, visuelles mathematisches Denken) und erstmals mit Computer-Nutzung über Kommandozeile und grafische Oberfläche, dazu besseres Befolgen von Anweisungen, Langkontext und lange Agentenaufgaben. Spezialtraining auf Blender, CAD sowie die Spiele-Engines Unreal, Unity und Godot. Tencent nennt 7,2 % Halluzinationsrate (Vorschau: 12,95 %) und führt Hy4 in einem Blindtest mit 213 Finanzfachleuten vor DeepSeek-V4.1-Flash-1017, Kimi K3.1 Pro und GLM-5.3. Verfügbar über Tencent Cloud TokenHub, WorkBuddy, CodeBuddy, Yuanbao und über OpenRouter; Preis unverändert rund 0,90 US-Dollar je Million Eingabe- und 2,70 je Million Ausgabetoken. Gewichte und System Cards kündigt Tencent „in den kommenden Tagen“ an, Hy4 Flash folgt.",
+    "whyItMattered": "Aus der Textvorschau vom Oktober wird ein multimodales Agentenmodell, das ein offenes Gewicht mit Computer-Nutzung verbindet; Tencent reiht sich damit bei den offenen chinesischen Spitzenmodellen neben DeepSeek, Z.ai und Alibaba ein. Die Einordnung als „unter den führenden Open-Source-Modellen“ ist Tencents eigene und stützt sich auf selbst gewählte Vergleiche. Offen bleibt zum Start die Hauptsache: ob und unter welcher Lizenz die Gewichte erscheinen.",
+    "firstOfKind": "",
+    "sources": [
+        "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
+    ],
+    "disputed": true,
+    "note": "Zum Start nur gehostet (Tencent Cloud, Tencent-Produkte, OpenRouter); Gewichte und System Cards „in den kommenden Tagen“, eine Lizenz ist noch nicht benannt. Hy4 Flash ist angekündigt.",
+    "verificationNote": "Datum 04.11.2026 aus der Tencent-Pressemitteilung (veröffentlicht 04.11.2026), bestätigt durch Unite.AI und Vals AI („released November 4, 2026“) in den Suchergebnissen. Disputed, weil (1) die Gewichte am Prüftag nicht veröffentlicht waren — „open“ folgt der Zusage von Tencent, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts, und nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig — und (2) alle Leistungsangaben Herstellerangaben aus interner Prüfung sind; die Modellseite hy.tencent.ai/research/hy4 lieferte beim Abruf nur eine Fehlerseite. Parameterzahl und Kontext für die Endfassung nennt die Mitteilung nicht; die Werte der Vorschau (770 Mrd./49 Mrd. aktiv) werden nicht übertragen."
+  },
+  {
+    "id": "text-inkling-2-small-2026-11-05",
+    "date": "2026-11-05",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Inkling 2 Small",
+    "org": "Thinking Machines Lab",
+    "house": "Thinking Machines Lab",
+    "license": "open",
+    "capability": "Erstes Modell der zweiten Inkling-Generation: Mixture-of-Experts mit 594 Mrd. Parametern gesamt und 17 Mrd. aktiv, Bildeingabe und einstellbarem Denkaufwand. Es erreicht 31 Punkte im Artificial Analysis Intelligence Index v5 (Inkling Small: 13) und steigert sich laut Artificial Analysis bei AutomationBench-AA von 5 auf 46 % und bei FrontierCode 2.0 von 5 auf 25 %. Zum Start nur über Thinking Machines' Plattform Tinker (Playground, Feintuning und Sampling) mit geschlossenen Gewichten; die vollständigen Gewichte unter Apache 2.0 sollen laut Anbieter in der Woche darauf nach externer Sicherheitsprüfung und Red-Teaming erscheinen. API-Preis nach Artificial Analysis 0,30 US-Dollar je Million Eingabe- und 1,00 je Million Ausgabetoken.",
+    "whyItMattered": "Würden die Gewichte wie angekündigt erscheinen, wäre es nach Artificial Analysis das höchstbewertete offene Modell aus einem Haus außerhalb Chinas. Bemerkenswert ist das Vorgehen: Thinking Machines veröffentlicht erst gehostet und gibt die Gewichte nach einer Sicherheitsprüfung frei, ein Muster, das es als „sicheren Weg zu offenen Gewichten“ beschreibt. Der Sprung von 13 auf 31 Punkte kommt mit rund vierfach so vielen Ausgabetoken je Aufgabe (etwa 150.000 gegenüber 37.000) und knapp dem Sechsfachen der Kosten je Aufgabe, ist also teils erkaufte Rechenzeit.",
+    "firstOfKind": "",
+    "sources": [
+        "https://thinkingmachines.ai/news/inkling-2-small/",
+        "https://artificialanalysis.ai/articles/thinking-machines-releases-inkling-2-small-highest-scoring-open-weights-model-outside-of-chinia-upon-weights-release-it"
+    ],
+    "disputed": true,
+    "note": "Zum Start nur über Tinker mit geschlossenen Gewichten; Apache-2.0-Gewichte laut Thinking Machines in der folgenden Woche. Zum Prüftag (06.11.2026) lagen sie nicht vor.",
+    "verificationNote": "Datum 05.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 5, 2026“) und dem Artikel von Artificial Analysis (05.11.2026). Parameterzahl, Bildeingabe und die Gewichtszusage stehen im Blogbeitrag; Index-Wert, Benchmark-Vergleiche, Token- und Kostenangaben sowie die Preise stammen von Artificial Analysis. Disputed, weil die Gewichte am Prüftag nicht veröffentlicht waren; „open“ folgt der Apache-2.0-Zusage von Thinking Machines, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. Der Wert 13 für Inkling Small ergibt sich aus Artificial Analysis („up 18 points“); die Modellkarte wurde nicht gelesen."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "3. November 2026",
+  lastVerified: "6. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-03",
+  lastVerifiedISO: "2026-11-06",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 322,
+  total: 326,
   placeholder: false,
 };
