@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-324 Meilenstein-Releases generativer KI, 27. Januar 2022 → 5. November 2026, über Text, Bild, Video und Audio.
+327 Meilenstein-Releases generativer KI, 27. Januar 2022 → 9. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **324**
-- Nach Modalität: Text 157, Bild 51, Video 52, Audio 64
-- Offene Gewichte: 103 · Geschlossen: 221
+- Releases gesamt: **327**
+- Nach Modalität: Text 159, Bild 52, Video 52, Audio 64
+- Offene Gewichte: 103 · Geschlossen: 224
 - Als `disputed` markiert: 42
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 674
-- Tagesgenaue Daten: 323 von 324 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 6. November 2026
+- Primärquellen-Links: 681
+- Tagesgenaue Daten: 326 von 327 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 10. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 326 Einträge: 324 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 329 Einträge: 327 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-42 von 324 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+42 von 327 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
