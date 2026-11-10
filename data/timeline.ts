@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 326 entries across text, image, video, audio,
- * late 2022 → 6 November 2026.
+ * German descriptions. 329 entries across text, image, video, audio,
+ * late 2022 → 10 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6321,15 +6321,76 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Zum Start nur über Tinker mit geschlossenen Gewichten; Apache-2.0-Gewichte laut Thinking Machines in der folgenden Woche. Zum Prüftag (06.11.2026) lagen sie nicht vor.",
     "verificationNote": "Datum 05.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 5, 2026“) und dem Artikel von Artificial Analysis (05.11.2026). Parameterzahl, Bildeingabe und die Gewichtszusage stehen im Blogbeitrag; Index-Wert, Benchmark-Vergleiche, Token- und Kostenangaben sowie die Preise stammen von Artificial Analysis. Disputed, weil die Gewichte am Prüftag nicht veröffentlicht waren; „open“ folgt der Apache-2.0-Zusage von Thinking Machines, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. Der Wert 13 für Inkling Small ergibt sich aus Artificial Analysis („up 18 points“); die Modellkarte wurde nicht gelesen."
+  },
+  {
+    "id": "text-claude-fable-5-2-2026-11-09",
+    "date": "2026-11-09",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Claude Fable 5.2",
+    "org": "Anthropic",
+    "house": "Anthropic",
+    "license": "closed",
+    "capability": "Anthropics Fable-5.1-Nachfolger: dasselbe Basismodell in zwei Sicherheitsstufen wie zuvor – Fable 5.2 breit verfügbar mit Cyber- und Biologie-Klassifikatoren, Mythos 5.2 ohne diese Sperren nur für geprüfte Organisationen im Cyber- und Life-Sciences-Verification-Programm. 1 Mio. Token Kontext, bis zu 128.000 Token Ausgabe. Anthropic nennt bis zu 30 % schnellere Ausgabe als bei 5.1 und senkt den Preis von 10/50 auf 8/40 US-Dollar je Million Ein-/Ausgabetoken; optionaler Fast-Modus bis zu 2,5-fach schneller für 16/80 US-Dollar. Selbstberichtete Werte (Fable 5.2 / Fable 5.1 / Opus 5.5 / GPT-6 Astra): FrontierCode 2.0 49,1 % (Xhigh) / 32,4 % / 45,5 % / 42,8 %, Terminal-Bench-Science 0.1 74,6 / 52,6 / 58,7 / 68,1 %, Remote Labor Index 41,3 / 17,9 / 21,3 / 20,8 %, Humanity's Last Exam mit Werkzeugen 74,2 / 65,6 / 67,7 / 57,2 %, RoboDojo Sim 64,9 / 27,6 / 39,4 / 29,8 %. Mythos 5.2 erreicht auf CVE Rediscovery 89,6 % (Mythos 5.1: 78,3 %). Eine Gruppe aus 1.000 Fable-5.2-Agenten formalisierte den Beweis des Großen Fermatschen Satzes in 30 Stunden; die erste Formalisierung mit einer unveröffentlichten Forschungsversion hatte 11 Tage gedauert. Verfügbar am Veröffentlichungstag über Claude-Apps, Claude Platform sowie AWS, Google Cloud und Microsoft Azure (Modell-ID claude-fable-5-2).",
+    "whyItMattered": "Der Preis sinkt zum ersten Mal innerhalb der Fable-Reihe, während die Leistung steigt: 20 % weniger je Token, dazu laut Anthropic bei mittlerem Aufwand weniger Token je Aufgabe. Bei FrontierCode 2.0 liegt Fable 5.2 bei hohem Aufwand etwa gleichauf mit Opus 5.5 auf dessen Höchststufe (45,3 % gegen 45,5 %) für rund die Hälfte der Kosten je Aufgabe. Der größte Sprung steht in der Robotik (RoboDojo Sim von 27,6 auf 64,9 %) und im Remote Labor Index (17,9 auf 41,3 %). Anthropic nennt zugleich rund 55 % weniger fälschliche Sperren der Klassifikatoren als bei Fable 5.1. Zwei Einschränkungen gehören dazu: Auf cyber- und biologienahen Benchmarks liegen Fable-Werte wegen der Umleitung auf ältere Opus-Modelle unter denen von Mythos, und Anthropic hat die Fähigkeiten, die KI-Forschung am direktesten beschleunigen würden (Kernel-Optimierung, Architekturverbesserung), im Training bewusst auf dem Niveau von Opus 5.5 gehalten.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+      "https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html",
+      "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2"
+    ],
+    "disputed": false,
+    "note": "Mythos 5.2 hat keinen eigenen öffentlichen Zugang: nur über das Cyber- bzw. Life-Sciences-Verification-Programm, Fast-Modus für Mythos ebenfalls nur dort. Fable 5.2 läuft nur mit aktiviertem Denken und verlangt 30 Tage Datenaufbewahrung (kein Zero Data Retention ohne ausdrückliche Freigabe).",
+    "verificationNote": "Datum 09.11.2026 aus der Anthropic-Ankündigung (Datumszeile „November 9, 2026“), der Modelldokumentation („Released November 9, 2026“), dem System Card (9. November 2026), dem Beitrag von @claudeai auf X (09.11.2026, 18:57 Uhr) sowie CNBC und The Verge (beide 09.11.2026) bestätigt. Sämtliche Benchmarkwerte, die Fermat-Formalisierung und die Aussagen zu Geschwindigkeit und Kosten je Aufgabe sind Herstellerangaben von Anthropic; eine unabhängige Nachmessung lag am Prüftag nicht vor. Die Werte der Vergleichsmodelle (Opus 5.5, GPT-6 Astra, Gemini 4 Carbon) stammen aus Anthropics eigener Tabelle; Fable-Werte gelten mit aktiven Sicherheitsklassifikatoren, Mythos-Werte ohne. Der Eintrag führt Fable 5.2 und Mythos 5.2 gemeinsam, wie bei Fable 5.1, weil es dasselbe Basismodell ist."
+  },
+  {
+    "id": "text-muse-ember-2026-11-09",
+    "date": "2026-11-09",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Muse Ember",
+    "org": "Meta (Superintelligence Labs)",
+    "house": "Meta",
+    "license": "closed",
+    "capability": "Metas kleinstes und effizientestes Modell der Muse-Reihe, gedacht für die Arbeit, die Agenten den ganzen Tag wiederholen: Werkzeugaufrufe, Teilaufgaben beim Programmieren, Routing, Extraktion und das Auswerten langer Dokumente. 1 Mio. Token Kontext, bis zu 512.000 Token Ausgabe, Eingabe von Text, Bild, Audio und Video. Es ist das erste Modell, das mit Muse Wonder Full trainiert wurde. Nach Artificial Analysis erreicht es auf dem Intelligence Index v5 bei maximalem Aufwand 36 Punkte (Claude Haiku 5.5: 36, GPT-6 Luna: 28) bei etwa 0,14 US-Dollar je Aufgabe; Haiku 5.5 braucht für denselben Wert rund das Dreifache, Muse Spark 1.3 (37 Punkte) rund 2,39 US-Dollar. Meta-Werte bei maximalem Aufwand gegen Haiku 5.5 und Luna: AutomationBench-AA 37,8 gegen 13,9 und 20,2 %, Terminal-Bench 4.0 40,9 gegen 39,2 und 16,4 %, OSWorld 2.1 (Teilpunkte) 69,5 gegen 68,9 und 50,5 %; bei FrontierCode 2.0-AA liegt Haiku 5.5 mit 34,9 gegen 27,2 % vorn. Preis 0,10 US-Dollar je Million Eingabe- und 0,50 je Million Ausgabetoken (bei Prompts über 200.000 Token 0,30 und 1,50). Verfügbar über Muse Code und die Meta Model API als muse-ember-1.0 sowie in Google Cloud und Oracle Cloud.",
+    "whyItMattered": "Meta besetzt damit die untere Preisstufe seiner Reihe: Muse Wonder für die schwersten Probleme, Muse Spark für Programmieren und Agenten, Muse Ember für den Massenbetrieb. Der Anspruch ist, dass kein Modell auf Artificial Analysis mehr Leistung für weniger Kosten je Aufgabe liefert; bei gleicher Indexzahl wie Haiku 5.5 und rund einem Drittel der Kosten wäre das ein spürbarer Preisdruck im Segment der kleinen Modelle. Die Einordnung stützt sich auf Artificial-Analysis-Läufe, die Meta selbst zusammenstellt, mit Ember-Kosten, die laut Meta auf vorgeschlagenen Preisen beruhen; bei den schwersten Programmieraufgaben (FrontierCode 2.0-AA) bleibt Haiku 5.5 vorn. Wie bei den übrigen Muse-Modellen sind die Gewichte nicht offen.",
+    "firstOfKind": "",
+    "sources": [
+      "https://research.meta.ai/blog/muse-ember"
+    ],
+    "disputed": false,
+    "note": "Nur über Metas eigene Plattformen und Cloud-Marktplätze; keine offenen Gewichte. Der interne Personal Superintelligence Index ist ein von Meta zusammengestellter Mischwert.",
+    "verificationNote": "Datum 09.11.2026 aus dem Meta-Blogbeitrag („November 9, 2026“, Veröffentlichungsdatum der Seite 2026-11-09, „available today“). Preise, Kontextfenster, Ausgabelimit und Modell-ID stehen im selben Beitrag; ein zweiter unabhängiger Bericht wurde nicht gelesen. Alle Leistungswerte sind Herstellerangaben von Meta; die Indexzahlen und Kosten je Aufgabe stammen aus Artificial-Analysis-Läufen vom 09.11.2026, wobei Meta die Ember-Kosten ausdrücklich als Schätzung zu vorgeschlagenen Preisen kennzeichnet. Terminal-Bench 4.0 nutzt je Modell das beste veröffentlichte Harness (mini-swe-agent für Ember, Claude Code für Haiku, Codex für Luna). Die Lizenzeinstufung „closed“ folgt daraus, dass der Beitrag nur API-Zugang nennt und keine Gewichte erwähnt."
+  },
+  {
+    "id": "image-seedream-5-5-2026-11-09",
+    "date": "2026-11-09",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "Seedream 5.5",
+    "org": "ByteDance (Seed)",
+    "house": "ByteDance",
+    "license": "closed",
+    "capability": "Bildmodell von ByteDance Seed, Nachfolger von Seedream 5.0 Pro, mit drei Schwerpunkten. Stabileres mehrstufiges Bearbeiten: nicht bearbeitete Bildbereiche bleiben pixelgenau erhalten, Farbverschiebungen entfallen, und dasselbe Bild lässt sich laut ByteDance über 100 aufeinanderfolgende Bearbeitungen weiterführen. Natives RGBA: Bilder werden direkt mit Alphakanal erzeugt, mit voller und teilweiser Transparenz und sauberen Kanten, sodass Elemente ohne separates Freistellen weiterverwendet werden können. Realistischere Bilder und klarerer Text: natürlichere Licht-, Material- und Hauttexturen, weniger Glanz und Überbelichtung, genauere komplexe Schriftzeichen und dicht gesetzter Kleintext; die Rate schwerer Textfehler sinkt nach ByteDance auf 0,4 %, die leichter auf 1,7 % (chinesisch und englisch). Auf der Plattform MagicArena stiegen Qualitätswerte und Nutzbarkeitsquoten in allen sechs getesteten Anwendungsfeldern gegenüber 5.0 Pro, bei Film/Fernsehen und Büroarbeit verdoppelte sich die Nutzbarkeitsquote; bei Realismus in Bild-zu-Bild-Aufgaben erreichte 5.5 +55,62 % im GSB-Vergleich mit dem Vorgänger. Eine Pro-Fassung der Seedream-5.5-Reihe kündigt ByteDance ohne Datum an.",
+    "whyItMattered": "Die beiden praktischen Neuerungen zielen auf Produktionsabläufe statt auf Bildqualität allein: Transparenz direkt aus dem Modell erspart den Schritt des Freistellens, und die pixelgenaue Erhaltung beantwortet das übliche Problem, dass Bilder nach mehreren Bearbeitungsrunden verwaschen oder die Farbe wechselt. Beides ist bei Bildmodellen bisher meist nachgelagerte Werkzeugarbeit. Die Belege sind dünn: Die Zahlen stammen aus ByteDances eigenen Bewertungen, die 100 Runden zeigt ein einzelnes Demobeispiel mit einer Person, und ein unabhängiger Vergleich lag am Prüftag nicht vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://seed.bytedance.com/en/blog/more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5",
+      "https://kju.ai/story/bytedance-rolls-out-seedream-5-5-across-creative-platforms"
+    ],
+    "disputed": false,
+    "note": "Zum Start in ByteDances eigenen Anwendungen (Doubao, Jimeng, Dreamina; laut Berichten auch CapCut und BytePlus). Die Angaben zur API gehen auseinander: Ein Bericht nennt Volcano Engine Ark als verfügbar, andere sprechen von „bald“ ohne Datum; offizielle Preise lagen am Prüftag nicht vor.",
+    "verificationNote": "Datum 09.11.2026 aus dem Seed-Blogbeitrag (Datumsfeld „2026-11-09“) und mehreren Berichten vom selben Tag (Kju mit Verweis auf Unite.AI, zzo.ai mit Verweis auf Jiemian und IT Home). Sämtliche Leistungsangaben sind Herstellerangaben aus ByteDances eigenen Bewertungen; die Methodik der MagicArena-Auswertung wurde nicht geprüft. Der Zugang über die API ist in den gelesenen Quellen widersprüchlich und deshalb nur als Notiz, nicht als Tatsache im Eintrag geführt. Die Einstufung „closed“ folgt daraus, dass Seedream-Modelle bislang nur gehostet erscheinen und der Beitrag keine Gewichte nennt."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "6. November 2026",
+  lastVerified: "10. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-06",
+  lastVerifiedISO: "2026-11-10",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 326,
+  total: 329,
   placeholder: false,
 };
