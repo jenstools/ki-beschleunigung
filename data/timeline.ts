@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 329 entries across text, image, video, audio,
- * late 2022 → 10 November 2026.
+ * German descriptions. 330 entries across text, image, video, audio,
+ * late 2022 → 12 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6382,15 +6382,35 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Zum Start in ByteDances eigenen Anwendungen (Doubao, Jimeng, Dreamina; laut Berichten auch CapCut und BytePlus). Die Angaben zur API gehen auseinander: Ein Bericht nennt Volcano Engine Ark als verfügbar, andere sprechen von „bald“ ohne Datum; offizielle Preise lagen am Prüftag nicht vor.",
     "verificationNote": "Datum 09.11.2026 aus dem Seed-Blogbeitrag (Datumsfeld „2026-11-09“) und mehreren Berichten vom selben Tag (Kju mit Verweis auf Unite.AI, zzo.ai mit Verweis auf Jiemian und IT Home). Sämtliche Leistungsangaben sind Herstellerangaben aus ByteDances eigenen Bewertungen; die Methodik der MagicArena-Auswertung wurde nicht geprüft. Der Zugang über die API ist in den gelesenen Quellen widersprüchlich und deshalb nur als Notiz, nicht als Tatsache im Eintrag geführt. Die Einstufung „closed“ folgt daraus, dass Seedream-Modelle bislang nur gehostet erscheinen und der Beitrag keine Gewichte nennt."
+  },
+  {
+    "id": "text-gemini-4-carbon-allgemein-2026-11-10",
+    "date": "2026-11-10",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 4 Carbon (allgemeine Verfügbarkeit)",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Googles Gemini 4 Carbon, am 28.10.2026 zunächst nur für ausgewählte Cyber-Verteidiger angekündigt, wird zwölf Tage später breit freigegeben: über die API in Google AI Studio und Gemini for business für alle zahlenden Entwickler und Unternehmen, außerdem für Abonnenten von Google AI Ultra in Google Antigravity, der Gemini-App und dem KI-Modus der Suche. Der Einführungspreis entspricht dem von Gemini 4 Argon: 2 US-Dollar je Million Eingabe- und 10 je Million Ausgabetoken, ab 1. Dezember 2026 (Einführungszeitraum endet am 30.11.) 4 und 20. Neu ist /swarm in Google Antigravity (Vorschau): aus einem einzelnen Prompt wird ein koordiniertes Team von Agenten, das sich in Echtzeit verfolgen lässt. Carbon übernimmt dabei Rollen mit dem tiefsten Denkaufwand wie Architektur, Koordination und Prüfung, schnellere und leichtere Modelle arbeiten in parallelen, isolierten Arbeitsbereichen, und gegnerische Prüfer testen jede Änderung. Als Beispiele nennt Google eine interaktive 3D-Rekonstruktion eines Bürogebäudes aus sieben Bebauungsplan-PDFs in zehn nächtlichen Durchläufen und ein Browserspiel, das Subagenten mit Blender, Three.js und Lyria-Musik koordinieren. In Vorabtests lag Carbon auf Balyasny Asset Managements Benchmark für allgemeine Finanzintelligenz an der Spitze von 23 Frontier-Konfigurationen und glich bei Hebbias Finanzrecherche-Test das beste getestete Modell aus. Forschende erhalten über Antigravity erweiterten Zugang (10.000 Plätze, sechs Monate kostenlos), Cyber-Verteidiger über das Fairwind-Programm.",
+    "whyItMattered": "Mit dem 10.11. wird aus der Ankündigung vom 28.10. ein Produkt, das sich kaufen lässt: Der gestufte Zugang, der Carbon zunächst als Cyber-Gate behandelte, fällt für Entwickler und Verbraucher, nur der Zugang für Verbraucher bleibt an das teuerste Abo (AI Ultra) gebunden. Preislich bleibt Google beim Argon-Niveau, aber nur befristet: Nach dem 30.11. verdoppelt sich der Preis. Der Schwerpunkt der Freigabe verschiebt sich von Cybersicherheit zu Mehr-Agenten-Arbeit; mit /swarm macht Google die Koordination mehrerer Modelle zum Produktmerkmal von Antigravity, in Konkurrenz zu den Agententeams anderer Coding-Werkzeuge. Die Belege sind Herstellerangaben und Vorabbewertungen von Geschäftspartnern; unabhängige Messungen zur breit verfügbaren Fassung lagen am Prüftag nicht vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    ],
+    "disputed": true,
+    "note": "Folge-Eintrag zu „Gemini 4 Carbon“ (28.10.2026), das nur für ausgewählte Cyber-Verteidiger galt. /swarm ist eine Vorschau in Antigravity. Der Preis von 2/10 US-Dollar gilt als Einführungspreis nur bis 30.11.2026 und nur für das Carbon-Modell für den öffentlichen Zugang.",
+    "verificationNote": "Datum 10.11.2026 aus dem Google-Blogbeitrag „Gemini 4 Carbon is now available“ (Veröffentlichungsdatum der Seite 2026-11-10). Es wurde nur diese eine Quelle gelesen; ein unabhängiger Bericht vom selben Tag liegt nicht vor, deshalb disputed. Alle Leistungsangaben sind Herstellerangaben, teils von Geschäftspartnern in Vorabtests. Eine in der Anfrage genannte Aussage, Carbon übertreffe auf mehreren unabhängigen Benchmarks alle externen Modelle bei mehr als halbierten Kosten, war in den gelesenen Abschnitten der Seite nicht zu finden und steht deshalb nicht im Eintrag. Der Einführungspreis stammt aus der Fußnote der Seite (Ende 30.11.2026, danach 4/20 US-Dollar). Wie bei Fable 5 (Wiederveröffentlichung) und Kimi K3 (Open Weights) ist die breite Freigabe ein eigener Eintrag zum früheren Ankündigungs-Eintrag."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "10. November 2026",
+  lastVerified: "12. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-10",
+  lastVerifiedISO: "2026-11-12",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 329,
+  total: 330,
   placeholder: false,
 };

@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-327 Meilenstein-Releases generativer KI, 27. Januar 2022 → 9. November 2026, über Text, Bild, Video und Audio.
+328 Meilenstein-Releases generativer KI, 27. Januar 2022 → 10. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **327**
-- Nach Modalität: Text 159, Bild 52, Video 52, Audio 64
-- Offene Gewichte: 103 · Geschlossen: 224
-- Als `disputed` markiert: 42
+- Releases gesamt: **328**
+- Nach Modalität: Text 160, Bild 52, Video 52, Audio 64
+- Offene Gewichte: 103 · Geschlossen: 225
+- Als `disputed` markiert: 43
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 681
-- Tagesgenaue Daten: 326 von 327 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 10. November 2026
+- Primärquellen-Links: 683
+- Tagesgenaue Daten: 327 von 328 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 12. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 329 Einträge: 327 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 330 Einträge: 328 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-42 von 327 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+43 von 328 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -74,3 +74,4 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-11-04 | Hy4 (Tencent (Hy)) | Datum 04.11.2026 aus der Tencent-Pressemitteilung (veröffentlicht 04.11.2026), bestätigt durch Unite.AI und Vals AI („released November 4, 2026“) in den Suchergebnissen. Disputed, weil (1) die Gewichte am Prüftag nicht veröffentlicht waren — „open“ folgt der Zusage von Tencent, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts, und nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig — und (2) alle Leistungsangaben Herstellerangaben aus interner Prüfung sind; die Modellseite hy.tencent.ai/research/hy4 lieferte beim Abruf nur eine Fehlerseite. Parameterzahl und Kontext für die Endfassung nennt die Mitteilung nicht; die Werte der Vorschau (770 Mrd./49 Mrd. aktiv) werden nicht übertragen. |
 | 2026-11-05 | GPT-6 Cyber (OpenAI) | Datum 05.11.2026 gegen zwei unabhängige Berichte vom selben Tag bestätigt (Fortune, 12:01 Uhr ET; SiliconANGLE, aktualisiert 17:52 Uhr ET); beide nennen den Start als „heute“. Die Primärquelle (OpenAI-Beitrag, System Card) wurde nicht gelesen; ein per Hinweis angegebener X-Beitrag von OpenAI wurde nicht abgerufen. Disputed, weil alle Leistungs- und Sicherheitszahlen Herstellerangaben aus zweiter Hand sind. Zwei per Hinweis gemeldete Werte, ExploitGym 48,5 % gegenüber 32,1 % bei GPT-5.6-Cyber sowie die API-Preise von 20/100 US-Dollar je Million Token, ließen sich in den gelesenen Quellen nicht bestätigen und stehen deshalb nicht im Eintrag. Die Zählung „viertes Cyber-Modell dieses Jahres“ stammt von beiden Berichten (Fortune nennt Versionen im April, Juni und August); die Einstufung als „Critical“ ist OpenAIs Selbstauskunft. |
 | 2026-11-05 | Inkling 2 Small (Thinking Machines Lab) | Datum 05.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 5, 2026“) und dem Artikel von Artificial Analysis (05.11.2026). Parameterzahl, Bildeingabe und die Gewichtszusage stehen im Blogbeitrag; Index-Wert, Benchmark-Vergleiche, Token- und Kostenangaben sowie die Preise stammen von Artificial Analysis. Disputed, weil die Gewichte am Prüftag nicht veröffentlicht waren; „open“ folgt der Apache-2.0-Zusage von Thinking Machines, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. Der Wert 13 für Inkling Small ergibt sich aus Artificial Analysis („up 18 points“); die Modellkarte wurde nicht gelesen. |
+| 2026-11-10 | Gemini 4 Carbon (allgemeine Verfügbarkeit) (Google DeepMind) | Datum 10.11.2026 aus dem Google-Blogbeitrag „Gemini 4 Carbon is now available“ (Veröffentlichungsdatum der Seite 2026-11-10). Es wurde nur diese eine Quelle gelesen; ein unabhängiger Bericht vom selben Tag liegt nicht vor, deshalb disputed. Alle Leistungsangaben sind Herstellerangaben, teils von Geschäftspartnern in Vorabtests. Eine in der Anfrage genannte Aussage, Carbon übertreffe auf mehreren unabhängigen Benchmarks alle externen Modelle bei mehr als halbierten Kosten, war in den gelesenen Abschnitten der Seite nicht zu finden und steht deshalb nicht im Eintrag. Der Einführungspreis stammt aus der Fußnote der Seite (Ende 30.11.2026, danach 4/20 US-Dollar). Wie bei Fable 5 (Wiederveröffentlichung) und Kimi K3 (Open Weights) ist die breite Freigabe ein eigener Eintrag zum früheren Ankündigungs-Eintrag. |
