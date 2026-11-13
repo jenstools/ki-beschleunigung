@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 330 entries across text, image, video, audio,
- * late 2022 → 12 November 2026.
+ * German descriptions. 332 entries across text, image, video, audio,
+ * late 2022 → 13 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6402,15 +6402,54 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Folge-Eintrag zu „Gemini 4 Carbon“ (28.10.2026), das nur für ausgewählte Cyber-Verteidiger galt. /swarm ist eine Vorschau in Antigravity. Der Preis von 2/10 US-Dollar gilt als Einführungspreis nur bis 30.11.2026 und nur für das Carbon-Modell für den öffentlichen Zugang.",
     "verificationNote": "Datum 10.11.2026 aus dem Google-Blogbeitrag „Gemini 4 Carbon is now available“ (Veröffentlichungsdatum der Seite 2026-11-10). Es wurde nur diese eine Quelle gelesen; ein unabhängiger Bericht vom selben Tag liegt nicht vor, deshalb disputed. Alle Leistungsangaben sind Herstellerangaben, teils von Geschäftspartnern in Vorabtests. Eine in der Anfrage genannte Aussage, Carbon übertreffe auf mehreren unabhängigen Benchmarks alle externen Modelle bei mehr als halbierten Kosten, war in den gelesenen Abschnitten der Seite nicht zu finden und steht deshalb nicht im Eintrag. Der Einführungspreis stammt aus der Fußnote der Seite (Ende 30.11.2026, danach 4/20 US-Dollar). Wie bei Fable 5 (Wiederveröffentlichung) und Kimi K3 (Open Weights) ist die breite Freigabe ein eigener Eintrag zum früheren Ankündigungs-Eintrag."
+  },
+  {
+    "id": "text-qwen4-max-preview-2026-11-11",
+    "date": "2026-11-11",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen4-Max-Preview",
+    "org": "Alibaba Cloud (Qwen)",
+    "house": "Alibaba",
+    "license": "closed",
+    "capability": "Vorschau auf die nächste Flaggschiff-Generation der Qwen-Familie: multimodal (Text, Bild und Video als Eingabe), Denkmodus standardmäßig an mit den Stufen low, medium und xhigh, Funktionsaufrufe, Websuche, strukturierte Ausgaben, 1 Mio. Token Kontext und bis zu 393.216 Ausgabe-Token, geteilt zwischen Denken und Antwort. Kompatibel mit der OpenAI-Chat-Completions- und Responses-API sowie der Anthropic-Messages-API. Zugang nur über den Token Plan von Alibaba Cloud Model Studio, kein Pay-as-you-go; die Vorschau läuft vom 11.11.2026, 10:00 Uhr, bis 25.11.2026, 0:00 Uhr (UTC+8), danach wird das Modell abgeschaltet.",
+    "whyItMattered": "Qwen4 löst die Qwen3.8-Reihe ab, deren Max-Vorschau im Juli erschien und deren Gewichte im August nachgereicht wurden. Diesmal ist der Zeitrahmen vorab fest: zwei Wochen Vorschau, ohne Änderungen am Modell, dann Abschaltung — die Vollversion steht aus. Auffällig ist ein Detail aus der Dokumentation: Bei Qwen4-Max-Preview zählt max_tokens gleich max_completion_tokens, begrenzt also Denken und Antwort zusammen; wer sein Limit bisher auf die Antwort allein ausgelegt hat, bekommt abgeschnittene Ausgaben. Das ist ein stiller Bruch gegenüber älteren Qwen-Modellen, die ihr Verhalten behalten. Benchmarks nennt Alibaba auf der Dokumentationsseite nicht.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview"
+    ],
+    "disputed": true,
+    "note": "Befristete Vorschau bis 25.11.2026 (UTC+8), nur über den Token Plan, danach Abschaltung. Die Vollversion und Gewichte sind nicht angekündigt; bei Erscheinen ist ein Folge-Eintrag nötig.",
+    "verificationNote": "Datum 11.11.2026 aus der Dokumentationsseite von Alibaba Cloud Model Studio (Stand der Seite 2026-11-11 13:33:57; Vorschau-Beginn 11.11.2026, 10:00 UTC+8). Es wurde nur diese eine Quelle gelesen; ein Blogbeitrag, eine Modellkarte oder ein unabhängiger Bericht liegt nicht vor, deshalb disputed. Die Seite nennt weder Parameterzahl noch Preise noch Benchmarkwerte; die Angaben zu Kontext, Ausgabelänge, Denkstufen und API-Kompatibilität sind Herstellerangaben der Dokumentation. Die Einordnung als „nächste Flaggschiff-Generation“ steht dort selbst. Hinweis aus der Meldung, die Vorschau sei nur über den Token Plan zugänglich, ist durch die Seite bestätigt."
+  },
+  {
+    "id": "text-gemini-4-hydrogen-2026-11-12",
+    "date": "2026-11-12",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 4 Hydrogen",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Schlankes Modell der Gemini-4-Reihe für schnelle agentische Arbeit, angepasst aus Gemini 4 Carbon: Text, Bild, Audio und Video als Eingabe, 1 Mio. Token Kontext, bis zu 64K Ausgabe-Token synchron und bis zu 1 Mio. über Hintergrund-Dekodierung. Vier Denkstufen (low, medium, high als Standard, neu xhigh). Preis pauschal über das gesamte Kontextfenster 1,50 US-Dollar je Million Eingabe- und 7,50 je Million Ausgabe-Token. Verfügbar für alle am selben Tag: Gemini API in AI Studio, Gemini for business, Google Antigravity, Android Studio, Gemini-App, Google Search und Google Sheets.",
+    "whyItMattered": "Hydrogen übertrifft laut Google das ältere Argon im Artificial-Analysis-Index (51 gegen 50 auf der Standardstufe, 54 auf xhigh) und ist gegenüber Gemini 3.8 Flash bei Terminal-Bench 4.1 von 18,2 % auf 57 % gesprungen, bei 2,5-facher Geschwindigkeit. Die eigentliche Verschiebung liegt in der Rollenverteilung: Google beschreibt Carbon und Argon als Modelle für die schwersten, langen Denkaufgaben und Hydrogen als Ausführer, auch als Teilagent unter einem Frontier-Modell — im Orchestrator-Aufbau auf Terminal-Bench 4.0 nahe an Carbons Erfolgsquote bei 24 % weniger Kontingent und 19 % kürzerer Laufzeit. Ein Mittelklassemodell ist damit nicht mehr der Ersatz für das große, sondern dessen Arbeitsteil. Die Modellkarte zeigt zugleich, wo es zurückliegt: OSWorld-2.1 77,6 % gegen 83,9 % bei Claude Sonnet 5.5, Terminal-Bench-Science 51,4 % gegen 59,9 %, und die unbegründeten Ablehnungen steigen gegenüber 3.8 Flash um 5,57 Prozentpunkte.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+      "https://deepmind.google/models/model-cards/gemini-4-hydrogen/"
+    ],
+    "disputed": false,
+    "note": "Der vollständige Sicherheitsbericht (Safety & Security Report) war am Prüftag noch nicht erschienen („in den kommenden Tagen“). Wissensstand des Modells: März 2026.",
+    "verificationNote": "Datum 12.11.2026 doppelt belegt: Google-Blogbeitrag „Introducing Gemini 4 Hydrogen“ (Nov 12, 2026) und Modellkarte bei Google DeepMind („Published 12 November 2026“). Alle Leistungsangaben sind Herstellerangaben; die Vergleichswerte gegen Claude Sonnet 5.5 und GPT-6.1 Terra hat Google selbst zusammengestellt, und der Wert „51 gegen 50“ stammt aus dem Artificial-Analysis-Index, wie ihn Google zitiert — die Seite von Artificial Analysis wurde nicht gelesen. Terminal-Bench 4.1 steht in der Modellkarte als „Cheating-adjusted“. Die Angabe „Platz 5 auf Agent Arena“ ist eine Momentaufnahme eines laufenden Rankings. Die Sicherheitszahlen (z. B. 12-fach weniger fehlausgerichtete Aktionen) stammen aus Googles eigenen Auswertungen. Die Verteilung (Gemini API, Gemini-App, Search) folgt der Modellkarte und dem Blogbeitrag."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "12. November 2026",
+  lastVerified: "13. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-12",
+  lastVerifiedISO: "2026-11-13",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 330,
+  total: 332,
   placeholder: false,
 };
