@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-330 Meilenstein-Releases generativer KI, 27. Januar 2022 → 12. November 2026, über Text, Bild, Video und Audio.
+332 Meilenstein-Releases generativer KI, 27. Januar 2022 → 17. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **330**
-- Nach Modalität: Text 162, Bild 52, Video 52, Audio 64
-- Offene Gewichte: 103 · Geschlossen: 227
-- Als `disputed` markiert: 44
+- Releases gesamt: **332**
+- Nach Modalität: Text 164, Bild 52, Video 52, Audio 64
+- Offene Gewichte: 103 · Geschlossen: 229
+- Als `disputed` markiert: 45
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 686
-- Tagesgenaue Daten: 329 von 330 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 13. November 2026
+- Primärquellen-Links: 690
+- Tagesgenaue Daten: 331 von 332 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 17. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 332 Einträge: 330 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 334 Einträge: 332 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-44 von 330 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+45 von 332 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -76,3 +76,4 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-11-05 | Inkling 2 Small (Thinking Machines Lab) | Datum 05.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 5, 2026“) und dem Artikel von Artificial Analysis (05.11.2026). Parameterzahl, Bildeingabe und die Gewichtszusage stehen im Blogbeitrag; Index-Wert, Benchmark-Vergleiche, Token- und Kostenangaben sowie die Preise stammen von Artificial Analysis. Disputed, weil die Gewichte am Prüftag nicht veröffentlicht waren; „open“ folgt der Apache-2.0-Zusage von Thinking Machines, deshalb steht der Eintrag in OPEN_WEIGHTS_PENDING in lib/clusters.ts. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Kimi K3 nötig. Der Wert 13 für Inkling Small ergibt sich aus Artificial Analysis („up 18 points“); die Modellkarte wurde nicht gelesen. |
 | 2026-11-10 | Gemini 4 Carbon (allgemeine Verfügbarkeit) (Google DeepMind) | Datum 10.11.2026 aus dem Google-Blogbeitrag „Gemini 4 Carbon is now available“ (Veröffentlichungsdatum der Seite 2026-11-10). Es wurde nur diese eine Quelle gelesen; ein unabhängiger Bericht vom selben Tag liegt nicht vor, deshalb disputed. Alle Leistungsangaben sind Herstellerangaben, teils von Geschäftspartnern in Vorabtests. Eine in der Anfrage genannte Aussage, Carbon übertreffe auf mehreren unabhängigen Benchmarks alle externen Modelle bei mehr als halbierten Kosten, war in den gelesenen Abschnitten der Seite nicht zu finden und steht deshalb nicht im Eintrag. Der Einführungspreis stammt aus der Fußnote der Seite (Ende 30.11.2026, danach 4/20 US-Dollar). Wie bei Fable 5 (Wiederveröffentlichung) und Kimi K3 (Open Weights) ist die breite Freigabe ein eigener Eintrag zum früheren Ankündigungs-Eintrag. |
 | 2026-11-11 | Qwen4-Max-Preview (Alibaba Cloud (Qwen)) | Datum 11.11.2026 aus der Dokumentationsseite von Alibaba Cloud Model Studio (Stand der Seite 2026-11-11 13:33:57; Vorschau-Beginn 11.11.2026, 10:00 UTC+8). Es wurde nur diese eine Quelle gelesen; ein Blogbeitrag, eine Modellkarte oder ein unabhängiger Bericht liegt nicht vor, deshalb disputed. Die Seite nennt weder Parameterzahl noch Preise noch Benchmarkwerte; die Angaben zu Kontext, Ausgabelänge, Denkstufen und API-Kompatibilität sind Herstellerangaben der Dokumentation. Die Einordnung als „nächste Flaggschiff-Generation“ steht dort selbst. Hinweis aus der Meldung, die Vorschau sei nur über den Token Plan zugänglich, ist durch die Seite bestätigt. |
+| 2026-11-17 | Hy4 Flash (Tencent (Hy)) | Datum 17.11.2026 aus der Tencent-Pressemitteilung (PRNewswire, 17.11.2026, „today announced“; gelesen über die Yahoo-Finance-Kopie). Disputed, weil Dataconomy den Start auf den 16.11. legt und keine zweite unabhängige Quelle vorliegt; gezählt wird das Datum der Pressemitteilung. Alle Leistungsangaben sind Herstellerangaben aus Tencents internem WorkIndex und einer Blindprüfung mit eigenen WorkBuddy-Nutzern; der Vergleichswert 18-fach niedrigere Kosten gegenüber Claude Haiku 5.5 stammt aus Dataconomy nach Tencent. Die Modellseite hy.tencent.ai und eine Modellkarte wurden nicht gelesen. Dass die Gewichte geschlossen sind, ist der Stand am Prüftag („plans to open-source“). |

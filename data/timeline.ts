@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 332 entries across text, image, video, audio,
- * late 2022 → 13 November 2026.
+ * German descriptions. 334 entries across text, image, video, audio,
+ * late 2022 → 17 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6419,7 +6419,7 @@ export const entries: Entry[] = [
       "https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview"
     ],
     "disputed": true,
-    "note": "Befristete Vorschau bis 25.11.2026 (UTC+8), nur über den Token Plan, danach Abschaltung. Die Vollversion und Gewichte sind nicht angekündigt; bei Erscheinen ist ein Folge-Eintrag nötig.",
+    "note": "Befristete Vorschau bis 25.11.2026 (UTC+8), nur über den Token Plan, danach Abschaltung. Die Vollversion erschien am 16.11.2026 (Eintrag „Qwen4-Max“), geschlossen; offene Qwen4-Gewichte sind nur für kleinere Modelle angekündigt.",
     "verificationNote": "Datum 11.11.2026 aus der Dokumentationsseite von Alibaba Cloud Model Studio (Stand der Seite 2026-11-11 13:33:57; Vorschau-Beginn 11.11.2026, 10:00 UTC+8). Es wurde nur diese eine Quelle gelesen; ein Blogbeitrag, eine Modellkarte oder ein unabhängiger Bericht liegt nicht vor, deshalb disputed. Die Seite nennt weder Parameterzahl noch Preise noch Benchmarkwerte; die Angaben zu Kontext, Ausgabelänge, Denkstufen und API-Kompatibilität sind Herstellerangaben der Dokumentation. Die Einordnung als „nächste Flaggschiff-Generation“ steht dort selbst. Hinweis aus der Meldung, die Vorschau sei nur über den Token Plan zugänglich, ist durch die Seite bestätigt."
   },
   {
@@ -6441,15 +6441,55 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Der vollständige Sicherheitsbericht (Safety & Security Report) war am Prüftag noch nicht erschienen („in den kommenden Tagen“). Wissensstand des Modells: März 2026.",
     "verificationNote": "Datum 12.11.2026 doppelt belegt: Google-Blogbeitrag „Introducing Gemini 4 Hydrogen“ (Nov 12, 2026) und Modellkarte bei Google DeepMind („Published 12 November 2026“). Alle Leistungsangaben sind Herstellerangaben; die Vergleichswerte gegen Claude Sonnet 5.5 und GPT-6.1 Terra hat Google selbst zusammengestellt, und der Wert „51 gegen 50“ stammt aus dem Artificial-Analysis-Index, wie ihn Google zitiert — die Seite von Artificial Analysis wurde nicht gelesen. Terminal-Bench 4.1 steht in der Modellkarte als „Cheating-adjusted“. Die Angabe „Platz 5 auf Agent Arena“ ist eine Momentaufnahme eines laufenden Rankings. Die Sicherheitszahlen (z. B. 12-fach weniger fehlausgerichtete Aktionen) stammen aus Googles eigenen Auswertungen. Die Verteilung (Gemini API, Gemini-App, Search) folgt der Modellkarte und dem Blogbeitrag."
+  },
+  {
+    "id": "text-qwen4-max-2026-11-16",
+    "date": "2026-11-16",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Qwen4-Max",
+    "org": "Alibaba Cloud (Qwen)",
+    "house": "Alibaba",
+    "license": "closed",
+    "capability": "Erstes Modell der Qwen4-Generation und Alibabas bislang fähigstes: Mixture-of-Experts mit 2,4 Billionen Parametern gesamt, davon 71 Mrd. aktiv pro Token (Qwen3.8-Max: rund 95 Mrd. aktiv bei gleicher Gesamtgröße), dazu laut Qwen-Blog 328 Mrd. N-Gram-Embedding-Parameter, Gated-DeltaNet-Schichten und ein neues Sparse-Attention-Verfahren gegen die Kosten langer Kontexte. Native Bildverarbeitung (Text, Bild und Video als Eingabe), 1 Mio. Token Kontext. Zugang über QwenCloud (Token Plan und API) sowie in QwenWork, Qwen Studio und Qoder. API-Preis 1,50 US-Dollar je Million Eingabe- und 4,50 je Million Ausgabe-Token (Qwen3.8-Max: 2 und 6), Cache-Treffer 0,075. Die Gewichte bleiben geschlossen; kleinere Qwen4-Modelle sollen als offene Gewichte folgen, ohne Termin.",
+    "whyItMattered": "Alibaba verkauft Qwen4-Max nicht über Spitzenwerte, sondern über Kosten je Aufgabe: Auf dem hauseigenen Test Work360 (721 Fachgebiete) liegt es mit 52,69 vor Qwen3.8-Max (47,74), braucht auf der Stufe High 35 % weniger Token, und die durchschnittlichen Kosten je Aufgabe sinken laut Alibaba von 4,43 auf 1,67 US-Dollar (rund 62 %). Das Bild der veröffentlichten Benchmarks ist gemischt: Auf DeepSWE v1.1 liegt es mit 75,7 knapp vor Claude Opus 5.5 (74,2), auf Terminal-Bench 4.0 mit 48,5 deutlich hinter Opus 5.5 (59,6) und Kimi K3.1 (67,2); auf der Code Arena steht es auf Platz 6. Bemerkenswert ist der Kurswechsel bei der Offenheit: Qwen3.8-Max wurde nach der Preview offengelegt, die Spitze der neuen Generation bleibt zu, offen werden nur die kleineren Modelle. Dazu kommt ein ausdrücklicher Sicherheitsabschnitt: Trainingsdaten wurden nach Aufgabenzweck gefiltert, Defensives (Schwachstellen finden und beheben) blieb, Offensives wurde entfernt; bei einem Secure-Coding-Test stieg der Anteil der Funktionen, die Funktions- und Sicherheitsprüfung bestehen, von 22,0 % auf 31,8 % (laut MLQ nach dem Qwen-Blog). Als Anwendungsbeleg nennt Alibaba einen 48-Stunden-Agentenlauf, der ein Kühlmittelmolekül für Chips entwarf, das im Labor bestätigt wurde.",
+    "firstOfKind": "",
+    "sources": [
+      "https://qwen.ai/blog?id=qwen4-max",
+      "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783"
+    ],
+    "disputed": false,
+    "note": "Folge-Eintrag zu „Qwen4-Max-Preview“ (11.11.2026), dessen Vorschau am 25.11.2026 abgeschaltet wird. Nur gehostet; offene Qwen4-Modelle sind angekündigt, nicht datiert. Ein Folge-Eintrag ist nötig, sobald sie erscheinen.",
+    "verificationNote": "Datum 16.11.2026 gegen den Alibaba-Cloud-Blogbeitrag (Hangzhou, 16. November 2026) und drei unabhängige Berichte vom selben Tag bestätigt (TNW: „Monday, 16 November“; MLQ.ai; Quartz); der Qwen-Blogbeitrag selbst (qwen.ai/blog?id=qwen4-max) ließ sich mit dem Abrufwerkzeug nicht laden, seine Angaben (328 Mrd. Embedding-Parameter, Gated DeltaNet, Preise, Token-Vergleiche, Secure-Coding-Werte) stammen deshalb aus MLQ.ai, das ihn zitiert, und aus TNW. Ein per Hinweis angegebener X-Beitrag von Qwen wurde nicht abgerufen. Alle Leistungs- und Kostenangaben sind Herstellerangaben; Work360 ist ein von Alibaba gebauter Test. Die Vergleichswerte DeepSWE v1.1 und Terminal-Bench 4.0 stammen aus Alibabas Diagrammen laut TNW und FourWeekMBA und wurden nicht an der Primärquelle geprüft. Abweichungen zwischen den Quellen: Der Blog nennt 35 % weniger Token bei High und rund 60 % niedrigere Kosten je Aufgabe, MLQ rechnet 24 % bei Xhigh und 62 % (4,43 → 1,67 US-Dollar); in der Meldung war von rund 50 % weniger Token die Rede, das ist in keiner gelesenen Quelle belegt und steht deshalb nicht im Eintrag. Die Preise (Singapur) stammen aus MLQ.ai nach Alibaba Cloud Model Studio, der Cache-Preis 0,075 auch aus dem Alibaba-Cloud-Blog."
+  },
+  {
+    "id": "text-hy4-flash-2026-11-17",
+    "date": "2026-11-17",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Hy4 Flash",
+    "org": "Tencent (Hy)",
+    "house": "Tencent",
+    "license": "closed",
+    "capability": "Kostengünstiges Modell der Hy4-Reihe für Alltagsarbeit: 224 Mrd. Parameter gesamt (darunter 64 Mrd. Engram-Parameter), nur 12 Mrd. aktiv pro Token. Hybride Aufmerksamkeit, LatentMoE und Engram; der KV-Cache ist laut Tencent ein Sechstel so groß wie bei Hy4 und ein Vierundzwanzigstel wie bei Hy3. Multimodale Eingabe, 1 Mio. Token Kontext (laut TokenHub-Dokumentation höchstens 960.000 Eingabe- und 64.000 Ausgabe-Token), über 150 Token pro Sekunde. Preis rund 0,070 US-Dollar je Million Eingabe-, 0,281 je Million Ausgabe- und 0,003 je Million Cache-Token. Verfügbar in Tencent Cloud TokenHub, WorkBuddy, Yuanbao, WeCom, QQ, ima und Marvis; OpenRouter soll folgen. Bis 30.11.2026 in WorkBuddy kostenlos und über TokenHub zum halben Preis.",
+    "whyItMattered": "Tencent legt Hy4 Flash nicht über Benchmarks aus, sondern über Arbeitskosten: Auf dem hauseigenen WorkIndex (Folien, Dokumente, Tabellen, Audio und Video) liegt es nach Tencent leicht vor dem 770-Mrd.-Modell Hy4 Preview und kostet je Aufgabe ein Dreizehntel davon, ein Zwanzigstel von Hy4 und ein Achtel von DeepSeek-V4.1-Flash-1017. In einer Blindprüfung mit 85 Tencent-Mitarbeitern (259 Aufgaben, 27 Kategorien) erreichte es 2,79 Punkte gegen 2,81 für Claude Haiku 5.5 bei laut Tencent rund 18-fach niedrigeren Kosten je Aufgabe. Die Aufteilung ist bewusst: Hy4 für lange Programmieraufgaben, Flash für alles Übrige. Das ist nach Kimi, Qwen und Gemini der nächste Fall, in dem ein kleines aktives Modell das frühere Flaggschiff als Alltagswerkzeug ablöst.",
+    "firstOfKind": "",
+    "sources": [
+      "https://www.prnewswire.com/news-releases/tencent-launches-hy4-flash-to-power-high-speed-cost-efficient-ai-deployment-for-everyday-workflows-302941875.html",
+      "https://dataconomy.com/2026/11/17/tencent-launches-low-cost-hy4-flash-ai-model-for-office-work/"
+    ],
+    "disputed": true,
+    "note": "Zum Start nur gehostet; Tencent will die Gewichte öffnen, nennt aber weder Termin noch Lizenz. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Qwen3.8-Max (Open Weights) nötig.",
+    "verificationNote": "Datum 17.11.2026 aus der Tencent-Pressemitteilung (PRNewswire, 17.11.2026, „today announced“; gelesen über die Yahoo-Finance-Kopie). Disputed, weil Dataconomy den Start auf den 16.11. legt und keine zweite unabhängige Quelle vorliegt; gezählt wird das Datum der Pressemitteilung. Alle Leistungsangaben sind Herstellerangaben aus Tencents internem WorkIndex und einer Blindprüfung mit eigenen WorkBuddy-Nutzern; der Vergleichswert 18-fach niedrigere Kosten gegenüber Claude Haiku 5.5 stammt aus Dataconomy nach Tencent. Die Modellseite hy.tencent.ai und eine Modellkarte wurden nicht gelesen. Dass die Gewichte geschlossen sind, ist der Stand am Prüftag („plans to open-source“)."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "13. November 2026",
+  lastVerified: "17. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-13",
+  lastVerifiedISO: "2026-11-17",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 332,
+  total: 334,
   placeholder: false,
 };
