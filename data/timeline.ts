@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 334 entries across text, image, video, audio,
- * late 2022 → 17 November 2026.
+ * German descriptions. 335 entries across text, image, video, audio,
+ * late 2022 → 18 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6481,15 +6481,37 @@ export const entries: Entry[] = [
     "disputed": true,
     "note": "Zum Start nur gehostet; Tencent will die Gewichte öffnen, nennt aber weder Termin noch Lizenz. Nach dem Erscheinen ist ein Folge-Eintrag nach dem Muster von Qwen3.8-Max (Open Weights) nötig.",
     "verificationNote": "Datum 17.11.2026 aus der Tencent-Pressemitteilung (PRNewswire, 17.11.2026, „today announced“; gelesen über die Yahoo-Finance-Kopie). Disputed, weil Dataconomy den Start auf den 16.11. legt und keine zweite unabhängige Quelle vorliegt; gezählt wird das Datum der Pressemitteilung. Alle Leistungsangaben sind Herstellerangaben aus Tencents internem WorkIndex und einer Blindprüfung mit eigenen WorkBuddy-Nutzern; der Vergleichswert 18-fach niedrigere Kosten gegenüber Claude Haiku 5.5 stammt aus Dataconomy nach Tencent. Die Modellseite hy.tencent.ai und eine Modellkarte wurden nicht gelesen. Dass die Gewichte geschlossen sind, ist der Stand am Prüftag („plans to open-source“)."
+  },
+  {
+    "id": "text-gpt-6-2-astra-sol-2026-11-17",
+    "date": "2026-11-17",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "GPT-6.2 Astra & GPT-6.2 Sol",
+    "org": "OpenAI",
+    "house": "OpenAI",
+    "license": "closed",
+    "capability": "OpenAI bringt zwei Modelle am selben Tag: GPT-6.2 Astra als neues Frontier-Modell für die schwersten Projekte und GPT-6.2 Sol als effizientes Arbeitsmodell für den Alltag. Astra zielt auf Folien, Tabellen und Dokumente, die Vorlagen und Fachkonventionen genauer folgen, auf saubereren Code, Frontends für Websites, Spiele und 3D sowie auf wissenschaftliche Arbeit; beide nutzen laut OpenAI weniger Ausgabe-Token für bessere Ergebnisse. Kontext laut OpenAI-Modellseite 1.050.000 Token bei höchstens 128.000 Ausgabe-Token. In ChatGPT Work und Codex für Plus, Pro, Enterprise und Edu (Enterprise und Edu nach Freigabe durch den Administrator), in der API als gpt-6.2-astra und gpt-6.2-sol, mit Ultrafast zum Start. API-Preise je Million Token: Astra 8 US-Dollar Eingabe, 0,40 zwischengespeichert, 40 Ausgabe (20 % weniger als GPT-6 Astra, Cache 60 % weniger); Sol unverändert gegenüber GPT-6.1 Sol bei 2, 0,10 und 10.",
+    "whyItMattered": "Zum ersten Mal kommt ein Spitzenmodell mit gesenktem Preis: Astra kostet 20 % weniger als sein Vorgänger und soll laut OpenAI auf Agents’ Last Exam 5,2 Punkte mehr erreichen bei weniger als einem Drittel der Kosten je Aufgabe, und 5,5 Punkte vor Claude Fable 5.2 bei 5 % von dessen Kosten. Sol kommt auf FrontierCode 2.0 bis auf 0,5 Punkte an Astra heran, bei etwa einem Fünftel der Kosten, und übertrifft auf LifeVal GPT-6 Astra bei etwa einem Siebtel — das Alltagsmodell holt damit das Flaggschiff der Vorgängergeneration ein. Der Index von Artificial Analysis sieht die Modelle nur auf Platz 2 hinter Claude Fable 5.2 (Astra 62, Sol 57), und im Coding Agent Index ist Astra laut Berichten nicht besser als sein Vorgänger. Der Rang 1 mit 1.318 Elo gilt dem AA-3D-Test (Menschen wählen zwischen zwei interaktiven 3D-Erlebnissen), nicht einer Gesamtwertung; dort folgen Fable 5.2 mit 1.271 und Sol mit 1.259. Sicherheitsseitig sind beide nach OpenAIs Preparedness Framework in Cybersicherheit auf „Critical“ und bei Biologie und Chemie auf „High“ eingestuft und starten mit strengeren Schutzmaßnahmen, die auch legitime Sicherheitsforschung einschränken; Astra ist das erste extern veröffentlichte OpenAI-Modell, das die Schwelle „High“ für KI-Selbstverbesserung erreicht, Sol liegt darunter.",
+    "firstOfKind": "",
+    "sources": [
+      "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+      "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+      "https://artificialanalysis.ai/models/gpt-6-2-astra",
+      "https://artificialanalysis.ai/models/gpt-6-2-sol"
+    ],
+    "disputed": false,
+    "note": "Gleichzeitig erschien „Astra for Law 6.2“, OpenAIs Konfiguration von Astra für Juristen; sie hat hier keinen eigenen Eintrag. Beide Modelle waren zum Start auch bei Amazon Bedrock, GitHub Copilot und Vercel AI Gateway gemeldet.",
+    "verificationNote": "Datum 17.11.2026 aus der OpenAI-Ankündigung („Starting today“) und der System Card (datiert 17.11.2026), gestützt durch den API-Changelog vom 17.11. und unabhängige Berichte vom selben Tag (MobiDevices, AIIntel, Aionity); Artificial Analysis führt beide Modelle am 17.11. Alle Leistungs- und Kostenangaben sind Herstellerangaben aus OpenAIs eigenen Läufen; unabhängig geprüft ist nur der Index von Artificial Analysis (Astra 62, Sol 57, Rang 2). Bei einer Meldung war von einer „internen Elo-Liste“ mit Rang 1 und Rang 3 die Rede: Das ist AA-3D von Artificial Analysis, ein Blindvergleich durch Menschen, kein allgemeines Elo-Ranking; die Platzierung (Astra 1.318 vor Fable 5.2 mit 1.271, Sol dahinter mit 1.259, also Rang 3) steht so auf der OpenAI-Seite. Preise gegen die OpenAI-Seite und die Modellseiten (aimodelbuffet, OpenRouter-Listung) abgeglichen; Zuschläge über 272.000 Eingabe-Token und Ultrafast-Preise stehen nicht im Eintrag. Kontextfenster und Ausgabegrenze stammen von einer Zweitquelle (aimodelbuffet nach developers.openai.com), die Modellseite selbst wurde nicht gelesen. Die System Card wurde nur über die Abfrage der Übersicht gelesen, nicht vollständig; die Einstufungen Critical und High stehen auch auf der Ankündigung. Die Behauptung zum Coding Agent Index stammt aus Berichten über Artificial Analysis und wurde dort nicht geprüft."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "17. November 2026",
+  lastVerified: "18. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-17",
+  lastVerifiedISO: "2026-11-18",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 334,
+  total: 335,
   placeholder: false,
 };
