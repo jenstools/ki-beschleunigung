@@ -2,8 +2,8 @@ import type { Entry } from "./types";
 
 /**
  * Verified dataset — multi-agent research + adversarial date-verification,
- * German descriptions. 335 entries across text, image, video, audio,
- * late 2022 → 18 November 2026.
+ * German descriptions. 341 entries across text, image, video, audio,
+ * late 2022 → 22 November 2026.
  */
 export const entries: Entry[] = [
   {
@@ -6503,15 +6503,139 @@ export const entries: Entry[] = [
     "disputed": false,
     "note": "Gleichzeitig erschien „Astra for Law 6.2“, OpenAIs Konfiguration von Astra für Juristen; sie hat hier keinen eigenen Eintrag. Beide Modelle waren zum Start auch bei Amazon Bedrock, GitHub Copilot und Vercel AI Gateway gemeldet.",
     "verificationNote": "Datum 17.11.2026 aus der OpenAI-Ankündigung („Starting today“) und der System Card (datiert 17.11.2026), gestützt durch den API-Changelog vom 17.11. und unabhängige Berichte vom selben Tag (MobiDevices, AIIntel, Aionity); Artificial Analysis führt beide Modelle am 17.11. Alle Leistungs- und Kostenangaben sind Herstellerangaben aus OpenAIs eigenen Läufen; unabhängig geprüft ist nur der Index von Artificial Analysis (Astra 62, Sol 57, Rang 2). Bei einer Meldung war von einer „internen Elo-Liste“ mit Rang 1 und Rang 3 die Rede: Das ist AA-3D von Artificial Analysis, ein Blindvergleich durch Menschen, kein allgemeines Elo-Ranking; die Platzierung (Astra 1.318 vor Fable 5.2 mit 1.271, Sol dahinter mit 1.259, also Rang 3) steht so auf der OpenAI-Seite. Preise gegen die OpenAI-Seite und die Modellseiten (aimodelbuffet, OpenRouter-Listung) abgeglichen; Zuschläge über 272.000 Eingabe-Token und Ultrafast-Preise stehen nicht im Eintrag. Kontextfenster und Ausgabegrenze stammen von einer Zweitquelle (aimodelbuffet nach developers.openai.com), die Modellseite selbst wurde nicht gelesen. Die System Card wurde nur über die Abfrage der Übersicht gelesen, nicht vollständig; die Einstufungen Critical und High stehen auch auf der Ankündigung. Die Behauptung zum Coding Agent Index stammt aus Berichten über Artificial Analysis und wurde dort nicht geprüft."
+  },
+  {
+    "id": "text-mai-code-2-2026-11-17",
+    "date": "2026-11-17",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "MAI Code 2 & MAI Code 2 Flash",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Zwei Coding-Modelle von Microsoft AI für alltägliche Programmieraufgaben in Unternehmen, vorgestellt auf der Ignite als Teil von sieben neuen MAI-Modellen: MAI Code 2 für Produktionsreife, Debugging, Änderungen über mehrere Dateien, Überlegungen über das ganze Repository und Oberflächen; MAI Code 2 Flash für große Mengen einfacher Aufgaben wie Codeerklärungen, gezielte Änderungen und schnelle Iterationen. Beide sind in GitHub Copilot verfügbar, Code 2 Flash zusätzlich als Vorschau mit begrenztem Zugang in Microsoft Foundry; OpenRouter, Vercel, Hermes, OpenCode und Kilo sollen folgen. Beide werden zum Start zum halben Preis angeboten, absolute Preise nennt Microsoft nicht.",
+    "whyItMattered": "Microsoft verkauft die Modelle über den Preis, nicht über die Spitze: Über vier Tests, die Microsoft nach typischen GitHub-Copilot-Aufgaben ausgewählt hat (DeepSWE 1.1, Terminal Bench 2.1, SWE-Atlas, FrontierCode v1.1), erreicht Code 2 laut Microsoft 98 % der Leistung von GPT-6.1 Sol bei 40 % der Kosten und 96 % von Claude Opus 5.5 bei 5 %; Code 2 Flash liegt bei GPT-6 Luna und Claude Haiku 5.5 gleichauf, bei 65 % bzw. 20 % der Kosten. In einem Blindvergleich von Frontend-Arbeit bevorzugten Entwickler Code 2 in 64 % der Fälle gegenüber GPT-6 Sol. Die Kostenvergleiche beruhen auf dem halbierten Einführungspreis von Microsoft selbst.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/",
+      "https://microsoft.ai/news/microsoft-ignite-2026"
+    ],
+    "disputed": false,
+    "note": "Gleichzeitig erschienen MAI Cyber 2 Flash, MAI Image 2.7 (eigener Eintrag), MAI Realtime 1 (eigener Eintrag) und Dragon Copilot Transcribe auf Basis von MAI Transcribe 2; diese haben hier keinen eigenen Eintrag oder stehen schon im Datensatz.",
+    "verificationNote": "Datum 17.11.2026 aus den Microsoft-AI-Beiträgen (Ignite, 17. November 2026) und dem Sammelbeitrag zu den sieben Modellen; die Beiträge wurden gelesen, ein unabhängiger Bericht zu den Code-Modellen selbst wurde nicht gelesen. Alle Leistungs- und Preisvergleiche sind Herstellerangaben; sie wurden auf Microsofts interner Prüfplattform MSBench mit der GitHub-Copilot-CLI ohne Teilagenten erhoben, die Kosten von Code 2 und Code 2 Flash sind zu ihrem 50-%-Einführungspreis angesetzt, FrontierCode-Werte stammen von Artificial Analysis. Modellkarten, Preislisten und Parameterzahlen wurden nicht gefunden."
+  },
+  {
+    "id": "image-mai-image-2-7-2026-11-17",
+    "date": "2026-11-17",
+    "datePrecision": "day",
+    "modality": "image",
+    "name": "MAI Image 2.7 & MAI Image 2.7 Flash",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Bilderzeugung und Bildbearbeitung von Microsoft AI in zwei Stufen: MAI Image 2.7 für Qualität (rund 35 US-Dollar je 1.000 Bilder) und MAI Image 2.7 Flash für große Mengen (rund 10 US-Dollar je 1.000 Bilder). Feinere Steuerung beim Bearbeiten, Bearbeitung aus bis zu fünf Referenzen und transparente Hintergründe. Öffentliche Vorschau in Microsoft Foundry und bei Partnern wie fal, Genspark, OpenRouter und Vercel. Dazu startet Microsoft Canvas, einen interaktiven Arbeitsbereich auf Basis des Flash-Modells.",
+    "whyItMattered": "Platz 1 bei der Bildbearbeitung im Artificial-Analysis-Ranking (AA-Image-Editing v2.1, 1.215 Elo, Stand 16.11.2026) — mit nur 4 Elo Vorsprung vor GPT Image 2.6 Sunburst (max), also praktisch gleichauf, aber laut Microsoft bei einem Fünftel des Preises. Bei der reinen Bilderzeugung liegt es nach Microsoft auf Platz 4 und damit hinter nur einem anderen Haus; auf Arena gehört Microsoft in Erzeugung und Bearbeitung zu den zwei besten Häusern. Beide Modelle liegen auf der Qualität-Kosten-Pareto-Grenze. Die Rangangaben sind Herstellerangaben, und die Abstände an der Spitze sind klein.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/introducing-mai-image-2-7/",
+      "https://microsoft.ai/news/microsoft-ignite-2026"
+    ],
+    "disputed": true,
+    "note": "Öffentliche Vorschau, kein allgemeiner Start. Ein früherer Microsoft-Beitrag vom 27.10.2026 („MAI Image 2.7 debuts above GPT Image 2.5 Flare on Artificial Analysis and #3 on Arena“) zeigt, dass das Modell bereits vorher in Ranglisten stand.",
+    "verificationNote": "Datum 17.11.2026 aus dem Microsoft-AI-Beitrag „MAI Image 2.7: Frontier quality at a fraction of the cost“ (17. November 2026) und dem Ignite-Sammelbeitrag. Disputed, weil Microsoft in den verwandten Beiträgen einen Eintrag vom 27.10.2026 führt, in dem das Modell schon auf Artificial Analysis und Arena erschien; der Beitrag wurde nicht gelesen, deshalb ist offen, ob das öffentliche Erscheinen schon damals begann. Gezählt wird der Tag der öffentlichen Vorschau. Rangangaben (AA 1.215 Elo, Vorsprung 4 Elo; Arena Top 2) stammen aus den Fußnoten des Microsoft-Beitrags; die Elo-Zahlen und die Rangplätze wurden nicht auf der Artificial-Analysis-Seite selbst geprüft. Die Preise (35 und 10 US-Dollar je 1.000 Bilder) sind Microsofts Angabe für die Vorschau."
+  },
+  {
+    "id": "audio-mai-realtime-1-2026-11-17",
+    "date": "2026-11-17",
+    "datePrecision": "day",
+    "modality": "audio",
+    "name": "MAI Realtime 1",
+    "org": "Microsoft AI",
+    "house": "Microsoft",
+    "license": "closed",
+    "capability": "Erstes Sprache-zu-Sprache-Modell von Microsoft AI für flüssige Echtzeit-Gespräche in Unternehmensanwendungen, etwa im Dynamics-365-Contact-Center. Grundnutzung ab 0,01 US-Dollar je Audiominute; das Schlussfolgern wird getrennt abgerechnet mit 1 US-Dollar je Million Eingabe- und 5 je Million Ausgabe-Token. Ausprobieren in MAI Labs, sonst nur über eine Vorschau mit begrenztem Zugang in Microsoft Foundry, deren Teilnehmer bis zur öffentlichen Vorschau nichts zahlen.",
+    "whyItMattered": "Microsoft stellt sich gegen GPT-Realtime 2.1 und gibt an, bei Qualität, Geschwindigkeit und Preis vorn zu liegen; es liegt auf der Pareto-Grenze von Preis und Leistung bei Big Bench Audio (Sprachschlussfolgern) und Tau-Voice (Erfolg bei Agentenaufgaben am Telefon). Der Preis von einem Cent je Minute gilt nur für die Grundleistung: Wer das Schlussfolgern nutzt, zahlt Token obendrauf. Alle Vergleiche sind Herstellerangaben, ein unabhängiger Test liegt nicht vor.",
+    "firstOfKind": "",
+    "sources": [
+      "https://microsoft.ai/news/introducing-mai-realtime-1/",
+      "https://microsoft.ai/news/microsoft-ignite-2026"
+    ],
+    "disputed": false,
+    "note": "Kein allgemeiner Zugang: nur MAI Labs und eine Vorschau mit begrenztem Zugang. Ob sich die Kosten pro Minute in der Praxis halten, hängt vom getrennt abgerechneten Schlussfolgern ab.",
+    "verificationNote": "Datum 17.11.2026 aus dem Microsoft-AI-Beitrag (Ignite, 17. November 2026) und dem Sammelbeitrag. Vergleich mit GPT-Realtime 2.1 stammt aus Microsofts Fußnote (öffentliche Prüfungen Big Bench Audio und Tau-Voice sowie Dynamics-365-Contact-Center-Auswertungen); unabhängige Messungen wurden nicht gefunden. Die Zuordnung zur Modalität Audio folgt dem Präzedenzfall anderer Sprachmodelle im Datensatz. Modellkarte und Preisliste wurden nicht gelesen."
+  },
+  {
+    "id": "text-gemini-4-neon-2026-11-18",
+    "date": "2026-11-18",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Gemini 4 Neon",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Mittleres Modell der Gemini-4-Reihe, aus Gemini 4 Carbon abgeleitet: zwischen Hydrogen für schnelle Alltagsausführung und Carbon für die schwersten Langzeitprojekte, gedacht für komplexes Programmieren, Analyse und Arbeitsabläufe in Unternehmen. Text, Bild, Audio und Video als Eingabe, 1 Mio. Token Kontext, bis zu 64K Ausgabe-Token synchron und bis zu 1 Mio. über Hintergrund-Dekodierung. Vier Denkstufen (low, medium, high als Standard, xhigh). Preis 3 US-Dollar je Million Eingabe-Token (0,15 zwischengespeichert, 95 % Nachlass) und 15 je Million Ausgabe-Token. Verfügbar am selben Tag in der Gemini API (Google AI Studio), Gemini for business, Google Antigravity (kostenpflichtige Pro und Ultra), Android Studio und der Gemini-App (Pro und Ultra); eine Cyber-Fassung für Fairwind-Teilnehmer folgt in den kommenden Tagen. Wissensstand März 2026.",
+    "whyItMattered": "Es ist Googles viertes Modell in sieben Wochen und das dritte der Gemini-4-Reihe binnen zwölf Tagen (Carbon 10.11., Hydrogen 12.11., Neon 18.11.). Im Artificial-Analysis-Index liegt Neon (xhigh) mit 61 Punkten auf Platz 3 hinter GPT-6.2 Astra und Claude Fable 5.2, einen Punkt vor Carbon (high), bei laut Artificial Analysis rund 17 % niedrigeren Kosten je Aufgabe (6,44 gegen 7,76 US-Dollar bei Carbons regulärem Preis) und rund 40 % kürzerer Laufzeit. Die Ersparnis stammt allein aus dem niedrigeren Tokenpreis (3/15 statt 4/20), denn Neon braucht rund 15 % mehr Ausgabe-Token. Nicht gegenüber allen vorn: Auf Terminal-Bench 4.1 (65,2 % gegen 65,8 % bei Claude Opus 5.5), FrontierCode 2.0 (46,2 gegen 47,3) und Chartography (73,5 gegen 75,1 bei GPT-6.2 Sol) liegt es knapp dahinter. Preislich liegt Neon 50 % über Carbons Einführungspreis von 2/10, der bis 30.11.2026 gilt, danach aber 25 % darunter. Google ersetzt zugleich Gemini 4 Argon in der Gemini-App.",
+    "firstOfKind": "",
+    "sources": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+      "https://deepmind.google/models/model-cards/gemini-4-neon/",
+      "https://aistudio.google.com/docs/changelog",
+      "https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain"
+    ],
+    "disputed": false,
+    "note": "Der vollständige Sicherheitsbericht (Safety & Security Report) war am Prüftag noch nicht erschienen („in den kommenden Tagen“); die Frontier-Sicherheitseinstufung wird von Gemini 4 Argon übernommen, da Neon die Schwelle für wesentliche Fähigkeitsänderungen nicht überschreitet. Alle Leistungsangaben sind Herstellerangaben.",
+    "verificationNote": "Datum 18.11.2026 dreifach belegt: Google-Blogbeitrag „Introducing Gemini 4 Neon“ (Nov 18, 2026), Modellkarte bei Google DeepMind („Published 18 November 2026“) und Gemini-API-Änderungsprotokoll vom 18.11.2026. Alle Benchmarkwerte stammen aus Googles Blog und Modellkarte und sind Herstellerangaben; unabhängig bestätigt sind nur der Index-Wert 61 und der Kostenvergleich durch Artificial Analysis (Artikel vom 18.11.2026). Eine Abweichung: Google nennt für den Coding Agent Index von Artificial Analysis den Wert 58,6 und Platz 1, der Artikel von Artificial Analysis nennt 59 und nennt Neon wettbewerbsfähig mit Opus 5.5 und Fable 5.2; es gilt Googles Zahl mit diesem Hinweis. Die Angabe, dass Neon Argon in der Gemini-App ersetzt, stammt aus dem Bericht der Indian Express und wurde nicht an Googles Seite geprüft."
+  },
+  {
+    "id": "video-genie-4-ga-2026-11-19",
+    "date": "2026-11-19",
+    "datePrecision": "day",
+    "modality": "video",
+    "name": "Google DeepMind Genie 4 (allgemeine Verfügbarkeit)",
+    "org": "Google DeepMind",
+    "house": "Google",
+    "license": "closed",
+    "capability": "Googles Weltmodell wird als API verfügbar: `genie-4` auf der Interactions API für interaktive Weltgenerierung in Echtzeit, Ausgabe als steuerbarer Videostrom (16:9, 1280×720, 24 Bilder pro Sekunde) mit synchronem Stereoton (48 kHz) über WebRTC und WebSockets. Welten entstehen aus Text, einem 16:9-Referenzbild oder beidem und lassen sich live mit WASD- und Pfeiltasten sowie Texteingaben mitten in der Sitzung steuern. Sitzungen dauern höchstens 120 Sekunden, am stabilsten in den ersten 45 bis 90 Sekunden. Bezahlstufe: 1,50 US-Dollar je Million Eingabe-Token, 9 je Million Text-Ausgabe-Token und 17,50 je Million Video-Ausgabe-Token (rund 0,10 US-Dollar je Sekunde, Ton eingeschlossen). Betrieb in den USA, Westeuropa und Japan; außerhalb davon sinkt die Bildrate. Keine Funktionsaufrufe, keine Kontext-Zwischenspeicherung.",
+    "whyItMattered": "Aus dem Forschungsvorschau-Modell vom 27.10. (nur für Tester, Warteliste) wird ein Produkt, das Entwickler buchen können. Der Preis legt eine harte Grenze fest: Rund 0,10 US-Dollar je Sekunde heißen für eine volle Sitzung von zwei Minuten etwa 12 US-Dollar, also kein Massenprodukt für Spiele-Streaming. Dass die Sitzungsdauer in der API bei 120 Sekunden endet, während Googles Verbraucherangebot für Project Genie laut Berichten bis zu drei Minuten erlaubt, zeigt, dass die API das engere Angebot ist. Google beschreibt Genie 4 für die Simulation von Umgebungen für Agenten; die Dokumentation nennt dafür keine Beispiele. Alle Aussagen zu Realismus stammen von Google.",
+    "firstOfKind": "",
+    "sources": [
+      "https://aistudio.google.com/docs/models/genie-4",
+      "https://aistudio.google.com/docs/changelog"
+    ],
+    "disputed": true,
+    "note": "Folge-Eintrag zu „Google DeepMind Genie 4“ (27.10.2026), das nur eine Forschungsvorschau war. Für Verbraucher startete Project Genie mit Genie 4 laut AI Weekly (nur Berichte, nicht an Googles Seite geprüft) am 18.11.2026 für Ultra-Abonnenten, mit Warteliste für Pro.",
+    "verificationNote": "Datum 19.11.2026 aus dem Gemini-API-Änderungsprotokoll („November 19, 2026 — Genie 4 generally available“) und der Modellseite in der Google-AI-Studio-Dokumentation; Preise, Sitzungsdauer, Auflösung und Regionen stammen von der Modellseite. Disputed, weil die Modellseite kein Veröffentlichungsdatum nennt und der Start für Verbraucher laut AI Weekly bereits am 18.11.2026 erfolgte; gezählt wird der Tag der API-Freigabe als der belegbare Termin. Der Hinweis auf drei Minuten pro Sitzung bei Project Genie stammt von AI Weekly und wurde an keiner Google-Quelle geprüft. Die Rechnung von 12 US-Dollar je volle Sitzung ist eine eigene Hochrechnung aus dem Preis je Sekunde."
+  },
+  {
+    "id": "text-inkling-2-mini-2026-11-20",
+    "date": "2026-11-20",
+    "datePrecision": "day",
+    "modality": "text",
+    "name": "Inkling 2 Mini",
+    "org": "Thinking Machines Lab",
+    "house": "Thinking Machines Lab",
+    "license": "open",
+    "capability": "Kleines offenes Modell von Thinking Machines, das auf dem Laptop läuft: Mixture-of-Experts mit 26,4 Mrd. Parametern gesamt und 3,4 Mrd. aktiv (5,4 Mrd. wirksam pro Token, weil die mittleren Schichten dreimal durchlaufen werden). Text und Bild als Eingabe, 1 Mio. Token Kontext, Apache 2.0. Gewichte auf Hugging Face (dazu eine Variante mit variabler Schleifenzahl für die Forschung), Inferenz und Feintuning über Tinker sowie über SGLang, vLLM, Ollama, Unsloth und andere. Trainiert und ausgeliefert in NVFP4 und MXFP8, also ohne Umwandlungsverlust. Schwächen laut Hersteller: Wissen und Faktenwiedergabe, mehrstufige Gespräche, viele Nebenbedingungen und Neigung, sich beim Debuggen in langen Denkschleifen zu verfangen.",
+    "whyItMattered": "Erstes veröffentlichtes Modell von Thinking Machines mit Schleifen: Die mittleren zwölf Schichten laufen dreimal, sodass das Modell mehr rechnet, ohne mehr Token zu schreiben. Das ist laut Artificial Analysis auf der Pareto-Grenze von Intelligenz gegen aktive Parameter: Es erreicht denselben Index-Wert von 20 wie Qwen3.8 27B (xhigh) mit rund fünfmal weniger aktiven Parametern, braucht aber rund 38 % mehr Ausgabe-Token. Bei agentischem Programmieren liegt es vor allen offenen Modellen unter 100 Mrd. Parametern (DeepSWE v1.1 48,2 % gegen 42,2 % bei Qwen3.8-27B), bei Chat und Wissen bleibt Qwen3.8-27B vorn. Der zweite Grund für die Schleifen ist Überwachung: Weil das Modell mehr im Verborgenen rechnet, hat das Labor die Kontrollierbarkeit gemessen — Denkketten sind kaum zu steuern, und das Modell konnte in realistischen Agentenumgebungen keine verdeckten Nebenaufgaben ausführen. Die Zahlen sind Herstellerangaben, nur der Index-Wert ist von Artificial Analysis bestätigt.",
+    "firstOfKind": "",
+    "sources": [
+      "https://thinkingmachines.ai/news/inkling-2-mini/",
+      "https://thinkingmachines.ai/model-card/inkling-2-mini",
+      "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "https://artificialanalysis.ai/articles/inkling-2-mini"
+    ],
+    "disputed": false,
+    "note": "Nach Inkling 2 Small (05.11.2026, dessen Gewichte noch zugesagt waren) das erste Inkling-Modell, dessen Gewichte am Starttag vorlagen. Schleifen-Transformer gab es zuvor schon (SenseNova-Loop-9B am 17.11.2026 mit begrenztem Zugang, Dory 1.0 4B), Thinking Machines nennt es sein erstes eigenes.",
+    "verificationNote": "Datum 20.11.2026 aus dem Thinking-Machines-Blogbeitrag („Nov 20, 2026“) und der Modellkarte („Date of release: November 20, 2026“), bestätigt durch den Artikel von Artificial Analysis vom selben Tag. Parameterzahlen, Lizenz (Apache 2.0), Kontext und Benchmarkwerte stammen aus der Modellkarte und dem Blog; Hersteller-Benchmarks mit eigenen Läufen, dabei laufen die Vergleichsmodelle teils mit anderen Prüfumgebungen. Der Index-Wert 20 und der Vergleich mit Qwen3.8 27B (xhigh) und Nanbeige4.3-33B stammen von Artificial Analysis. Der Hugging-Face-Link stammt aus der Modellkarte und wurde nicht geöffnet. Ob die Gewichte am Starttag tatsächlich abrufbar waren, folgt aus der Modellkarte und dem Blog („The full weights ... are available on Hugging Face“), nicht aus einer eigenen Prüfung."
   }
 ];
 
 export const dataMeta = {
-  lastVerified: "18. November 2026",
+  lastVerified: "22. November 2026",
   /** Machine-readable twin of `lastVerified` — drives the relative "vor X Tagen". */
-  lastVerifiedISO: "2026-11-18",
+  lastVerifiedISO: "2026-11-22",
   windowStart: "2022-08",
   windowEnd: "2026-11",
-  total: 335,
+  total: 341,
   placeholder: false,
 };

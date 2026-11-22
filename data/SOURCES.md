@@ -1,6 +1,6 @@
 # Quellen & Methode
 
-333 Meilenstein-Releases generativer KI, 27. Januar 2022 → 17. November 2026, über Text, Bild, Video und Audio.
+339 Meilenstein-Releases generativer KI, 27. Januar 2022 → 20. November 2026, über Text, Bild, Video und Audio.
 
 <!-- Erzeugt von scripts/sources.ts — nicht von Hand bearbeiten. Zu aktualisieren mit `npm run sources`. -->
 
@@ -10,25 +10,25 @@ Jeder Eintrag wurde von einem Recherche-Agenten pro Modalität entworfen (Websuc
 
 Die Entdeckung — überhaupt zu erfahren, dass ein Release stattgefunden hat — beginnt beim [Changelog von Artificial Analysis](https://artificialanalysis.ai/changelog). `npm run candidates` lädt ihn und meldet die dort gelisteten Modelle, zu denen hier noch kein Eintrag existiert. Dieser Feed ist eine Spur, nie eine Quelle: er datiert den Tag, an dem Artificial Analysis ein Modell *ausgewertet* hat, nicht den Tag, an dem es erschienen ist — und er führt Sprachmodelle deutlich vollständiger als die anderen drei Modalitäten. Jeder Kandidat durchläuft davor die Datumsprüfung oben, bevor er ein Eintrag wird.
 
-- Releases gesamt: **333**
-- Nach Modalität: Text 165, Bild 52, Video 52, Audio 64
-- Offene Gewichte: 103 · Geschlossen: 230
-- Als `disputed` markiert: 45
+- Releases gesamt: **339**
+- Nach Modalität: Text 168, Bild 53, Video 53, Audio 65
+- Offene Gewichte: 104 · Geschlossen: 235
+- Als `disputed` markiert: 47
 - First-of-Kind-Aussagen: 117
 - Häuser: 61 (US 26 · China 18 · EU 6 · sonstige 4 · Sitz nicht bestätigt 7), 9 Länder erfasst
-- Primärquellen-Links: 694
-- Tagesgenaue Daten: 332 von 333 (1 nur monatsgenau bekannt)
-- Letzter Prüflauf: 18. November 2026
+- Primärquellen-Links: 710
+- Tagesgenaue Daten: 338 von 339 (1 nur monatsgenau bekannt)
+- Letzter Prüflauf: 22. November 2026
 
 Das ist ein **kuratierter** Satz fähigkeitsverschiebender Releases, kein vollständiges Protokoll jedes Punkt-Updates. Größenvarianten, Quantisierungen und Anbieter-Endpunkte fehlen absichtlich.
 
-Gezählt werden hier Releases. Der Datensatz führt 335 Einträge: 333 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
+Gezählt werden hier Releases. Der Datensatz führt 341 Einträge: 339 Releases plus 2 Marker mit `kind: "personal"`, die keine Lizenz tragen und aus jeder Zahl herausfallen.
 
 Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonischen Firmenschlüssel — nie `org`, das als Anzeige-Credit wörtlich aus der Quelle übernommen wird und ein Unternehmen über mehrere Schreibweisen verteilen würde. 4 Releases sind gemeinsam kreditiert; `house` nennt dort nur das führende Haus, die mitkreditierten stehen in `JOINT_CREDITS` in lib/providers.ts.
 
 ## Als `disputed` markierte Einträge
 
-45 von 333 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
+47 von 339 Releases tragen `disputed: true` — entweder ließ sich das Datum nicht auf eine einzelne Primärquelle festnageln, oder eine Aussage im Eintrag war zu weit gefasst und musste abgeschwächt werden.
 
 | Datum | Release | Notiz |
 |---|---|---|
@@ -77,3 +77,5 @@ Organisationszahlen verwenden `house`, den pro Eintrag handentschiedenen kanonis
 | 2026-11-10 | Gemini 4 Carbon (allgemeine Verfügbarkeit) (Google DeepMind) | Datum 10.11.2026 aus dem Google-Blogbeitrag „Gemini 4 Carbon is now available“ (Veröffentlichungsdatum der Seite 2026-11-10). Es wurde nur diese eine Quelle gelesen; ein unabhängiger Bericht vom selben Tag liegt nicht vor, deshalb disputed. Alle Leistungsangaben sind Herstellerangaben, teils von Geschäftspartnern in Vorabtests. Eine in der Anfrage genannte Aussage, Carbon übertreffe auf mehreren unabhängigen Benchmarks alle externen Modelle bei mehr als halbierten Kosten, war in den gelesenen Abschnitten der Seite nicht zu finden und steht deshalb nicht im Eintrag. Der Einführungspreis stammt aus der Fußnote der Seite (Ende 30.11.2026, danach 4/20 US-Dollar). Wie bei Fable 5 (Wiederveröffentlichung) und Kimi K3 (Open Weights) ist die breite Freigabe ein eigener Eintrag zum früheren Ankündigungs-Eintrag. |
 | 2026-11-11 | Qwen4-Max-Preview (Alibaba Cloud (Qwen)) | Datum 11.11.2026 aus der Dokumentationsseite von Alibaba Cloud Model Studio (Stand der Seite 2026-11-11 13:33:57; Vorschau-Beginn 11.11.2026, 10:00 UTC+8). Es wurde nur diese eine Quelle gelesen; ein Blogbeitrag, eine Modellkarte oder ein unabhängiger Bericht liegt nicht vor, deshalb disputed. Die Seite nennt weder Parameterzahl noch Preise noch Benchmarkwerte; die Angaben zu Kontext, Ausgabelänge, Denkstufen und API-Kompatibilität sind Herstellerangaben der Dokumentation. Die Einordnung als „nächste Flaggschiff-Generation“ steht dort selbst. Hinweis aus der Meldung, die Vorschau sei nur über den Token Plan zugänglich, ist durch die Seite bestätigt. |
 | 2026-11-17 | Hy4 Flash (Tencent (Hy)) | Datum 17.11.2026 aus der Tencent-Pressemitteilung (PRNewswire, 17.11.2026, „today announced“; gelesen über die Yahoo-Finance-Kopie). Disputed, weil Dataconomy den Start auf den 16.11. legt und keine zweite unabhängige Quelle vorliegt; gezählt wird das Datum der Pressemitteilung. Alle Leistungsangaben sind Herstellerangaben aus Tencents internem WorkIndex und einer Blindprüfung mit eigenen WorkBuddy-Nutzern; der Vergleichswert 18-fach niedrigere Kosten gegenüber Claude Haiku 5.5 stammt aus Dataconomy nach Tencent. Die Modellseite hy.tencent.ai und eine Modellkarte wurden nicht gelesen. Dass die Gewichte geschlossen sind, ist der Stand am Prüftag („plans to open-source“). |
+| 2026-11-17 | MAI Image 2.7 & MAI Image 2.7 Flash (Microsoft AI) | Datum 17.11.2026 aus dem Microsoft-AI-Beitrag „MAI Image 2.7: Frontier quality at a fraction of the cost“ (17. November 2026) und dem Ignite-Sammelbeitrag. Disputed, weil Microsoft in den verwandten Beiträgen einen Eintrag vom 27.10.2026 führt, in dem das Modell schon auf Artificial Analysis und Arena erschien; der Beitrag wurde nicht gelesen, deshalb ist offen, ob das öffentliche Erscheinen schon damals begann. Gezählt wird der Tag der öffentlichen Vorschau. Rangangaben (AA 1.215 Elo, Vorsprung 4 Elo; Arena Top 2) stammen aus den Fußnoten des Microsoft-Beitrags; die Elo-Zahlen und die Rangplätze wurden nicht auf der Artificial-Analysis-Seite selbst geprüft. Die Preise (35 und 10 US-Dollar je 1.000 Bilder) sind Microsofts Angabe für die Vorschau. |
+| 2026-11-19 | Google DeepMind Genie 4 (allgemeine Verfügbarkeit) (Google DeepMind) | Datum 19.11.2026 aus dem Gemini-API-Änderungsprotokoll („November 19, 2026 — Genie 4 generally available“) und der Modellseite in der Google-AI-Studio-Dokumentation; Preise, Sitzungsdauer, Auflösung und Regionen stammen von der Modellseite. Disputed, weil die Modellseite kein Veröffentlichungsdatum nennt und der Start für Verbraucher laut AI Weekly bereits am 18.11.2026 erfolgte; gezählt wird der Tag der API-Freigabe als der belegbare Termin. Der Hinweis auf drei Minuten pro Sitzung bei Project Genie stammt von AI Weekly und wurde an keiner Google-Quelle geprüft. Die Rechnung von 12 US-Dollar je volle Sitzung ist eine eigene Hochrechnung aus dem Preis je Sekunde. |
